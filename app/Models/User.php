@@ -63,4 +63,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    function salon(){
+        return $this->hasMany($this)->where('type', 'salon');
+    }
+
+    function user(){
+        return $this->hasMany($this)->where('type', 'user');
+    }
+
+    function days(){
+        return $this->hasMany(Day::class);
+    }
 }

@@ -19,8 +19,8 @@ if(!function_exists('internalSuccess')){
 }
 
 if(!function_exists('internalError')){
-    function internalError($message = 'Success',$data = [], $code = 200) {
-        return ['status' => true, 'message' => $message, 'data' => $data, 'responseCode' => $code];
+    function internalError($message = 'error',$data = [], $code = 200) {
+        return ['status' => false, 'message' => $message, 'data' => $data, 'responseCode' => $code];
     }
 }
 

@@ -13,7 +13,7 @@ class UserService
 
 	public function checkSalon(Request $request)
 	{
-        $model = User::where('uuid', $request->salon_uuid)
+        $model = User::where('uuid', $request->user_uuid)
         	->where('type','salon')
         	->first();
 

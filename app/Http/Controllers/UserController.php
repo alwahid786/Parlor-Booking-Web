@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\Handler;
+use App\Models\Day;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -38,38 +39,53 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
+        $result = $this->userService->checkSalon($request);
+        if(!$result['status'])
+            return sendError($result['message'] ,$result['data']);
+        $user = $result['data'];
+
+
         DB::beginTransaction();     
         try {
 
-        	$user = User::where('uuid',$request->user_uuid)->first();
-        	// return sendSuccess('User updated',$user);
-        	if(!$user)
-	        	return sendError("User Not Registered",$user);
-
-	        if('user'== $user->type){
-
+	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
-	        }
 	        else{
 
 	        	$user->name = $request->name??$user->name;
-	        	$user->address = $request->address??NULL;
-	        	$user->lat = $request->lat??NULL;
-	        	$user->long = $request->long??NULL;
-	        	$user->start_time = $request->start_time??NULL;
-	        	$user->end_time = $request->end_time??NULL;
-	        	$user->description = $request->description??NULL;
+	        	$user->address = $request->address??$user->address;
+	        	$user->lat = $request->lat??$user->lat;
+	        	$user->long = $request->long??$user->long;
+	        	$user->start_time = $request->start_time??$user->start_time;
+	        	$user->end_time = $request->end_time??$user->end_time;
+	        	$user->description = $request->description??$user->description;
+
 	        }
 
 	        $user->save();
-
+	        $data['user'] = $user; 
+            $daysSaved = [];
 	        if(!$user){
 
 	    		DB::rollBack();
 	        	return sendError("Internal Server Error",[]);
 	        }
+            if($request->days){
+                $days = json_decode($request->days);
+                dd($days);
+                $days = array_unique($request->days);
+                
+                foreach ($days as $key => $day) {
+                    $dayObj = Day::where('salon_id',$user->id)->first()??new Day;
+                    $dayObj->uuid = str::uuid();
+                    $dayObj->salon_id = $user->id;
+                    $dayObj->day = $day;
+                    $dayObj->save();
+                    $daysSaved[] = $dayObj->day;
+                }
+            }
 
-	        $data['user'] = $user; 
+            $data['user']['days'] = $daysSaved;
         	DB::commit();
         	return sendSuccess('User updated',$data);
         	
