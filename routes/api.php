@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     //profile Api
     Route::post('update_user', [UserController::class, 'updateUser']);
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
-    Route::post('update_days',  [UserController::class, 'salonDays']);
+    Route::post('get_user',  [UserController::class, 'getUser']);
 
 });
 

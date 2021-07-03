@@ -31,6 +31,7 @@ class UserController extends Controller
     		'start_time' => 'date_format:H:i',
     		'end_time' => 'date_format:H:i|after:start_time',
     		'description' => 'string',
+            // 'days' => 'in:sunday,monday,tuesday,wednesday,thursday,friday,saturday'
         ]);
 
         if ($validator->fails()) {
@@ -71,17 +72,22 @@ class UserController extends Controller
 	        	return sendError("Internal Server Error",[]);
 	        }
             if($request->days){
-                $days = json_decode($request->days);
-                dd($days);
-                $days = array_unique($request->days);
+                $days = array_unique(json_decode($request->days));
+                $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
+                $days_to_add = array_diff($days,$database_days);
+                $days_to_delete = array_diff($database_days,$days);
                 
-                foreach ($days as $key => $day) {
-                    $dayObj = Day::where('salon_id',$user->id)->first()??new Day;
-                    $dayObj->uuid = str::uuid();
-                    $dayObj->salon_id = $user->id;
-                    $dayObj->day = $day;
-                    $dayObj->save();
-                    $daysSaved[] = $dayObj->day;
+                foreach($days_to_delete as $day){
+                    $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
+                } 
+                
+                foreach ($days_to_add as $day) {
+                    $day_obj = new Day;
+                    $day_obj->uuid = str::uuid();
+                    $day_obj->salon_id = $user->id;
+                    $day_obj->day = $day;
+                    $day_obj->save();
+                    $daysSaved[] = $day_obj->day;
                 }
             }
 
@@ -141,24 +147,20 @@ class UserController extends Controller
     	}
     }
 
-    public function salonDays(Request $request){
+    public function getUser(Request $request){
         $validator = Validator::make($request->all(), [
-            'salon_uuid' => 'required|exists:users,uuid',
-            'days' => 'required',
+            'user_uuid' => 'exists:users,uuid',
         ]);
 
         if ($validator->fails()) {
 
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
-        }
+        } 
 
-        $response = $this->userService->checkSalon($request);
-        if(!$response['status'])
-        	sendError('salon Not Found',[]);
+        $user = User::where('id',$request->user_uuid??$request->user()->id)
+            ->with(['days'])->first();
 
-        $days = json_decode($request->days);
-        
-        return sendSuccess('day',$days);
+        return sendSuccess('User Data',$user);
     }
 }

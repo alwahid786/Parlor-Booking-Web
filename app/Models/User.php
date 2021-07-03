@@ -74,6 +74,6 @@ class User extends Authenticatable
     }
 
     function days(){
-        return $this->hasMany(Day::class);
+        return $this->hasMany(Day::class,  'salon_id','id');
     }
 }
