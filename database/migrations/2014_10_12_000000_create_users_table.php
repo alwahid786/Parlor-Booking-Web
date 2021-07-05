@@ -28,8 +28,9 @@ class CreateUsersTable extends Migration
             $table->text('social_id')->nullable();
             $table->string('social_email')->nullable();
             $table->enum('social_type', ['facebook', 'google', 'twitter', 'apple'])->nullable();
+            $table->boolean('is_social_password_updated')->default(false);
 
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->enum('gender', ['male','female','other'])->nullable();
             $table->boolean('is_online')->nullable();
 
