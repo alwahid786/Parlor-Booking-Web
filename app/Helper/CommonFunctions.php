@@ -55,6 +55,12 @@ if(!function_exists('print_array')){
     }
 }
 
+if(!function_exists('getUser')){
+    function getUser(){
+        return \App\Models\User::first();
+    }
+}
+
 /**
  * check if phone number is valid or not
  */

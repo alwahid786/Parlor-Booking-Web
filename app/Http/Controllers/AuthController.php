@@ -117,15 +117,17 @@ class AuthController extends Controller
 
     public function signup(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'is_social' => 'required|in:1,0',  
+            
+            'name' => 'required_if:is_social,0|string',
             'email' => 'required_if:is_social,0|unique:users,email',
             'phone_code' => 'required_if:is_social,0',
             'phone_number' => 'required_if:is_social,0|unique:users,phone_number',
             'password' => 'required_if:is_social,0',
-            'is_social' => 'required|in:1,0',  
+            'type' => 'required_if:is_social,0|in:salon,user',
+            
             'social_id' => 'required_if:is_social,1',
             'social_type' => 'required_if:is_social,1',
-            'type' => 'required|in:salon,user'
         ]);
         if($validator->fails()){
             $data['validation_error'] = $validator->getMessageBag();
@@ -161,7 +163,7 @@ class AuthController extends Controller
             $user = new User;
             $user->uuid = Str::uuid();  
             
-            //for social
+            //For Social
             if($request->is_social == 1){
                 $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
                 $user->phone_verified_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -200,29 +202,33 @@ class AuthController extends Controller
             }
 
             if($user->save()) {
+                if($request->is_social == 1){
+                        return $this->socialLogin($request);
 
-                // Mail::send('email_template.verification_code', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {    
-                //     $m->from(config('mail.from.address'), config('mail.from.name'));
-                //     $m->to($user->email, $user->name)->subject('Account Verification');
-                // });
+                }else{
+                    // Mail::send('email_template.verification_code', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {    
+                    //     $m->from(config('mail.from.address'), config('mail.from.name'));
+                    //     $m->to($user->email, $user->name)->subject('Account Verification');
+                    // });
 
-                $signupVerification = new SignupVerification;
-                $signupVerification->uuid = Str::uuid();
-                $signupVerification->user_id = $user->id;
-                $signupVerification->type = 'both';                        
-                $signupVerification->email = $request->email;
-                $signupVerification->phone = $request->phone_code.$request->phone_number;
-                $signupVerification->token = $code;
-                $signupVerification->save();
-                $data['code'] = $code;
-                $data['user'] = $user;
+                    $signupVerification = new SignupVerification;
+                    $signupVerification->uuid = Str::uuid();
+                    $signupVerification->user_id = $user->id;
+                    $signupVerification->type = 'both';                        
+                    $signupVerification->email = $request->email;
+                    $signupVerification->phone = $request->phone_code.$request->phone_number;
+                    $signupVerification->token = $code;
+                    $signupVerification->save();
+                    $data['code'] = $code;
+                    $data['user'] = $user;
 
-                if(!$signupVerification->save()){
-                    return sendError("Cant save validation code");
+                    if(!$signupVerification->save()){
+                        return sendError("Cant save validation code");
+                    }
+
+                    DB::commit();
+                    return sendSuccess('Successfully Created User', $data);
                 }
-
-                DB::commit();
-                return sendSuccess('Successfully Created User', $data);
             }
             else{
                 DB::rollBack();
@@ -271,9 +277,9 @@ class AuthController extends Controller
 
     public function socialLogin(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' =>'required_unless:social_type,apple',
-            'social_id' => 'required',
-            'social_type' => 'required'
+            'social_email' =>'required_unless:social_type,apple',
+            'social_type' => 'required',
+            'social_id' => 'required'
         ]);
 
         if($validator->fails()){
@@ -286,10 +292,10 @@ class AuthController extends Controller
         if($request->social_type == 'apple'){
             $user = User::where('social_id', $request->social_id)->first();
         }else{
-            $user = User::where('email',  $request->email)->where('social_id', $request->social_id)->first();
+            $user = User::where('social_email',  $request->social_email)->where('social_id', $request->social_id)->first();
         }
 
-        $check1 = User::where('email',  $request->email)->first();
+        $check1 = User::where('social_email',  $request->social_email)->first();
         if(!$user && $check1){
             return sendError('Email has been registered already with another account.', null);
         }
@@ -309,12 +315,13 @@ class AuthController extends Controller
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
-        // Profile::where('id', $user->profile_id)->update(['is_online' => true]);
+        User::where('id', $user->id)->update(['is_online' => true]);
 
         $data['access_token'] = $tokenResult->accessToken;
         $data['token_type'] = 'Bearer';
         $data['expires_at'] = Carbon::parse($tokenResult->token->expires_at)->toDateTimeString();
         $data['user'] = getUser()->where('id', $request->user()->id)->first();
+        DB::commit();
         return sendSuccess('Login successfully.', $data);
     }
 
