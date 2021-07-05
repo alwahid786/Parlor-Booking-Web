@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('update_user', [UserController::class, 'updateUser']);
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
     Route::post('get_user',  [UserController::class, 'getUser']);
+
+    //service Api
+    Route::post('get_service', [ServiceController::class, 'getService']);
+    Route::post('updated_service', [ServiceController::class, 'updateService']);
+    Route::post('delete_service', [ServiceController::class, 'deleteService']);
 
 });
 
