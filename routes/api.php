@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
@@ -40,5 +41,9 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('updated_service', [ServiceController::class, 'updateService']);
     Route::post('delete_service', [ServiceController::class, 'deleteService']);
 
+    //Appointment Api
+    Route::post('get_appointment', [AppointmentController::class, 'getAppointment']);
+    Route::post('update_appointment', [AppointmentController::class, 'updateAppointment']);
+    Route::post('delete_appointment', [AppointmentController::class, 'deleteAppointment']);
 });
 

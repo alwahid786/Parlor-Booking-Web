@@ -13,7 +13,7 @@ class UserService
 
 	public function checkSalon(Request $request)
 	{
-        $model = User::where('uuid', $request->user_uuid)
+        $model = User::where('uuid', $request->salon_uuid)
         	->where('type','salon')
         	->first();
 
@@ -23,4 +23,18 @@ class UserService
 
     	return internalSuccess('Salon Data',$model);
 	}
+
+    public function checkUser(Request $request)
+    {
+        $model = User::where('uuid', $request->user_uuid)
+            ->where('type','user')
+            ->first();
+
+        if(null == $model){
+            return internalError('User not found',"",404);
+        }
+
+        return internalSuccess('User Data',$model);
+    }
+
 }

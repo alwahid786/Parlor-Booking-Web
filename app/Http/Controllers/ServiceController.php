@@ -24,7 +24,7 @@ class ServiceController extends Controller
     public function getService(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required|exists:users,uuid',
+            'salon_uuid' => 'required|exists:users,uuid',
         ]);
 
         if ($validator->fails()) {
@@ -36,9 +36,9 @@ class ServiceController extends Controller
         $result = $this->userService->checkSalon($request);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
-        $user = $result['data'];
+        $salon = $result['data'];
 
-        $services = Service::orderBy('created_at', 'DESC')->where('salon_id',$user->id)->get();
+        $services = Service::orderBy('created_at', 'DESC')->where('salon_id',$salon->id)->get();
 
 
         if(0 == $services->count())
@@ -50,8 +50,8 @@ class ServiceController extends Controller
     public function updateService(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required_without:service_uuid|exists:users,uuid',
-            'service_uuid' => 'required_without:user_uuid|exists:services,uuid',
+            'salon_uuid' => 'required_without:service_uuid|exists:users,uuid',
+            'service_uuid' => 'required_without:salon_uuid|exists:services,uuid',
             'name' => 'string',
             'price' => 'numeric',
             'status' => 'in:active,in-active'
@@ -72,21 +72,20 @@ class ServiceController extends Controller
             $service->uuid = str::uuid();
         }
 
-        if(isset($request->user_uuid)){
+        if(isset($request->salon_uuid)){
 
             $result = $this->userService->checkSalon($request);
             if(!$result['status'])
                 return sendError($result['message'] ,$result['data']);
-            $user = $result['data'];
+            $salon = $result['data'];
         }
 
         DB::beginTransaction();
         try{
-
-
-            $service->name = $request->name;
-            $service->price = (int)$request->price;
-            $service->salon_id = $service->salon_id??$user->id;
+            
+            $service->name = $request->name??$service->name;
+            $service->price = (int)($request->price??$service->price);
+            $service->salon_id = $service->salon_id??$salon->id;
             $service->status = $request->status??$service->status??'active';
             $service->save();
 

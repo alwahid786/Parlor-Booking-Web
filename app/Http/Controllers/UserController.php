@@ -31,6 +31,7 @@ class UserController extends Controller
     		'start_time' => 'date_format:H:i',
     		'end_time' => 'date_format:H:i|after:start_time',
     		'description' => 'string',
+            // 'type' => 'required|in:user,salon'
             // 'days' => 'in:sunday,monday,tuesday,wednesday,thursday,friday,saturday'
         ]);
 
@@ -40,11 +41,9 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $result = $this->userService->checkSalon($request);
-        if(!$result['status'])
-            return sendError($result['message'] ,$result['data']);
-        $user = $result['data'];
-
+        $user = User::where('uuid', $request->user_uuid)->first();
+        if(!$user)
+            return sendError("user Not Found",[]);
 
         DB::beginTransaction();     
         try {
