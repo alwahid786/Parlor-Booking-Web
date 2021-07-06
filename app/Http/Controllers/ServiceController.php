@@ -52,8 +52,8 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'salon_uuid' => 'required_without:service_uuid|exists:users,uuid',
             'service_uuid' => 'required_without:salon_uuid|exists:services,uuid',
-            'name' => 'string',
-            'price' => 'numeric',
+            'name' => 'string|required_with:salon_uuid',
+            'price' => 'numeric|required_with:salon_uuid',
             'status' => 'in:active,in-active'
         ]);
 

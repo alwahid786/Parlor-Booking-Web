@@ -45,5 +45,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('get_appointment', [AppointmentController::class, 'getAppointment']);
     Route::post('update_appointment', [AppointmentController::class, 'updateAppointment']);
     Route::post('delete_appointment', [AppointmentController::class, 'deleteAppointment']);
+    Route::post('available_appointments', [AppointmentController::class, 'availableAppointments']);
+    Route::post('salon_offering', [AppointmentController::class, 'salonOff']);
 });
 
