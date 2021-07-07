@@ -26,6 +26,7 @@ class CreateOffersTable extends Migration
             $table->double('discount')->default(0.0);
             $table->double('price')->default(0.0);
             $table->enum('status', ['active','in-active'])->default('active');
+            $table->timestamp('end_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
