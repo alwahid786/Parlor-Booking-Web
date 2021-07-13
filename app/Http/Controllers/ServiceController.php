@@ -38,7 +38,10 @@ class ServiceController extends Controller
             return sendError($result['message'] ,$result['data']);
         $salon = $result['data'];
 
-        $services = Service::orderBy('created_at', 'DESC')->where('salon_id',$salon->id)->get();
+        $services = Service::orderBy('created_at', 'DESC')->where('salon_id',$salon->id);
+        if(isset($request->limit))
+            $services->offset($request->offset??0)->limit($request->limit);
+
 
 
         if(0 == $services->count())

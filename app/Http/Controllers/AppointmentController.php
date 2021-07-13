@@ -7,12 +7,13 @@ use App\Models\Appointment;
 use App\Models\AppointmentDetail;
 use App\Models\Offer;
 use App\Models\Service;
+use App\Models\User;
 use App\Services\UserService;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -27,7 +28,8 @@ class AppointmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'required|exists:users,uuid',
-            'salon_uuid' => 'required|exists:users,uuid',
+            'offset' => 'numeric',
+            'limit' => 'numeric'
         ]);
 
         if ($validator->fails()) {
@@ -36,8 +38,24 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        
+        $user = User::where('uuid', $request->user_uuid)->first();
+        if(!$user)
+            return sendError("user Not Found",[]);
 
+        $appointments = Appointment::orderBy('created_at','DESC');
+        
+        if('user' == $user->type)
+            $appointments->where('user_id', $user->id);
+        if('salon' == $user->type)
+            $appointments->where('salon_id', $user->id);    
+
+
+        if(isset($request->limit))
+            $appointments->offset($request->offset??0)->limit($request->limit);
+
+        $appointments = $appointments->get();
+        
+        return sendSuccess('Appointments',$appointments);                
     }
 
     public function updateAppointment(Request $request){
@@ -84,7 +102,7 @@ class AppointmentController extends Controller
             $appointment->salon_id = $salon->id;
             $appointment->user_id = $user->id;
             $appointment->status = $request->status??'active';
-            $appointment->start_time = Carbon::parse(implode($appointment_time))->format('H:i';)//implode array to string
+            $appointment->start_time = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
             $appointment->end_time = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
             $appointment->date = $request->date;
             $appointment->total_price = $total_price;
