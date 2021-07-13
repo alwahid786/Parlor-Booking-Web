@@ -66,6 +66,7 @@ class AppointmentController extends Controller
             'services_uuid' => 'required|exists:services,uuid',
             'time' => 'required|date_format:H:i',
             'date' => 'required|date',
+            'appointment_uuid' => 'required_with:|'
         ]);
 
         if ($validator->fails()) {

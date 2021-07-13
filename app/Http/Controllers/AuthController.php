@@ -495,4 +495,89 @@ class AuthController extends Controller
         return sendError('There is some problem.', null);
     }
 
+    public function resendVerificationToken(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required_without:phone_number|email',
+            'phone_number' => 'required_without:email',
+            'phone_code' => 'required_without:email', // basically country code
+        ]);
+
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+
+        // get user based on email|phone
+        if(isset($request->email) && $request->email != ''){
+            $user = User::where('email', $request->email)->first();
+        }
+        else{
+            $user = User::where('phone_number', $request->phone_number)->where('phone_code', $request->phone_code)->first();
+        }
+        if(null == $user){
+            // return false;
+            return sendError('Invalid or Expired Information Provided', null);
+        }
+
+
+        // get verification code based on email|phone
+        if(isset($request->email) && $request->email != ''){
+            $veridicationModel = SignupVerification::where('email', $request->email)->first();
+        }
+        else{
+            $veridicationModel = SignupVerification::where('phone', $request->phone_code . $request->phone_number)->first();
+        }
+
+        // create existing verification code and delete old one
+        if(null != $veridicationModel){
+            $veridicationModel->delete();
+        }
+        $code = mt_rand(100000, 999999);
+
+        if(!$this->sendVerificationToken($user, $code, $request)){
+            return false;
+            // return sendError('Something went wrong while sending Activation Code.', []);
+        }
+        $data['code'] = $code;
+        $data['user'] = $user;
+        // return $data;
+        return sendSuccess('Verification Token Sent Successfully.', $data);
+    }
+
+        public function sendVerificationToken($user, $code, $request)
+    {
+        $verificationModel = new SignupVerification();
+        if (isset($request->phone_number) && isset($request->phone_code)) {
+            $twilio = new TwilioController;
+            if (!$twilio->sendMessage($request->phone_code . $request->phone_number, 'Enter this code to verify your Sellx account ' . $code)) {
+                return false;
+                // return sendError('Somthing went wrong while send Code over phone', NULL);
+            }
+            $verificationModel->type = 'phone';
+            $verificationModel->phone = (strpos($request->phone_number, '+') > -1)? $request->phone_number : $request->phone_code . $request->phone_number;
+            $verificationModel->email = null;
+        } else {
+            $email_address = (null != $user->email)? $user->email : $request->email;
+            // Mail::send('email_template.verification_code', ['code' => $code], function ($m) use ($email_address) {
+            //     $m->from(config('mail.from.address'), config('mail.from.name'));
+            //     $m->to($email_address)->subject('Verification');
+            // });
+            $verificationModel->type = 'email';
+            $verificationModel->email = $request->email;
+            $verificationModel->phone = null;
+        }
+        $verificationModel->token = $code;
+        $verificationModel->created_at = date('Y-m-d H:i:s');
+
+        // if (isset($request->phone_number) && isset($request->phone_code)) {
+        //     $user->phone_verified_at = null;
+        // }
+        // else{
+        //     $user->email_verified_at = null;
+        // }
+        return ($verificationModel->save());
+    }
+
 }
