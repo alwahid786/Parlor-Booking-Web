@@ -28,8 +28,9 @@ class AppointmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'required|exists:users,uuid',
+            'status' => 'in:active,cancelled,completed',
             'offset' => 'numeric',
-            'limit' => 'numeric'
+            'limit' => 'numeric',
         ]);
 
         if ($validator->fails()) {
@@ -48,7 +49,8 @@ class AppointmentController extends Controller
             $appointments->where('user_id', $user->id)->with(['salon']);
         if('salon' == $user->type)
             $appointments->where('salon_id', $user->id)->with(['user']);   
-
+        if(isset($request->status))
+            $appointments->where('status', $request->status);
 
         if(isset($request->limit))
             $appointments->offset($request->offset??0)->limit($request->limit);
@@ -61,18 +63,27 @@ class AppointmentController extends Controller
     public function updateAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required|exists:users,uuid',
-            'salon_uuid' => 'required|exists:users,uuid',
-            'services_uuid' => 'required|exists:services,uuid',
-            'time' => 'required|date_format:H:i',
-            'date' => 'required|date',
-            'appointment_uuid' => 'required_with:|'
+            'user_uuid' => 'required_without:appointment_uuid|exists:users,uuid',
+            'salon_uuid' => 'required_with:user_uuid|exists:users,uuid',
+            'services_uuid' => 'required_with:user_uuid|exists:services,uuid',
+            'time' => 'required_with:user_uuid|date_format:H:i',
+            'date' => 'required_with:user_uuid|date',
+            'appointment_uuid' => 'exists:appointments,uuid',
+            'status' => 'required_with:appointment_uuid|in:active,cancelled,completed'
         ]);
 
         if ($validator->fails()) {
 
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
+        }
+
+        if(isset($request->appointment_uuid)){
+
+            $status = Appointment::where('uuid', $request->appointment_uuid)
+                ->update(['status' => $request->status]);
+
+            return sendSuccess('Updated Appointment',$status);
         }
 
         $result = $this->userService->checkSalon($request);
