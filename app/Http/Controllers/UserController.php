@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -156,8 +157,7 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         } 
 
-        $user = User::where('id',$request->user_uuid??$request->user()->id)
-            ->with(['days'])->first();
+        $user = User::where('uuid',$request->user_uuid??$request->user()->id)->first();
 
         return sendSuccess('User Data',$user);
     }
