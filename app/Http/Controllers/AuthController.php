@@ -534,7 +534,7 @@ class AuthController extends Controller
         if(null != $veridicationModel){
             $veridicationModel->delete();
         }
-        $code = mt_rand(100000, 999999);
+        $code = mt_rand(1000, 9999);
 
         if(!$this->sendVerificationToken($user, $code, $request)){
             return false;
