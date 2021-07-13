@@ -42,7 +42,7 @@ class ServiceController extends Controller
         if(isset($request->limit))
             $services->offset($request->offset??0)->limit($request->limit);
 
-
+        $services = $services->get();
 
         if(0 == $services->count())
             return sendError('No Service Found',$services);
