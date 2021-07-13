@@ -163,8 +163,8 @@ class AppointmentController extends Controller
         $endTime = Carbon::parse($salon->end_time);
         $date = Carbon::parse($request->date);
 
-        while ($startTime < $endTime) {
-            $salon_time_slots[] = $startTime->modify('+30 minutes')->format('H:i:s');
+        while ($startTime->modify('+30 minutes') < $endTime) {
+            $salon_time_slots[] = $startTime->format('H:i:s');
         }
 
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
