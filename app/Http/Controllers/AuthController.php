@@ -477,11 +477,11 @@ class AuthController extends Controller
 
         $check = DB::select('Select * from password_resets where (email = ? AND token = ?) OR (phone = ? AND token = ?)',[$request->reference, $request->code, $request->reference, $request->code]);
 
-        if($check){
+        if(count($check)){
             $user = User::where('email', $request->reference)->orwhereRaw("CONCAT(phone_code, phone_number) = ?", [$request->reference])->first();
         }
 
-        if(!$user){
+        if(!isset($user)){
             return sendError('User not found', null);
         }
 

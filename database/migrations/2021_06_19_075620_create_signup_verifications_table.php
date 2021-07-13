@@ -15,7 +15,7 @@ class CreateSignupVerificationsTable extends Migration
     {
         Schema::create('signup_verifications', function (Blueprint $table) {
             $table->increments('id')->unsigned(false);
-            $table->string('uuid')->unique();
+            $table->string('uuid')->unique()->nullable();
 
             $table->integer('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
