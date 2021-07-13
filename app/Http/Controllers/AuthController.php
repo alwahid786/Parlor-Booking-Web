@@ -439,10 +439,10 @@ class AuthController extends Controller
         $data['type'] = $type;
         
         if($type == 'email'){
-            Mail::send('email_template.forgot_password', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {
-                $m->from(config('mail.from.address'), config('mail.from.name'));
-                $m->to($user->email, $user->name)->subject('Forget Password Rquest');
-            });
+            // Mail::send('email_template.forgot_password', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {
+            //     $m->from(config('mail.from.address'), config('mail.from.name'));
+            //     $m->to($user->email, $user->name)->subject('Forget Password Rquest');
+            // });
 
             DB::delete('Delete from password_resets where email = ?',[$user->email]);
             DB::insert('Insert into password_resets (type, email, token) values(?, ?, ?)',['email', $user->email, $code]);
