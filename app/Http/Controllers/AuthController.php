@@ -146,19 +146,27 @@ class AuthController extends Controller
             return sendError('Phone number is invalid', null);
         }
 
+
         $code = mt_rand(1000, 9999);
         $check = new User;
         
-        $check = User::where('email', $request->email)->orWhere('phone_number', $request->phone_number)->first();
-        if($check){
-            if($check->email == $request->email && $check->phone_number == $request->phone_number) {
+        if($request->is_social == 0){
+            $check = User::where('email', $request->email)->orWhere('phone_number', $request->phone_number)->first();
+            if($check){
+                if($check->email == $request->email && $check->phone_number == $request->phone_number) {
+                    return sendError('User exists already', null);
+                }
+                if($check->email == $request->email) {
+                    return sendError('Email exists already', null);
+                }
+                if($check->phone_number == $request->phone_number){
+                    return sendError('Phone exists already', null);
+                }
+            }
+        }else{
+            $check = User::where('social_email', $request->social_email)->orWhere('social_id', $request->social_id)->first();
+            if($check){
                 return sendError('User exists already', null);
-            }
-            if($check->email == $request->email) {
-                return sendError('Email exists already', null);
-            }
-            if($check->phone_number == $request->phone_number){
-                return sendError('Phone exists already', null);
             }
         }
 
@@ -172,6 +180,7 @@ class AuthController extends Controller
             if($request->is_social == 1){
                 $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
                 $user->phone_verified_at = Carbon::now()->format('Y-m-d H:i:s');
+                $user->type = $request->type;
 
                 if(isset($request->is_social))
                     $user->is_social = $request->is_social;
