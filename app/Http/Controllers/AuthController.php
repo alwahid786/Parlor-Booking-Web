@@ -125,7 +125,7 @@ class AuthController extends Controller
             'is_social' => 'required|in:1,0',  
             
             'name' => 'required_if:is_social,0|string',
-            'email' => 'required_if:is_social,0|unique:users,email',
+            'email' => 'required_if:is_social,0|unique:users,email|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'phone_code' => 'required_if:is_social,0',
             'phone_number' => 'required_if:is_social,0|unique:users,phone_number',
             'password' => 'required_if:is_social,0',

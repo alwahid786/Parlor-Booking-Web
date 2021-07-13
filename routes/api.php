@@ -26,6 +26,7 @@ Route::group([ 'prefix' => 'auth'], function () {
     Route::post('forgot_password', [AuthController::class, 'forgotPasswordCode']);
     Route::post('recover_password', [AuthController::class, 'recoverPassword']);
     Route::post('verify_user', [AuthController::class, 'verifyUserWithCode']);
+    Route::post('reset_password', [AuthController::class, 'recoverPassword']);
     Route::post('logout', [AuthController::class, 'logout']);
 });
 

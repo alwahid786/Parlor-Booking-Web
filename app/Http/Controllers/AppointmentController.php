@@ -45,9 +45,9 @@ class AppointmentController extends Controller
         $appointments = Appointment::orderBy('created_at','DESC');
         
         if('user' == $user->type)
-            $appointments->where('user_id', $user->id);
+            $appointments->where('user_id', $user->id)->with(['salon']);
         if('salon' == $user->type)
-            $appointments->where('salon_id', $user->id);    
+            $appointments->where('salon_id', $user->id)->with(['user']);   
 
 
         if(isset($request->limit))
@@ -168,9 +168,9 @@ class AppointmentController extends Controller
         }
 
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
-        $avalible_appointments = array_values(array_diff($salon_time_slots,$booked_appointments));
+        $avalible_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
 
-        return sendSuccess('Avalible Appointments slots',$avalible_appointments);
+        return sendSuccess('Avalible Appointments slots',$avalible_appointment_slots);
 
     } 
 

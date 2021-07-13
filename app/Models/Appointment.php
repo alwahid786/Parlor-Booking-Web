@@ -12,6 +12,7 @@ class Appointment extends Model
 
     protected $table = 'appointments';
 
+
         /**
      * The attributes that are mass assignable.
      *
@@ -21,4 +22,12 @@ class Appointment extends Model
     protected $fillable = [
 
     ];
+
+    function salon(){
+        return $this->hasOne(User::class, 'id' , 'salon_id' )->where('type', 'salon');
+    }
+
+    function user(){
+        return $this->hasOne(User::class, 'id' , 'user_id')->where('type', 'user');
+    }
 }
