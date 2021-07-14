@@ -72,7 +72,7 @@ class AuthController extends Controller
             $signupVerification->save();
             
             $data['code'] = $code;
-            return sendError('User Not Verified. Verification code sent to linked Email.', $data);
+            return sendSuccess('User Not Verified. Verification code sent to linked Email.', $data);
         }
 
         if($check && ($check->phone_verified_at == null || $check->phone_verified_at == '') && isset($request->phone_number) && isset($request->phone_code) && $login_type == 'number'){
