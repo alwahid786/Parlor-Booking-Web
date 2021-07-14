@@ -42,8 +42,13 @@ class AppointmentController extends Controller
 
         $appointments = Appointment::orderBy('created_at','DESC');
         
-        if(isset($request->appointment_uuid))
-            $appointments = $appointments->where('uuid',$request->appointment_uuid)->with(['user','salon']);
+        if(isset($request->appointment_uuid)){
+            $appointments = $appointments->where('uuid',$request->appointment_uuid)->with('user')->with('salon', function($query){
+                    $query->with('offer');
+            })->with('appointmentDetails', function($query){
+                    $query->with('services');
+            });
+        }
         if(isset($request->user_uuid)){
 
             $user = User::where('uuid', $request->user_uuid)->first();
@@ -73,7 +78,7 @@ class AppointmentController extends Controller
             'time' => 'required_with:user_uuid|date_format:H:i',
             'date' => 'required_with:user_uuid|date',
             'appointment_uuid' => 'exists:appointments,uuid',
-            'status' => 'required_with:appointment_uuid|in:active,cancelled,completed'
+            'status' => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
         ]);
 
         if ($validator->fails()) {
@@ -90,6 +95,7 @@ class AppointmentController extends Controller
             return sendSuccess('Updated Appointment',$status);
         }
 
+        //checks
         $result = $this->userService->checkSalon($request);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
@@ -99,19 +105,32 @@ class AppointmentController extends Controller
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
         $user = $result['data'];
-        //checkAvailableSlots returns Available Time slots
+        
+        $result = $this->userService->checkAvailableDate($request,$salon);
+        if(!$result['status'])
+            return sendError($result['message'] ,$result['data']);
+        
         $result = $this->userService->checkAvailableSlots($request,$salon);
         $avalible_appointment_slots = $result['data'];
-        //convert Time to proper time format then use explode to convert string to array
+        
         $appointment_time = explode(' ',Carbon::parse($request->time)->format('H:i:s'));
-        //array_intersect Returns THe matching once
+        
         $appointment_time = array_intersect($appointment_time,$avalible_appointment_slots);
         if(NULL == $appointment_time)
             return SendError('Time Slot Not Avalible',[]);
 
 
         DB::beginTransaction();
-        try{
+        try{            
+
+            $offer = $salon->where('id',$salon->id)->with(['offer' => function ($query){
+                $query->where('status','active');
+            }])->first();
+
+            if(null != $offer->offer){
+                $discount = $offer->offer->discount == 0?1:$offer->offer->discount/100;
+            }
+
             $total_price = 0;
             $appointment = new Appointment;
             $appointment->uuid = str::uuid();
@@ -146,7 +165,12 @@ class AppointmentController extends Controller
                     return sendError("Internal Server Error",[]);
                 }
             }
+
             $appointment->total_price = $total_price;
+            if(isset($discount))
+                $appointment->total_price = $total_price - ($total_price * $discount);
+            
+            $appointment->save();
 
             DB::Commit();
             return sendSuccess('Service Saved',$appointment);
@@ -174,15 +198,16 @@ class AppointmentController extends Controller
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
         $salon = $result['data'];
-
+        //time & date to proper format
         $startTime = Carbon::parse($salon->start_time)->modify('-30 minutes');
         $endTime = Carbon::parse($salon->end_time);
         $date = Carbon::parse($request->date);
 
+        //making intervals of 30 minutes 
         while ($startTime->modify('+30 minutes') < $endTime) {
             $salon_time_slots[] = $startTime->format('H:i:s');
         }
-
+        //getting booked appointments and comparing them to to total appointment and getting free slots
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
         $available_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
 

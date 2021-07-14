@@ -80,4 +80,8 @@ class User extends Authenticatable
     function appointments(){
         return $this->hasMany(Appointment::class, 'salon_id','id');
     }
+
+    function offer(){
+        return $this->hasOne(offer::class, 'salon_id','id');
+    }
 }

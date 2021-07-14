@@ -28,4 +28,8 @@ class Service extends Model
     function salon(){
         return $this->belongsTo(User::class);
     }
+    function appointmentDetails(){
+        return $this->hasMany(AppointmentDetail::class, 'service_id', 'id');
+    }
+
 }

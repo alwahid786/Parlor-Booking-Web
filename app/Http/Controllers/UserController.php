@@ -84,7 +84,7 @@ class UserController extends Controller
                     $day_obj = new Day;
                     $day_obj->uuid = str::uuid();
                     $day_obj->salon_id = $user->id;
-                    $day_obj->day = $day;
+                    $day_obj->day = strtolower($day);
                     $day_obj->save();
                     $daysSaved[] = $day_obj->day;
                 }

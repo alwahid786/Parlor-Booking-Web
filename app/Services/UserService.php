@@ -50,9 +50,19 @@ class UserService
         }
 
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
-        $avalible_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
+        $available_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
 
-        return internalSuccess('Avalible Appointments slots',$avalible_appointment_slots);
+        return internalSuccess('available Appointments slots',$available_appointment_slots);
+    }
+    public function checkAvailableDate(Request $request,$salon){
+
+        $days = $salon->days->pluck('day')->toArray();
+        $date_day = explode(' ',strtolower(Carbon::parse($request->date)->format('l')));
+        $available_day = array_intersect($days,$date_day);
+        if(null == $available_day)
+            return internalError('Date Not Available',$available_day);
+
+        return internalSuccess('Available Date',$available_day);
     }
 
 }

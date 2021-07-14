@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppointmentDetail extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    
+    function appointments(){
+        return $this->hasMany(Appointment::class, 'id' , 'appointment_id');
+    }
+    function services(){
+        return $this->hasMany(Service::class, 'id' , 'service_id');
+    }
 }
