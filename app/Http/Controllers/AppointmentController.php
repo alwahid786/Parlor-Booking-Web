@@ -184,10 +184,10 @@ class AppointmentController extends Controller
         }
 
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
-        $avalible_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
+        $available_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
 
         $data['all_slots'] = $salon_time_slots;
-        $data['available_slots'] = $avalible_appointment_slots;
+        $data['available_slots'] = $available_appointment_slots;
         return sendSuccess('Appointments slots',$data);
 
     } 
