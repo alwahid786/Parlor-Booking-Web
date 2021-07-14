@@ -166,3 +166,28 @@ if( !function_exists('get_utc_datetime')){
         return $utc_datetime;
     }
 }
+
+if(!function_exists('getUploadDir'))
+{
+    /**
+     * Get Profile URL
+     *
+     * @param string $nature
+     * @param boolean $is_thumbnail
+     * @return void
+     */
+    function getUploadDir($nature = 'profile_image', $is_thumbnail = false)
+    {
+        $path = public_path('uploads/');
+
+        // profile images
+        if ($nature == 'profile_image') {
+            $path .= 'profile_image/';
+            if ($is_thumbnail) {
+                $path .= 'thumbnails/';
+            }
+        }
+
+        return $path;
+    }
+}
