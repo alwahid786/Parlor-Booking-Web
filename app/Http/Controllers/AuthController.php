@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => 'required_without:phone_number|string|email',
+            'email' => 'required_without:phone_number|string|email|exists:users,email',
             'phone_number' => 'required_without:email',
             'phone_code' => 'required_without:email',
             'password' => 'required',
@@ -41,7 +41,6 @@ class AuthController extends Controller
         $check = User::where('email', $request->email)->first();
         if($check->type != $request->type)
             return sendError('Invalid Login',[]);
-        // if($check->)
 
         $login_type = 'email';
 

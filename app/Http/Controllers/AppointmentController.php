@@ -27,10 +27,11 @@ class AppointmentController extends Controller
     public function getAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required|exists:users,uuid',
+            'user_uuid' => 'required_without:appointment_uuid|exists:users,uuid',
             'status' => 'in:active,cancelled,completed',
             'offset' => 'numeric',
             'limit' => 'numeric',
+            'appointment_uuid' => 'required_without:user_uuid|exists:appointments,uuid',
         ]);
 
         if ($validator->fails()) {
@@ -39,21 +40,24 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $user = User::where('uuid', $request->user_uuid)->first();
-        if(!$user)
-            return sendError("user Not Found",[]);
-
         $appointments = Appointment::orderBy('created_at','DESC');
         
-        if('user' == $user->type)
-            $appointments->where('user_id', $user->id)->with(['salon']);
-        if('salon' == $user->type)
-            $appointments->where('salon_id', $user->id)->with(['user']);   
-        if(isset($request->status))
-            $appointments->where('status', $request->status);
+        if(isset($request->appointment_uuid))
+            $appointments = $appointments->where('uuid',$request->appointment_uuid)->with(['user','salon']);
+        if(isset($request->user_uuid)){
 
-        if(isset($request->limit))
-            $appointments->offset($request->offset??0)->limit($request->limit);
+            $user = User::where('uuid', $request->user_uuid)->first();
+            if(!$user)
+                return sendError("user Not Found",[]);
+            if('user' == $user->type)
+                $appointments->where('user_id', $user->id)->with(['salon']);
+            if('salon' == $user->type)
+                $appointments->where('salon_id', $user->id)->with(['user']);   
+            if(isset($request->status))
+                $appointments->where('status', $request->status);
+            if(isset($request->limit))
+                $appointments->offset($request->offset??0)->limit($request->limit);
+        }
 
         $appointments = $appointments->get();
         
@@ -182,7 +186,9 @@ class AppointmentController extends Controller
         $booked_appointments = Appointment::where('salon_id',$salon->id)->where('date',$date)->pluck('start_time')->toArray();
         $avalible_appointment_slots = array_values(array_diff($salon_time_slots,$booked_appointments));
 
-        return sendSuccess('Avalible Appointments slots',$avalible_appointment_slots);
+        $data['all_slots'] = $salon_time_slots;
+        $data['available_slots'] = $avalible_appointment_slots;
+        return sendSuccess('Appointments slots',$data);
 
     } 
 
