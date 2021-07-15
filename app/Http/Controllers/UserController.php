@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\Handler;
 use App\Models\Day;
 use App\Models\User;
+use App\Models\Media;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,9 +33,7 @@ class UserController extends Controller
     		'start_time' => 'date_format:H:i',
     		'end_time' => 'date_format:H:i|after:start_time',
     		'description' => 'string',
-            // 'type' => 'required|in:user,salon'
-            // 'days' => 'in:sunday,monday,tuesday,wednesday,thursday,friday,saturday'
-            // 'upload_profile' => 'file'
+            'media' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -50,7 +49,6 @@ class UserController extends Controller
         DB::beginTransaction();     
         try {
 
-            // $this->uploadMedias($request);
 
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
@@ -63,16 +61,43 @@ class UserController extends Controller
 	        	$user->start_time = $request->start_time??$user->start_time;
 	        	$user->end_time = $request->end_time??$user->end_time;
 	        	$user->description = $request->description??$user->description;
+                if(isset($request->media)){
+                    $result = $this->uploadMedias($request);
+
+                    if(!$result['status'])
+                        return sendError($result['message'] ,$result['data']);
+                    $medias_data = $result['data'];
+                    foreach($medias_data as $media_data){
+                        $media = new Media;
+                        $media->user_id =  $user->id;
+                        $media->uuid = str::uuid();
+                        $media->name = $media_data['title'];
+                        $media->filename = $media_data['filename']; 
+                        $media->tag = $media_data['tag']; 
+                        $media->path = $media_data['path']; 
+                        $media->media_type = $media_data['type']; 
+                        $media->media_ratio = $media_data['ratio']; 
+                        $media->media_thumbnail   = $media_data['thumbnail'];
+                        $media->save();
+                        if(!$media->save()){
+
+                            DB::rollBack();
+                            return sendError('Internal Server Error,Media not saved',[]);
+                        }
+                    }
+                    $data['user']['media'] = $media;
+                }
 	        }
 
 	        $user->save();
-	        $data['user'] = $user; 
-            $daysSaved = [];
-	        if(!$user){
+	        if(!$user->save()){
 
 	    		DB::rollBack();
 	        	return sendError("Internal Server Error",[]);
 	        }
+
+	        $data['user'] = $user;
+            $daysSaved = [];
             if($request->days){
                 $days = array_unique(json_decode($request->days));
                 $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
@@ -81,8 +106,7 @@ class UserController extends Controller
                 
                 foreach($days_to_delete as $day){
                     $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
-                } 
-                
+                }    
                 foreach ($days_to_add as $day) {
                     $day_obj = new Day;
                     $day_obj->uuid = str::uuid();
@@ -91,9 +115,9 @@ class UserController extends Controller
                     $day_obj->save();
                     $daysSaved[] = $day_obj->day;
                 }
+                $data['user']['days'] = $daysSaved;
             }
 
-            $data['user']['days'] = $daysSaved;
         	DB::commit();
         	return sendSuccess('User updated',$data);
         	
@@ -214,11 +238,11 @@ class UserController extends Controller
                         $uploadedFiles[] = array_merge($uploadedFiles, $temp);
                     }else{
 
-                        return sendError('File Extension is not supported.', null);
+                        return internalError('File Extension is not supported.', null);
                     }
                 }
             }else{
-                return sendError('Please provide files.', null);
+                return internalError('Please provide files.', null);
             }
         }else{
             $file = $request->file($fieldName);
@@ -264,11 +288,11 @@ class UserController extends Controller
                 $temp['thumbnail'] = $temp['path'];
                 $uploadedFiles[] = array_merge($uploadedFiles, $temp);
             } else {
-                return sendError('File Extension is not supported.', null);
+                return internalError('File Extension is not supported.', null);
             }
         }
 
-        return sendSuccess('Success.', $uploadedFiles);
+        return internalSuccess('Success.', $uploadedFiles);
     }
 
 }
