@@ -67,6 +67,7 @@ class UserController extends Controller
                     if(!$result['status'])
                         return sendError($result['message'] ,$result['data']);
                     $medias_data = $result['data'];
+                    dd(!$result['status'],$medias_data);
                     foreach($medias_data as $media_data){
                         $media = new Media;
                         $media->user_id =  $user->id;
@@ -79,7 +80,6 @@ class UserController extends Controller
                         $media->media_ratio = $media_data['ratio']; 
                         $media->media_thumbnail   = $media_data['thumbnail'];
                         $data_media[] = $media;
-                        dd($media->save());
                         if(!$media->save()){
 
                             DB::rollBack();
