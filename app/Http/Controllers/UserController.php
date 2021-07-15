@@ -85,7 +85,6 @@ class UserController extends Controller
                             return sendError('Internal Server Error,Media not saved',[]);
                         }
                     }
-                    $data['user']['media'] = $media;
                 }
 	        }
 
@@ -115,10 +114,12 @@ class UserController extends Controller
                     $day_obj->save();
                     $daysSaved[] = $day_obj->day;
                 }
-                $data['user']['days'] = $daysSaved;
             }
 
         	DB::commit();
+            $data['user']['days'] = $daysSaved;
+            if(isset($request->media))
+                $data['user']['media'] = $media;
         	return sendSuccess('User updated',$data);
         	
 	    }
