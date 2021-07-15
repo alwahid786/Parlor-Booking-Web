@@ -48,7 +48,7 @@ class UserController extends Controller
 
         DB::beginTransaction();     
         try {
-            $data_media;
+            $data_media = [];
 
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
@@ -79,7 +79,7 @@ class UserController extends Controller
                         $media->media_ratio = $media_data['ratio']; 
                         $media->media_thumbnail   = $media_data['thumbnail'];
                         $media->save();
-                        $data_media = $media;
+                        $data_media[] = $media;
                         if(!$media->save()){
 
                             DB::rollBack();
@@ -119,8 +119,9 @@ class UserController extends Controller
 
         	DB::commit();
             $data['user']['days'] = $daysSaved;
-            if(isset($request->media))
+            if(isset($request->media)){
                 $data['user']['media'] = $data_media;
+            }
         	return sendSuccess('User updated',$data);
         	
 	    }
