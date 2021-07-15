@@ -179,16 +179,7 @@ class AuthController extends Controller
             if($request->is_social == 1){
                 $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
                 $user->phone_verified_at = Carbon::now()->format('Y-m-d H:i:s');
-<<<<<<< HEAD
                 $user->type = $request->type??'user';
-
-=======
-                
-                if(isset($request->name))
-                    $user->name = $request->name;
-                if(isset($request->type))
-                    $user->type = $request->type;
->>>>>>> dc62e8801ddc1f4be526630fdf27091ee462ab42
                 if(isset($request->is_social))
                     $user->is_social = $request->is_social;
 
