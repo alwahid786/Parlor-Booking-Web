@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\Handler;
 use App\Models\Day;
-use App\Models\User;
 use App\Models\Media;
+use App\Models\User;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
