@@ -79,6 +79,7 @@ class UserController extends Controller
                         $media->media_ratio = $media_data['ratio']; 
                         $media->media_thumbnail   = $media_data['thumbnail'];
                         $data_media[] = $media;
+                        dd($media->save());
                         if(!$media->save()){
 
                             DB::rollBack();
