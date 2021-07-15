@@ -48,8 +48,7 @@ class UserController extends Controller
 
         DB::beginTransaction();     
         try {
-            if(isset($request->media))
-                $data_media;
+            $data_media;
 
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
