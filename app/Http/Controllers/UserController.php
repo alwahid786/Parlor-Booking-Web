@@ -61,7 +61,6 @@ class UserController extends Controller
 	        	$user->start_time = $request->start_time??$user->start_time;
 	        	$user->end_time = $request->end_time??$user->end_time;
 	        	$user->description = $request->description??$user->description;
-                dd($request->media);
                 if(isset($request->media)){
                     $result = $this->uploadMedias($request);
 
