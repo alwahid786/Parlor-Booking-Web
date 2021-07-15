@@ -68,7 +68,7 @@ class UserController extends Controller
                         return sendError($result['message'] ,$result['data']);
                     $medias_data = $result['data'];
                     foreach($medias_data as $media_data){
-                        $media = new Media;
+                        $media = new Media();
                         $media->user_id =  $user->id;
                         $media->uuid = str::uuid();
                         $media->name = $media_data['title'];
