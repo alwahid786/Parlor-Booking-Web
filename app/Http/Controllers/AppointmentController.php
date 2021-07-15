@@ -87,10 +87,16 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
+        if(Carbon::parse($request->date)->format('Y-m-d') < Carbon::now()->format('Y-m-d'))
+            return sendError('Cannot set past date',[]);
+
+        // dd(Carbon::parse($request->time)->format('Y-m-d H:i') <= get_locale_datetime(Carbon::now()->format('H:i'),\Request::ip()),get_locale_datetime(Carbon::now()->format('H:i'),\Request::ip()),$request->time);
         if(isset($request->appointment_uuid)){
 
             $status = Appointment::where('uuid', $request->appointment_uuid)
-                ->update(['status' => $request->status]);
+                ->update([
+                    'status' => $request->status
+                ]);
 
             return sendSuccess('Updated Appointment',$status);
         }
