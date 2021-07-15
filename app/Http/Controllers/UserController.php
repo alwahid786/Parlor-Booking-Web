@@ -78,7 +78,6 @@ class UserController extends Controller
                         $media->media_type = $media_data['type']; 
                         $media->media_ratio = $media_data['ratio']; 
                         $media->media_thumbnail   = $media_data['thumbnail'];
-                        $media->save();
                         $data_media[] = $media;
                         if(!$media->save()){
 
