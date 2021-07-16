@@ -210,6 +210,9 @@ class AppointmentController extends Controller
         $date = Carbon::parse($request->date);
 
         //making intervals of 30 minutes 
+        if(!($startTime->modify('+30 minutes') < $endTime))
+            return sendError('Invalid Time',[]);
+
         while ($startTime->modify('+30 minutes') < $endTime) {
             $salon_time_slots[] = $startTime->format('H:i:s');
         }

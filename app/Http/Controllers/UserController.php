@@ -58,35 +58,38 @@ class UserController extends Controller
 	        	$user->address = $request->address??$user->address;
 	        	$user->lat = $request->lat??$user->lat;
 	        	$user->long = $request->long??$user->long;
-	        	$user->start_time = $request->start_time??$user->start_time;
-	        	$user->end_time = $request->end_time??$user->end_time;
+	        	$user->start_time = $request->start_time??$user->start_time??'09:00';
+	        	$user->end_time = $request->end_time??$user->end_time??'15:00';
 	        	$user->description = $request->description??$user->description;
-                if(isset($request->media)){
-                    $result = $this->uploadMedias($request);
+	        }
+            if(isset($request->media)){
+                $result = $this->uploadMedias($request);
+                if(!$result['status'])
+                    return sendError($result['message'] ,$result['data']);
 
-                    if(!$result['status'])
-                        return sendError($result['message'] ,$result['data']);
-                    $medias_data = $result['data'];
-                    foreach($medias_data as $media_data){
+                $medias_data = $result['data'];
+                foreach($medias_data as $media_data){
+                    $media = Media::where('user_id',$user->id)->first();
+                    if(null == $media)
                         $media = new Media;
-                        $media->user_id =  $user->id;
-                        $media->uuid = str::uuid();
-                        $media->name = $media_data['title'];
-                        $media->filename = $media_data['filename']; 
-                        $media->tag = $media_data['tag']; 
-                        $media->path = $media_data['path']; 
-                        $media->media_type = $media_data['type']; 
-                        $media->media_ratio = $media_data['ratio']; 
-                        $media->media_thumbnail   = $media_data['thumbnail'];
-                        $data_media[] = $media;
-                        if(!$media->save()){
 
-                            DB::rollBack();
-                            return sendError('Internal Server Error,Media not saved',[]);
-                        }
+                    $media->user_id =  $user->id;
+                    $media->uuid = str::uuid();
+                    $media->name = $media_data['title'];
+                    $media->filename = $media_data['filename']; 
+                    $media->tag = $media_data['tag']; 
+                    $media->path = $media_data['path']; 
+                    $media->media_type = $media_data['type']; 
+                    $media->media_ratio = $media_data['ratio']; 
+                    $media->media_thumbnail   = $media_data['thumbnail'];
+                    $data_media[] = $media;
+                    if(!$media->save()){
+
+                        DB::rollBack();
+                        return sendError('Internal Server Error,Media not saved',[]);
                     }
                 }
-	        }
+            }
 
 	        $user->save();
 	        if(!$user->save()){
@@ -97,22 +100,24 @@ class UserController extends Controller
 
 	        $data['user'] = $user;
             $daysSaved = [];
-            if($request->days){
-                $days = array_unique(json_decode($request->days));
-                $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
-                $days_to_add = array_diff($days,$database_days);
-                $days_to_delete = array_diff($database_days,$days);
-                
-                foreach($days_to_delete as $day){
-                    $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
-                }    
-                foreach ($days_to_add as $day) {
-                    $day_obj = new Day;
-                    $day_obj->uuid = str::uuid();
-                    $day_obj->salon_id = $user->id;
-                    $day_obj->day = strtolower($day);
-                    $day_obj->save();
-                    $daysSaved[] = $day_obj->day;
+            if('salon'== $user->type){            
+                if(isset($request->days)){
+                    $days = array_unique(json_decode($request->days));
+                    $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
+                    $days_to_add = array_diff($days,$database_days);
+                    $days_to_delete = array_diff($database_days,$days);
+                    
+                    foreach($days_to_delete as $day){
+                        $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
+                    }    
+                    foreach ($days_to_add as $day) {
+                        $day_obj = new Day;
+                        $day_obj->uuid = str::uuid();
+                        $day_obj->salon_id = $user->id;
+                        $day_obj->day = strtolower($day);
+                        $day_obj->save();
+                        $daysSaved[] = $day_obj->day;
+                    }
                 }
             }
 
