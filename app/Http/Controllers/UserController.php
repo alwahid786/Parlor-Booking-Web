@@ -98,10 +98,10 @@ class UserController extends Controller
 	        	return sendError("Internal Server Error",[]);
 	        }
 
-	        $data['user'] = $user;
             $daysSaved = [];
             if('salon'== $user->type){            
                 if(isset($request->days)){
+                    
                     $days = array_unique(json_decode($request->days));
                     $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
                     $days_to_add = array_diff($days,$database_days);
@@ -122,10 +122,12 @@ class UserController extends Controller
             }
 
         	DB::commit();
-            $data['user']['days'] = $daysSaved;
-            if(isset($request->media)){
+	        $data['user'] = $user;
+            if(isset($request->days))
+                $data['user']['days'] = $daysSaved;
+            if(isset($request->media))
                 $data['user']['media'] = $data_media;
-            }
+            
         	return sendSuccess('User updated',$data);
         	
 	    }
@@ -191,7 +193,8 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         } 
 
-        $user = User::where('uuid',$request->user_uuid??$request->user()->id)->first();
+        $user = User::where('uuid',$request->user_uuid??$request->user()->id)
+            ->with(['media','days'])->first();
 
         return sendSuccess('User Data',$user);
     }

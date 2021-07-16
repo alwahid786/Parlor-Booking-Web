@@ -84,4 +84,8 @@ class User extends Authenticatable
     function offer(){
         return $this->hasOne(offer::class, 'salon_id','id');
     }
+
+    function media(){
+        return $this->hasOne(Media::class, 'user_id','id');
+    }
 }
