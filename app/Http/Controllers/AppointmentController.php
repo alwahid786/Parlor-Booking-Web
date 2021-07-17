@@ -90,7 +90,6 @@ class AppointmentController extends Controller
         if(Carbon::parse($request->date)->format('Y-m-d') < Carbon::now()->format('Y-m-d'))
             return sendError('Cannot set past date',[]);
 
-        // dd(Carbon::parse($request->time)->format('Y-m-d H:i') <= get_locale_datetime(Carbon::now()->format('H:i'),\Request::ip()),get_locale_datetime(Carbon::now()->format('H:i'),\Request::ip()),$request->time);
         if(isset($request->appointment_uuid)){
 
             $status = Appointment::where('uuid', $request->appointment_uuid)
@@ -208,7 +207,10 @@ class AppointmentController extends Controller
         $startTime = Carbon::parse($salon->start_time)->modify('-30 minutes');
         $endTime = Carbon::parse($salon->end_time);
         $date = Carbon::parse($request->date);
-
+        
+        $result = $this->userService->checkAvailableDate($request,$salon);
+        if(!$result['status'])
+            return sendError($result['message'] ,$result['data']);
         //making intervals of 30 minutes 
         if(!($startTime->modify('+30 minutes') < $endTime))
             return sendError('Invalid Time',[]);
