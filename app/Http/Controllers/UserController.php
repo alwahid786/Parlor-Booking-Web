@@ -127,6 +127,9 @@ class UserController extends Controller
                 $data['user']['days'] = $daysSaved;
             if(isset($request->media))
                 $data['user']['media'] = $data_media;
+            else{
+                $data['user']['media'] = $user->media;
+            }
             
         	return sendSuccess('User updated',$data);
         	
