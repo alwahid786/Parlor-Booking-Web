@@ -204,15 +204,6 @@ class UserController extends Controller
 
     public Function getSalon(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'popular' => 'required_without:profile_uuid|exists:users,uuid',
-        ]);
-
-        if ($validator->fails()) {
-
-            $data['validation_error'] = $validator->getMessageBag();
-            return sendError($validator->errors()->all()[0], $data);
-        }
 
         $salon = User::where('type','salon');
 
