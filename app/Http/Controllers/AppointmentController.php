@@ -51,7 +51,7 @@ class AppointmentController extends Controller
         }
         if(isset($request->user_uuid)){
 
-            $user = User::where('uuid', $request->user_uuid)->first();
+            $user = User::where('uuid', $request->user_uuid??$request->user()->id)->first();
             if(!$user)
                 return sendError("user Not Found",[]);
             if('user' == $user->type)

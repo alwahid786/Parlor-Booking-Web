@@ -196,10 +196,33 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         } 
 
-        $user = User::where('uuid',$request->user_uuid??$request->user()->id)
+        $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
             ->with(['media','days'])->first();
 
         return sendSuccess('User Data',$user);
+    }
+
+    public Function getSalon(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'popular' => 'required_without:profile_uuid|exists:users,uuid',
+        ]);
+
+        if ($validator->fails()) {
+
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+        $salon = User::where('type','salon');
+
+        if(isset($request->limit))
+            $salon->offset($request->offset??0)->limit($request->limit);
+
+        $salon = $salon->get();
+
+        return SendSuccess('Salons',$salon);
+
     }
 
     public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
