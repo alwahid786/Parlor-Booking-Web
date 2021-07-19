@@ -25,6 +25,7 @@ class ServiceController extends Controller
 
         $validator = Validator::make($request->all(), [
             'salon_uuid' => 'required|exists:users,uuid',
+            'status' => 'in:active,in-active',
         ]);
 
         if ($validator->fails()) {
@@ -39,6 +40,8 @@ class ServiceController extends Controller
         $salon = $result['data'];
 
         $services = Service::orderBy('created_at', 'DESC')->where('salon_id',$salon->id);
+        if(isset($request->status))
+            $services->where('status',$request->status);
         if(isset($request->limit))
             $services->offset($request->offset??0)->limit($request->limit);
 
