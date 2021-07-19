@@ -128,7 +128,7 @@ class UserController extends Controller
             if(isset($request->media))
                 $data['user']['media'] = $data_media;
             else{
-                $data['user']['media'] = $user->media;
+                $data['user']['media'] = $user->media??NULL;
             }
             
         	return sendSuccess('User updated',$data);
