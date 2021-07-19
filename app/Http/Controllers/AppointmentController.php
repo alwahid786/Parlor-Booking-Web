@@ -27,11 +27,11 @@ class AppointmentController extends Controller
     public function getAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required_without:appointment_uuid|exists:users,uuid',
+            'user_uuid' => 'exists:users,uuid',
             'status' => 'in:active,cancelled,completed',
             'offset' => 'numeric',
             'limit' => 'numeric',
-            'appointment_uuid' => 'required_without:user_uuid|exists:appointments,uuid',
+            'appointment_uuid' => 'exists:appointments,uuid',
         ]);
 
         if ($validator->fails()) {
@@ -48,21 +48,23 @@ class AppointmentController extends Controller
             })->with('appointmentDetails', function($query){
                     $query->with('services');
             });
-        }
-        if(isset($request->user_uuid)){
 
-            $user = User::where('uuid', $request->user_uuid??$request->user()->id)->first();
-            if(!$user)
-                return sendError("user Not Found",[]);
-            if('user' == $user->type)
-                $appointments->where('user_id', $user->id)->with(['salon']);
-            if('salon' == $user->type)
-                $appointments->where('salon_id', $user->id)->with(['user']);   
-            if(isset($request->status))
-                $appointments->where('status', $request->status);
-            if(isset($request->limit))
-                $appointments->offset($request->offset??0)->limit($request->limit);
+            $appointments = $appointments->get();
+        
+            return sendSuccess('Appointments',$appointments);  
         }
+
+        $user = User::where('uuid', $request->user_uuid??$request->user()->uuid)->first();
+        if(!$user)
+            return sendError("user Not Found",[]);
+        if('user' == $user->type)
+            $appointments->where('user_id', $user->id)->with(['salon']);
+        if('salon' == $user->type)
+            $appointments->where('salon_id', $user->id)->with(['user']);   
+        if(isset($request->status))
+            $appointments->where('status', $request->status);
+        if(isset($request->limit))
+            $appointments->offset($request->offset??0)->limit($request->limit);
 
         $appointments = $appointments->get();
         
