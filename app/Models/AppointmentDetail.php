@@ -13,6 +13,6 @@ class AppointmentDetail extends Model
         return $this->hasMany(Appointment::class, 'id' , 'appointment_id');
     }
     function services(){
-        return $this->hasMany(Service::class, 'id' , 'service_id');
+        return $this->hasOne(Service::class, 'id' , 'service_id');
     }
 }

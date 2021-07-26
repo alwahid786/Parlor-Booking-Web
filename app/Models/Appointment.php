@@ -23,6 +23,7 @@ class Appointment extends Model
     protected $fillable = [];
      protected $appends = [
         'day',
+        'state'
     ];
 
     function salon(){
@@ -38,5 +39,15 @@ class Appointment extends Model
     public function getDayAttribute(){
 
         return Carbon::parse($this->date)->format('l');
+    }
+    public function getStateAttribute(){
+
+        if(Carbon::now() == Carbon::parse($this->date))
+            $msg = "Today";
+        if(Carbon::tomorrow() == Carbon::parse($this->date))
+            $msg = "Tomorrow";
+        if(Carbon::tomorrow() == Carbon::parse($this->date))
+            $msg = "Tomorrow";
+
     }
 }

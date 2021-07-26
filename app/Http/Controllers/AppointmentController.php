@@ -58,9 +58,17 @@ class AppointmentController extends Controller
         if(!$user)
             return sendError("user Not Found",[]);
         if('user' == $user->type)
-            $appointments->where('user_id', $user->id)->with(['salon']);
+            $appointments->where('user_id', $user->id)->with('salon' , function($q){
+                $q->with(['media','offer']);
+            })->with('appointmentDetails', function($query){
+                    $query->with('services');
+            });
         if('salon' == $user->type)
-            $appointments->where('salon_id', $user->id)->with(['user']);   
+            $appointments->where('salon_id', $user->id)->with('user' , function($q){
+                $q->with('media');
+            })->with('appointmentDetails', function($query){
+                    $query->with('services');
+            });   
         if(isset($request->status))
             $appointments->where('status', $request->status);
         if(isset($request->limit))

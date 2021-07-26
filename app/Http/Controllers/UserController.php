@@ -220,11 +220,11 @@ class UserController extends Controller
 
         if(isset($request->lat) && isset($request->long)){
             $salon = $salon->selectRaw(", ((ACOS(SIN(?  PI() / 180)  SIN(lat  PI() / 180) + COS(?  PI() / 180) 
-            COS(lat  PI() / 180)  COS((? - lng)  PI() / 180))  180 / PI())  60  1.1515 *
-            1.609344) as distance", [$request->lat, $request->lat, $request->long])
-            ->having("distance", "<=", 5);
-            
-            return $salon;
+                COS(lat  PI() / 180)  COS((? - lng)  PI() / 180))  180 / PI())  60  1.1515 *
+                1.609344) as distance", [$request->lat, $request->lat, $request->long])
+                ->havingRaw("distance <= ?",[5]);  
+
+            return $salon->get();
         }
         if(isset($request->keywords))
             $salon->where('name', 'LIKE', "%{$request->keywords}%");
