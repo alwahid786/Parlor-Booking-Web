@@ -204,9 +204,29 @@ class UserController extends Controller
 
     public Function getSalon(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'keywords' => 'string',
+            'popular' => 'numeric|in:1',
+            'lat' => 'numeric|required_with:long',
+            'long' => 'numeric|required_with:lat',
+        ]);
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
 
-        $salon = User::where('type','salon');
+        $salon = User::where('type','salon')->where('name', '<>', '');
 
+        if(isset($request->lat) && isset($request->lat)){
+            $inRangeEvents = Evente::selectRaw(", ((ACOS(SIN(?  PI() / 180)  SIN(lat  PI() / 180) + COS(?  PI() / 180) 
+            COS(lat  PI() / 180)  COS((? - lng)  PI() / 180))  180 / PI())  60  1.1515 *
+            1.609344) as distance", [$latitude, $latitude, $longitude])
+            ->having("distance", "<=", $radius);
+        }
+        if(isset($request->keywords))
+            $salon->where('name', 'LIKE', "%{$request->keywords}%");
+        if(isset($request->popular))
+            $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');
         if(isset($request->limit))
             $salon->offset($request->offset??0)->limit($request->limit);
 
