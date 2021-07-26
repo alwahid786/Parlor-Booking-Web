@@ -46,8 +46,10 @@ class Appointment extends Model
             $msg = "Today";
         if(Carbon::tomorrow() == Carbon::parse($this->date))
             $msg = "Tomorrow";
-        if(Carbon::tomorrow() == Carbon::parse($this->date))
-            $msg = "Tomorrow";
+        else
+            $msg = Carbon::parse($this->date)->format('Y-m-d');
+
+        return $msg;
 
     }
 }
