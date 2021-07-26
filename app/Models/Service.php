@@ -26,7 +26,7 @@ class Service extends Model
     ];
 
     function salon(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'salon_id', 'id');
     }
     function appointmentDetails(){
         return $this->hasMany(AppointmentDetail::class, 'service_id', 'id');

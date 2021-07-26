@@ -88,4 +88,7 @@ class User extends Authenticatable
     function media(){
         return $this->hasOne(Media::class, 'user_id','id');
     }
+    function services(){
+        return $this->hasMany(Service::class, 'salon_id','id');
+    }
 }

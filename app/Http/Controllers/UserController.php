@@ -6,6 +6,7 @@ use App\Exceptions\Handler;
 use App\Models\Day;
 use App\Models\Media;
 use App\Models\User;
+use App\Models\service;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -197,7 +198,7 @@ class UserController extends Controller
         } 
 
         $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
-            ->with(['media','days'])->first();
+            ->with(['media','days','services'])->first();
 
         return sendSuccess('User Data',$user);
     }
