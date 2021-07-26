@@ -229,7 +229,7 @@ class UserController extends Controller
               ) as distance HAVING distance <= ? ",[$request->lat,$request->lat,$request->long]);
         }
         if(isset($request->keywords))
-            $salon->where('name', 'LIKE', "%{$request->keywords}%");
+            $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->keywords}%");
         if(isset($request->popular))
             $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');
         if(isset($request->limit))
