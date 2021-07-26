@@ -128,7 +128,7 @@ class UserController extends Controller
             if(isset($request->media))
                 $data['user']['media'] = $data_media;
             else{
-                $data['user']['media'] = Media::where('user_id',$user->id)->get()??NULL;
+                $data['user']['media'] = Media::where('user_id',$user->id)->latest()->get()??NULL;
             }
             
         	return sendSuccess('User updated',$data);
