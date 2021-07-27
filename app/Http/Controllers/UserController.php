@@ -6,7 +6,8 @@ use App\Exceptions\Handler;
 use App\Models\Day;
 use App\Models\Media;
 use App\Models\User;
-use App\Models\service;
+use App\Models\Service;
+use App\Models\Brosche;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,13 +29,14 @@ class UserController extends Controller
 
     	$validator = Validator::make($request->all(), [
     		'user_uuid' => 'required|exists:users,uuid',
-    		'address' => 'string',
+    		'address' => 'string|required_if:lat,null',
     		'lat' => 'numeric|required_if:address,null',
     		'long' => 'numeric|required_if:address,null',
     		'start_time' => 'date_format:H:i',
     		'end_time' => 'date_format:H:i|after:start_time',
     		'description' => 'string',
-            'media' => 'image'
+            'media' => 'image',
+            'brosche*' => 'image',
         ]);
 
         if ($validator->fails()) {
@@ -42,6 +44,7 @@ class UserController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
+        
 
         $user = User::where('uuid', $request->user_uuid)->first();
         if(!$user)
@@ -50,6 +53,8 @@ class UserController extends Controller
         DB::beginTransaction();     
         try {
             $data_media = [];
+            $brosches_media = [];
+            $daysSaved = [];
 
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
@@ -62,6 +67,51 @@ class UserController extends Controller
 	        	$user->start_time = $request->start_time??$user->start_time??'09:00';
 	        	$user->end_time = $request->end_time??$user->end_time??'15:00';
 	        	$user->description = $request->description??$user->description;
+
+                if(isset($request->brosche)){
+                    $result = $this->uploadMedias($request,'brosche','brosche',True);
+                    if(!$result['status'])
+                        return sendError($result['message'] ,$result['data']);
+
+                    $brosches_data = $result['data'];
+                    foreach($brosches_data as $media_data){
+                        $media = new Brosche;
+                        $media->user_id =  $user->id;
+                        $media->uuid = str::uuid();
+                        $media->name = $media_data['title'];
+                        $media->filename = $media_data['filename']; 
+                        $media->tag = $media_data['tag']; 
+                        $media->path = $media_data['path']; 
+                        $media->media_type = $media_data['type'];
+                        $media->media_ratio = $media_data['ratio']; 
+                        $media->media_thumbnail   = $media_data['thumbnail'];
+                        $brosches_media[] = $media;
+                        if(!$media->save()){
+
+                            DB::rollBack();
+                            return sendError('Internal Server Error,Media not saved',[]);
+                        }
+                    }
+                }
+                if(isset($request->days)){
+                    
+                    $days = array_unique(json_decode($request->days));
+                    $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
+                    $days_to_add = array_diff($days,$database_days);
+                    $days_to_delete = array_diff($database_days,$days);
+                    
+                    foreach($days_to_delete as $day){
+                        $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
+                    }    
+                    foreach ($days_to_add as $day) {
+                        $day_obj = new Day;
+                        $day_obj->uuid = str::uuid();
+                        $day_obj->salon_id = $user->id;
+                        $day_obj->day = strtolower($day);
+                        $day_obj->save();
+                        $daysSaved[] = $day_obj->day;
+                    }
+                }
 	        }
             if(isset($request->media)){
                 $result = $this->uploadMedias($request);
@@ -99,37 +149,12 @@ class UserController extends Controller
 	        	return sendError("Internal Server Error",[]);
 	        }
 
-            $daysSaved = [];
-            if('salon'== $user->type){            
-                if(isset($request->days)){
-                    
-                    $days = array_unique(json_decode($request->days));
-                    $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
-                    $days_to_add = array_diff($days,$database_days);
-                    $days_to_delete = array_diff($database_days,$days);
-                    
-                    foreach($days_to_delete as $day){
-                        $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
-                    }    
-                    foreach ($days_to_add as $day) {
-                        $day_obj = new Day;
-                        $day_obj->uuid = str::uuid();
-                        $day_obj->salon_id = $user->id;
-                        $day_obj->day = strtolower($day);
-                        $day_obj->save();
-                        $daysSaved[] = $day_obj->day;
-                    }
-                }
-            }
-
         	DB::commit();
 	        $data['user'] = $user;
-            if(isset($request->days))
-                $data['user']['days'] = $daysSaved;
-            if(isset($request->media))
-                $data['user']['media'] = $data_media;
-            else{
-                $data['user']['media'] = Media::where('user_id',$user->id)->latest()->get()??NULL;
+            $data['user']['media'] = $user->media??NULL;
+            if('salon'== $user->type){
+                $data['user']['brosche'] = $user->brosche??NULL;
+                $data['user']['days'] = $user->days??Null;
             }
             
         	return sendSuccess('User updated',$data);
@@ -203,8 +228,8 @@ class UserController extends Controller
         return sendSuccess('User Data',$user);
     }
 
-    public Function getSalon(Request $request)
-    {
+    public Function getSalon(Request $request){
+
         $validator = Validator::make($request->all(), [
             'keywords' => 'string',
             'popular' => 'numeric|in:1',
@@ -238,12 +263,12 @@ class UserController extends Controller
         $salon = $salon->get();
 
         return SendSuccess('Salons',$salon);
-
     }
 
     public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
         $uploadedFiles = [];
         if($multiple){
+
             if($request->hasFile($fieldName)){
 
                 foreach ($request->file($fieldName) as $media) {
