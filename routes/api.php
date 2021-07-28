@@ -31,6 +31,7 @@ Route::group([ 'prefix' => 'auth'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 Route::post('get_salon',  [UserController::class, 'getSalon']);
+Route::post('get_service', [ServiceController::class, 'getService']);
 
 Route::group(['middleware' => 'auth:api'], function() {
 
@@ -40,7 +41,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('get_user',  [UserController::class, 'getUser']);
 
     //service Api
-    Route::post('get_service', [ServiceController::class, 'getService']);
     Route::post('updated_service', [ServiceController::class, 'updateService']);
     Route::post('delete_service', [ServiceController::class, 'deleteService']);
 
