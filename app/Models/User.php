@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
 
     function brosche(){
-        return $this->hasMany(Brosche::class, 'user_id','id');
+        return $this->hasMany(brosche::class, 'user_id','id');
     }
 
     function services(){

@@ -30,6 +30,7 @@ Route::group([ 'prefix' => 'auth'], function () {
     Route::post('reset_password', [AuthController::class, 'recoverPassword']);
     Route::post('logout', [AuthController::class, 'logout']);
 });
+Route::post('get_salon',  [UserController::class, 'getSalon']);
 
 Route::group(['middleware' => 'auth:api'], function() {
 
@@ -37,7 +38,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('update_user', [UserController::class, 'updateUser']);
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
     Route::post('get_user',  [UserController::class, 'getUser']);
-    Route::post('get_salon',  [UserController::class, 'getSalon']);
 
     //service Api
     Route::post('get_service', [ServiceController::class, 'getService']);

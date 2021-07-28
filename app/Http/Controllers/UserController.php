@@ -7,7 +7,7 @@ use App\Models\Day;
 use App\Models\Media;
 use App\Models\User;
 use App\Models\Service;
-use App\Models\Brosche;
+use App\Models\brosche;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -52,9 +52,6 @@ class UserController extends Controller
 
         DB::beginTransaction();     
         try {
-            $data_media = [];
-            $brosches_media = [];
-            $daysSaved = [];
 
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
@@ -85,7 +82,6 @@ class UserController extends Controller
                         $media->media_type = $media_data['type'];
                         $media->media_ratio = $media_data['ratio']; 
                         $media->media_thumbnail   = $media_data['thumbnail'];
-                        $brosches_media[] = $media;
                         if(!$media->save()){
 
                             DB::rollBack();
@@ -109,7 +105,6 @@ class UserController extends Controller
                         $day_obj->salon_id = $user->id;
                         $day_obj->day = strtolower($day);
                         $day_obj->save();
-                        $daysSaved[] = $day_obj->day;
                     }
                 }
 	        }
@@ -133,7 +128,6 @@ class UserController extends Controller
                     $media->media_type = $media_data['type']; 
                     $media->media_ratio = $media_data['ratio']; 
                     $media->media_thumbnail   = $media_data['thumbnail'];
-                    $data_media[] = $media;
                     if(!$media->save()){
 
                         DB::rollBack();
@@ -151,8 +145,11 @@ class UserController extends Controller
 
         	DB::commit();
 	        $data['user'] = $user;
+            unset($data['user']['media']);
             $data['user']['media'] = $user->media??NULL;
             if('salon'== $user->type){
+                unset($data['user']['brosche']);
+                unset($data['user']['days']);
                 $data['user']['brosche'] = $user->brosche??NULL;
                 $data['user']['days'] = $user->days??Null;
             }
@@ -223,7 +220,7 @@ class UserController extends Controller
         } 
 
         $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
-            ->with(['media','days','services'])->first();
+            ->with(['media','days','services','brosche'])->first();
 
         return sendSuccess('User Data',$user);
     }
