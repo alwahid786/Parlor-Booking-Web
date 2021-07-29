@@ -316,7 +316,7 @@ class UserController extends Controller
                 foreach ($request->file($fieldName) as $media) {
                     $file = $media;
                     $video_xtensions = ['flv', 'mp4', 'mpeg', 'mkv', 'avi'];
-                    $image_xtensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp, '];
+                    $image_xtensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
                     $doc_xtensions = ['pdf'];
                     $allowedFilesExtensions = array_merge($video_xtensions, $image_xtensions, $doc_xtensions);
 
