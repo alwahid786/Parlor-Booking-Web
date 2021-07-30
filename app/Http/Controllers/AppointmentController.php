@@ -32,6 +32,7 @@ class AppointmentController extends Controller
             'offset' => 'numeric',
             'limit' => 'numeric',
             'appointment_uuid' => 'exists:appointments,uuid',
+            'past_appointments' => 'in:1'
         ]);
 
         if ($validator->fails()) {
@@ -71,9 +72,10 @@ class AppointmentController extends Controller
             });   
         if(isset($request->status))
             $appointments->where('status', $request->status);
+        if(isset($request->past_appointments))
+            $appointments->where('date','<',Carbon::now());
         if(isset($request->limit))
             $appointments->offset($request->offset??0)->limit($request->limit);
-
         $appointments = $appointments->get();
         
         return sendSuccess('Appointments',$appointments);                
