@@ -262,6 +262,51 @@ class UserController extends Controller
         return SendSuccess('Salons',$salon);
     }
 
+    public function uploadBrosche(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'salon_uuid' => 'required|exists:users,uuid',
+            'brosche*' => 'required|image',
+        ]);
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+        $result = $this->userService->checkSalon($request);
+        if(!$result['status'])
+            return sendError($result['message'] ,$result['data']);
+        $salon = $result['data'];
+
+        $result = $this->uploadMedias($request,'brosche','brosche',True);
+        if(!$result['status'])
+            return sendError($result['message'] ,$result['data']);
+
+        $brosches_data = $result['data'];
+        foreach($brosches_data as $media_data){
+            $media = new Brosche;
+            $media->user_id =  $salon->id;
+            $media->uuid = str::uuid();
+            $media->name = $media_data['title'];
+            $media->filename = $media_data['filename']; 
+            $media->tag = $media_data['tag']; 
+            $media->path = $media_data['path']; 
+            $media->media_type = $media_data['type'];
+            $media->media_ratio = $media_data['ratio']; 
+            $media->media_thumbnail   = $media_data['thumbnail'];
+            if(!$media->save()){
+
+                DB::rollBack();
+                return sendError('Internal Server Error,Media not saved',[]);
+            }
+        }
+
+        $data['salon'] = $salon;
+        $data['salon']['brosche'] = $salon->brosche;
+        return sendSuccess('Brosche Uploaded',$data);
+
+    }
+
     public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
         $uploadedFiles = [];
         if($multiple){
@@ -271,7 +316,7 @@ class UserController extends Controller
                 foreach ($request->file($fieldName) as $media) {
                     $file = $media;
                     $video_xtensions = ['flv', 'mp4', 'mpeg', 'mkv', 'avi'];
-                    $image_xtensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp, '];
+                    $image_xtensions = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
                     $doc_xtensions = ['pdf'];
                     $allowedFilesExtensions = array_merge($video_xtensions, $image_xtensions, $doc_xtensions);
 
@@ -282,7 +327,7 @@ class UserController extends Controller
                         $temp['type'] = (in_array($file_extension, $doc_xtensions))? 'pdf' : 'image';
 
                         $targetName = $nature . rand(1000, 9999) . '.' . $file_extension;
-                        $temp['filename'] = $targetName;
+                        $temp['filename'] = $targetName;    
 
                         // upoad file on server
                         $file->move(getUploadDir($nature), $targetName);

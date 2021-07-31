@@ -56,6 +56,7 @@ class User extends Authenticatable
     ];
     Protected $with = [
         'media',
+        'offer'
     ];
 
     /**
