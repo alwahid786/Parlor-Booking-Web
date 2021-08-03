@@ -22,6 +22,7 @@ class CreateNotificationsTable extends Migration
             $table->integer('receiver_id');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->integer('type_id');
             $table->string('noti_type');
             $table->text('noti_text');
             $table->boolean('is_read')->default(false);

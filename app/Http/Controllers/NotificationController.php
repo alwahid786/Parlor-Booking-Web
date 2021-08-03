@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
-use App\Models\NotificationPermission;
 use App\Models\Notification;
-use App\Models\Profile;
+use App\Models\NotificationPermission;
+// use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class NotificationController extends Controller
 {
@@ -21,18 +22,18 @@ class NotificationController extends Controller
     public function updateNotificationSetting(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'profile_uuid' => 'required',
+            'user_uuid' => 'required|exist:users,uuid',
             'enable_email_notifications' => 'required|in:1,0',
             'enable_push_notifications' => 'required|in:1,0',
-            'enable_sms_notifications' => 'required|in:1,0',
+            'enable_sms_notifications' => 'requireds|in:1,0',
         ]);
 
         if ($validator->fails()) {
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
-        $uuid = (isset($request->profile_uuid) && ($request->profile_uuid != ''))? $request->profile_uuid : $request->user()->profile->uuid;
-        $profile = Profile::where('uuid', $uuid)->first();
+        $uuid = (isset($request->user_uuid) && ($request->user_uuid != ''))? $request->user_uuid : $request->user()->profile->uuid;
+        $profile = User::where('uuid', $uuid)->first();
         if(null == $profile){
             return sendError('Invalid or Expired information provided', []);
         }
@@ -48,21 +49,32 @@ class NotificationController extends Controller
     }
 
     public function getNotifications(Request $request){
-        $profile_id = (isset($request->profile_uuid) && ($request->profile_uuid != ''))? $request->profile_uuid : $request->user()->profile->id;
+        
+        $validator = Validator::make($request->all(), [
+            'user_uuid' => 'exist:users,uuid',
+        ]);
+
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+        $user_id = user::where('uuid',$request->user_uuid)->first()->id??$request->user()->id;
+
         $limit = null;
         if($request->limit){
             $limit = $request->limit;
         }
 
         if($limit){
-            $notifications = Notification::where('receiver_id', $profile_id)->with('sender')->latest()->take($limit)->get();
+            $notifications = Notification::where('receiver_id', $user_id)->with('sender')->latest()->take($limit)->get();
         }else{
-            $notifications = Notification::where('receiver_id', $profile_id)->with('sender')->latest()->get();
+            $notifications = Notification::where('receiver_id', $user_id)->with('sender')->latest()->get();
         }
         
         $notifications = $notifications->sortByDesc('created_at');
         
-        $read_notiffications = Notification::where('receiver_id', $profile_id)->where('is_read', '0')->update(['is_read' => '1']);
+        $read_notiffications = Notification::where('receiver_id', $user_id)->where('is_read', '0')->update(['is_read' => '1']);
 
         $data['notifications'] = $notifications;
 
@@ -71,6 +83,7 @@ class NotificationController extends Controller
 
     // Needs to Update According to Sellx
     public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti){
+        // dd();
 
         $check = Notification::where('sender_id', $sender_id)->where('type_id', $type_id)->where('noti_type', $noti_type)->where('receiver_id', $receiver_id)->latest()->first();
 
@@ -88,7 +101,7 @@ class NotificationController extends Controller
         $noti->noti_text = $noti_text;
         $noti->save();
 
-        $sender_profile = Profile::where('id', $sender_id)->first();
+        $sender_profile = User::where('id', $sender_id)->first();
 
         $noti = Notification::find($noti->id);
         if($is_send_noti){
@@ -157,9 +170,20 @@ class NotificationController extends Controller
     }
 
     public function getUnreadNotificationsCount(Request $request){
-        $profile_id = (isset($request->profile_id) && ($request->profile_id != ''))? $request->profile_id : $request->user()->profile->id;
+
+        $validator = Validator::make($request->all(), [
+            'user_uuid' => 'exist:users,uuid',
+        ]);
+
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
         
-        $unreadCount = Notification::whereRaw("id IN (SELECT id FROM notifications WHERE is_read = 0 and receiver_id = {$profile_id})")->count();
+        $user_id = user::where('uuid',$request->user_uuid)->first()->id??$request->user()->id;
+        
+        
+        $unreadCount = Notification::whereRaw("id IN (SELECT id FROM notifications WHERE is_read = 0 and receiver_id = {$user_id})")->count();
 
         $data['unreadCount'] = $unreadCount;
         

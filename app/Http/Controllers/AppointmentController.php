@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\Handler;
+use App\Http\Controllers\NotificationController;
 use App\Models\Appointment;
 use App\Models\AppointmentDetail;
 use App\Models\Offer;
@@ -19,9 +20,10 @@ class AppointmentController extends Controller
 {
     private $userService;
     
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService,NotificationController $NotificationController)
     {
         $this->userService = $userService;
+        $this->NotificationController = $NotificationController;
     }
 
     public function getAppointment(Request $request){
@@ -50,7 +52,7 @@ class AppointmentController extends Controller
                     $query->with('services');
             });
 
-            $appointments = $appointments->get();
+            $appointments = $appointments->first();
         
             return sendSuccess('Appointments',$appointments);  
         }
@@ -188,6 +190,14 @@ class AppointmentController extends Controller
                 $appointment->total_price = $total_price - ($total_price * $discount);
             
             $appointment->save();
+
+            if(!$appointment->save())
+                return sendError('Internal Server Error',[]);
+
+            $noti_text = 'Need Appointment';
+            $noti_result = $this->NotificationController->addNotification($salon->id,$user->id,$appointment->id,'appointment',$noti_text,False);    
+            // dd($noti_result);
+
 
             DB::Commit();
             return sendSuccess('Service Saved',$appointment);

@@ -51,5 +51,11 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('delete_appointment', [AppointmentController::class, 'deleteAppointment']);
     Route::post('available_appointments', [AppointmentController::class, 'availableAppointments']);
     Route::post('salon_offering', [AppointmentController::class, 'salonOff']);
+
+        // Notification
+    Route::post('update_notification_setting', 'App\Http\Controllers\NotificationController@updateNotificationSetting');
+    Route::post('get_notifications', 'App\Http\Controllers\NotificationController@getNotifications');
+    Route::post('get_notification_permissions', 'App\Http\Controllers\NotificationController@getNotificationsPermission');
+    Route::post('get_unread_notification_counts', 'App\Http\Controllers\NotificationController@getUnreadNotificationsCount');
 });
 

@@ -27,7 +27,7 @@ class CreateAppointmentsTable extends Migration
             $table->date('date')->nullable();
 
             $table->integer('slot')->nullable();
-            $table->enum('status', ['active','cancelled','completed','rejected'])->default('active');
+            $table->enum('status', ['active','cancelled','completed','rejected','on-hold'])->default('on-hold');
             $table->double('total_price')->default(0.0);
 
             $table->timestamps();
