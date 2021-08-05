@@ -219,10 +219,10 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         } 
 
-        $data['user'] = User::where('uuid',$request->user_uuid??$request->user()->uuid)
+        $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
             ->with(['media','days','services','brosche'])->first();
 
-        return sendSuccess('User Data',$data);
+        return sendSuccess('User Data',$user);
     }
 
     public Function getSalon(Request $request){
