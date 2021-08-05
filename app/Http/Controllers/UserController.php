@@ -332,7 +332,7 @@ class UserController extends Controller
                         // upoad file on server
                         $file->move(getUploadDir($nature), $targetName);
                         $targetPath = getUploadDir($nature).$targetName;
-                        $temp['path'] = $nature .'/'.$targetName;
+                        $temp['path'] = 'uploads/'.$nature .'/'.$targetName;
                         
                         if (in_array($file_extension, $doc_xtensions)) {
                             $temp['ratio'] = 1;

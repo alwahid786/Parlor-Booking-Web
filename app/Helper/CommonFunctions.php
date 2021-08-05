@@ -188,6 +188,13 @@ if(!function_exists('getUploadDir'))
             }
         }
 
+        if ($nature == 'brosche') {
+            $path .= 'brosche/';
+            if ($is_thumbnail) {
+                $path .= 'thumbnails/';
+            }
+        }
+
         return $path;
     }
 }

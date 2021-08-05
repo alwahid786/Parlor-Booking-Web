@@ -90,9 +90,9 @@ class ServiceController extends Controller
         try{
             
             $service->name = $request->name??$service->name;
-            $service->price = (int)($request->price??$service->price);
-            $service->salon_id = $service->salon_id??$salon->id;
-            $service->status = $request->status??$service->status??'active';
+            $service->price = (int)($request->price ?? $service->price);
+            $service->salon_id = $service->salon_id ?? $salon->id;
+            $service->status = $request->status ?? $service->status ?? 'active';
             $service->save();
 
             if(!$service->save()){
