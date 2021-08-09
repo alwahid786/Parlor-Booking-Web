@@ -106,10 +106,13 @@ class AppointmentController extends Controller
 
         if(isset($request->appointment_uuid)){
 
-            $status = Appointment::where('uuid', $request->appointment_uuid)
-                ->update([
-                    'status' => $request->status
-                ]);
+            $status = Appointment::where('uuid', $request->appointment_uuid)->first();
+
+            $status->status = $request->status;
+            $status->save();
+
+            $noti_text = 'Appointment'.' '.$request->status;
+            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,False);
 
             return sendSuccess('Updated Appointment',$status);
         }
@@ -155,7 +158,7 @@ class AppointmentController extends Controller
             $appointment->uuid = str::uuid();
             $appointment->salon_id = $salon->id;
             $appointment->user_id = $user->id;
-            $appointment->status = $request->status??'active';
+            $appointment->status = $request->status ?? 'on-hold';
             $appointment->start_time = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
             $appointment->end_time = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
             $appointment->date = $request->date;
@@ -195,7 +198,7 @@ class AppointmentController extends Controller
                 return sendError('Internal Server Error',[]);
 
             $noti_text = 'Need Appointment';
-            $noti_result = $this->NotificationController->addNotification($salon->id,$user->id,$appointment->id,'appointment',$noti_text,False);    
+            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,False);
             // dd($noti_result);
 
 
