@@ -75,7 +75,7 @@ class AppointmentController extends Controller
         if(isset($request->status))
             $appointments->where('status', $request->status);
         if(isset($request->past_appointments))
-            $appointments->where('date','<',Carbon::now());
+            $appointments->where('date','<',Carbon::now()->format('Y-m-d'));
         if(isset($request->limit))
             $appointments->offset($request->offset??0)->limit($request->limit);
         $appointments = $appointments->get();
