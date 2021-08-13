@@ -30,7 +30,7 @@ class AppointmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'exists:users,uuid',
-            'status' => 'in:active,cancelled,completed',
+            'status' => 'in:active,cancelled,completed,on-hold',
             'offset' => 'numeric',
             'limit' => 'numeric',
             'appointment_uuid' => 'exists:appointments,uuid',
