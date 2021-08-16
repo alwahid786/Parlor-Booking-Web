@@ -20,7 +20,7 @@ class Notification extends Model
 
     use SoftDeletes;
 
-    protected $with = ['sender'];
+    protected $with = ['sender','appointment'];
 
     public function sender(){
         return $this->belongsTo(User::class,'sender_id','id');
@@ -28,5 +28,9 @@ class Notification extends Model
 
     public function receiver(){
         return $this->belongsTo(User::class,'receiver_id','id');
+    }
+
+    public function appointment(){
+        return $this->belongsTo(Appointment::class,'type_id','id');
     }
 }
