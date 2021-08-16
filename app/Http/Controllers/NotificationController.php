@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Appointment;
 use App\Models\Notification;
 use App\Models\NotificationPermission;
 use App\Models\User;
@@ -48,6 +49,19 @@ class NotificationController extends Controller
         return sendSuccess('Success', $data);
     }
 
+    public function readNoti(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'notification_id' => 'exist:notifications,id',
+        ]);
+
+        $read_notiffications = notification::where('id',$request->notification_id)->where('is_read', '0')->update(['is_read' => '1']);
+
+        return sendSuccess("User Notifications",$read_notiffications);
+
+
+    }
+
     public function getNotifications(Request $request){
 
         
@@ -78,8 +92,6 @@ class NotificationController extends Controller
         }
         
         $notifications = $notifications->sortByDesc('created_at');
-        
-        $read_notiffications = Notification::where('receiver_id', $user_id)->where('is_read', '0')->update(['is_read' => '1']);
 
         $data['notifications'] = $notifications;
 

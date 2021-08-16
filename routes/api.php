@@ -57,5 +57,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('get_notifications', 'App\Http\Controllers\NotificationController@getNotifications');
     Route::post('get_notification_permissions', 'App\Http\Controllers\NotificationController@getNotificationsPermission');
     Route::post('get_unread_notification_counts', 'App\Http\Controllers\NotificationController@getUnreadNotificationsCount');
+    Route::post('read_noti', 'App\Http\Controllers\NotificationController@readNoti');
 });
 
