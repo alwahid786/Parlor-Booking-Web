@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
     Route::post('get_user',  [UserController::class, 'getUser']);
     Route::post('upload_brosche',  [UserController::class, 'uploadBrosche']);
+    Route::post('delete_brosche',  [UserController::class, 'deleteBrosche']);
 
     //service Api
     Route::post('updated_service', [ServiceController::class, 'updateService']);
@@ -61,5 +62,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('get_notifications', 'App\Http\Controllers\NotificationController@getNotifications');
     Route::post('get_notification_permissions', 'App\Http\Controllers\NotificationController@getNotificationsPermission');
     Route::post('get_unread_notification_counts', 'App\Http\Controllers\NotificationController@getUnreadNotificationsCount');
+    Route::post('read_noti', 'App\Http\Controllers\NotificationController@readNoti');
 });
 

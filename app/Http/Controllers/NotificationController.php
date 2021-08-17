@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Appointment;
 use App\Models\Notification;
 use App\Models\NotificationPermission;
-// use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+
 
 class NotificationController extends Controller
 {
@@ -48,18 +49,36 @@ class NotificationController extends Controller
         return sendSuccess('Success', $data);
     }
 
+    public function readNoti(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'notification_id' => 'exist:notifications,id',
+        ]);
+
+        $read_notiffications = notification::where('id',$request->notification_id)->where('is_read', '0')->update(['is_read' => '1']);
+
+        return sendSuccess("User Notifications",$read_notiffications);
+
+
+    }
+
     public function getNotifications(Request $request){
+
         
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'exist:users,uuid',
         ]);
 
-        if ($validator->fails()) {
-            $data['validation_error'] = $validator->getMessageBag();
-            return sendError($validator->errors()->all()[0], $data);
-        }
+        // if ($validator->fails()) {
+
+        //     $data['validation_error'] = $validator->getMessageBag();
+        //     return sendError($validator->errors()->all()[0], $data);
+        // }
+
 
         $user_id = user::where('uuid',$request->user_uuid)->first()->id??$request->user()->id;
+        if(null == $user_id)
+            return sendError('User Dont Exists',[]);
 
         $limit = null;
         if($request->limit){
@@ -73,8 +92,6 @@ class NotificationController extends Controller
         }
         
         $notifications = $notifications->sortByDesc('created_at');
-        
-        $read_notiffications = Notification::where('receiver_id', $user_id)->where('is_read', '0')->update(['is_read' => '1']);
 
         $data['notifications'] = $notifications;
 

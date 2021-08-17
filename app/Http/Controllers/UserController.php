@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\File; 
 
 class UserController extends Controller
 {
@@ -116,8 +116,11 @@ class UserController extends Controller
                 $medias_data = $result['data'];
                 foreach($medias_data as $media_data){
                     $media = Media::where('user_id',$user->id)->first();
-                    if(null == $media)
-                        $media = new Media;
+                    if(null != $media){
+                        unlink(public_path().'/'.$media->path);
+                        $media->delete();
+                    }
+                    $media = new Media;
 
                     $media->user_id =  $user->id;
                     $media->uuid = str::uuid();
@@ -304,7 +307,24 @@ class UserController extends Controller
         $data['salon'] = $salon;
         $data['salon']['brosche'] = $salon->brosche;
         return sendSuccess('Brosche Uploaded',$data);
+    }
 
+    public function deleteBrosche(Request $request){
+        $validator = Validator::make($request->all(), [
+            'brosche_uuid' => 'string|required|exists:brosches,uuid',
+        ]);
+
+        if ($validator->fails()) {
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+        $brosche = Brosche::where('uuid',$request->brosche_uuid)->first();
+
+        unlink(public_path().'/'.$brosche->path);
+        $brosche = $brosche->delete();
+
+        return sendSuccess('Deleted',$brosche);        
     }
 
     public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
