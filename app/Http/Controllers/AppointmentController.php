@@ -190,7 +190,6 @@ class AppointmentController extends Controller
                 $appointment_details->service_id = $service->id;
                 $appointment_details->price = $service->price;
                 $appointment_details->save();
-                $total_price += $service->price;
 
                 if(!$appointment->save()){
 
@@ -198,7 +197,7 @@ class AppointmentController extends Controller
                     return sendError("Internal Server Error",[]);
                 }
             }
-
+            $total_price = AppointmentDetail::where('appointment_id',$appointment->id)->pluck('price')->sum();
             $appointment->total_price = $total_price;
             if(isset($discount))
                 $appointment->total_price = $total_price - ($total_price * $discount);
