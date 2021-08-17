@@ -21,9 +21,13 @@ class Appointment extends Model
      */
 
     protected $fillable = [];
-     protected $appends = [
+    protected $appends = [
         'day',
         'state'
+    ];
+
+    protected $with = [
+        'appointmentDetails'
     ];
 
     function salon(){

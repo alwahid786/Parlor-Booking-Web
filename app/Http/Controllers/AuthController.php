@@ -113,7 +113,7 @@ class AuthController extends Controller
             $data['access_token'] = $tokenResult->accessToken;
             $data['token_type'] = 'Bearer';
             $data['expires_at'] = Carbon::parse($tokenResult->token->expires_at)->toDateTimeString();
-            $data['user'] = User::where('id', $request->user()->id)->first();
+            $data['user'] = User::where('id', $request->user()->id)->with(['days','brosche'])->first();
             return sendSuccess('Login successfully.', $data);
         }
         return sendError('Email or password is incorrect.', null);

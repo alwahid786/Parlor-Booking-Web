@@ -30,11 +30,12 @@ class AppointmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'exists:users,uuid',
-            'status' => 'in:active,cancelled,completed,on-hold',
+            'status' => 'in:active,cancelled,completed',
             'offset' => 'numeric',
             'limit' => 'numeric',
             'appointment_uuid' => 'exists:appointments,uuid',
-            'past_appointments' => 'in:1'
+            'past_appointments' => 'in:1',
+            'date' => 'date'
         ]);
 
         if ($validator->fails()) {
@@ -43,12 +44,12 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $appointments = Appointment::orderBy('created_at','DESC');
+        $appointments = Appointment::orderBy('created_at','DESC')->where('status','<>','on-hold');
         
         if(isset($request->appointment_uuid)){
             $appointments = $appointments->where('uuid',$request->appointment_uuid)->with('user')->with('salon', function($query){
                     $query->with('offer');
-            })->with('appointmentDetails', function($query){
+                })->with('appointmentDetails', function($query){
                     $query->with('services');
             });
 
@@ -58,26 +59,36 @@ class AppointmentController extends Controller
         }
 
         $user = User::where('uuid', $request->user_uuid??$request->user()->uuid)->first();
+
         if(!$user)
             return sendError("user Not Found",[]);
+
         if('user' == $user->type)
             $appointments->where('user_id', $user->id)->with('salon' , function($q){
                 $q->with(['media','offer']);
             })->with('appointmentDetails', function($query){
                     $query->with('services');
             });
+
         if('salon' == $user->type)
             $appointments->where('salon_id', $user->id)->with('user' , function($q){
                 $q->with('media');
             })->with('appointmentDetails', function($query){
                     $query->with('services');
-            });   
+            });  
+
+        if(isset($request->date))
+            $appointments->where('date',$request->date);
+
         if(isset($request->status))
             $appointments->where('status', $request->status);
+
         if(isset($request->past_appointments))
             $appointments->where('date','<',Carbon::now()->format('Y-m-d'));
+
         if(isset($request->limit))
             $appointments->offset($request->offset??0)->limit($request->limit);
+
         $appointments = $appointments->get();
         
         return sendSuccess('Appointments',$appointments);                
@@ -111,7 +122,7 @@ class AppointmentController extends Controller
             $status->status = $request->status;
             $status->save();
 
-            $noti_text = 'Appointment'.' '.$request->status;
+            $noti_text = 'Your Appointment Has Been'.' '.$request->status;
             $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,False);
 
             return sendSuccess('Updated Appointment',$status);
@@ -197,7 +208,7 @@ class AppointmentController extends Controller
             if(!$appointment->save())
                 return sendError('Internal Server Error',[]);
 
-            $noti_text = 'Need Appointment';
+            $noti_text = $user->name.' Need Appointment in your salon';
             $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,False);
             // dd($noti_result);
 

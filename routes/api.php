@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
     Route::post('get_user',  [UserController::class, 'getUser']);
     Route::post('upload_brosche',  [UserController::class, 'uploadBrosche']);
+    Route::post('delete_brosche',  [UserController::class, 'deleteBrosche']);
 
     //service Api
     Route::post('updated_service', [ServiceController::class, 'updateService']);
