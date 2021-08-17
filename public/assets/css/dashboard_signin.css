@@ -1,0 +1,151 @@
+.for-overflow {
+  overflow: hidden;
+}
+.for_h1_color {
+  padding-top: 50px;
+}
+.for_h1_color span {
+  color: #f5b51b;
+}
+.for_h1_color h1 {
+  color: #133e59;
+  font-size: 56px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.for_personal_information p {
+  margin-left: 40px;
+  font-size: 26px;
+  padding-top: 30px;
+}
+
+.for_personal_information span {
+  margin-left: 40px;
+  font-size: 26px;
+  margin-top: -19px;
+}
+
+.for_common_email_pass {
+  margin-left: 40px;
+}
+.for_common_email_pass p {
+  font-size: 18px;
+}
+.forgot_password_css {
+  margin-left: 40px;
+}
+
+.inp {
+  border: none;
+  /* border-bottom: 1px solid #1890ff;
+  padding: 5px 10px; */
+  outline: none;
+}
+
+/* [placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease; 
+    text-indent: -100%;
+    opacity: 1;
+ } */
+
+.button_signin_css button {
+  background-color: #133e59;
+  color: aliceblue;
+  font-weight: bold;
+}
+
+[placeholder]::-webkit-input-placeholder {
+  font-size: 18px;
+}
+
+.forgot_password_css span {
+  margin-left: 145px;
+}
+.forgot_password_css a {
+  text-decoration: none;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .for_sinin_sm_responsive_main_div {
+    margin-top: -80px;
+  }
+  .for_h1_color h1 {
+    color: #133e59;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: -10px;
+  }
+
+  .for_common_email_pass {
+    margin-left: -10px;
+  }
+  .for_common_email_pass p {
+    font-size: 10px;
+  }
+
+  .for_personal_information p {
+    font-size: 12px;
+    margin-left: -10px;
+    margin-top: -20px;
+  }
+
+  [placeholder]::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+  .forgot_password_css {
+    margin-left: -10px;
+    font-size: 10px;
+  }
+
+  .forgot_password_css span {
+    float: right;
+    margin-left: 11px;
+    font-size: 6px;
+    margin-top: 4px;
+  }
+
+  .button_signin_css button {
+    font-size: 5px;
+
+    margin-left: -30px;
+    margin-top: -30px;
+  }
+  .button_signin_css span {
+    margin-left: -10px;
+    font-size: 6px;
+    padding: 0px 0px 0px 10px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .forgot_password_css span {
+    margin-left: 56px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .for_h1_color h1 {
+    color: #133e59;
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 36px;
+  }
+
+  .button_signin_css button {
+    background-color: #133e59;
+    color: aliceblue;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .forgot_password_css span {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .forgot_password_css span {
+    margin-left: 600px;
+  }
+}

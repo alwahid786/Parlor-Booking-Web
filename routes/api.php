@@ -18,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('/apple', function(){
+    return 'apple';
+});
+
 Route::group([ 'prefix' => 'auth'], function () {
 
-    Route::post('login', [AuthController::class, 'login']);
+    Route::any('login', [AuthController::class, 'login']);
     Route::post('signup', [AuthController::class, 'signup']);
     Route::post('social_login', [AuthController::class, 'socialLogin']);
     Route::post('forgot_password', [AuthController::class, 'forgotPasswordCode']);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthWebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::any('/', function () {
+    return view('No_Authentication.no_auth');
 });
+
+Route::any('/show', function () {
+    return view('No_Authentication.no_auth');
+});
+
+Route::any('/signin', [AuthWebController::class, 'login'])->name('login');
+
+Route::any('/singup',[AuthWebController::class, 'create'])->name('signup');

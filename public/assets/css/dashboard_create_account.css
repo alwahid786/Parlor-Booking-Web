@@ -1,0 +1,193 @@
+.for-overflow {
+  overflow: hidden;
+}
+
+.for_signin_img_css {
+  height: 100vh;
+}
+.for_h1_color {
+  padding-top: 50px;
+}
+.for_h1_color span {
+  color: #f5b51b;
+}
+.for_h1_color h1 {
+  color: #133e59;
+  font-size: 56px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+.for-below p {
+  margin-top: -48px;
+}
+.for_personal_information p {
+  margin-left: 40px;
+  font-size: 26px;
+  padding-top: 30px;
+}
+
+.for_personal_information span {
+  margin-left: 40px;
+  font-size: 26px;
+  margin-top: -19px;
+}
+
+.for_common_email_pass {
+  margin-left: 40px;
+}
+.for_common_email_pass p {
+  font-size: 18px;
+}
+.forgot_password_css {
+  margin-left: 40px;
+}
+
+.inp {
+  border: none;
+  /* border-bottom: 1px solid #1890ff;
+    padding: 5px 10px; */
+  outline: none;
+}
+
+/* [placeholder]:focus::-webkit-input-placeholder {
+      transition: text-indent 0.4s 0.4s ease; 
+      text-indent: -100%;
+      opacity: 1;
+   } */
+
+.button_signin_css button {
+  background-color: #133e59;
+  color: aliceblue;
+  font-weight: bold;
+  width: 280px;
+}
+
+[placeholder]::-webkit-input-placeholder {
+  font-size: 18px;
+}
+
+.forgot_password_css span {
+  margin-left: 200px;
+}
+.forgot_password_css a {
+  text-decoration: none;
+}
+
+.for_OR_css {
+  padding-top: 20px;
+}
+
+.for_OR_css p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dot {
+  height: 75px;
+  width: 75px;
+  background-color: #f5b51b;
+  border-radius: 50%;
+  display: inline-block;
+}
+.for_fb_google {
+  padding-top: 10px;
+}
+.for_fb_google i {
+  color: azure;
+  font-size: 36px;
+  margin-top: 20px;
+}
+.for_fb_google p {
+  margin-right: 80px;
+}
+
+/* Media Querries */
+@media (min-width: 320px) and (max-width: 767px) {
+  .for_create_new_account_sm_res_main_div {
+    margin-top: -25px;
+  }
+  .for_h1_color h1 {
+    color: #133e59;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: -10px;
+  }
+
+  .for_common_email_pass {
+    margin-left: -10px;
+  }
+  .for_common_email_pass p {
+    font-size: 10px;
+  }
+
+  .for_personal_information p {
+    font-size: 9px;
+    margin-left: -10px;
+    margin-top: -20px;
+  }
+  .for-below {
+    margin-top: -45px !important;
+  }
+
+  .sm_name_css {
+    margin-top: -20px !important;
+  }
+
+  [placeholder]::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+  .forgot_password_css {
+    margin-left: -10px;
+    font-size: 10px;
+  }
+
+  .button_signin_css button {
+    font-size: 5px;
+    width: 100px;
+    margin-left: -30px;
+    margin-top: -30px;
+  }
+  .button_signin_css span {
+    margin-left: -22px;
+    font-size: 10px;
+    padding: 0px 0px 0px 10px;
+  }
+  .dot {
+    height: 30px;
+    width: 30px;
+  }
+  .for_fb_google {
+    padding-top: 10px;
+    margin-left: -29px;
+  }
+  .for_fb_google i {
+    font-size: 14px;
+    margin-top: 9px;
+  }
+  .for_fb_google p {
+    margin-right: 21px;
+  }
+  .for_OR_css {
+    margin-left: -35px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .for_h1_color h1 {
+    color: #133e59;
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 36px;
+  }
+
+  .button_signin_css button {
+    background-color: #133e59;
+    color: aliceblue;
+    width: 55%;
+    font-size: 16px;
+  }
+
+  .forgot_password_css span {
+    margin-left: 15px;
+  }
+}
