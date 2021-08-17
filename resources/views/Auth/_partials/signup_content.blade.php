@@ -40,13 +40,24 @@
                   </div>
             </div>
 
-            <div class="for_common_email_pass ">
-                <p>Phone</p>
-                  <div class="input-group mb-3 w-75 border-bottom">
+            
+            <div class="d-flex w-75">
+              <div class="for_common_email_pass col form-group">
+                <label>Phone Code</label>
+                  
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="tel" class="inp" name="phone_no" placeholder="+ 000 000 000" required/>
-                  </div>
+                    <input type="tel" class="form-control form-control-lg inp border-bottom" name="phone_code" placeholder="+ 00" required/>
+                  
+              </div>
+              <div class="for_common_email_pass col form-group">
+                <label>Phone</label>
+                  {{-- <div class="input-group mb-3 w-75 border-bottom"> --}}
+                    <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                    <input type="tel" class="form-control form-control-lg inp border-bottom" name="phone_no" placeholder=" 000 00 00 000"  required/>
+                  {{-- </div> --}}
+              </div>
             </div>
+            
 
             <div class="for_common_email_pass ">
                 <p>Password</p>

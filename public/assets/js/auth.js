@@ -1,7 +1,7 @@
-$(function(event){
+$(function(event) {
 
-       // Validate and then process registeration form
-       $('#frm_signup-d').validate({
+    // Validate and then process registeration form
+    $('#frm_signup-d').validate({
         ignore: ".ignore",
         rules: {
             name: {
@@ -11,6 +11,14 @@ $(function(event){
             email: {
                 required: true,
                 minlength: 6,
+            },
+            phone_code: {
+                required: true,
+                maxlength: 3,
+            },
+            phone_no: {
+                required: true,
+                minlength: 10,
             },
             password: {
                 required: true,
@@ -23,7 +31,7 @@ $(function(event){
             },
         },
         messages: {
-           
+
             name: {
                 required: "Name is Required.",
                 minlength: "Name Should have atleast 3 characters",
@@ -33,23 +41,28 @@ $(function(event){
                 minlength: "Email Should have atleast 5 characters",
                 email: "Email Format is not valid"
             },
-            username: {
-                required: "Username is Required.",
-                minlength: "Username Should have atleast 3 characters",
+            phone_code: {
+                required: "Phone code is Required.",
+                maxlength: "Phone code Should have max 3 digits",
+            },
+            phone_no: {
+                required: "Phone number is Required.",
+                minlength: "Phone number Should have atleast 10 digits",
             },
             password: {
                 required: "Password is Required.",
                 minlength: "Password Should have atleast 8 characters",
             },
+
         },
         errorPlacement: function(error, element) {
             $('#' + error.attr('id')).remove();
             error.insertAfter(element);
-            $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + '" for="' + error.attr('for') + '">' + error.text() + '</span>');
+            $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
         },
         success: function(label, element) {
             // console.log(label, element);
-            $(element).removeClass('error');
+            $(element).removeClass('error text-danger');
             $(element).parent().find('span.error').remove();
         },
         submitHandler: function(form) {
