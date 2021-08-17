@@ -41,7 +41,8 @@ class Appointment extends Model
     }
 
     public function getDayAttribute(){
-
+        // return $this->date;
+        // return date('D', strtotime($this->date));
         return Carbon::parse($this->date)->format('l');
     }
     public function getStateAttribute(){

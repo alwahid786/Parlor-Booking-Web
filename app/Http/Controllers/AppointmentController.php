@@ -44,7 +44,7 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $appointments = Appointment::orderBy('created_at','DESC')->where('status','<>','on-hold');
+        $appointments = Appointment::orderBy('created_at','DESC');
         
         if(isset($request->appointment_uuid)){
             $appointments = $appointments->where('uuid',$request->appointment_uuid)->with('user')->with('salon', function($query){
