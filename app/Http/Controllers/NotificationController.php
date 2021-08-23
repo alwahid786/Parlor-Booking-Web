@@ -124,8 +124,12 @@ class NotificationController extends Controller
 
         $noti = Notification::find($noti->id);
         $apt_uuid = $noti->appointment->uuid;
-       // $noti = $noti->getAttributes();
-        $noti = json_encode(['appointment' => $apt_uuid]);
+        if('appointment' == $noti_type){
+            $noti = json_encode(['appointment_uuid' => $apt_uuid]);
+        }
+        else{
+            $noti = $noti->getAttributes();
+        }
 	if($is_send_noti){
             $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti);
         }
