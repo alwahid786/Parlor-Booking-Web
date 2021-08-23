@@ -123,8 +123,10 @@ class NotificationController extends Controller
         $sender_profile = User::where('id', $sender_id)->first();
 
         $noti = Notification::find($noti->id);
-        if($is_send_noti){
-            $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti->toJson());
+	$noti = $noti->getAttributes();
+        $noti = json_encode($noti);
+	if($is_send_noti){
+            $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti);
         }
         return $noti;
     }
@@ -169,11 +171,15 @@ class NotificationController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
+	// Log::info($ch);
         $response = curl_exec($ch);
         curl_close($ch);
 
+
+	Log::info(config('onesignal.rest_api_key'));
         Log::info('NotificationsController => function sendPushNotification');
         Log::info($response);
+
 
         // dd($response);
         return $response;
