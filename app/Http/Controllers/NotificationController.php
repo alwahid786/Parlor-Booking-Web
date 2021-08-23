@@ -9,6 +9,7 @@ use App\Models\NotificationPermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -100,6 +101,7 @@ class NotificationController extends Controller
 
     // Needs to Update According to Sellx
     public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti){
+    // dd($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti);
         // dd();
 
         $check = Notification::where('sender_id', $sender_id)->where('type_id', $type_id)->where('noti_type', $noti_type)->where('receiver_id', $receiver_id)->latest()->first();
@@ -173,6 +175,7 @@ class NotificationController extends Controller
         Log::info('NotificationsController => function sendPushNotification');
         Log::info($response);
 
+        // dd($response);
         return $response;
     }
 

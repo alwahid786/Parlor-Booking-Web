@@ -123,7 +123,7 @@ class AppointmentController extends Controller
             $status->save();
 
             $noti_text = 'Your Appointment Has Been'.' '.$request->status;
-            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,False);
+            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,false);
 
             return sendSuccess('Updated Appointment',$status);
         }
@@ -208,7 +208,7 @@ class AppointmentController extends Controller
                 return sendError('Internal Server Error',[]);
 
             $noti_text = $user->name.' Need Appointment in your salon';
-            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,False);
+            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,true);
             // dd($noti_result);
 
 
