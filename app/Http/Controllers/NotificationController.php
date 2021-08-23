@@ -123,8 +123,9 @@ class NotificationController extends Controller
         $sender_profile = User::where('id', $sender_id)->first();
 
         $noti = Notification::find($noti->id);
-	$noti = $noti->getAttributes();
-        $noti = json_encode($noti);
+        $apt_uuid = $noti->appointment->uuid;
+       // $noti = $noti->getAttributes();
+        $noti = json_encode(['appointment' => $apt_uuid]);
 	if($is_send_noti){
             $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti);
         }
