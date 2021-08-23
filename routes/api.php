@@ -32,13 +32,13 @@ Route::group([ 'prefix' => 'auth'], function () {
 });
 Route::post('get_salon',  [UserController::class, 'getSalon']);
 Route::post('get_service', [ServiceController::class, 'getService']);
+Route::post('get_user',  [UserController::class, 'getUser']);
 
 Route::group(['middleware' => 'auth:api'], function() {
 
     //profile Api
     Route::post('update_user', [UserController::class, 'updateUser']);
     Route::post('delete_profile', [UserController::class, 'deleteProfile']);
-    Route::post('get_user',  [UserController::class, 'getUser']);
     Route::post('upload_brosche',  [UserController::class, 'uploadBrosche']);
     Route::post('delete_brosche',  [UserController::class, 'deleteBrosche']);
 

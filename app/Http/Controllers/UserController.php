@@ -213,7 +213,7 @@ class UserController extends Controller
 
     public function getUser(Request $request){
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'exists:users,uuid',
+            'user_uuid' => 'required|exists:users,uuid',
         ]);
 
         if ($validator->fails()) {
