@@ -24,7 +24,7 @@ class CreateAppointmentDetailsTable extends Migration
             $table->integer('offer_id')->nullable();
             $table->foreign('offer_id')->references('id')->on('offers')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->double('discount')->default(0.0);
+            $table->double('discount')->default(0.0)->nullable();
             $table->double('price')->default(0.0);
 
             $table->timestamps();
