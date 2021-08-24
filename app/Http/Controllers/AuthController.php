@@ -158,6 +158,9 @@ class AuthController extends Controller
                 if($check->email == $request->email) {
                     return sendError('Email exists already', null);
                 }
+                if($check->social_email == $request->email) {
+                    return sendError('Email exists already', null);
+                }
                 if($check->phone_number == $request->phone_number){
                     return sendError('Phone exists already', null);
                 }
