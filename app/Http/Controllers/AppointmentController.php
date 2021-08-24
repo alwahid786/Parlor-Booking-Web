@@ -189,6 +189,7 @@ class AppointmentController extends Controller
                 $appointment_details->appointment_id = $appointment->id;
                 $appointment_details->service_id = $service->id;
                 $appointment_details->price = $service->price;
+                $appointment_details->discount = $discount ?? NULL;
                 $appointment_details->save();
 
                 if(!$appointment->save()){
