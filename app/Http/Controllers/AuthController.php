@@ -148,14 +148,23 @@ class AuthController extends Controller
 
         $code = mt_rand(1000, 9999);
         $check = new User;
+        $msg = '';
 
-        $check = User::where('email', $request->email)
-            ->orWhere('email', $request->social_email)
-            ->orWhere('social_email', $request->social_email)
-            ->orWhere('email', $request->email);
+        if($request->is_social == 0){
 
-        if(NULL !== $check){
-            return sendError('Email exists already', null);
+            $check = User::where('email', $request->email)
+                ->orWhere('social_email', $request->email)->first();
+        }
+        else{
+            $check = User::where('email', $request->social_email)
+               ->orWhere('social_email', $request->social_email)->first();
+        }
+
+
+        // dd($check);
+        
+        if(null != $check){
+            return sendError('Email exists already','');
         }
         
         if($request->is_social == 0){
