@@ -161,7 +161,7 @@ class AppointmentController extends Controller
             }])->first();
 
             if(null != $offer->offer){
-                $discount = $offer->offer->discount == 0?1:$offer->offer->discount/100;
+                $discount = $offer->offer->discount == 0 ? 1 : $offer->offer->discount/100;
             }
 
             $total_price = 0;
@@ -189,7 +189,6 @@ class AppointmentController extends Controller
                 $appointment_details->appointment_id = $appointment->id;
                 $appointment_details->service_id = $service->id;
                 $appointment_details->price = $service->price;
-                $appointment_details->discount = $discount * 100 ?? NULL;
                 $appointment_details->save();
 
                 if(!$appointment->save()){
@@ -200,8 +199,10 @@ class AppointmentController extends Controller
             }
             $total_price = AppointmentDetail::where('appointment_id',$appointment->id)->pluck('price')->sum();
             $appointment->total_price = $total_price;
-            if(isset($discount))
+            if(isset($discount)){
                 $appointment->total_price = $total_price - ($total_price * $discount);
+                $appointment_details->discount = $discount * 100;
+            }
             
             $appointment->save();
 
