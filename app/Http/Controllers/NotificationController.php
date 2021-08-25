@@ -131,7 +131,7 @@ class NotificationController extends Controller
             $noti = $noti->getAttributes();
         }
 	if($is_send_noti){
-            $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti);
+            $this->sendPushNotification([$receiver_id],$noti_text, $noti);
         }
         return $noti;
     }
