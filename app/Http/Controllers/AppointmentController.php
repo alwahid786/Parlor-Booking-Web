@@ -125,8 +125,8 @@ class AppointmentController extends Controller
             $status->status = $request->status;
             $status->save();
 
-            $noti_text = 'Your Appointment Has Been'.' '.$request->status;
-            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,false);
+            $noti_text = 'Your Appointment Has Been'.' '.$request->status.' in '.$status->salon->name;
+            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,true);
 
             return sendSuccess('Updated Appointment',$status);
         }
