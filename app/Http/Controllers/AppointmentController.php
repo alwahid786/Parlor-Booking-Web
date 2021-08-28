@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 namespace App\Http\Controllers;
 
@@ -29,13 +29,13 @@ class AppointmentController extends Controller
     public function getAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'exists:users,uuid',
-            'status' => 'in:active,cancelled,completed',
-            'offset' => 'numeric',
-            'limit' => 'numeric',
-            'appointment_uuid' => 'exists:appointments,uuid',
+            'user_uuid'         => 'exists:users,uuid',
+            'status'            => 'in:active,cancelled,completed',
+            'offset'            => 'numeric',
+            'limit'             => 'numeric',
+            'appointment_uuid'  => 'exists:appointments,uuid',
             'past_appointments' => 'in:1',
-            'date' => 'date'
+            'date'              => 'date'
         ]);
 
         if ($validator->fails()) {
@@ -192,6 +192,9 @@ class AppointmentController extends Controller
                 $appointment_details->appointment_id = $appointment->id;
                 $appointment_details->service_id = $service->id;
                 $appointment_details->price = $service->price;
+                if(isset($discount)){
+                    $appointment_details->discount = $discount * 100;
+                }
                 $appointment_details->save();
 
                 if(!$appointment->save()){
@@ -202,9 +205,9 @@ class AppointmentController extends Controller
             }
             $total_price = AppointmentDetail::where('appointment_id',$appointment->id)->pluck('price')->sum();
             $appointment->total_price = $total_price;
+
             if(isset($discount)){
                 $appointment->total_price = $total_price - ($total_price * $discount);
-                $appointment_details->discount = $discount * 100;
             }
             
             $appointment->save();
