@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -186,6 +186,7 @@ class AppointmentController extends Controller
             }
 
             foreach($request->services_uuid as $service_uuid){
+
                 $service = Service::where('uuid',$service_uuid)->first();
                 $appointment_details = new AppointmentDetail;
                 $appointment_details->uuid = str::uuid();
