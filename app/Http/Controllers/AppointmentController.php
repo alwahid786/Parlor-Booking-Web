@@ -100,13 +100,13 @@ class AppointmentController extends Controller
     public function updateAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required_without:appointment_uuid|exists:users,uuid',
-            'salon_uuid' => 'required_with:user_uuid|exists:users,uuid',
-            'services_uuid' => 'required_with:user_uuid|exists:services,uuid',
-            'time' => 'required_with:user_uuid|date_format:H:i',
-            'date' => 'required_with:user_uuid|date',
+            'user_uuid'        => 'required_without:appointment_uuid|exists:users,uuid',
+            'salon_uuid'       => 'required_with:user_uuid|exists:users,uuid',
+            'services_uuid'    => 'required_with:user_uuid|exists:services,uuid',
+            'time'             => 'required_with:user_uuid|date_format:H:i',
+            'date'             => 'required_with:user_uuid|date',
             'appointment_uuid' => 'exists:appointments,uuid',
-            'status' => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
+            'status'           => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
         ]);
 
         if ($validator->fails()) {
@@ -169,13 +169,13 @@ class AppointmentController extends Controller
 
             $total_price = 0;
             $appointment = new Appointment;
-            $appointment->uuid = str::uuid();
-            $appointment->salon_id = $salon->id;
-            $appointment->user_id = $user->id;
-            $appointment->status = $request->status ?? 'on-hold';
-            $appointment->start_time = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
-            $appointment->end_time = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
-            $appointment->date = $request->date;
+            $appointment->uuid        = str::uuid();
+            $appointment->salon_id    = $salon->id;
+            $appointment->user_id     = $user->id;
+            $appointment->status      = $request->status ?? 'on-hold';
+            $appointment->start_time  = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
+            $appointment->end_time    = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
+            $appointment->date        = $request->date;
             $appointment->total_price = $total_price;
             $appointment->save();
 
@@ -189,10 +189,10 @@ class AppointmentController extends Controller
 
                 $service = Service::where('uuid',$service_uuid)->first();
                 $appointment_details = new AppointmentDetail;
-                $appointment_details->uuid = str::uuid();
+                $appointment_details->uuid           = str::uuid();
                 $appointment_details->appointment_id = $appointment->id;
-                $appointment_details->service_id = $service->id;
-                $appointment_details->price = $service->price;
+                $appointment_details->service_id     = $service->id;
+                $appointment_details->price          = $service->price;
                 if(isset($discount)){
                     $appointment_details->discount = $discount * 100;
                 }
@@ -216,7 +216,7 @@ class AppointmentController extends Controller
             if(!$appointment->save())
                 return sendError('Internal Server Error',[]);
 
-            $noti_text = $user->name.' Need Appointment in your salon';
+            $noti_text = $user->name.' need appointment in your salon';
             $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,true);
             // dd($noti_result);
 
