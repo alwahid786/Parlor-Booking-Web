@@ -37,7 +37,7 @@ class AuthController extends Controller
         }
 
         $credentials = $request->only('email', 'password');
-        
+
         $check = User::where('email', $request->email)->first();
         if($check->type != $request->type)
             return sendError('Invalid Login',[]);
@@ -49,14 +49,14 @@ class AuthController extends Controller
             $login_type = 'number';
             $credentials = $request->only('phone_code', 'phone_number', 'password');
         }
-        
+
         if($check && ($check->email_verified_at == null || $check->email_verified_at == '') && isset($request->email) && $login_type == 'email'){
             $code = mt_rand(1000, 9999);
-            
+
             DB::delete('Delete from signup_verifications where email = ?',[$request->email]);
 
             Log::info($code);
-            
+
             // Mail::send('email_template.verification_code', ['name' => $check->profile->first_name.' '.$check->profile->last_name, 'code' => $code], function ($m) use ($check) {
             //     $m->from(config('mail.from.address'), config('mail.from.name'));
             //     $m->to($check->email, $check->profile->first_name.$check->profile->last_name)->subject('Account Verification');
@@ -65,23 +65,24 @@ class AuthController extends Controller
             // SAVE VERIFICATION TOKEN
             $signupVerification = new SignupVerification;
 
-            $signupVerification->uuid = str::uuid();                        
-            $signupVerification->type = 'email';                        
+            $signupVerification->uuid = str::uuid();
+            $signupVerification->type = 'email';
             $signupVerification->email = $request->email;
             $signupVerification->token = $code;
             $signupVerification->save();
-            
+
             $data['code'] = $code;
+            // dd($data);
             return sendSuccess('User Not Verified. Verification code sent to linked Email.', $data);
         }
 
         if($check && ($check->phone_verified_at == null || $check->phone_verified_at == '') && isset($request->phone_number) && isset($request->phone_code) && $login_type == 'number'){
             $code = mt_rand(1000, 9999);
-            
+
             DB::delete('Delete from signup_verifications where phone = ?',[$request->phone_code.$request->phone_number]);
 
             Log::info($code);
-            
+
             // $twilio = new TwilioController;
             // if(!$twilio->sendMessage($check->phone_code.$check->phone_number, 'Enter this code to verify your Grabions account ' . $code)) {
             //     return sendError('Phone is invalid', NULL);
@@ -91,11 +92,11 @@ class AuthController extends Controller
             $signupVerification = new SignupVerification;
 
             $signupVerification->uuid = str::uuid();
-            $signupVerification->type = 'phone';                        
+            $signupVerification->type = 'phone';
             $signupVerification->phone = $request->phone_code.$request->phone_number;
             $signupVerification->token = $code;
             $signupVerification->save();
-            
+
             $data['code'] = $code;
             return sendError('User Not Verified. Verification code sent to linked Email.', $data);
         }
@@ -103,11 +104,11 @@ class AuthController extends Controller
             $user = $request->user();
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->token;
-            
+
             if(isset($request->remember_me) && $request->remember_me != '' && $request->remember_me == 1)
                 $token->expires_at = Carbon::now()->addWeeks(1);
             $token->save();
-            
+
             User::where('id', $user->id)->update(['is_online' => true]);
 
             $data['access_token'] = $tokenResult->accessToken;
@@ -121,15 +122,15 @@ class AuthController extends Controller
 
     public function signup(Request $request){
         $validator = Validator::make($request->all(), [
-            'is_social' => 'required|in:1,0',  
-            
+            'is_social' => 'required|in:1,0',
+
             'name' => 'required_if:is_social,0|string',
             'email' => 'required_if:is_social,0|unique:users,email|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'phone_code' => 'required_if:is_social,0',
             'phone_number' => 'required_if:is_social,0|unique:users,phone_number',
             'password' => 'required_if:is_social,0',
             'type' => 'required_if:is_social,0|in:salon,user',
-            
+
             'social_id' => 'required_if:is_social,1',
             'social_type' => 'required_if:is_social,1',
         ]);
@@ -148,7 +149,7 @@ class AuthController extends Controller
 
         $code = mt_rand(1000, 9999);
         $check = new User;
-        
+
         if($request->is_social == 0){
             $check = User::where('email', $request->email)->orWhere('phone_number', $request->phone_number)->first();
             if($check){
@@ -171,10 +172,10 @@ class AuthController extends Controller
 
         try {
             DB::beginTransaction();
-                    
+
             $user = new User;
-            $user->uuid = Str::uuid();  
-            
+            $user->uuid = Str::uuid();
+
             //For Social
             if($request->is_social == 1){
                 $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -190,10 +191,10 @@ class AuthController extends Controller
                 if(isset($request->social_type))
                     $user->social_type = $request->social_type;
 
-                if(isset($request->social_id))    
+                if(isset($request->social_id))
                     $user->social_id = $request->social_id;
-                
-                if(isset($request->social_email))    
+
+                if(isset($request->social_email))
                     $user->social_email = $request->social_email;
             }//For Email
             else{
@@ -202,16 +203,16 @@ class AuthController extends Controller
                 $user->type = $request->type;
                 if(isset($request->is_social))
                     $user->is_social = $request->is_social;
-                
+
                 if(isset($request->email))
                     $user->email = $request->email;
-            
+
                 if(isset($request->phone_code))
                     $user->phone_code = $request->phone_code;
-                
+
                 if(isset($request->phone_number))
                     $user->phone_number = $request->phone_number;
-                
+
                 if(isset($request->password))
                     $user->password = bcrypt($request->password);
 
@@ -222,7 +223,7 @@ class AuthController extends Controller
                         return $this->socialLogin($request);
 
                 }else{
-                    // Mail::send('email_template.verification_code', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {    
+                    // Mail::send('email_template.verification_code', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {
                     //     $m->from(config('mail.from.address'), config('mail.from.name'));
                     //     $m->to($user->email, $user->name)->subject('Account Verification');
                     // });
@@ -230,7 +231,7 @@ class AuthController extends Controller
                     $signupVerification = new SignupVerification;
                     $signupVerification->uuid = Str::uuid();
                     $signupVerification->user_id = $user->id;
-                    $signupVerification->type = 'both';                        
+                    $signupVerification->type = 'both';
                     $signupVerification->email = $request->email;
                     $signupVerification->phone = $request->phone_code.$request->phone_number;
                     $signupVerification->token = $code;
@@ -358,7 +359,7 @@ class AuthController extends Controller
         }
 
         Auth::login($user);
-        
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if($request->remember_me)
@@ -448,7 +449,8 @@ class AuthController extends Controller
         $code = mt_rand(1000, 9999);
         $data['code'] = $code;
         $data['type'] = $type;
-        
+        $data['name'] = $user->email;
+
         if($type == 'email'){
             // Mail::send('email_template.forgot_password', ['name' => $user->name, 'code' => $code], function ($m) use ($user) {
             //     $m->from(config('mail.from.address'), config('mail.from.name'));
@@ -497,12 +499,12 @@ class AuthController extends Controller
         }
 
         $user->password = bcrypt($request->password);
-        
+
         if($user->save()){
             DB::delete('Delete from password_resets where id = ?',[$check['0']->id]);
             return sendSuccess('Password updated successfully', null);
         }
-        
+
         return sendError('There is some problem.', null);
     }
 

@@ -510,32 +510,32 @@ function checkInput(input, words) {
     return words.some(word => new RegExp(word, "i").test(input));
 }
 
-$(function(event) {
+// $(function(event) {
 
-    if ($(".tagged_select2").length > 0) {
-        $(".tagged_select2").select2({
-            tags: true,
-            tokenSeparators: [',', ' ']
-        })
-    }
+//     if ($(".tagged_select2").length > 0) {
+//         $(".tagged_select2").select2({
+//             tags: true,
+//             tokenSeparators: [',', ' ']
+//         })
+//     }
 
-    // >= method in jquery validator
-    jQuery.validator.addMethod("greaterThan",
-        function(value, element, params) {
-            if (!/Invalid|NaN/.test(new Date(value))) {
-                return new Date(value) > new Date($(params).val());
-            }
-            return isNaN(value) && isNaN($(params).val()) ||
-                (Number(value) > Number($(params).val()));
-        }, 'Must be greater than {0}.');
+//     // >= method in jquery validator
+//     jQuery.validator.addMethod("greaterThan",
+//         function(value, element, params) {
+//             if (!/Invalid|NaN/.test(new Date(value))) {
+//                 return new Date(value) > new Date($(params).val());
+//             }
+//             return isNaN(value) && isNaN($(params).val()) ||
+//                 (Number(value) > Number($(params).val()));
+//         }, 'Must be greater than {0}.');
 
-    // Add >= method in jquery validator
-    jQuery.validator.addMethod("greaterThanOrEqual",
-        function(value, element, params) {
-            if (!/Invalid|NaN/.test(new Date(value))) {
-                return new Date(value) >= new Date($(params).val());
-            }
-            return isNaN(value) && isNaN($(params).val()) ||
-                (Number(value) >= Number($(params).val()));
-        }, 'Must be greater or equal to {0}.');
-});
+//     // Add >= method in jquery validator
+//     jQuery.validator.addMethod("greaterThanOrEqual",
+//         function(value, element, params) {
+//             if (!/Invalid|NaN/.test(new Date(value))) {
+//                 return new Date(value) >= new Date($(params).val());
+//             }
+//             return isNaN(value) && isNaN($(params).val()) ||
+//                 (Number(value) >= Number($(params).val()));
+//         }, 'Must be greater or equal to {0}.');
+// });

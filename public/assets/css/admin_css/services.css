@@ -1,0 +1,225 @@
+.for_add_services_bg {
+  background: #e5e5e5;
+}
+
+.pull-right {
+  float: right;
+  margin-top: -21px;
+}
+
+.for_add_service button {
+  margin-top: 15px;
+  background: #133e59;
+  border-radius: 10px;
+  color: aliceblue;
+}
+.beauty_salon_services {
+  margin-left: 11px;
+}
+.beauty_salon_services h5 {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 60px;
+
+  color: #000000;
+}
+
+.for_services_text_css {
+  margin-top: -33px;
+}
+
+.for_spa_text h5 {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 48px;
+  /* identical to box height */
+
+  color: #133e59;
+}
+.for_spa_text {
+  margin-bottom: -15px;
+}
+.for_border_card_dashed {
+  border: 2px dashed #dfdddd;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #e5e5e5;
+}
+
+.for_spa_text p {
+  margin-top: 40px;
+  font-family: SF Pro Text;
+}
+.for_spa_text h4 {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 48px;
+  /* identical to box height */
+
+  color: #f5b51b;
+}
+.for_20_text {
+  margin-top: -20px;
+}
+
+.for_facial_w {
+  width: 90%;
+  height: 281px;
+}
+
+.for_border_card_dashed {
+  height: 281px;
+}
+.for_close_img_modal_services {
+  width: 26px;
+  margin-top: -60px;
+  /* margin-left: 20px; */
+  /* padding-left: 36px; */
+  position: absolute;
+  margin-left: 464px;
+}
+.modal-content {
+  background-color: #133e59;
+}
+.modal_title_services {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 22px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.form-control {
+  background-color: #133e59;
+}
+
+.for_modal_cancel_img_services {
+  width: 30px;
+  /* margin-left: 30px; */
+  position: absolute;
+}
+
+input::placeholder {
+  color: red;
+}
+::-webkit-input-placeholder {
+  /* Edge */
+  color: whitesmoke !important;
+}
+.for_icon_modal {
+  width: 22px;
+  margin-top: 30px;
+  margin-right: 45px;
+}
+.modal_title_services_child {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 53px;
+  color: #ffffff;
+}
+
+.Menicure_Predicure {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 101px;
+  color: #f5b51b;
+}
+.price_thirty_dollars {
+  float: right;
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+
+  color: #f5b51b;
+}
+.price {
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+
+  color: #f5b51b;
+}
+@media (min-width: 360px) and (max-width: 767px) {
+  .for_border_card_dashed {
+    height: 281px;
+    width: 95%;
+    margin-top: 10px;
+  }
+  .for_facial_w {
+    margin-top: 10px;
+  }
+  .for_add_service button {
+    font-size: 9px;
+  }
+  .pull-right {
+    float: right;
+    margin-top: -13px;
+  }
+
+  .for_close_img_modal_services {
+    width: 26px;
+    margin-top: -53px;
+    /* margin-left: 25px; */
+    /* padding-left: 36px; */
+    position: absolute;
+    margin-left: 371px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .for_border_card_dashed {
+    height: 302px;
+  }
+  .beauty_salon_services h5 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 60px;
+    color: #000000;
+  }
+  .for_spa_text h5 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 48px;
+    color: #133e59;
+  }
+
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: 1300px !important;
+    color: azure;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: 1300px !important;
+    color: azure;
+  }
+}
+
+@media (min-width: 2560px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: 1300px !important;
+    color: azure;
+  }
+}

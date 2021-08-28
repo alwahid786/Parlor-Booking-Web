@@ -12,35 +12,35 @@
           <li class="nav-item">
             <a class="nav-link" href="UserSide/HomePageComponent/salons_page.php">Salons</a>
           </li>
-  
+
           <li class="nav-item">
             <a class="nav-link" href="UserSide/HomePageComponent/my_appointments.php">Active Appointments</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Past Appointments</a>
           </li>
-      
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">About Us</a>
           </li>
-  
-  
+
+
           <li class="nav-item for_sign_in_button_css">
           <i class="fa fa-bell-o " aria-hidden="true">
               <span>
-                  <a href="{{ route('login') }}">
+                  <a href="{{ route('weblogin') }}">
                     <button type="button" class="btn btn-outline-warning px-4">Sign In</button>
                   </a>
                   <!-- <button type="button" class="btn btn-warning">Warning</button> -->
-  
-                  
+
+
               </span>
-          </i> 
-        
-          
-  
+          </i>
+
+
+
           </li>
-        </ul> 
+        </ul>
         <!-- <form class="d-flex ml-auto">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

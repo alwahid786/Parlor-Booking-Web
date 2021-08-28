@@ -1,0 +1,200 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.one span {
+  font-family: Poppins;
+  font-style: normal;
+}
+.for-overflow {
+  overflow: hidden;
+}
+/* .for_asside_bar_bg {
+  background-color: #000000;
+  height: auto;
+  color: azure;
+} */
+
+.for_img_css a {
+  color: azure;
+  text-decoration: none;
+}
+
+.for_img_css span {
+  margin-left: 10px;
+}
+
+.for_img_css img {
+  margin-left: 20px;
+  width: 14%;
+}
+
+/*  */
+.pic {
+  display: flex;
+}
+
+.for_img_css_appointment a {
+  color: azure;
+  text-decoration: none;
+}
+
+.for_img_css_appointment span {
+  margin-left: 10px;
+}
+
+.for_img_css_appointment img {
+  margin-left: 20px;
+  width: 12%;
+}
+
+.for_img_css_past a {
+  color: azure;
+  text-decoration: none;
+}
+
+.for_img_css_past span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.for_img_css_past img {
+  margin-left: 20px;
+  width: 10%;
+}
+/*  */
+
+/* Again */
+a {
+  text-decoration: none;
+}
+.for_common_main_assidebar {
+  margin-top: 20px;
+}
+.for_common_main_assidebar img {
+  margin-left: 10px;
+}
+
+.for_common_main_assidebar span {
+  margin-left: 7px;
+  text-decoration: none;
+  color: white;
+  font-family: SF UI Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 29px;
+  color: #ffffff;
+}
+
+.for_pastAppointment_text_css {
+  font-size: 12px !important;
+}
+
+/* .demo {
+  background-color: #000000;
+  margin-bottom: 300px;
+} */
+
+/*  ********************************************************************************************
+Nav Bar css here
+            ******************************************************************************************** */
+
+.dropdown {
+  border-radius: 0;
+  border: 0;
+}
+.dropdown-menu {
+  background: #000000;
+  border: 0;
+  top: 80%;
+  border-radius: 0px 0px 5px 5px;
+}
+.dropdown-item:hover {
+  background: #000000;
+  color: #f5b51b;
+}
+.dropdown-menu a {
+  color: #fff;
+}
+.navbar .nav-item .nav-link {
+  color: #f5b51b !important;
+}
+.navbar .nav-item .nav-link:hover .navbar .nav-item .nav-link {
+  color: red !important;
+}
+
+.sm-menu i {
+  font-size: 20px;
+  padding-top: 5px;
+}
+.sm-menu span {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .for_common_main_assidebar img {
+    width: 15px;
+  }
+  .for_common_main_assidebar span {
+    font-size: 6px;
+  }
+  .for_pastAppointment_text_css {
+    font-size: 6px !important;
+    margin-left: 1px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: auto !important;
+    color: azure;
+  }
+  /* Again Asside Bar */
+  .for_common_main_assidebar img {
+    width: 20px;
+  }
+  .for_common_main_assidebar span {
+    font-size: 10px;
+  }
+  .for_pastAppointment_text_css {
+    font-size: 9px !important;
+  }
+  /* Again Asside Bar End */
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: auto !important;
+    color: azure;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: auto !important;
+    color: azure;
+  }
+}
+
+@media (min-width: 2560px) {
+  .asside_bar_icon_top {
+    width: 390px;
+  }
+  /* .for_img_css {
+    width: 400px;
+  }
+  .for_img_css img {
+    margin-left: 20px;
+    width: 14%;
+    margin-top: -24px;
+  }
+  .for_dashboard_assidebar {
+    font-size: 39px;
+  } */
+}

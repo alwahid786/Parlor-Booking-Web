@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class ServiceController extends Controller
 {
     private $userService;
-    
+
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
@@ -69,8 +69,8 @@ class ServiceController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        if(isset($request->service_uuid)){
 
+        if(isset($request->service_uuid)){
             $service = Service::where('uuid',$request->service_uuid)->first();
         }
         else{
@@ -79,7 +79,6 @@ class ServiceController extends Controller
         }
 
         if(isset($request->salon_uuid)){
-
             $result = $this->userService->checkSalon($request);
             if(!$result['status'])
                 return sendError($result['message'] ,$result['data']);
@@ -88,7 +87,7 @@ class ServiceController extends Controller
 
         DB::beginTransaction();
         try{
-            
+
             $service->name = $request->name??$service->name;
             $service->price = (int)($request->price ?? $service->price);
             $service->salon_id = $service->salon_id ?? $salon->id;

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard_signin.css') }}" >
     <title>Document</title>
     <style>
-  
+
     </style>
 </head>
 <body>
@@ -32,15 +32,15 @@
 
               <div class="for_personal_information">
                   <p>Please Login with your personal information</p>
-                 
+
               </div>
 
-              <form action="" id="frm_signup-d" method="post">
+              <form action="{{ route('weblogin') }}" id="frm_login-d" method="post">
                 <div class="for_common_email_pass pt-4">
                     <p>Email Address</p>
                       <div class="input-group mb-3 w-75 border-bottom">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input class="inp" placeholder="abcd@gmail.com"/>
+                        <input type="email" class="inp" name="email" placeholder="abcd@gmail.com" required/>
                       </div>
                 </div>
 
@@ -48,20 +48,20 @@
                     <p>Password</p>
                       <div class="input-group mb-3 w-75 border-bottom">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input class="inp" placeholder="***********"/>
+                        <input type="password" class="inp" name="password" placeholder="***********" required/>
                       </div>
                 </div>
 
                 <div class="form-check forgot_password_css">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Remember Me
-                      <span class=""><a href="#">Forgot Password?</a></span>
+                      <span class=""><a href="{{ route('forgotPassword') }}">Forgot Password?</a></span>
                   </label>
-                  
+
                 </div>
 
                 <div class="pt-5 text-center button_signin_css">
-                <button type="button" class="btn  btn-lg  w-50 w-sm-25"><span>Sign In</span></button>
+                <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Sign In</span></button>
                 </div>
               </form>
 

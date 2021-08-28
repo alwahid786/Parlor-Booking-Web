@@ -14,12 +14,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
 	private $userService;
-	
+
 	public function __construct(UserService $userService)
 	{
 		$this->userService = $userService;
@@ -44,13 +44,13 @@ class UserController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
-        
+
 
         $user = User::where('uuid', $request->user_uuid)->first();
         if(!$user)
             return sendError("user Not Found",[]);
 
-        DB::beginTransaction();     
+        DB::beginTransaction();
         try {
 
 	        if('user'== $user->type)
@@ -76,11 +76,11 @@ class UserController extends Controller
                         $media->user_id =  $user->id;
                         $media->uuid = str::uuid();
                         $media->name = $media_data['title'];
-                        $media->filename = $media_data['filename']; 
-                        $media->tag = $media_data['tag']; 
-                        $media->path = $media_data['path']; 
+                        $media->filename = $media_data['filename'];
+                        $media->tag = $media_data['tag'];
+                        $media->path = $media_data['path'];
                         $media->media_type = $media_data['type'];
-                        $media->media_ratio = $media_data['ratio']; 
+                        $media->media_ratio = $media_data['ratio'];
                         $media->media_thumbnail   = $media_data['thumbnail'];
                         if(!$media->save()){
 
@@ -90,15 +90,15 @@ class UserController extends Controller
                     }
                 }
                 if(isset($request->days)){
-                    
+
                     $days = array_unique(json_decode($request->days));
                     $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
                     $days_to_add = array_diff($days,$database_days);
                     $days_to_delete = array_diff($database_days,$days);
-                    
+
                     foreach($days_to_delete as $day){
                         $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
-                    }    
+                    }
                     foreach ($days_to_add as $day) {
                         $day_obj = new Day;
                         $day_obj->uuid = str::uuid();
@@ -125,11 +125,11 @@ class UserController extends Controller
                     $media->user_id =  $user->id;
                     $media->uuid = str::uuid();
                     $media->name = $media_data['title'];
-                    $media->filename = $media_data['filename']; 
-                    $media->tag = $media_data['tag']; 
-                    $media->path = $media_data['path']; 
-                    $media->media_type = $media_data['type']; 
-                    $media->media_ratio = $media_data['ratio']; 
+                    $media->filename = $media_data['filename'];
+                    $media->tag = $media_data['tag'];
+                    $media->path = $media_data['path'];
+                    $media->media_type = $media_data['type'];
+                    $media->media_ratio = $media_data['ratio'];
                     $media->media_thumbnail   = $media_data['thumbnail'];
                     if(!$media->save()){
 
@@ -156,9 +156,9 @@ class UserController extends Controller
                 $data['user']['brosche'] = $user->brosche??NULL;
                 $data['user']['days'] = $user->days??Null;
             }
-            
+
         	return sendSuccess('User updated',$data);
-        	
+
 	    }
 	    catch (Exception $e) {
 	    	DB::rollBack();
@@ -180,7 +180,7 @@ class UserController extends Controller
         }
 
 
-    	DB::beginTransaction(); 
+    	DB::beginTransaction();
     	try{
     		if(isset($request->profile_uuid)){
 
@@ -194,7 +194,7 @@ class UserController extends Controller
     		if(isset($request->user_uuid)){
 
     			$user = User::where('uuid',$request->user_uuid)->first();
-    			
+
         		if(null == $user)
         			return sendError('User not found',[]);
 
@@ -220,7 +220,7 @@ class UserController extends Controller
 
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
-        } 
+        }
 
         $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
             ->with(['media','days','services','brosche'])->first();
@@ -291,11 +291,11 @@ class UserController extends Controller
             $media->user_id =  $salon->id;
             $media->uuid = str::uuid();
             $media->name = $media_data['title'];
-            $media->filename = $media_data['filename']; 
-            $media->tag = $media_data['tag']; 
-            $media->path = $media_data['path']; 
+            $media->filename = $media_data['filename'];
+            $media->tag = $media_data['tag'];
+            $media->path = $media_data['path'];
             $media->media_type = $media_data['type'];
-            $media->media_ratio = $media_data['ratio']; 
+            $media->media_ratio = $media_data['ratio'];
             $media->media_thumbnail   = $media_data['thumbnail'];
             if(!$media->save()){
 
@@ -324,7 +324,7 @@ class UserController extends Controller
         unlink(public_path().'/'.$brosche->path);
         $brosche = $brosche->delete();
 
-        return sendSuccess('Deleted',$brosche);        
+        return sendSuccess('Deleted',$brosche);
     }
 
     public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
@@ -347,13 +347,13 @@ class UserController extends Controller
                         $temp['type'] = (in_array($file_extension, $doc_xtensions))? 'pdf' : 'image';
 
                         $targetName = $nature . rand(1000, 9999) . '.' . $file_extension;
-                        $temp['filename'] = $targetName;    
+                        $temp['filename'] = $targetName;
 
                         // upoad file on server
                         $file->move(getUploadDir($nature), $targetName);
                         $targetPath = getUploadDir($nature).$targetName;
                         $temp['path'] = 'uploads/'.$nature .'/'.$targetName;
-                        
+
                         if (in_array($file_extension, $doc_xtensions)) {
                             $temp['ratio'] = 1;
                         }else{
@@ -392,7 +392,7 @@ class UserController extends Controller
             $allowedFilesExtensions = array_merge($video_xtensions, $image_xtensions, $doc_xtensions);
 
             $file_extension = $file->getClientOriginalExtension();
-        
+
             if (in_array($file_extension, $allowedFilesExtensions)) {
                 $temp['title'] = $file->getClientOriginalName();
                 $temp['tag'] = $nature;

@@ -1,0 +1,8 @@
+.for_nav_bar_icon_img {
+  width: 50px;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+}

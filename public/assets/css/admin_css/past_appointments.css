@@ -1,0 +1,297 @@
+/* .for_asside_bar_bg {
+  background-color: #000000;
+  height: auto !important;
+  color: azure;
+} */
+.for_asside_bar_bg {
+  background-color: #000000;
+  /* height: 1000px !important; */
+  color: azure;
+}
+.for_all_appointments h4 {
+  font-family: SF UI Display;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.navbar .nav-item .nav-link {
+  color: #f5b51b !important;
+  font-weight: normal;
+  font-family: SF UI Display;
+}
+li {
+  margin-top: -5px;
+}
+
+.for_main_row_appointment {
+  margin-top: 50px;
+}
+.for_appointments_img_common {
+  width: 135px;
+}
+
+.card_body_for_appointment {
+  margin-top: -16px;
+  margin-left: 20px;
+}
+
+.card_body_for_appointment button {
+  background: rgba(221, 17, 17, 0.66) !important;
+  border-radius: 10px;
+  font-family: Poppins;
+  color: aliceblue;
+}
+
+.card_body_for_appointment h5 {
+  margin-top: 15px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.card_body_for_appointment h6 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.card_body_for_appointment p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #f5b51b;
+}
+
+.card_body_for_appointment h4 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 24px;
+  color: #133e59;
+}
+
+.for_appointments_card_width {
+  width: 100%;
+}
+
+/* For Compelte Past Task */
+.for_complete_css button {
+  background: #0bac38 !important;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .for_appointments_card_width {
+    width: 88%;
+  }
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: auto;
+    color: azure;
+  }
+  .for_appointments_img_common {
+    width: 105px;
+  }
+  .card_body_for_appointment button {
+    height: 27px;
+  }
+
+  .card_body_for_appointment h5 {
+    margin-top: 7px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+  }
+  .card_body_for_appointment h6 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    margin-top: -3px;
+  }
+
+  .card_body_for_appointment p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #f5b51b;
+    margin-top: -2px;
+  }
+  .card_body_for_appointment h4 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
+    color: #133e59;
+    margin-top: -10px;
+  }
+
+  .for_last_card_appointment_css {
+    margin-left: -11px;
+  }
+  .card_body_for_appointment {
+    margin-top: -16px;
+    margin-left: 39px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .for_appointments_img_common {
+    width: 121px;
+  }
+  .card_body_for_appointment {
+    margin-top: -16px;
+    margin-left: 35px;
+  }
+  .card_body_for_appointment button {
+    width: 85px;
+  }
+
+  .card_body_for_appointment h5 {
+    margin-top: 7px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+  }
+  .card_body_for_appointment h6 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  .card_body_for_appointment p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #f5b51b;
+    margin-top: 11px;
+  }
+
+  .card_body_for_appointment h4 {
+    margin-top: -7px;
+  }
+
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: 2000px !important;
+    color: azure;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .for_all_appointments h4 {
+    font-family: SF UI Display;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 11px;
+  }
+  /* NavBar Responsive Start*/
+  .for_nav_bar_icon_img {
+    margin-top: -7px;
+    width: 27px;
+  }
+  .navbar .nav-item .nav-link {
+    color: #f5b51b !important;
+    font-weight: normal;
+    font-family: SF UI Display;
+    margin-left: 5px;
+    margin-top: -7px;
+    font-size: 10px;
+  }
+
+  .for_asside_bar_bg {
+    background-color: #000000;
+    /* height: auto; */
+    /* height: 4000px !important; */
+    color: azure;
+  }
+  /* NavBar Responsive End*/
+
+  .card_body_for_appointment {
+    margin-top: -16px;
+    margin-left: 57px;
+  }
+  .for_appointments_img_common {
+    width: 147px;
+  }
+
+  .card_body_for_appointment h5 {
+    margin-top: 11px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+  }
+
+  .card_body_for_appointment h6 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    margin-top: -1px;
+  }
+  .card_body_for_appointment p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    color: #f5b51b;
+  }
+}
+@media (min-width: 1440px) and (max-width: 2559px) {
+}
+
+@media (min-width: 2560px) {
+  .for_appointments_img_common {
+    width: 250px;
+  }
+  .card_body_for_appointment {
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+
+  .card_body_for_appointment button {
+    width: 166px;
+    font-size: 30px;
+  }
+
+  .card_body_for_appointment h5 {
+    margin-top: 15px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+  }
+  .card_body_for_appointment h6 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 31px;
+  }
+  .card_body_for_appointment p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    color: #f5b51b;
+  }
+  .card_body_for_appointment h4 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 24px;
+    color: #133e59;
+    /* margin-top: 11px !important; */
+    padding-top: 12px;
+  }
+}

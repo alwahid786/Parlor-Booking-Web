@@ -1,0 +1,35 @@
+.for_add_aboutus_bg {
+  background: #e5e5e5;
+}
+
+.pull-right {
+  float: right;
+  margin-top: -26px;
+}
+
+.for_aboutus_text p {
+  margin-top: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+  font-family: SF UI Display;
+}
+
+.for_about_us_text_dummy p {
+  margin-top: 100px;
+  font-family: SF UI Display;
+  font-style: normal;
+  /* font-weight: 500; */
+  font-size: 15px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.for_dummy_text_specific p {
+  margin-top: 30px;
+  font-family: SF UI Display;
+  font-style: normal;
+  /* font-weight: 500; */
+  font-size: 15px;
+  line-height: 23px;
+  color: #000000;
+}

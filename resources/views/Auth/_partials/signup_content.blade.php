@@ -17,7 +17,7 @@
               <div class="for-below">
               <p>below:</p>
               </div>
-             
+
           </div>
 
           <form action="{{ route('signup') }}" id="frm_signup-d" method="post">
@@ -40,24 +40,24 @@
                   </div>
             </div>
 
-            
+
             <div class="d-flex w-75">
               <div class="for_common_email_pass col form-group">
                 <label>Phone Code</label>
-                  
+
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                     <input type="tel" class="form-control form-control-lg inp border-bottom" name="phone_code" placeholder="+ 00" required/>
-                  
+
               </div>
               <div class="for_common_email_pass col form-group">
                 <label>Phone</label>
                   {{-- <div class="input-group mb-3 w-75 border-bottom"> --}}
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="tel" class="form-control form-control-lg inp border-bottom" name="phone_no" placeholder=" 000 00 00 000"  required/>
+                    <input type="tel" class="form-control form-control-lg inp border-bottom" name="phone_number" placeholder=" 000 00 00 000"  required/>
                   {{-- </div> --}}
               </div>
             </div>
-            
+
 
             <div class="for_common_email_pass ">
                 <p>Password</p>
@@ -75,7 +75,7 @@
                   </div>
             </div>
 
-         
+
 
             <div class="pt-5 text-center button_signin_css">
               <button type="submit" class="btn  btn-lg  px-5 "><span>Create</span></button>
@@ -91,7 +91,7 @@
           <div class="text-center for_fb_google">
               <p class="dot">
               <i class="fa fa-facebook" aria-hidden="true"></i>
-              
+
               </p>
               <span class="dot"> <i class="fa fa-google" aria-hidden="true"></i></span>
 

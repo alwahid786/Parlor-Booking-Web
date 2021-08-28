@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 class AppointmentController extends Controller
 {
     private $userService;
-    
+
     public function __construct(UserService $userService,NotificationController $NotificationController)
     {
         $this->userService = $userService;
@@ -44,8 +44,8 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $appointments = Appointment::orderBy('created_at','DESC')->where('status','<>','on-hold');
-        
+        $appointments = Appointment::orderBy('created_at','DESC');
+
         if(isset($request->appointment_uuid)){
             $appointments = $appointments->where('uuid',$request->appointment_uuid)->with('user')->with('salon', function($query){
                     $query->with('offer');
@@ -54,8 +54,8 @@ class AppointmentController extends Controller
             });
 
             $appointments = $appointments->first();
-        
-            return sendSuccess('Appointments',$appointments);  
+
+            return sendSuccess('Appointments',$appointments);
         }
 
         $user = User::where('uuid', $request->user_uuid??$request->user()->uuid)->first();
@@ -75,7 +75,7 @@ class AppointmentController extends Controller
                 $q->with('media');
             })->with('appointmentDetails', function($query){
                     $query->with('services');
-            });  
+            });
 
         if(isset($request->date))
             $appointments->where('date',$request->date);
@@ -90,8 +90,8 @@ class AppointmentController extends Controller
             $appointments->offset($request->offset??0)->limit($request->limit);
 
         $appointments = $appointments->get();
-        
-        return sendSuccess('Appointments',$appointments);                
+
+        return sendSuccess('Appointments',$appointments);
     }
 
     public function updateAppointment(Request $request){
@@ -138,23 +138,23 @@ class AppointmentController extends Controller
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
         $user = $result['data'];
-        
+
         $result = $this->userService->checkAvailableDate($request,$salon);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
-        
+
         $result = $this->userService->checkAvailableSlots($request,$salon);
         $avalible_appointment_slots = $result['data'];
-        
+
         $appointment_time = explode(' ',Carbon::parse($request->time)->format('H:i:s'));
-        
+
         $appointment_time = array_intersect($appointment_time,$avalible_appointment_slots);
         if(NULL == $appointment_time)
             return SendError('Time Slot Not Avalible',[]);
 
 
         DB::beginTransaction();
-        try{            
+        try{
 
             $offer = $salon->where('id',$salon->id)->with(['offer' => function ($query){
                 $query->where('status','active');
@@ -201,7 +201,7 @@ class AppointmentController extends Controller
             $appointment->total_price = $total_price;
             if(isset($discount))
                 $appointment->total_price = $total_price - ($total_price * $discount);
-            
+
             $appointment->save();
 
             if(!$appointment->save())
@@ -242,11 +242,11 @@ class AppointmentController extends Controller
         $startTime = Carbon::parse($salon->start_time)->modify('-30 minutes');
         $endTime = Carbon::parse($salon->end_time);
         $date = Carbon::parse($request->date);
-        
+
         $result = $this->userService->checkAvailableDate($request,$salon);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
-        //making intervals of 30 minutes 
+        //making intervals of 30 minutes
         if(!($startTime->modify('+30 minutes') < $endTime))
             return sendError('Invalid Time',[]);
 
@@ -261,7 +261,7 @@ class AppointmentController extends Controller
         $data['available_slots'] = $available_appointment_slots;
         return sendSuccess('Appointments slots',$data);
 
-    } 
+    }
 
     public function salonOff(Request $request){
 
@@ -277,7 +277,7 @@ class AppointmentController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
-        
+
         //for updaing status
         if(isset($request->offer_uuid)){
 
@@ -299,7 +299,7 @@ class AppointmentController extends Controller
             return sendError('Discount Already Exists In This Salon',$check);
 
 
-        DB::beginTransaction();        
+        DB::beginTransaction();
         try{
             $offer = new Offer;
             $offer->uuid = str::uuid();
@@ -315,5 +315,5 @@ class AppointmentController extends Controller
             return sendError($e->getMessage(), $e->getTrace());
         }
 
-    } 
+    }
 }

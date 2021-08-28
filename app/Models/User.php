@@ -55,7 +55,7 @@ class User extends Authenticatable
         'remember_token',
     ];
     Protected $with = [
-        'media',
+        // 'media',
         'offer'
     ];
 
@@ -80,7 +80,7 @@ class User extends Authenticatable
     function days(){
         return $this->hasMany(Day::class,  'salon_id','id');
     }
-    
+
     function appointments(){
         return $this->hasMany(Appointment::class, 'salon_id','id');
     }

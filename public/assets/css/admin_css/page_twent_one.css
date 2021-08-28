@@ -1,0 +1,560 @@
+.for_hello_beauty_bg {
+  background: linear-gradient(270deg, #133e59 0%, #133e59 48.9%);
+}
+
+.for_hello_beauty_salon span {
+  margin-top: -20px !important;
+}
+.for_please_check_the {
+  margin-top: -20px;
+}
+
+/* For celender  */
+* {
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+}
+body {
+  font-family: Verdana, sans-serif;
+}
+
+.month {
+  /* padding: 30px 10px; */
+
+  /* width: 100%;
+  background: #1abc9c; */
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+}
+
+.month .next {
+  float: right;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 12px;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  font-size: 12px;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #777;
+}
+
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important;
+}
+
+/* Add media queries for smaller screens */
+@media screen and (max-width: 720px) {
+  .weekdays li,
+  .days li {
+    width: 13.1%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li,
+  .days li {
+    width: 12.5%;
+  }
+  .days li .active {
+    padding: 2px;
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li,
+  .days li {
+    width: 12.2%;
+  }
+}
+/* End Celender */
+
+.for_card_all_notifications {
+  width: 100%;
+}
+
+.for_card_all_notifications p {
+  font-size: 14px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: system-ui;
+}
+
+.for_katrina_salon_w h5 {
+  margin-left: -10px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #f5b51b;
+  font-family: cursive;
+}
+.for_katrina_salon_w span {
+  color: black;
+  font-size: 12px;
+  font-family: none;
+}
+
+.for_katrina_salon_w p {
+  font-size: 10px;
+  margin-left: -12px;
+  color: #e7e7e7;
+}
+
+p.dashed {
+  /* border-bottom: 1px solid #dfdfdf; */
+  border-bottom: 1px dashed #dfdfdf;
+
+  /* border-style: dashed; */
+}
+
+.testcolor {
+  background-color: #133e59;
+  color: white;
+}
+
+.avi {
+  color: #dfdfdf;
+}
+
+.ex1 {
+  overflow: scroll;
+  height: 734px;
+}
+
+.for_appointments_card {
+  height: 300px;
+}
+.for_appointments_card h5 {
+  font-size: 12px;
+  font-weight: bold;
+}
+.for_appointments_card span {
+  float: right;
+  margin-right: 10px;
+}
+.for_today {
+  margin-left: 10px !important;
+  font-weight: normal;
+}
+
+.for_today_img img {
+  width: 40px;
+}
+.for_today_img span {
+  margin-right: 38px;
+  margin-top: 0px;
+  font-size: 15px;
+  color: #133e59;
+  font-family: initial;
+}
+.for_waxing {
+  margin-top: -1px !important;
+}
+
+.fa-angle-down {
+  font-size: 16px !important;
+}
+
+.for_finished_css {
+  margin-top: 13px;
+  color: #133e59;
+}
+
+.for_common_set {
+  margin-top: 20px;
+}
+/* .for_finished_csss {
+  margin-top: 30px;
+} */
+
+.for_sm_responsive_appointment h6 {
+  font-size: 10px;
+}
+.for_sm_responsive_appointment span {
+  float: right;
+  font-weight: bold;
+}
+
+.for_appointment_request img {
+  width: 30px;
+}
+
+.for_appointment_request span {
+  font-size: 8px;
+  margin-top: 2px;
+}
+.for_appointment_child {
+  margin-right: 20px;
+  font-weight: normal !important;
+}
+.for_dates p {
+  font-size: 7px;
+  margin-right: 64px;
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+.fa-check-circle-o {
+  margin-right: -34px;
+  font-size: 20px;
+  margin-top: -4px;
+  color: #133e59;
+}
+.fa-times-circle {
+  margin-right: -63px;
+  font-size: 20px;
+  margin-top: -4px;
+  color: #f60707;
+}
+.for_accepted {
+  margin-right: -58px;
+  font-size: 8px;
+}
+.Appointment_scroll {
+  overflow: scroll;
+  height: 600px;
+}
+
+.for_services_main {
+  width: 610px;
+  margin-top: 55px;
+  margin-left: -15px;
+}
+
+.for_services_main span {
+  float: right;
+  color: #ff7a00;
+  font-size: 18px;
+}
+.glitter_ups_salon {
+  margin-left: 10px;
+}
+.for_gliiter_ups_card_radius {
+  border-radius: 15px;
+  background-color: #f6f6f6;
+  height: 160px;
+}
+
+.card-title {
+  margin-top: 20px;
+  color: #000000;
+}
+
+.for_24 {
+  margin-top: -10px;
+  color: #f5b51b;
+  font-size: 24px;
+}
+
+/* .for_over_flow_glitter_ups {
+  overflow: scroll;
+} */
+@media (min-width: 320px) and (max-width: 767px) {
+  .for_asside_bar_bg {
+    background-color: #000000;
+    height: auto;
+    /* height: 2000px !important; */
+    color: azure;
+  }
+  .navbar-nav {
+    display: flex;
+    /* flex-direction: column; */
+    padding-left: revert;
+    /* margin-bottom: inherit; */
+    list-style: none;
+  }
+  .for_hello_beauty_bg {
+    width: 240px;
+  }
+
+  .for_card_celender_w {
+    width: 240px;
+  }
+
+  .for_card_all_notifications {
+    width: 240px;
+  }
+  .for_sm_responsive_appointment {
+    width: 240px;
+  }
+
+  .for_appointments_card {
+    width: 240px;
+  }
+  .for_today_img span {
+    margin-right: 22px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #133e59;
+    font-family: initial;
+  }
+  .for_finished_css {
+    margin-top: 15px;
+    color: #133e59;
+    font-size: 10px;
+  }
+  /* .for_card_all_notifications {
+    width: 240px;
+    overflow: hidden;
+  } */
+
+  .ex1 {
+    overflow: inherit;
+    height: 734px;
+  }
+
+  .for_appointment_request span {
+    margin-right: -16px;
+    font-size: 6px;
+    margin-top: 5px;
+  }
+  .for_dates p {
+    font-size: 8px !important;
+    margin-right: 62px !important;
+    font-weight: 300 !important;
+    margin-top: 4px !important;
+  }
+  .for_appointment_child {
+    margin-right: 26px !important;
+  }
+  .ex1 {
+    overflow: inherit;
+    height: 734px;
+    margin-top: 423px;
+  }
+  .for_services_main {
+    width: 240px !important;
+    margin-top: 55px;
+    margin-left: -15px;
+  }
+
+  /* .for_gliiter_ups_card_radius {
+    border-radius: 15px;
+    background-color: #f6f6f6;
+    height: 160px;
+    margin-left: -22px;
+  } */
+
+  .for_services_main span {
+    float: right;
+    color: #ff7a00;
+    font-size: 11px;
+  }
+  .glitter_ups_salon {
+    width: 70px;
+  }
+
+  .card-title {
+    margin-top: -102px;
+    color: #000000;
+    margin-left: 70px;
+    font-size: 13px;
+  }
+  .card-text {
+    margin-left: 68px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .for_today_img span {
+    margin-right: 3px;
+    margin-top: 4px;
+    font-size: 10px;
+    color: #133e59;
+    font-family: initial;
+  }
+  .for_finished_css {
+    font-size: 9px;
+  }
+  .for_waxing {
+    float: left !important;
+  }
+
+  .for_appointments_card h5 {
+    font-size: 9px;
+    font-weight: bold;
+  }
+
+  .fa-angle-down {
+    font-size: 13px !important;
+  }
+  .for_card_all_notifications {
+    width: 95%;
+  }
+  .for_common_img_md {
+    max-width: 179%;
+    height: auto;
+    margin-left: -10px;
+    margin-top: 4px;
+  }
+
+  .for_services_main {
+    width: 399px;
+    margin-top: 55px;
+    margin-left: -15px;
+    /* height: 100px; */
+  }
+  .for_gliiter_ups_card_radius {
+    border-radius: 15px;
+    background-color: #f6f6f6;
+    height: 119px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    margin-top: 3px;
+  }
+  .for_24 {
+    font-size: 12px;
+    margin-top: -14px !important;
+  }
+
+  .for_appointment_request span {
+    margin-right: -16px;
+    margin-top: 5px;
+    font-size: 6px;
+  }
+
+  .for_appointment_request img {
+    width: 20px;
+  }
+  .for_appointment_child {
+    margin-right: 16px !important;
+    margin-top: 1px !important;
+  }
+
+  .for_dates p {
+    font-size: 6px;
+    margin-right: 48px;
+    /* font-weight: 300; */
+    margin-top: 4px;
+  }
+
+  .for_accepted {
+    font-size: 6px;
+    margin-right: -48px;
+    margin-top: -6px;
+  }
+
+  .fa-check-circle-o {
+    margin-right: -34px;
+    font-size: 15px;
+    margin-top: -9px;
+    color: #133e59;
+  }
+
+  .fa-times-circle {
+    margin-right: -57px;
+    font-size: 16px;
+    margin-top: -6px;
+    color: #f60707;
+  }
+  .ex1 {
+    overflow: scroll;
+    height: 778px;
+  }
+  .card-text {
+    font-size: 12px;
+    margin-top: -5px;
+  }
+  .Appointment_scroll {
+    overflow: scroll;
+    height: 545px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .for_common_img_md {
+    width: 50px;
+  }
+  .for_services_main {
+    width: 543px;
+    margin-top: 70px;
+  }
+  .glitter_ups_salon {
+    margin-top: -11px;
+  }
+  .Appointment_scroll {
+    overflow: scroll;
+    height: 559px;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .for_card_all_notifications {
+    width: 96%;
+  }
+  .for_services_main {
+    width: 770px;
+  }
+  .glitter_ups_salon {
+    margin-left: 10px;
+    margin-top: -9px;
+    width: 100px;
+  }
+  .card-title {
+    margin-top: 20px;
+    color: #000000;
+    font-size: 23px;
+  }
+  .card-text {
+    font-size: 21px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .for_services_main {
+    width: 1384px;
+  }
+
+  .card-title {
+    margin-top: 3px;
+    color: #000000;
+    font-size: 32px;
+  }
+  .card-text {
+    font-size: 30px;
+  }
+  .glitter_ups_salon {
+    width: 94px;
+    margin-top: -5px;
+  }
+}
