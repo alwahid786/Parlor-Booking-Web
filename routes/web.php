@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthWebController;
 use App\Http\Controllers\SaloonDashboardController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/', function () {
-    return view('No_Authentication.no_auth');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::any('/show', function () {
-    return view('No_Authentication.no_auth');
-});
+// Route::any('/show', function () {
+//     return view('Home.home');
+// });
 
 
 Route::group(['middleware' => 'guest'],function () {

@@ -90,7 +90,6 @@ class UserController extends Controller
                     }
                 }
                 if(isset($request->days)){
-
                     $days = array_unique(json_decode($request->days));
                     $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
                     $days_to_add = array_diff($days,$database_days);

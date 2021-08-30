@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  nav_bar_main_bg">
     <div class="container-fluid">
-      <img src="UserSide/user_side_navbar/user_side_navbar_assets/images/Logo.svg" class="img-fluid for_nav_bar_icon">
+      <img src="{{ asset('assets/images/user_nav_images/Logo.svg') }}" class="img-fluid for_nav_bar_icon">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

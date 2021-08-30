@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/navbar_css/nav_bar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/past_appointments.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/profile_page.css') }}">
-    <title>Profile</title>
+    <title>Profile Setting</title>
     <style>
         .pic:hover {
             background-image: url("AssideBar/asside_bar_assets/images/Grouphover.svg");
@@ -125,6 +125,7 @@
 </head>
 
 <body>
+
     <!--Asside Bar Page Start !-->
     <div class="for-overflow">
         <div class="row">
@@ -155,179 +156,216 @@
                                 </span>
                             </div>
 
-
                             <!--After Nav Services Page Start !-->
                             {{-- {{ dd($profile, date('h:i A', strtotime($profile->start_time)) ) }} --}}
                             <div class="container-fluid">
-                                <div class="for_profile_main_img">
-                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
-                                        class="img-fluid " alt="...">
+                                <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile-d"
+                                    method="post" enctype="multipart/form-data">
+                                        @csrf
 
-                                </div>
+                                    <div class="for_profile_main_img">
+                                        <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
+                                            class="img-fluid " alt="...">
 
-
-                                <div class="upload_img_profile_main text-center">
-                                    <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
-                                        <i class="fa fa-upload" aria-hidden="true"></i>
-                                        <span>
-                                            <input type="file" name="media" class="form-control" id="" >
-                                            Upload Image
-                                        </span>
-                                    </button>
-                                </div>
+                                    </div>
 
 
-                                <div class="row">
-                                    <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile-d" method="post" enctype="multipart/form-data">
-
-                                    <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="pt-5 for_upload_img_set_h_w">
-                                            <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
-                                                class="img-fluid " alt="...">
+                                    <div class="upload_img_profile_main text-center">
+                                        <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                            <i class="fa fa-upload" aria-hidden="true"></i>
                                             <span>
-                                                <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
-                                                    class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                <input type="file" name="media" class="form-control" id="">
+                                                Upload Image
                                             </span>
+                                        </button>
+                                    </div>
 
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
-                                                <i class="fa fa-upload" aria-hidden="true"></i>
+
+                                    <div class="row">
+
+
+                                        <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="pt-5 for_upload_img_set_h_w">
+                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
+                                                    class="img-fluid " alt="...">
                                                 <span>
-                                                    <input type="file" name="broshe[]" class="form-control" id="" multiple >
-                                                    Upload Broshe Image
+                                                    <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
+                                                        class="img-fluid for_cancel_icon_in_profile  " alt="...">
                                                 </span>
-                                            </button>
-                                        </div>
-                                    </div>
 
-
-                                    <!-- Start Second Div -->
-                                    <!-- Start Second Div -->
-                                    <div class="row for_salon_infor">
-                                        <p>Salon Information</p>
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-10 col-12">
-
-                                            <div class="for_common_email_pass pt-4">
-                                                <span>Name</span>
-                                                <div class="input-group mb-3 w-75 border-bottom">
-                                                    <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input class="inp" placeholder="David Miller" />
-                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-
-                                            <div class="for_common_email_pass pt-4">
-                                                <span>Email Address</span>
-                                                <div class="input-group mb-3 w-75 border-bottom">
-                                                    <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input type="email" name="saloon_email" class="inp"  placeholder="abcd@gmail.com" />
-                                                </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    <span>
+                                                        <input type="file" name="brosche*[]" class="form-control" id=""
+                                                            multiple>
+                                                        Upload Broshe Image
+                                                    </span>
+                                                </button>
                                             </div>
                                         </div>
 
 
+                                        <!-- Start Second Div -->
+                                        <!-- Start Second Div -->
+                                        <div class="row for_salon_infor">
+                                            <p>Salon Information</p>
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-10 col-12">
 
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-
-                                            <div class="for_common_email_pass pt-4">
-                                                <span>Phone</span>
-                                                <div class="input-group mb-3 w-75 border-bottom">
-                                                    <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input type = "tel" class="inp" name = "phone_no" placeholder="+ 000 0000 000" />
+                                                <div class="for_common_email_pass pt-4">
+                                                    <span>Name</span>
+                                                    <div class="input-group mb-3 w-75 border-bottom">
+                                                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                                        <input type="text" name="name" class="inp" value="{{ $updateProfile->name ?? '' }}" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                            <div class="for_common_email_pass pt-4">
-                                                <span>Location</span>
-                                                <div class="input-group mb-3 w-75 border-bottom">
-                                                    <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input type="text" class="inp" name="location" placeholder="123 Royal Street New York" />
+                                                <div class="for_common_email_pass pt-4">
+                                                    <span>Email Address</span>
+                                                    <div class="input-group mb-3 w-75 border-bottom">
+                                                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                                        <input type="email" name="saloon_email" class="inp"
+                                                           value="{{ $updateProfile->email ?? '' }}" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <span>Timing</span>
 
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                            <div class="for_common_email_pass pt-4">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Opening
-                                                        Timing</label>
-                                                    <input type="text" name="opening-time" class="form-control w-75" id="exampleFormControlInput1" placeholder="9 AM">
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                                <div class="for_common_email_pass pt-4">
+                                                    <span>Phone</span>
+                                                    <div class="input-group mb-3 w-75 border-bottom">
+                                                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                                        <input type="tel" class="inp" name="phone_no"
+                                                             value="{{ $updateProfile->phone_code . $updateProfile->phone_number ?? '' }}" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                            <div class="for_common_email_pass pt-4">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Closing
-                                                        Timing</label>
-                                                    <input type="email" name="closing-time" class="form-control w-75" id="exampleFormControlInput1" placeholder="11 PM">
+                                                <div class="for_common_email_pass pt-4">
+                                                    <span>Location</span>
+                                                    <div class="input-group mb-3 w-75 border-bottom">
+                                                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                                        <input type="text" class="inp" name="location"
+                                                             value="{{ $updateProfile->address ?? '' }}" />
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            <span>Timing</span>
+
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                                <div class="for_common_email_pass pt-4">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Opening
+                                                            Timing</label>
+                                                        <input type="text" name="opening_time" class="form-control w-75"
+                                                            id="exampleFormControlInput1" value="{{ date('H:i', strtotime($updateProfile->start_time))  }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="xol-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                                <div class="for_common_email_pass pt-4">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Closing
+                                                            Timing</label>
+                                                        <input type="text" name="closing_time" class="form-control w-75"
+                                                            id="exampleFormControlInput1" value="{{date('H:i', strtotime($updateProfile->end_time))}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </div>
+                                        <!-- ENd Second Div -->
 
+                                        <!-- ENd Second Div -->
 
-                                    </div>
-                                    <!-- ENd Second Div -->
+                                        {{-- {{ dd($profile->days) }} --}}
 
-                                    <!-- ENd Second Div -->
+                                        <!-- Third Div Start -->
+                                        <div class="availability_on_week_bg">
+                                            <div class="on_week_text">
 
-                                    {{-- {{ dd($profile->days) }} --}}
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                <span class="on_week_separate">Availability On Week</span>
+                                                <div class="row">
+                                                    <div
+                                                        class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                    <!-- Third Div Start -->
-                                    <div class="availability_on_week_bg">
-                                        <div class="on_week_text">
+                                                        @php
+                                                           $saloon_chosen_days = [];
+                                                        @endphp
 
-                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                            <span class="on_week_separate">Availability On Week</span>
-                                            <div class="row">
-                                                <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        @foreach ($updateProfile->days as $saloon_day)
+                                                            @php
+                                                                $saloon_days[] = $saloon_day->day;
+                                                            @endphp
+
+                                                        @endforeach
+
+                                                        @php
+                                                        //    dd($appoinment_days);
+                                                            // echo $appointment_days;
+
+                                                            $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
+                                                            // dd($days, $appoinment_days);
+                                                        @endphp
+
                                                     <ul class='timeline'>
+                                                         @php
+                                                            $chosen_days=  array_diff($days, $saloon_days);
+                                                                // print_r($selected_days);
+                                                        @endphp
 
-                                                        <li>Monday</li>
-                                                        <li>Tuesday</li>
-                                                        <li>Wednesday</li>
-                                                        <li>Thursday</li>
-                                                        <li>Friday</li>
-                                                        <li>Saturday</li>
-                                                        <li>Sunday</li>
+                                                        @foreach ($days as $day)
+                                                                @if(in_array($day, $chosen_days))
+                                                                    <li  > <input type="checkbox" name="days[]" id=""  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                @else
+                                                                    <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                @endif
 
-                                                    </ul>
+                                                        @endforeach
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Third Div End -->
+                                        <!-- Third Div End -->
 
 
-                                    <!-- Description -->
-                                    <div class="pt-5">
-                                        <div class="mb-3 ">
-                                            <label for="exampleFormControlTextarea1"
-                                                class="form-label profile_page_description_text">Description</label>
-                                            <textarea name="description" class="form-control pt-5 mt-5 for_text_area"
-                                                id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                        <!-- Description -->
+                                        <div class="pt-5">
+                                            <div class="mb-3 ">
+                                                <label for="exampleFormControlTextarea1"
+                                                    class="form-label profile_page_description_text">Description</label>
+                                                <textarea name="description"
+                                                    class="form-control pt-5 mt-5 for_text_area"
+                                                    id="exampleFormControlTextarea1" rows="3">{{ $updateProfile->description ?? '' }}</textarea>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-info">Update</button>
-                                    </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-info">Update</button>
+                                        </div>
 
+                                    </div>
                                 </form>
-                                </div>
                             </div>
 
 
@@ -351,17 +389,13 @@
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
     <script>
@@ -397,7 +431,10 @@
 
         })
     </script>
+<script src="{{ asset('assets/js/common.js') }}"></script>
+<script src="{{ asset('assets/js/profileService.js') }}"></script>
 
 </body>
 
 </html>
+

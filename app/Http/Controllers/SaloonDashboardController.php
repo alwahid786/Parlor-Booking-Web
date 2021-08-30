@@ -229,14 +229,36 @@ class SaloonDashboardController extends Controller
     {
         if ($request->getMethod() == 'GET') {
             $request->merge(['id' => $request->uuid]);
-            // $userCntrl = $this->userApiCntrl;
-            // $apiResponse = $userCntrl->getUser($request)->getData();
-            // $data = $apiResponse->data;
-            // // dd($apiResponse->data);
-            // if ($apiResponse->status) {
-            //     return view('Profile.index', ['profile' => $data, 'id' => $data->uuid]);
-            // }
-            return view('Profile.profile_setting', ['id' => $uuid]);
+            $userCntrl = $this->userApiCntrl;
+            $apiResponse = $userCntrl->getUser($request)->getData();
+            // dd($apiResponse->data);
+            if ($apiResponse->status) {
+                $data = $apiResponse->data;
+                return view('Profile.profile_setting', ['updateProfile' => $data, 'id' => $data->uuid]);
+            }
+            // return view('Profile.profile_setting', ['id' => $uuid]);
+        }
+        else {
+            $days = json_encode($request->days);
+            $request->merge([
+                'user_uuid' => $request->uuid,
+                'start_time' => $request->opening_time,
+                'end_time' => $request->closing_time,
+                'address' => $request->location,
+                'days' =>   $days,
+            ]);
+            // dd($request->all());
+            $userCntrl = $this->userApiCntrl;
+            $apiResponse = $userCntrl->updateUser($request)->getData();
+            // dd($apiResponse->data);
+            if ($apiResponse->status) {
+                $update_profile = $apiResponse->data;
+                return sendSuccess('Profile Updated successfully' , $update_profile);
+                // return redirect()->back();
+            }
+            else {
+                return sendError('Profile does not updated successfully', []);
+            }
         }
     }
 
