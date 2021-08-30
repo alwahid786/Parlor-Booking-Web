@@ -43,6 +43,11 @@ Route::group(['middleware' => 'guest'],function () {
 Route::group(['middleware' => 'auth'],function () {
     Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
     Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
+
+    //profile setting
+    Route::any('/profile-setting/{uuid}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
+
+
     Route::any('/service/{uuid}', [SaloonDashboardController::class, 'service'])->name('service');
     Route::post('/add-service/{uuid}', [SaloonDashboardController::class, 'addService'])->name('addService');
     Route::any('/availability/{uuid}', [SaloonDashboardController::class, 'availability'])->name('availability');

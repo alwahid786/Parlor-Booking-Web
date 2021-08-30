@@ -224,4 +224,20 @@ class SaloonDashboardController extends Controller
     }
 
 
+
+    public function profileSetting($uuid, Request $request)
+    {
+        if ($request->getMethod() == 'GET') {
+            $request->merge(['id' => $request->uuid]);
+            // $userCntrl = $this->userApiCntrl;
+            // $apiResponse = $userCntrl->getUser($request)->getData();
+            // $data = $apiResponse->data;
+            // // dd($apiResponse->data);
+            // if ($apiResponse->status) {
+            //     return view('Profile.index', ['profile' => $data, 'id' => $data->uuid]);
+            // }
+            return view('Profile.profile_setting', ['id' => $uuid]);
+        }
+    }
+
 }

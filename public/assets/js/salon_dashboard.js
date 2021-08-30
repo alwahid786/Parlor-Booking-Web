@@ -137,6 +137,7 @@ $(function(event) {
         // }(function() {
         // }));
 
+
         let current_date = (new Date()).toISOString().split('T')[0];
         // console.log(current_date);
         let past_appointments = [];
@@ -150,24 +151,40 @@ $(function(event) {
             // console.log(elm);
         });
 
-        $.each(future_appointments, function(i, elm) {
-            $('.calendar').pignoseCalendar({
-                theme: 'blue', // light, dark, blue,
-                scheduleOptions: {
-                    colors: {
-                        offer: '#2fabb7',
-                    }
-                },
-                schedules: [{
-                    name: 'offer',
-                    date: elm
+        console.log(future_appointments.length);
 
-                }],
-                // date: '2021-08-29',
-                disabledDates: past_appointments
-            });
-            console.log('elm: ', elm);
-        })
+        if (0 != future_appointments.length) {
+
+            $.each(future_appointments, function(i, elm) {
+                $('.calendar').pignoseCalendar({
+                    theme: 'blue', // light, dark, blue,
+                    scheduleOptions: {
+                        colors: {
+                            offer: '#2fabb7',
+                        }
+                    },
+                    schedules: [{
+                        name: 'offer',
+                        date: elm
+
+                    }],
+                    // date: '2021-08-29',
+                    disabledDates: past_appointments
+                });
+                console.log('elm: ', elm);
+            })
+        } else {
+            console.log('ok');
+            $.each(past_appointments, function(i, elm) {
+                $('.calendar').pignoseCalendar({
+                    theme: 'blue', // light, dark, blue,
+
+                    // date: '2021-08-29',
+                    disabledDates: past_appointments
+                });
+                console.log('elm: ', elm);
+            })
+        }
 
 
 

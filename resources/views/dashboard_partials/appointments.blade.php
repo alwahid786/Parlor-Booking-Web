@@ -33,10 +33,11 @@
 
                     </div>
                 @endforeach
-            @else
-            <h3>Not Appointments Available Today</h3>
             @endif
             @endforeach
+            @if ($appointment->date != $current_date)
+                <h5>Not Appointments Available Today</h5>
+            @endif
      </div>
 
 

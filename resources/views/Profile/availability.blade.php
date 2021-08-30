@@ -174,12 +174,11 @@
                                                                 $appointment_days[] = $appointment->day;
 
                                                             @endphp
-                                                        {{-- {{ dd($appoinment_days) }} --}}
 
                                                         @endforeach
 
                                                         @php
-                                                        //    dd($appoinment_days);
+                                                            //    dd($appoinment_days);
                                                             // echo $appointment_days;
 
                                                             $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];

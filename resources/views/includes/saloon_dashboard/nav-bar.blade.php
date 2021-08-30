@@ -19,7 +19,7 @@
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="">Profile</span>
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('profileSetting', $id) }}">
                                 <i class="fa fa-cog" aria-hidden="true"></i><span class="">Settings</span>
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
