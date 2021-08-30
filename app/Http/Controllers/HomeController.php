@@ -18,12 +18,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $salonCntrl = $this->salonApiCntrl;
-        $apiResponse = $salonCntrl->getSalon($request)->getData();
-        if($apiResponse->status)
-        {
-            $allSalons = $apiResponse->data;
+        // $apiResponse = $salonCntrl->getSalon($request)->getData();
+        // if($apiResponse->status)
+        // {
+        //     $allSalons = $apiResponse->data;
 
-            return view('Home.index', ['allSalons'=>$allSalons]);
-        }
+        // }
+        return view('Home.index');
     }
 }

@@ -12,14 +12,14 @@
             <hr class="second_bottom">
         </div>
 
-
+        <div>
+            <span class="dot pull-left for_icon_arrow_left"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+        </div>
+        
         <div class="row for_after_nav_second_css">
             <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ">
                 <div class="___class_+?6___">
-                    <div>
-                        <span class="dot pull-left for_icon_arrow_left"><i class="fa fa-arrow-left"
-                                aria-hidden="true"></i></span>
-                    </div>
+                    
                     <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
                         class="card-img-top for_firts_div_card_first mt-4 img-fluid" alt="...">
 
