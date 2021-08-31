@@ -2523,10 +2523,45 @@ button {
   overflow-x: auto;
 }
 
+.salon_list-s::-webkit-scrollbar{
+  display: none;
+}
+
 .left_scroll-btn-s{
   color: #FF7A00;
+  width: 57px;
+  height: 57px;
 }
 
 .w_max_content-s{
   width: max-content;
+}
+
+.fg_mustard-s{
+  color: #FF7A00;
+}
+
+.discount_large_ticket-s{
+  top: 51px;
+  right: -1px;
+}
+
+.discount_large_text-s{
+  top: 0;
+  left: 13px;
+}
+
+.discount_large_ticket2-s{
+  top: 30px;
+  right: 21px;
+}
+
+.discount_large_text2-s{
+  top: 5px;
+  left: 11px;
+  font-size: 11px;
+}
+
+.h_126px-s{
+  height: 126px;
 }
