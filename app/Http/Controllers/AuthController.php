@@ -28,7 +28,7 @@ class AuthController extends Controller
             'phone_number' => 'required_without:email',
             'phone_code' => 'required_without:email',
             'password' => 'required',
-            'type' => 'required|in:salon,user',
+            'type' => 'required in:salon,user',
         ]);
 
         if($validator->fails()){
@@ -39,8 +39,8 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         $check = User::where('email', $request->email)->first();
-        if($check->type != $request->type)
-            return sendError('Invalid Login',[]);
+        // if($check->type != $request->type)
+        //     return sendError('Invalid Login',[]);
 
         $login_type = 'email';
 

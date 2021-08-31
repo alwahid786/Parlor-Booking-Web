@@ -83,6 +83,7 @@
                         <input type="hidden" name="email" class="email-d" value="{{ $email ?? '' }}">
                           <input type='hidden' name='activation_code' id='hdn_activation_code-d' />
                           <input type="hidden" name="type" class="type-d" value="{{ $type ?? '' }}">
+                          <input type="hidden" name="user_type" class="user_type-d" value="{{ $user_type ?? '' }}"> >
                         <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Okay</span></button>
                     </div>
                 </form>

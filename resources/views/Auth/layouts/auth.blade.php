@@ -49,6 +49,9 @@
     let SaloonDashboard = "{{ route('saloonDashboard') }}";
     let enterCode = "{{ route('enterCode') }}" ;
     let ResetPassword = "{{ route('resetPassword') }}";
+
+    // user routes
+    let UserAppointments = "{{ route('userAppointments') }}"
 </script>
 
 

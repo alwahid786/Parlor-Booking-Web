@@ -28,9 +28,27 @@
           <li class="nav-item for_sign_in_button_css">
           <i class="fa fa-bell-o " aria-hidden="true">
               <span>
+                  @if (\Auth())
+                    {{-- <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ \Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div> --}}
+
+
+                    <a href="{{ route('logout') }}">
+                        <button type="button" class="btn btn-outline-warning px-4">Logout</button>
+                    </a>
+
+                  @else
                   <a href="{{ route('weblogin') }}">
                     <button type="button" class="btn btn-outline-warning px-4">Sign In</button>
                   </a>
+
+                  @endif
                   <!-- <button type="button" class="btn btn-warning">Warning</button> -->
 
 

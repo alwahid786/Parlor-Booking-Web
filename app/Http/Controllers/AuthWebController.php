@@ -24,9 +24,9 @@ class AuthWebController extends Controller
         }
         else {
             // dd($request->all());
-            $request->merge([
-                'type' => 'salon'
-            ]);
+            // $request->merge([
+            //     'type' => 'salon'
+            // ]);
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->login($request)->getData();
             if ($apiResponse->status) {
@@ -47,8 +47,8 @@ class AuthWebController extends Controller
             // dd($request->all());
             $request->merge([
                 'is_social' => 0,
-                'type' => 'salon'
             ]);
+            // dd($request->all());
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->signup($request)->getData();
             // dd($apiResponse);
@@ -63,9 +63,9 @@ class AuthWebController extends Controller
     public function enterCode(Request $request)
     {
         if ($request->getMethod() == 'GET') {
-            if ((isset($request->email) && ('' != $request->email)) || (isset($request->type) && ($request->type))) {
+            if ((isset($request->email) && ('' != $request->email)) || (isset($request->type) && ($request->type))|| (isset($request->user_type) && ($request->user_type)) ) {
 
-            return view('Auth.email_template.enterCode',['email' => $request->email, 'type' => $request->type]);
+            return view('Auth.email_template.enterCode',['email' => $request->email, 'type' => $request->type , 'user_type' => $request->user_type]);
             }else {
                 return abort(422, 'Email is Required');
             }
@@ -114,6 +114,7 @@ class AuthWebController extends Controller
             // dd($request->all());
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->recoverPassword($request)->getData();
+            // dd($apiResponse);
             if ($apiResponse->status) {
                 return sendSuccess('Password Changed Successfully', $apiResponse->data);
             }

@@ -85,10 +85,12 @@ $(function(event) {
                             showConfirmButton: false,
                             timer: 2000
                         }).then((result) => {
-                            // console.log(response);
+                            console.log(response);
                             // return false;
+
                             $('.email-d').val(response.data.user.email);
-                            window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
+
+                            window.location.href = verify_account_page_link + '?email=' + response.data.user.email + '&user_type=' + response.data.user.type;
 
                         });
                     } else {
@@ -182,10 +184,20 @@ $(function(event) {
                             showConfirmButton: false,
                             timer: 2000
                         }).then((result) => {
-                            // console.log(response);
+                            console.log(response);
                             // return false;
+                            let type = response.data.user.type;
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
-                            window.location.href = SaloonDashboard + '?uuid=' + response.data.user.uuid;
+                            if (type == 'salon') {
+                                console.log('salon')
+                                window.location.href = SaloonDashboard + '?uuid=' + response.data.user.uuid;
+
+                            } else {
+                                console.log('user');
+
+                                window.location.href = UserAppointments + '?uuid=' + response.data.user.uuid;
+
+                            }
 
                             // return false;
 
@@ -377,11 +389,18 @@ $(function(event) {
                                 timer: 2000
                             }).then((result) => {
                                 console.log(response);
-                                // return false;
+
+
+                                let user_type = $("user_type-d").val();
+                                if (user_type == 'salon') {
+                                    window.location.href = SaloonDashboard;
+                                } else {
+                                    window.location.href = UserAppointments;
+                                }
                                 // if (type == 'reset_password') {
                                 //     window.location.href = ResetPassword;
                                 // } else {
-                                window.location.href = SaloonDashboard;
+                                // let type = response.data.user.
                                 // }
                             });
                         } else {
@@ -547,6 +566,7 @@ $(function(event) {
                             showConfirmButton: false,
                             timer: 2000
                         }).then((result) => {
+                            let user_type = $('.user_type-d').val();
                             // return false;
                             // $('#validate_code_container-d').hide();
                             // $('#set_password_container-d').show();

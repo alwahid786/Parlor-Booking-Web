@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthWebController;
 use App\Http\Controllers\SaloonDashboardController;
+use App\Http\Controllers\UserAppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,10 @@ use App\Http\Controllers\SaloonDashboardController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Route::get('/', function(){
+//     Auth::logout();
+// });
 
 // Route::any('/show', function () {
 //     return view('Home.home');
@@ -58,6 +64,8 @@ Route::group(['middleware' => 'auth'],function () {
     Route::any('/cancel-appointment/{uuid}', [SaloonDashboardController::class, 'cancelAppointment'])->name('cancelAppointment');
 
 
+    //user authenticated routes
+    Route::any('/user/appointment/{uuid?}', [UserAppointmentController::class, 'userAppointments'])->name('userAppointments');
 
     Route::any('/logout', [AuthWebController::class, 'logout'])->name('logout');
 

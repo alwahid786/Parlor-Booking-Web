@@ -63,6 +63,8 @@
                 <div class="pt-5 text-center button_signin_css">
                     <input type="hidden" name="code" value="{{ $code ?? '' }}">
                     <input type="hidden" name="email" value="{{ $email ?? '' }}">
+                    {{-- <input type="hidden" name="type_of_user" class="type_of_user-d" value="{{ $email ?? '' }}"> --}}
+
                     <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Confirm</span></button>
                 </div>
             </form>

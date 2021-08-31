@@ -40,6 +40,17 @@
                   </div>
             </div>
 
+             <div class="for_common_email_pass ">
+                <p>Role</p>
+                  <div class="input-group mb-3 w-75 border-bottom">
+                    <select class="inp" name="type" aria-label="Default select example">
+                        <option  value="salon" selected>Salon</option>
+                        <option value="user">User</option>
+                    </select>
+                  </div>
+            </div>
+
+
 
             <div class="d-flex w-75">
               <div class="for_common_email_pass col form-group">
@@ -63,7 +74,7 @@
                 <p>Password</p>
                   <div class="input-group mb-3 w-75 border-bottom">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="password" class="inp pswd_password-d" name="password" placeholder="********" required/>
+                    <input type="password" class="inp pswd_password-d" name="password" placeholder="************" required/>
                   </div>
             </div>
 
@@ -71,7 +82,7 @@
                 <p>Confirm Password</p>
                   <div class="input-group mb-3 w-75 border-bottom">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="password" class="inp" name="password_confirmation" placeholder="********" required/>
+                    <input type="password" class="inp" name="password_confirmation" placeholder="************" required/>
                   </div>
             </div>
 
