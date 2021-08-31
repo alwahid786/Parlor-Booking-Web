@@ -103,7 +103,7 @@ button {
   height: 2px !important;
 }
 .for_after_nav_second_css {
-  margin-left: 15px;
+  overflow-x: auto;
 }
 .second_bottom {
   width: 100px;
@@ -126,8 +126,8 @@ button {
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: normal;
-  font-size: 8px;
-  line-height: 19px;
+  /* font-size: 8px;
+  line-height: 19px; */
   /* identical to box height */
 
   color: #353535;
@@ -2479,4 +2479,89 @@ button {
     margin-top: 29px;
     margin-left: -78px;
   }
+}
+
+/*  Mina css */
+.br_20px-s{
+  border-radius: 20px;
+}
+
+.w_165px-s{
+  width: 165px;
+}
+
+.discount_ticket-s{
+  right: 37px;
+  top: 12px;
+  
+}
+
+.discount_text-s{
+  left: 12px;
+  top: 2px;
+}
+
+.w_55px-s{
+  width: 55px;
+}
+
+.fs_9px-s{
+  font-size: 9px;
+}
+
+.discount_ticket_2-s{
+  left: 109px;
+  top: 0;
+}
+
+.discount_text_2-s{
+  left: 6px;
+  top: 0;
+}
+
+.salon_list-s{
+  overflow-x: auto;
+}
+
+.salon_list-s::-webkit-scrollbar{
+  display: none;
+}
+
+.left_scroll-btn-s{
+  color: #FF7A00;
+  width: 57px;
+  height: 57px;
+}
+
+.w_max_content-s{
+  width: max-content;
+}
+
+.fg_mustard-s{
+  color: #FF7A00;
+}
+
+.discount_large_ticket-s{
+  top: 51px;
+  right: -1px;
+}
+
+.discount_large_text-s{
+  top: 0;
+  left: 13px;
+}
+
+.discount_large_ticket2-s{
+  top: 30px;
+  right: 21px;
+}
+
+.discount_large_text2-s{
+  top: 5px;
+  left: 11px;
+  font-size: 11px;
+}
+
+.h_126px-s{
+  height: 126px;
 }

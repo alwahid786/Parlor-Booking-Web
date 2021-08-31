@@ -24,6 +24,7 @@ class HomeController extends Controller
         {
             $allSalons = $apiResponse->data;
 
+
             return view('Home.index', ['allSalons'=>$allSalons]);
         }
 
@@ -32,6 +33,8 @@ class HomeController extends Controller
         // Auth::logout();
 
         // return redirect()->route('weblogin');
+
+    //     return view('Home.index');
 
     }
 }

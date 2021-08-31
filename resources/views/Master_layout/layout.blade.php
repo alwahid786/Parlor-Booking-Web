@@ -75,7 +75,7 @@
     </div>
 
     </div>
-    <div>
+    <div class="w-100">
         @yield('content')
     </div>
 
