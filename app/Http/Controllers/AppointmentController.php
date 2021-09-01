@@ -44,7 +44,10 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        Appointment::orderBy('created_at','DESC')->where('status','on-hold')->update(['status' => 'cancelled']);
+        $appointments = Appointment::orderBy('created_at','DESC')
+            ->where('status','on-hold')
+            ->where('created_at','>',carbon::now()->addSecond(60))
+            ->update(['status' => 'cancelled']);
 
         $appointments = Appointment::orderBy('created_at','DESC');
         
