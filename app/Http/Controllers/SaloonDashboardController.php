@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
 
@@ -225,8 +226,9 @@ class SaloonDashboardController extends Controller
 
 
 
-    public function profileSetting($uuid, Request $request)
+    public function profileSetting($uuid= null, Request $request)
     {
+        // dd($request->all());
         if ($request->getMethod() == 'GET') {
             $request->merge(['id' => $request->uuid]);
             $userCntrl = $this->userApiCntrl;
@@ -239,22 +241,61 @@ class SaloonDashboardController extends Controller
             // return view('Profile.profile_setting', ['id' => $uuid]);
         }
         else {
+            // dd($request->all());
+
+            $this->validate($request, [
+                'name' => 'required',
+                'saloon_email' => 'required|string',
+                'location' => 'required|string',
+                'lat' => 'numeric',
+                'long' => 'numeric',
+                'opening_time' => 'required|date_format:H:i',
+                'closing_time' => 'required|date_format:H:i|after:opening_time',
+                'description' => 'required|string',
+                'days' => 'required',
+            ]);
+
+            $request->merge(['broshe*' => $request->broshe]);
+
+            // $validator = Validator::make($request->all(), [
+            //     'name' => 'required',
+            //     'saloon_email' => 'string',
+            //     'location' => 'required',
+            //     'lat' => 'numeric',
+            //     'long' => 'numeric',
+            //     'opening_time' => 'date_format:H:i',
+            //     'closing_time' => 'date_format:H:i|after:start_time',
+            //     'description' => 'string',
+            //     'days' => 'required',
+            // ]);
+
+            // if ($validator->fails()) {
+
+            //     $data['validation_error'] = $validator->getMessageBag();
+            //     return sendError($validator->errors()->all()[0], $data);
+            // }
+
             $days = json_encode($request->days);
+            // $brosche = json_decode($request->brosche);
             $request->merge([
-                'user_uuid' => $request->uuid,
+                'user_uuid' => $uuid,
                 'start_time' => $request->opening_time,
                 'end_time' => $request->closing_time,
                 'address' => $request->location,
                 'days' =>   $days,
+                'media' => $request->media,
+                'brosche*' => $request->brosche,
             ]);
-            // dd($request->all());
+
+
+            // dd($request->all(), getType($request->media));
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->updateUser($request)->getData();
             // dd($apiResponse->data);
             if ($apiResponse->status) {
                 $update_profile = $apiResponse->data;
-                return sendSuccess('Profile Updated successfully' , $update_profile);
-                // return redirect()->back();
+                // return sendSuccess('Profile Updated successfully' , $update_profile);
+                return redirect()->back();
             }
             else {
                 return sendError('Profile does not updated successfully', []);

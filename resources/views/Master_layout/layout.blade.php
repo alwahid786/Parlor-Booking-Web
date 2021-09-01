@@ -99,6 +99,7 @@
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <script src="{{ asset('assets/js/user.js') }}"></script>
 
     <script>
         $(function(event) {
@@ -113,6 +114,9 @@
     {{-- @stack('footer-head-scripts') --}}
     @yield('footer-scripts')
 
+    <script>
+        let LandingPage ="{{ route('home') }}"
+    </script>
 
 </body>
 

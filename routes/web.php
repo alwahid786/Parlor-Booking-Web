@@ -19,6 +19,7 @@ use App\Http\Controllers\UserAppointmentController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){
 //     Auth::logout();
@@ -46,27 +47,32 @@ Route::group(['middleware' => 'guest'],function () {
 
 
 Route::group(['middleware' => 'auth'],function () {
-    Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
-    Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
+    // Route::group(['prefix' => 'auth'], function () {
 
-    //profile setting
-    Route::any('/profile-setting/{uuid}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
+        Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
+        Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
+
+        //profile setting
+        Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
 
 
-    Route::any('/service/{uuid}', [SaloonDashboardController::class, 'service'])->name('service');
-    Route::post('/add-service/{uuid}', [SaloonDashboardController::class, 'addService'])->name('addService');
-    Route::any('/availability/{uuid}', [SaloonDashboardController::class, 'availability'])->name('availability');
-    Route::any('/appointments/{uuid}', [SaloonDashboardController::class, 'appointments'])->name('appointments');
-    Route::any('/past-appointments/{uuid}', [SaloonDashboardController::class, 'pastAppointments'])->name('pastAppointments');
-    Route::any('/about-us/{uuid}', [SaloonDashboardController::class, 'aboutUs'])->name('aboutUs');
+        Route::any('/service/{uuid}', [SaloonDashboardController::class, 'service'])->name('service');
+        Route::post('/add-service/{uuid}', [SaloonDashboardController::class, 'addService'])->name('addService');
+        Route::any('/availability/{uuid}', [SaloonDashboardController::class, 'availability'])->name('availability');
+        Route::any('/appointments/{uuid}', [SaloonDashboardController::class, 'appointments'])->name('appointments');
+        Route::any('/past-appointments/{uuid}', [SaloonDashboardController::class, 'pastAppointments'])->name('pastAppointments');
+        Route::any('/about-us/{uuid}', [SaloonDashboardController::class, 'aboutUs'])->name('aboutUs');
+
+
+
+        //user authenticated routes
+        Route::any('/user/appointment/{uuid?}', [UserAppointmentController::class, 'userAppointments'])->name('userAppointments');
+
+
+    // });
+    Route::any('/logout', [AuthWebController::class, 'logout'])->name('logout');
 
     Route::any('/accpet-appointment/{uuid}', [SaloonDashboardController::class, 'acceptAppointment'])->name('acceptAppointment');
     Route::any('/cancel-appointment/{uuid}', [SaloonDashboardController::class, 'cancelAppointment'])->name('cancelAppointment');
-
-
-    //user authenticated routes
-    Route::any('/user/appointment/{uuid?}', [UserAppointmentController::class, 'userAppointments'])->name('userAppointments');
-
-    Route::any('/logout', [AuthWebController::class, 'logout'])->name('logout');
 
 });

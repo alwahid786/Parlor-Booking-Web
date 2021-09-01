@@ -173,6 +173,9 @@ $(function(event) {
                 format_date: true,
 
             },
+            days: {
+                required: '#day:checked',
+            }
         },
         messages: {
 
@@ -201,6 +204,9 @@ $(function(event) {
                 required: "Closing Time is Required",
                 // time: "required time",
             },
+            days: {
+                required: "Please select days for available.",
+            }
 
         },
         errorPlacement: function(error, element) {
@@ -215,10 +221,49 @@ $(function(event) {
         },
         submitHandler: function(form) {
             // console.log('submit handler');
+            if ($('input[name^=days]:checked').length <= 0) {
+                errorAlert('Please select days of availability');
+                return false;
+            }
+
+            // console.log($(form).serialize());
+            var fd = new FormData(document.getElementById("frm_update_profile-d"));
+            fd.name = $('.name-d').val();
+            // console.log(fd.name);
+
+            var files = $('#file')[0].files;
+
+            // Check file selected or not
+            if (files.length > 0) {
+                fd.append('file', files[0]);
+            }
+            console.log(fd);
+
+            return false;
+
+
+            $(form).append('media', $("#media").files);
+
+            // return false;
+
+
+            // let images = $("#media").val();
+            // images = images.substring(12);
+            // let broshe_images = [];
+            // let broshe = document.getElementById('files').files.length;
+            // console.log('broshe: ', broshe);
+            // for (var index = 0; index < broshe; index++) {
+            //     broshe_images.push(document.getElementById('files').files[index].name);
+            // }
+
+            // console.log(broshe_images);
+
+            // return false;
             $.ajax({
                 url: $(form).attr('action'),
                 type: 'POST',
                 dataType: 'json',
+                mimeType: "multipart/form-data",
                 data: $(form).serialize(),
                 beforeSend: function() {
                     showPreLoader();

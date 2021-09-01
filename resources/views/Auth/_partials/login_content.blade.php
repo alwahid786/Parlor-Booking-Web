@@ -8,13 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard_signin.css') }}" >
-    <title>Document</title>
+    <title>Sign In</title>
     <style>
 
     </style>
 </head>
 <body>
     <!--Sign In Page Start !-->
+
     <div class="for-overflow">
       <div class="row">
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
@@ -75,6 +76,7 @@
     </div>
 
 
+        {{--  {{ dd('auth-content') }}  --}}
 
 
     <!--Sign In Page End !-->

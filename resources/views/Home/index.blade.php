@@ -9,17 +9,17 @@
         <div class="row">
             <div class="col-10 text-center">
                 <div class=" for_tap_salon_css">
-                    <h1>Tap Salon</h1>
+                    <h1>Top Salon</h1>
                     <hr class="mx-auto fg_mustard-s my-2" width="120">
                     <hr class="mx-auto fg_mustard-s mt-0" width="64">
                 </div>
-                
+
             </div>
             <div class="col-2 d-flex justify-content-end">
-                <span class="fg_mustard-s">View more<i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-            </div>       
+                <a href=""><span class="fg_mustard-s">View more<i class="fa fa-arrow-right" aria-hidden="true"></i></span></a>
+            </div>
         </div>
-        
+
         <div class="row ">
             <!-- <div class="border-0 rounded-circle shadow left_scroll-btn-s">
                 <span class="  px-2 py-3 pull-left "><i class="fa fa-arrow-left m-0" aria-hidden="true"></i></span>
@@ -27,74 +27,35 @@
             <div>
                 <span class=""><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
             </div>  -->
-            
+
             <div class="col d-flex salon_list-s">
-                <div class="row px-1 ">
-                    <div class="col">
-                        <div class="card border-0">
-                            <div class="position-absolute discount_ticket-s">
-                                <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
-                                <div class="position-absolute discount_text-s">
-                                    <h6 class="mb-0  text-white">Discount</h6>
-                                    <span class=" text-white fs_9px-s">Up to 50% OFF</span>
+                @foreach ($allSalons as $salon)
+                    {{-- {{ dd($salon) }} --}}
+                    <div class="row px-1 ">
+                        <div class="col">
+                            <div class="card border-0">
+                                <div class="position-absolute discount_ticket-s">
+                                    <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
+                                    <div class="position-absolute discount_text-s">
+                                        <h6 class="mb-0  text-white">Discount</h6>
+                                        <span class=" text-white fs_9px-s">{{ $salon->offer == null ? 'O' : $salon->offer  }}</span>
+                                    </div>
+                                </div>
+                                <div class="br_20px-s w_165px-s">
+                                    <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
+                                </div>
+                                <div class="card-body px-0">
+                                    <h4 class="text-break text-wrap">{{ $salon->name ?? '' }}</h4>
                                 </div>
                             </div>
-                            <div class="br_20px-s w_165px-s">
-                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
+                            <div class="w_max_content-s">
+                                <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>{{ Str::limit($salon->description, 10, ' ...')  }}</span>
                             </div>
-                            <div class="card-body px-0">
-                                <h4 class="text-break text-wrap">GlitterUps</h4>
-                            </div>
-                        </div>
-                        <div class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
                         </div>
                     </div>
-                </div>
-                <div class="row px-1 ">
-                    <div class="col">
-                        <div class="card border-0">
-                            <div class="position-absolute discount_ticket-s">
-                                <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
-                                <div class="position-absolute discount_text-s">
-                                    <h6 class="mb-0  text-white">Discount</h6>
-                                    <span class=" text-white fs_9px-s">Up to 50% OFF</span>
-                                </div>  
-                            </div>
-                            <div class="br_20px-s w_165px-s">
-                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
-                            </div>
-                            <div class="card-body px-0">
-                                <h4 class="text-break text-wrap">GlitterUps</h4>
-                            </div>
-                        </div>
-                        <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
-                    </div>
-                </div>
-                <div class="row px-1 ">
-                    <div class="col">
-                        <div class="card border-0">
-                            <div class="position-absolute discount_ticket_2-s">
-                                <img src=" {{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }} " class="img-fluid " width="45"  alt="...">
-                                <div class="position-absolute discount_text_2-s">
-                                    <span class=" text-white text-break fs_9px-s">Big offer Buy 5 GET 1 FREE</span>
-                                </div>  
-                            </div>
-                            <div class="br_20px-s w_165px-s">
-                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
-                            </div>
-                            <div class="card-body px-0">
-                                <h4 class="text-break text-wrap">GlitterUps</h4>
-                            </div>
-                        </div>
-                        <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
-                    </div>
-                </div>
-                <div class="row px-1 ">
+                @endforeach
+
+                {{-- <div class="row px-1 ">
                     <div class="col">
                         <div class="card border-0">
                             <div class="position-absolute discount_ticket-s">
@@ -112,30 +73,8 @@
                             </div>
                         </div>
                         <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
                         </div>
-                    </div>
-                </div>
-                <div class="row px-1 ">
-                    <div class="col">
-                        <div class="card border-0">
-                            <div class="position-absolute discount_ticket-s">
-                                <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
-                                <div class="position-absolute discount_text-s">
-                                    <h6 class="mb-0  text-white">Discount</h6>
-                                    <span class=" text-white fs_9px-s">Up to 50% OFF</span>
-                                </div>  
-                            </div>
-                            <div class="br_20px-s w_165px-s">
-                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
-                            </div>
-                            <div class="card-body px-0">
-                                <h4 class="text-break text-wrap">GlitterUps</h4>
-                            </div>
-                        </div>
-                        <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
                     </div>
                 </div>
                 <div class="row px-1 ">
@@ -145,7 +84,7 @@
                                 <img src=" {{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }} " class="img-fluid " width="45"  alt="...">
                                 <div class="position-absolute discount_text_2-s">
                                     <span class=" text-white text-break fs_9px-s">Big offer Buy 5 GET 1 FREE</span>
-                                </div>  
+                                </div>
                             </div>
                             <div class="br_20px-s w_165px-s">
                                 <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
@@ -155,8 +94,8 @@
                             </div>
                         </div>
                         <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row px-1 ">
@@ -177,7 +116,7 @@
                             </div>
                         </div>
                         <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
                         </div>
                     </div>
                 </div>
@@ -189,7 +128,7 @@
                                 <div class="position-absolute discount_text-s">
                                     <h6 class="mb-0  text-white">Discount</h6>
                                     <span class=" text-white fs_9px-s">Up to 50% OFF</span>
-                                </div>  
+                                </div>
                             </div>
                             <div class="br_20px-s w_165px-s">
                                 <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
@@ -199,8 +138,8 @@
                             </div>
                         </div>
                         <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row px-1 ">
@@ -210,7 +149,7 @@
                                 <img src=" {{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }} " class="img-fluid " width="45"  alt="...">
                                 <div class="position-absolute discount_text_2-s">
                                     <span class=" text-white text-break fs_9px-s">Big offer Buy 5 GET 1 FREE</span>
-                                </div>  
+                                </div>
                             </div>
                             <div class="br_20px-s w_165px-s">
                                 <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
@@ -220,15 +159,80 @@
                             </div>
                         </div>
                         <div  class="w_max_content-s">
-                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span> 
-                        </div>  
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
                     </div>
                 </div>
-            </div> 
-            
+                <div class="row px-1 ">
+                    <div class="col">
+                        <div class="card border-0">
+                            <div class="position-absolute discount_ticket-s">
+                                <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
+                                <div class="position-absolute discount_text-s">
+                                    <h6 class="mb-0  text-white">Discount</h6>
+                                    <span class=" text-white fs_9px-s">Up to 50% OFF</span>
+                                </div>
+                            </div>
+                            <div class="br_20px-s w_165px-s">
+                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
+                            </div>
+                            <div class="card-body px-0">
+                                <h4 class="text-break text-wrap">GlitterUps</h4>
+                            </div>
+                        </div>
+                        <div  class="w_max_content-s">
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-1 ">
+                    <div class="col">
+                        <div class="card border-0">
+                            <div class="position-absolute discount_ticket-s">
+                                <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} " class="img-fluid " width="100"  alt="...">
+                                <div class="position-absolute discount_text-s">
+                                    <h6 class="mb-0  text-white">Discount</h6>
+                                    <span class=" text-white fs_9px-s">Up to 50% OFF</span>
+                                </div>
+                            </div>
+                            <div class="br_20px-s w_165px-s">
+                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
+                            </div>
+                            <div class="card-body px-0">
+                                <h4 class="text-break text-wrap">GlitterUps</h4>
+                            </div>
+                        </div>
+                        <div  class="w_max_content-s">
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-1 ">
+                    <div class="col">
+                        <div class="card border-0">
+                            <div class="position-absolute discount_ticket_2-s">
+                                <img src=" {{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }} " class="img-fluid " width="45"  alt="...">
+                                <div class="position-absolute discount_text_2-s">
+                                    <span class=" text-white text-break fs_9px-s">Big offer Buy 5 GET 1 FREE</span>
+                                </div>
+                            </div>
+                            <div class="br_20px-s w_165px-s">
+                                <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}" class="card-img-top img-fluid br_20px-s" alt="...">
+                            </div>
+                            <div class="card-body px-0">
+                                <h4 class="text-break text-wrap">GlitterUps</h4>
+                            </div>
+                        </div>
+                        <div  class="w_max_content-s">
+                            <span class=""><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>1681 Vine Street New York</span>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+
         </div>
-        
-        
+
+
 
             <!-- <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ">
                 <div class="___class_+?19___">
@@ -292,7 +296,7 @@
 
 
                 </div>
-            </div> 
+            </div>
 
             <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ">
                 <div class="___class_+?42___">
@@ -366,7 +370,7 @@
 
 
 
-        
+
 
     </div>
     <!--Home Bar Page End !-->
@@ -392,47 +396,50 @@
                             <hr class="mx-auto fg_mustard-s my-2" width="120">
                             <hr class="mx-auto fg_mustard-s mt-0" width="64">
                         </div>
-                        
+
                     </div>
                     <div class="col-2 d-flex justify-content-end">
-                        <span class="fg_mustard-s">View more<i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <a href=""><span class="fg_mustard-s">View more<i class="fa fa-arrow-right" aria-hidden="true"></i></span></a>
                     </div>
-                    
+
                 </div>
-        
+
 
 
         <div class="row for_after_nav_second_css">
-            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
-                <div class="card border-0">
-                    <div class="position-absolute discount_large_ticket-s">
-                        <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"class="img-fluid  " alt="...">
-                        <div class="position-absolute text-white discount_large_text-s">
-                            <h6 class="mb-0">Discount</h6>
-                            <span class="up_to_fifty_percent">Up to 50% OFF</span>
-                        </div>
-                        
-                            
-                        </span>
-                    </div>
-                    <div>
-                        <a href="UserSide/HomePageComponent/salons_child_one.php">
-                            <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}" class="card-img-top  mt-4 img-fluid" alt="...">
-                        </a>
-                    </div>
-                
-                    
-                    <div class="card-body for_card_body_mll">
+            @foreach ($salonsNearByMe as $salon)
+                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
+                    <div class="card border-0">
+                        <div class="position-absolute discount_large_ticket-s">
+                            <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"class="img-fluid  " alt="...">
+                            <div class="position-absolute text-white discount_large_text-s">
+                                <h6 class="mb-0">Discount</h6>
+                                <span class="up_to_fifty_percent">{{ $salon->offer == null ? 'O' : $salon->offer  }}</span>
+                            </div>
 
-                        <h6 class="for_glitter_ups_csss">GlitterUps</h6>
-                        <p class="card-text "> 
-                            <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                             <span  class="css_for_1681_vinee">1681 Vine Street New York</span>
-                        </p>
+
+                            </span>
+                        </div>
+                        <div>
+                            <a href="UserSide/HomePageComponent/salons_child_one.php">
+                                <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}" class="card-img-top  mt-4 img-fluid" alt="...">
+                            </a>
+                        </div>
+
+
+                        <div class="card-body for_card_body_mll">
+
+                            <h6 class="for_glitter_ups_csss">{{ $salon->name ?? '' }}</h6>
+                            <p class="card-text ">
+                                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                <span  class="css_for_1681_vinee">{{ Str::limit($salon->description, 10, ' ...')  }}</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
+{{--
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-12 ">
 
                 <div class="card border-0">
@@ -442,8 +449,8 @@
                             <h6 class="mb-0">Discount</h6>
                             <span class="up_to_fifty_percent">Up to 50% OFF</span>
                         </div>
-                        
-                            
+
+
                         </span>
                     </div>
                     <div>
@@ -451,12 +458,12 @@
                             <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}" class="card-img-top  mt-4 img-fluid" alt="...">
                         </a>
                     </div>
-                
-                    
+
+
                     <div class="card-body for_card_body_mll">
 
                         <h6 class="for_glitter_ups_csss">GlitterUps</h6>
-                        <p class="card-text "> 
+                        <p class="card-text ">
                             <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                              <span  class="css_for_1681_vinee">1681 Vine Street New York</span>
                         </p>
@@ -465,7 +472,7 @@
             </div>
 
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-12 ">
-    
+
                     <div class="card border-0">
                         <div class="position-absolute discount_large_ticket2-s">
                             <img src="{{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }}" class="img-fluid h_126px-s " alt="...">
@@ -489,17 +496,17 @@
 
                         <div class="card-body for_card_body_mll">
                             <h6 class="for_glitter_ups_csss">GlitterUps</h6>
-                            <p class="card-text "> 
+                            <p class="card-text ">
                                 <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                 <span class="css_for_1681_vinee">1681 Vine Street New York</span> 
+                                 <span class="css_for_1681_vinee">1681 Vine Street New York</span>
                             </p>
                         </div>
                     </div>
 
-            </div>
+            </div> --}}
 
-            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
- 
+            {{-- <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
+
                 <div class="card border-0">
                         <div class="position-absolute discount_large_ticket2-s">
                             <img src="{{ asset('assets/images/home_page_component/Blue_image_absolute.svg') }}" class="img-fluid h_126px-s " alt="...">
@@ -523,16 +530,16 @@
 
                         <div class="card-body for_card_body_mll">
                             <h6 class="for_glitter_ups_csss">GlitterUps</h6>
-                            <p class="card-text "> 
+                            <p class="card-text ">
                                 <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                 <span class="css_for_1681_vinee">1681 Vine Street New York</span> 
+                                 <span class="css_for_1681_vinee">1681 Vine Street New York</span>
                             </p>
                         </div>
                     </div>
 
                 </div>
 
-        </div>
+        </div> --}}
 
     </div>
     <!--Home Bar Page End !-->

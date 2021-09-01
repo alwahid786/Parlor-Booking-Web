@@ -190,7 +190,7 @@ $(function(event) {
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
                             if (type == 'salon') {
                                 console.log('salon')
-                                window.location.href = SaloonDashboard + '?uuid=' + response.data.user.uuid;
+                                window.location.href = venderProfile + '?uuid=' + response.data.user.uuid;
 
                             } else {
                                 console.log('user');

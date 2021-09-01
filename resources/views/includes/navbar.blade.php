@@ -28,7 +28,7 @@
           <li class="nav-item for_sign_in_button_css">
           <i class="fa fa-bell-o " aria-hidden="true">
               <span>
-                  @if (\Auth())
+                  @if (\Auth::user())
                     {{-- <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ \Auth::user()->name }}

@@ -18,15 +18,45 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $salonCntrl = $this->salonApiCntrl;
-        $apiResponse = $salonCntrl->getSalon($request)->getData();
-        if($apiResponse->status)
+        // dd($request->all());
+
+        $apiResponse1 = '';
+        $apiResponse2 = '';
+
+        if(isset($request->lat) && ('' !== $request->lat) || isset($request->long) && ('' !== $request->long))
         {
-            $allSalons = $apiResponse->data;
-
-
-            return view('Home.index', ['allSalons'=>$allSalons]);
+            // dd($request->lat, $request->long);
+            $request->merge([
+                'lat' => $request->lat,
+                'long' => $request->long
+            ]);
+            // dd($request->all());
+            $salonCntrl = $this->salonApiCntrl;
+            $apiResponse1 = $salonCntrl->getSalon($request)->getData();
         }
+        $salonCntrl = $this->salonApiCntrl;
+        $request->merge([
+            'popular' => '1'
+        ]);
+
+
+        // dd($apiResponse1);
+
+        $apiResponse2 = $salonCntrl->getSalon($request)->getData();
+        if($apiResponse1->status ?? true || $apiResponse2->status)
+        {
+            $salonsNearByMe = $apiResponse1->data ?? null;
+            if(null == $salonsNearByMe)
+            {
+                $salonsNearByMe = $apiResponse2->data;
+            }
+            $allSalons = $apiResponse2->data;
+
+            // dd($allSalons, $salonsNearByMe);
+            return view('Home.index', ['allSalons'=>$allSalons, 'salonsNearByMe'=>$salonsNearByMe]);
+        }
+
+
 
         // dd('opk');
 

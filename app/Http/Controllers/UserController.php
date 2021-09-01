@@ -260,7 +260,6 @@ class UserController extends Controller
             $salon->offset($request->offset??0)->limit($request->limit);
 
         $salon = $salon->get();
-
         return SendSuccess('Salons',$salon);
     }
 

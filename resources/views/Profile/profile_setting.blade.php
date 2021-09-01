@@ -158,13 +158,24 @@
 
                             <!--After Nav Services Page Start !-->
                             {{-- {{ dd($profile, date('h:i A', strtotime($profile->start_time)) ) }} --}}
+                            {{--  {{ dd($updateProfile) }}  --}}
+                              {{--  @if (count($errors) > 0)
+                                    <div class = "alert alert-danger">
+                                        <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
+                                @endif  --}}
+
                             <div class="container-fluid">
-                                <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile-d"
+                                <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile12-d"
                                     method="post" enctype="multipart/form-data">
                                         @csrf
 
                                     <div class="for_profile_main_img">
-                                        <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
+                                        <img src="{{ asset('/'.$updateProfile->brosche[0]->path) }} "
                                             class="img-fluid " alt="...">
 
                                     </div>
@@ -174,7 +185,8 @@
                                         <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
                                             <i class="fa fa-upload" aria-hidden="true"></i>
                                             <span>
-                                                <input type="file" name="media" class="form-control" id="">
+                                                {{--  <input type="file" name="images" class="form-control media" id="media">  --}}
+                                                <input type="file" name="media" class="form-control" id="media12">
                                                 Upload Image
                                             </span>
                                         </button>
@@ -185,21 +197,24 @@
 
 
                                         <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="pt-5 for_upload_img_set_h_w">
-                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
-                                                    class="img-fluid " alt="...">
-                                                <span>
-                                                    <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
-                                                        class="img-fluid for_cancel_icon_in_profile  " alt="...">
-                                                </span>
 
-                                            </div>
+                                            @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
+                                                <div class="pt-5 for_upload_img_set_h_w">
+                                                    <img src="{{ asset('/'.$brosche->path) }}"
+                                                    class="img-fluid " alt="...">
+                                                    <span>
+                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
+                                                        class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                    </span>
+
+                                                </div>
+                                            @endforeach
                                             <div>
-                                                <button type="button"
-                                                    class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                                <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
                                                     <i class="fa fa-upload" aria-hidden="true"></i>
                                                     <span>
-                                                        <input type="file" name="brosche*[]" class="form-control" id=""
+                                                        {{--  <input type="file" id='files' name="files[]" multiple>  --}}
+                                                        <input type="file" name="brosche[]" class="form-control broshe" id="broshe12"
                                                             multiple>
                                                         Upload Broshe Image
                                                     </span>
@@ -219,6 +234,10 @@
                                                     <div class="input-group mb-3 w-75 border-bottom">
                                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                         <input type="text" name="name" class="inp" value="{{ $updateProfile->name ?? '' }}" />
+
+                                                        @error('name')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -231,6 +250,9 @@
                                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                         <input type="email" name="saloon_email" class="inp"
                                                            value="{{ $updateProfile->email ?? '' }}" />
+                                                            @error('saloon_email')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,6 +267,9 @@
                                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                         <input type="tel" class="inp" name="phone_no"
                                                              value="{{ $updateProfile->phone_code . $updateProfile->phone_number ?? '' }}" />
+                                                        @error('phone_no')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,6 +282,9 @@
                                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                         <input type="text" class="inp" name="location"
                                                              value="{{ $updateProfile->address ?? '' }}" />
+                                                        @error('location')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,8 +298,13 @@
                                                         <label for="exampleFormControlInput1"
                                                             class="form-label">Opening
                                                             Timing</label>
-                                                        <input type="text" name="opening_time" class="form-control w-75"
+                                                        <input type="time" name="opening_time" class="form-control w-75"
                                                             id="exampleFormControlInput1" value="{{ date('H:i', strtotime($updateProfile->start_time))  }}">
+
+                                                        @error('opening_time')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -283,8 +316,13 @@
                                                         <label for="exampleFormControlInput1"
                                                             class="form-label">Closing
                                                             Timing</label>
-                                                        <input type="text" name="closing_time" class="form-control w-75"
+                                                        <input type="time" name="closing_time" class="form-control w-75"
                                                             id="exampleFormControlInput1" value="{{date('H:i', strtotime($updateProfile->end_time))}}">
+
+                                                        @error('closing_time')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,9 +342,7 @@
                                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                                 <span class="on_week_separate">Availability On Week</span>
                                                 <div class="row">
-                                                    <div
-                                                        class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+                                                    <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         @php
                                                            $saloon_chosen_days = [];
                                                         @endphp
@@ -319,29 +355,29 @@
                                                         @endforeach
 
                                                         @php
-                                                        //    dd($appoinment_days);
-                                                            // echo $appointment_days;
 
                                                             $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 
-                                                            // dd($days, $appoinment_days);
                                                         @endphp
 
-                                                    <ul class='timeline'>
-                                                         @php
-                                                            $chosen_days=  array_diff($days, $saloon_days);
-                                                                // print_r($selected_days);
-                                                        @endphp
+                                                        <ul class='timeline'>
+                                                            @php
+                                                                $chosen_days=  array_diff($days, $saloon_days??[]);
 
-                                                        @foreach ($days as $day)
-                                                                @if(in_array($day, $chosen_days))
-                                                                    <li  > <input type="checkbox" name="days[]" id=""  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
-                                                                @else
-                                                                    <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
-                                                                @endif
+                                                            @endphp
 
-                                                        @endforeach
+                                                            @foreach ($days as $day)
+                                                                    @if(in_array($day, $chosen_days))
+                                                                        <li> <input type="checkbox" name="days[]" id="day"  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                    @else
+                                                                        <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                    @endif
 
+                                                            @endforeach
+                                                            @error('days')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -357,11 +393,17 @@
                                                 <textarea name="description"
                                                     class="form-control pt-5 mt-5 for_text_area"
                                                     id="exampleFormControlTextarea1" rows="3">{{ $updateProfile->description ?? '' }}</textarea>
+
+                                                    @error('description')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+
                                             </div>
                                         </div>
 
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-info">Update</button>
+                                            {{--  <input type="hidden" name="user_uuid" >  --}}
                                         </div>
 
                                     </div>

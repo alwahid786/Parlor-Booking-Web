@@ -49,6 +49,7 @@
     let SaloonDashboard = "{{ route('saloonDashboard') }}";
     let enterCode = "{{ route('enterCode') }}" ;
     let ResetPassword = "{{ route('resetPassword') }}";
+    let venderProfile = "{{ route('profileSetting') }}"
 
     // user routes
     let UserAppointments = "{{ route('userAppointments') }}"
