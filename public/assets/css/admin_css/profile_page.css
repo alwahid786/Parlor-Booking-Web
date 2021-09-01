@@ -18,7 +18,7 @@
 
 .for_cancel_icon_in_profile {
   position: absolute;
-  margin-left: -38px;
+  margin-left: 49px;
   width: 20px;
   margin-top: -9px;
 }
@@ -170,7 +170,7 @@
   }
   .for_cancel_icon_in_profile {
     position: absolute;
-    margin-left: -23px;
+    margin-left: 46px;
     width: 20px;
     margin-top: -9px;
   }
@@ -210,7 +210,7 @@
 
   .for_cancel_icon_in_profile {
     position: absolute;
-    margin-left: -26px;
+    margin-left: 48px;
     width: 20px;
     margin-top: -9px;
   }
@@ -376,4 +376,8 @@
     top: 46.5px;
     left: 118%;
   }
+}
+
+.overflow_auto-s{
+  overflow-x: auto;
 }

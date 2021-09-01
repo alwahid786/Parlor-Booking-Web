@@ -32,6 +32,14 @@
 
         }
 
+        .h_493px-s{
+            height:493px;
+        }
+
+        .w_h_120px-s{
+            width: 120px;
+            height: 120px;
+        }
 
         @media (min-width: 768px) and (max-width: 1024px) {
             .pic:hover {
@@ -119,6 +127,8 @@
                 margin-left: 0px;
                 font-size: 6px;
             }
+
+            
         }
 
     </style>
@@ -173,16 +183,21 @@
                                 <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile12-d"
                                     method="post" enctype="multipart/form-data">
                                         @csrf
+                                
+                                    @if(null != $updateProfile->brosche)
+                                        <div class="for_profile_main_img">
+                                            <img src="{{ asset('/'.$updateProfile->brosche[0]->path) }} " class="img-fluid w-100 h_493px-s" alt="...">
+                                        </div>
+                                    @else
+                                        <div class="pt-5 for_upload_img_set_h_w">
+                                                        <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid " alt="..."> <span>
+                                                        <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile  "  alt="...">
+                                        </div>
 
-                                    <div class="for_profile_main_img">
-                                        <img src="{{ asset('/'.$updateProfile->brosche[0]->path) }} "
-                                            class="img-fluid " alt="...">
-
-                                    </div>
-
-
+                                    @endif
                                     <div class="upload_img_profile_main text-center">
                                         <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                            
                                             <i class="fa fa-upload" aria-hidden="true"></i>
                                             <span>
                                                 {{--  <input type="file" name="images" class="form-control media" id="media">  --}}
@@ -196,31 +211,40 @@
                                     <div class="row">
 
 
-                                        <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                            @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
-                                                <div class="pt-5 for_upload_img_set_h_w">
-                                                    <img src="{{ asset('/'.$brosche->path) }}"
-                                                    class="img-fluid " alt="...">
-                                                    <span>
+                                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
+                                            @if(null != $updateProfile->brosche)
+                                                @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
+                                                <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
+                                                    <div>
                                                         <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
                                                         class="img-fluid for_cancel_icon_in_profile  " alt="...">
-                                                    </span>
-
+                                                    </div>
+                                                    <div>
+                                                        <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
+                                                    </div>
                                                 </div>
-                                            @endforeach
-                                            <div>
-                                                <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
-                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                    <span>
-                                                        {{--  <input type="file" id='files' name="files[]" multiple>  --}}
-                                                        <input type="file" name="brosche[]" class="form-control broshe" id="broshe12"
-                                                            multiple>
-                                                        Upload Broshe Image
-                                                    </span>
-                                                </button>
+                                                @endforeach
+                                            @else 
+                                               
+                                            <div class="pt-5 for_upload_img_set_h_w">
+                                                    <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid " alt="..."> <span>
+                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile  "  alt="...">
                                             </div>
+
+                                            @endif
+
                                         </div>
+                                        <!-- <div>
+                                            <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                                <span>
+                                                    {{--  <input type="file" id='files' name="files[]" multiple>  --}}
+                                                    <input type="file" name="brosche[]" class="form-control broshe" id="broshe12"
+                                                        multiple>
+                                                    Upload Broshe Image
+                                                </span>
+                                            </button>
+                                        </div> -->
 
 
                                         <!-- Start Second Div -->
@@ -337,12 +361,12 @@
 
                                         <!-- Third Div Start -->
                                         <div class="availability_on_week_bg">
-                                            <div class="on_week_text">
+                                            <div class="on_week_text ">
 
                                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                                 <span class="on_week_separate">Availability On Week</span>
                                                 <div class="row">
-                                                    <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         @php
                                                            $saloon_chosen_days = [];
                                                         @endphp

@@ -134,6 +134,39 @@
             }
         }
 
+        .pignose-calendar {
+            width: 100% !important;
+            max-width: none;
+            border-radius: 5px;
+        }
+
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-active a{
+            border-radius: 5px !important;
+            background-color: #133E59;
+            color: white !important;
+        }
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-header .pignose-calendar-week{
+            color: #7889A0;
+        }
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-header .pignose-calendar-week.pignose-calendar-week-sat, .pignose-calendar.pignose-calendar-blue .pignose-calendar-header .pignose-calendar-week.pignose-calendar-week-sun{
+            color: #7889A0;
+        }
+
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-sat a, .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-sun a{
+            color: #070B31;
+        }
+
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit a{
+            color: #070B31;
+        }
+
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-top[
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        ]
+        ]
+        
+
     </style>
 </head>
 
@@ -145,53 +178,53 @@
                 @include('includes.saloon_dashboard.saloon_dashboard_navbar',['id'=>$id])
             </div>
             <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-9 col-9">
-
-
                 <div class="">
                     {{--  <span>hjshdjshdjshdj</span>  --}}
                     <span class="pull-right">
                         @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
                     </span>
+                
+            
+          
+        <div class="pt-5">
+            <div class="row pt-5 w-100">
+                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                    <div class="card for_hello_beauty_bg">
+                        <div class="text-white p-3 for_hello_beauty_salon">
+                            <h5>Hello Beauty Salon</h5>
+                            <div>
+                                <p class="">Here are your important tasks and reports. <br>
+                                    <span class="mt-n2 for_please_check_the">Please check the next
+                                        appointment .</span>
+                                </p>
 
-                        <div class="pt-5">
-        <div class="row pt-5">
-            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                <div class="card for_hello_beauty_bg">
-                    <div class="text-white p-3 for_hello_beauty_salon">
-                        <h5>Hello Beauty Salon</h5>
-                        <div>
-                            <p class="">Here are your important tasks and reports. <br>
-                                <span class="mt-n2 for_please_check_the">Please check the next
-                                    appointment .</span>
-                            </p>
-
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="pt-4">
-                    @include('dashboard_partials.calender')
-                </div>
-
-                <div class="row">
-                    @include('dashboard_partials.request_appointments',['appointments' => $appointments])
-
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        @include('dashboard_partials.appointments',['appointments' => $appointments])
+                    <div class="pt-4">
+                        @include('dashboard_partials.calender')
                     </div>
 
+                    <div class="row pt-3">
+                        @include('dashboard_partials.request_appointments',['appointments' => $appointments])
 
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            @include('dashboard_partials.appointments',['appointments' => $appointments])
+                        </div>
+
+
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ex1">
-                @include('dashboard_partials.notifications')
-            </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ex1">
+                    @include('dashboard_partials.notifications')
+                </div>
 
+            </div>
         </div>
-    </div>
 
-                </div>
+    </div>
 
     <!--Asside Bar Page End !-->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
