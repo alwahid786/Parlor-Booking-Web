@@ -44,6 +44,8 @@ class AppointmentController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
+        Appointment::orderBy('created_at','DESC')->where('status','on-hold')->update(['status' => 'cancelled']);
+
         $appointments = Appointment::orderBy('created_at','DESC');
         
         if(isset($request->appointment_uuid)){
@@ -124,9 +126,18 @@ class AppointmentController extends Controller
 
             $status->status = $request->status;
             $status->save();
+
             $msg = $request->status == 'active' ? 'accepted' : $request->status;
-            $noti_text = 'Your Appointment Has Been'.' '.$msg.' by '.$status->salon->name;
-            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,true);
+
+            if($status->user_id != $request->user()->id){
+
+                $noti_text = 'Your Appointment Has Been'.' '.$msg.' by '.$status->salon->name;
+                $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,true);
+            } else {
+
+                $noti_text = 'The Appointment Has Been'.' '.$msg.' by '.$request->user()->name;
+                $noti_result = $this->NotificationController->addNotification($status->user_id,$status->salon_id,$status->id,'appointment',$noti_text,true);
+            }
 
             return sendSuccess('Updated Appointment',$status);
         }
