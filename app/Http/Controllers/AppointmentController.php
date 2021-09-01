@@ -231,7 +231,7 @@ class AppointmentController extends Controller
                 return sendError('Internal Server Error',[]);
 
             $noti_text = $user->name.' need appointment in your salon';
-            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,true);
+            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,true,true);
             // dd($noti_result);
 
 

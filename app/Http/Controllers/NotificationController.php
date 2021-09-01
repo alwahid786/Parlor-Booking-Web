@@ -100,7 +100,7 @@ class NotificationController extends Controller
     }
 
     // Needs to Update According to Sellx
-    public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti){
+    public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti,$bo = false){
     // dd($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti);
         // dd();
 
@@ -125,7 +125,7 @@ class NotificationController extends Controller
         $noti = Notification::find($noti->id);
         $apt_uuid = $noti->appointment->uuid;
         if('appointment' == $noti_type){
-            $noti = json_encode(['appointment_uuid' => $apt_uuid]);
+            $noti = json_encode(['appointment_uuid' => $apt_uuid,'bo' => $bo]);
         }
         else{
             $noti = $noti->getAttributes();
