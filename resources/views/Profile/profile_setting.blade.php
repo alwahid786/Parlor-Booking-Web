@@ -403,7 +403,7 @@
 
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-info">Update</button>
-                                            {{--  <input type="hidden" name="user_uuid" >  --}}
+                                            <input type="hidden" name="user_uuid" class="salon_uuid-d" value="{{$id}}">
                                         </div>
 
                                     </div>
@@ -475,6 +475,7 @@
     </script>
 <script src="{{ asset('assets/js/common.js') }}"></script>
 <script src="{{ asset('assets/js/profileService.js') }}"></script>
+<script src="{{ asset('assets/js/profile_location.js') }}"></script>
 
 </body>
 

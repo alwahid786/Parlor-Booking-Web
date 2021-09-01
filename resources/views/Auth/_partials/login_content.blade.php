@@ -37,6 +37,7 @@
               </div>
 
               <form action="{{ route('weblogin') }}" id="frm_login-d" method="post">
+                @csrf
                 <div class="for_common_email_pass pt-4">
                     <p>Email Address</p>
                       <div class="input-group mb-3 w-75 border-bottom">

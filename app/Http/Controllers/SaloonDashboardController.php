@@ -230,15 +230,43 @@ class SaloonDashboardController extends Controller
     {
         // dd($request->all());
         if ($request->getMethod() == 'GET') {
-            $request->merge(['id' => $request->uuid]);
-            $userCntrl = $this->userApiCntrl;
-            $apiResponse = $userCntrl->getUser($request)->getData();
-            // dd($apiResponse->data);
-            if ($apiResponse->status) {
-                $data = $apiResponse->data;
-                return view('Profile.profile_setting', ['updateProfile' => $data, 'id' => $data->uuid]);
+
+            if ((isset($request->lat) && ('' != $request->lat)) && (isset($request->long) && ('' != $request->long)) && (isset($request->salon_id) && ('' != $request->salon_id))) {
+
+                $request->merge([
+                    'user_uuid' => $request->salon_id,
+                    'lat' => $request->lat,
+                    'long' => $request->long,
+                ]);
+
+                // dd($request->all());
+
+                $uuid = $request->salon_id;
+
+                $userCntrl = $this->userApiCntrl;
+                $apiResponse = $userCntrl->updateUser($request)->getData();
+
+                if ($apiResponse->status) {
+                    $update_profile = $apiResponse->data;
+                    // return sendSuccess('Profile Updated successfully' , $update_profile);
+                    return view('Profile.profile_setting', ['updateProfile' => $update_profile, 'id' => $uuid]);
+
+                    // return redirect()->back();
+                }
+
+            }else {
+
+                $request->merge(['id' => $request->uuid]);
+                $userCntrl = $this->userApiCntrl;
+                $apiResponse = $userCntrl->getUser($request)->getData();
+                // dd($apiResponse->data);
+                if ($apiResponse->status) {
+                    $data = $apiResponse->data;
+                    return view('Profile.profile_setting', ['updateProfile' => $data, 'id' => $data->uuid]);
+                }
+                // return view('Profile.profile_setting', ['id' => $uuid]);
             }
-            // return view('Profile.profile_setting', ['id' => $uuid]);
+
         }
         else {
             // dd($request->all());
@@ -256,24 +284,6 @@ class SaloonDashboardController extends Controller
             ]);
 
             $request->merge(['broshe*' => $request->broshe]);
-
-            // $validator = Validator::make($request->all(), [
-            //     'name' => 'required',
-            //     'saloon_email' => 'string',
-            //     'location' => 'required',
-            //     'lat' => 'numeric',
-            //     'long' => 'numeric',
-            //     'opening_time' => 'date_format:H:i',
-            //     'closing_time' => 'date_format:H:i|after:start_time',
-            //     'description' => 'string',
-            //     'days' => 'required',
-            // ]);
-
-            // if ($validator->fails()) {
-
-            //     $data['validation_error'] = $validator->getMessageBag();
-            //     return sendError($validator->errors()->all()[0], $data);
-            // }
 
             $days = json_encode($request->days);
             // $brosche = json_decode($request->brosche);
@@ -303,4 +313,33 @@ class SaloonDashboardController extends Controller
         }
     }
 
+
+    public function updateCoordinate(Request $request)
+    {
+        if(  (isset($request->lat) && ('' !== $request->lat)) && (isset($request->long) && ('' !== $request->long)) && (isset($request->salon_id) && ($request->salon_id)))
+        {
+
+            $request->merge([
+                'user_uuid' => $request->salon_id,
+                'lat' => $request->lat,
+                'long'=> $request->long,
+            ]);
+
+            $uuid = $request->salon_id;
+
+            $userCntrl = $this->userApiCntrl;
+            $apiResponse = $userCntrl->updateUser($request)->getData();
+
+            if ($apiResponse->status) {
+                $update_profile = $apiResponse->data;
+                // return sendSuccess('Profile Updated successfully' , $update_profile);
+                return view('Profile.profile_setting', ['updateProfile' => $update_profile, 'id' => $uuid]);
+
+                // return redirect()->back();
+            } else {
+                // return sendError('Profile does not updated successfully', []);
+            }
+
+        }
+    }
 }
