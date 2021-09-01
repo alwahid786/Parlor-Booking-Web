@@ -160,11 +160,10 @@
             color: #070B31;
         }
 
-        .pignose-calendar.pignose-calendar-blue .pignose-calendar-top[
+        .pignose-calendar.pignose-calendar-blue .pignose-calendar-top{}
             border-top-right-radius: 5px;
             border-top-left-radius: 5px;
-        ]
-        ]
+        }
         
 
     </style>
