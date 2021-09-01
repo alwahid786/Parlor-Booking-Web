@@ -45,11 +45,15 @@ $(document).ready(function() {
         // console.log('lat: ', lat);
         // console.log('long: ', long);
         if (null != lat && null != long) {
+            let salon_id = $('.salon_uuid-d').val();
+
+            // alert('http://localhost/glitterups/profile-setting?uuid=' + salon_id);
+
             $.ajax({
                 // url: '/glitterups/',
-                url: '{{ route("home") }}',
+                url: 'http://localhost/glitterups/profile-setting?uuid=' + salon_id,
                 method: 'GET',
-                data: { lat: lat, long: long },
+                data: { lat: lat, long: long, salon_id: salon_id },
                 dataType: 'text',
                 success: function(response) {
                     return false;

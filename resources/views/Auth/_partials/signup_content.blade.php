@@ -21,6 +21,7 @@
           </div>
 
           <form action="{{ route('signup') }}" id="frm_signup-d" method="post">
+            @csrf
             <div class="for_common_email_pass sm_name_css pt-4">
                 <p>Name</p>
                   <div class="input-group mb-3 w-75 border-bottom">

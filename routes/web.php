@@ -19,6 +19,7 @@ use App\Http\Controllers\UserAppointmentController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){
@@ -54,6 +55,9 @@ Route::group(['middleware' => 'auth'],function () {
 
         //profile setting
         Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
+
+        // Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
+
 
 
         Route::any('/service/{uuid}', [SaloonDashboardController::class, 'service'])->name('service');
