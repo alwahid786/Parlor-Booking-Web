@@ -135,11 +135,11 @@ class AppointmentController extends Controller
             if($status->user_id != $request->user()->id){
 
                 $noti_text = 'Your Appointment Has Been'.' '.$msg.' by '.$status->salon->name;
-                $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'by_salon_appointment',$noti_text,true);
+                $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,true);
             } else {
 
                 $noti_text = 'The Appointment Has Been'.' '.$msg.' by '.$request->user()->name;
-                $noti_result = $this->NotificationController->addNotification($status->user_id,$status->salon_id,$status->id,'by_user_appointment',$noti_text,true);
+                $noti_result = $this->NotificationController->addNotification($status->user_id,$status->salon_id,$status->id,'appointment',$noti_text,true);
             }
 
             return sendSuccess('Updated Appointment',$status);
