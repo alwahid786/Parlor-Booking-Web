@@ -160,11 +160,24 @@
                             <!--After Nav Services Page Start !-->
                             {{-- {{ dd($profile, date('h:i A', strtotime($profile->start_time)) ) }} --}}
                             <div class="container-fluid">
-                                <div class="for_profile_main_img">
+
+                                    @if(null != $profile->brosche)
+                                        <div class="for_profile_main_img">
+                                            <img src="{{ asset('/'.$profile->brosche[0]->path) }} " class="img-fluid w-100 h_493px-s" alt="...">
+                                        </div>
+                                    @else
+                                        <div class="pt-5 for_upload_img_set_h_w">
+                                            <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }}  " class="img-fluid " alt="..."> <span>
+                                        </div>
+
+                                    @endif
+
+
+                                {{-- <div class="for_profile_main_img">
                                     <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
                                         class="img-fluid " alt="...">
 
-                                </div>
+                                </div> --}}
 
 
                                 {{-- <div class="upload_img_profile_main text-center">
@@ -179,7 +192,34 @@
 
                                 <div class="row">
                                     <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+                                    @if(null != $profile->brosche)
+                                        {{-- {{ dd($updateProfile->brosche) }} --}}
+                                            @foreach (array_slice($profile->brosche, 1,5) as $brosche)
+                                            <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
+                                                <div>
+                                                    <img src=" {{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
+                                                    class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                </div>
+                                                <div>
+                                                    <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        @else
+
                                         <div class="pt-5 for_upload_img_set_h_w">
+                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}" class="img-fluid " alt="..."> <span>
+                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg')}}" class="img-fluid for_cancel_icon_in_profile  "  alt="...">
+                                        </div>
+
+                                        @endif
+
+
+
+
+                                        {{-- <div class="pt-5 for_upload_img_set_h_w">
                                             <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
                                                 class="img-fluid " alt="...">
                                             <span>
@@ -187,24 +227,8 @@
                                                     class="img-fluid for_cancel_icon_in_profile  " alt="...">
                                             </span>
 
-                                            {{-- <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid " alt="..."> <span>
-                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile img_two_child" alt="...">
 
-                                                    </span>
-                                                    <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid img_three_parent " alt="..."><span>
-                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile img_three_child" alt="...">
-
-                                                    </span>
-                                                    <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid  img_four_parent" alt="..."><span>
-                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile img_four_child" alt="...">
-
-                                                    </span>
-                                                    <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid img_fifth_parent" alt="..."><span>
-                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile for_lastImage_md_res" alt="...">
-
-                                                    </span> --}}
-
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 
@@ -219,7 +243,7 @@
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                     <input class="inp" placeholder="David Miller"
-                                                        value="{{ $profile->name ?? '' }}" />
+                                                        value="{{ $profile->name ?? '' }}" disabled />
                                                 </div>
                                             </div>
                                         </div>
@@ -231,7 +255,7 @@
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                     <input class="inp" placeholder="abcd@gmail.com"
-                                                        value="{{ $profile->address ?? '' }}" />
+                                                        value="{{ $profile->address ?? '' }}" disabled />
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +269,7 @@
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                     <input class="inp" placeholder="+ 000 0000 000"
-                                                        value={{ $profile->phone_code . $profile->phone_number ?? '' }} />
+                                                        value={{ $profile->phone_code . $profile->phone_number ?? '' }}  disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -256,7 +280,7 @@
                                                 <span>Location</span>
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input class="inp" placeholder="123 Royal Street New York" />
+                                                    <input class="inp" placeholder="123 Royal Street New York"  disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -271,7 +295,7 @@
                                                         Timing</label>
                                                     <input type="email" class="form-control w-75"
                                                         class="exampleFormControlInput1" placeholder="9 AM"
-                                                        value="{{ date('h:i A', strtotime($profile->start_time)) ?? '' }}">
+                                                        value="{{ date('h:i A', strtotime($profile->start_time)) ?? '' }}" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -284,7 +308,7 @@
                                                         Timing</label>
                                                     <input type="email" class="form-control w-75"
                                                         class="exampleFormControlInput1" placeholder="11 PM"
-                                                        value="{{ date('h:i A', strtotime($profile->end_time)) ?? '' }}">
+                                                        value="{{ date('h:i A', strtotime($profile->end_time)) ?? '' }}" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,53 +328,64 @@
                                             <div class="row">
                                                 <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                                        @php
-                                                           $saloon_chosen_days = [];
-                                                        @endphp
+                                                        @if($profile->days != [])
 
-                                                        @foreach ($profile->days as $saloon_day)
                                                             @php
-                                                                $saloon_days[] = $saloon_day->day;
+                                                            $saloon_chosen_days = [];
                                                             @endphp
 
-                                                        @endforeach
+                                                            @foreach ($$profile->days as $saloon_day)
+                                                                @php
+                                                                    $saloon_days[] = $saloon_day->day;
+                                                                @endphp
 
-                                                        @php
-                                                        //    dd($appoinment_days);
-                                                            // echo $appointment_days;
+                                                            @endforeach
 
-                                                            $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+                                                            @php
 
-                                                            // dd($days, $appoinment_days);
-                                                        @endphp
+                                                                $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 
-                                                    <ul class='timeline'>
-                                                         @php
-                                                            $chosen_days=  array_diff($days, $saloon_days);
-                                                                // print_r($selected_days);
-                                                        @endphp
+                                                            @endphp
 
-                                                        @foreach ($days as $day)
-                                                                @if(in_array($day, $chosen_days))
-                                                                    <li  >{{ ucfirst(trans($day)) }}</li>
-                                                                @else
-                                                                    <li style="color:green" >{{ ucfirst(trans($day)) }}</li>
-                                                                @endif
+                                                            <ul class='timeline'>
+                                                                @php
+                                                                    $chosen_days=  array_diff($days, $saloon_days??[]);
 
-                                                        @endforeach
+                                                                @endphp
 
-                                                        {{-- <li>Monday</li>
-                                                        <li>Tuesday</li>
-                                                        <li>Wednesday</li>
-                                                        <li>Thursday</li>
-                                                        <li>Friday</li>
-                                                        <li>Saturday</li>
-                                                        <li>Sunday</li> --}}
+                                                                @foreach ($days as $day)
+                                                                        @if(in_array($day, $chosen_days))
+                                                                            <li  >{{ ucfirst(trans($day)) }}</li>
+                                                                        @else
+                                                                            <li style="color:green" >{{ ucfirst(trans($day)) }}</li>
+                                                                        @endif
+
+                                                                @endforeach
+                                                            </ul>
+
+
+                                                        @else
+                                                                @php
+
+                                                                    $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
+                                                                @endphp
+
+
+
+                                                                <ul class='timeline'>
+
+                                                                    @foreach ($days as $day)
+                                                                            <li>{{ ucfirst(trans($day)) }}</li>
+                                                                    @endforeach
+
+                                                                </ul>
+
+
+                                                        @endif
+
 
                                                     </ul>
-
-
-
 
                                                 </div>
                                             </div>
@@ -366,7 +401,7 @@
                                                 class="form-label profile_page_description_text">Description</label>
                                             <textarea class="form-control pt-5 mt-5 for_text_area"
                                                 id="exampleFormControlTextarea1"
-                                                rows="3">{{ $profile->description ?? '' }}</textarea>
+                                                rows="3" disabled>{{ $profile->description ?? '' }}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -245,9 +245,10 @@ class SaloonDashboardController extends Controller
 
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse = $userCntrl->updateUser($request)->getData();
-
+                dd($apiResponse);
                 if ($apiResponse->status) {
                     $update_profile = $apiResponse->data;
+                    // dd($update_profile, 'response of coordinates');
                     // return sendSuccess('Profile Updated successfully' , $update_profile);
                     return view('Profile.profile_setting', ['updateProfile' => $update_profile, 'id' => $uuid]);
 
@@ -255,7 +256,7 @@ class SaloonDashboardController extends Controller
                 }
 
             }else {
-
+                // dd($request->all(), 'else part of coordinates');
                 $request->merge(['id' => $request->uuid]);
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse = $userCntrl->getUser($request)->getData();
@@ -269,7 +270,7 @@ class SaloonDashboardController extends Controller
 
         }
         else {
-            // dd($request->all());
+            // dd($request->all(), 'else part of get');
 
             $this->validate($request, [
                 'name' => 'required',
@@ -283,7 +284,7 @@ class SaloonDashboardController extends Controller
                 'days' => 'required',
             ]);
 
-            $request->merge(['broshe*' => $request->broshe]);
+            $request->merge(['brosche*' => $request->brosche]);
 
             $days = json_encode($request->days);
             // $brosche = json_decode($request->brosche);
@@ -293,10 +294,22 @@ class SaloonDashboardController extends Controller
                 'end_time' => $request->closing_time,
                 'address' => $request->location,
                 'days' =>   $days,
-                'media' => $request->media,
-                'brosche*' => $request->brosche,
+
             ]);
 
+            if(isset($request->media) && ('' !== $request->media)  )
+            {
+                $request->merge([
+                    'media' => $request->media,
+                ]);
+            }
+
+            if(isset($request->brosche) && ('' !== $request->brosche))
+            {
+                $request->merge([
+                    'brosche*' => $request->brosche,
+                ]);
+            }
 
             // dd($request->all(), getType($request->media));
             $userCntrl = $this->userApiCntrl;

@@ -128,7 +128,7 @@
                 font-size: 6px;
             }
 
-            
+
         }
 
     </style>
@@ -183,21 +183,21 @@
                                 <form action="{{ route('profileSetting', $id) }}" id="frm_update_profile12-d"
                                     method="post" enctype="multipart/form-data">
                                         @csrf
-                                
+
                                     @if(null != $updateProfile->brosche)
                                         <div class="for_profile_main_img">
                                             <img src="{{ asset('/'.$updateProfile->brosche[0]->path) }} " class="img-fluid w-100 h_493px-s" alt="...">
                                         </div>
                                     @else
                                         <div class="pt-5 for_upload_img_set_h_w">
-                                                        <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid " alt="..."> <span>
-                                                        <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile  "  alt="...">
+                                                        <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} " class="img-fluid " alt="..."> <span>
+                                                        {{-- <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }}" class="img-fluid for_cancel_icon_in_profile  "  alt="..."> --}}
                                         </div>
 
                                     @endif
                                     <div class="upload_img_profile_main text-center">
                                         <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
-                                            
+
                                             <i class="fa fa-upload" aria-hidden="true"></i>
                                             <span>
                                                 {{--  <input type="file" name="images" class="form-control media" id="media">  --}}
@@ -213,10 +213,11 @@
 
                                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
                                             @if(null != $updateProfile->brosche)
+                                            {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
                                                 <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
                                                     <div>
-                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
+                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
                                                         class="img-fluid for_cancel_icon_in_profile  " alt="...">
                                                     </div>
                                                     <div>
@@ -224,17 +225,17 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
-                                            @else 
-                                               
+                                            @else
+
                                             <div class="pt-5 for_upload_img_set_h_w">
-                                                    <img src="Admin_assets/images/Rectangle 260.svg " class="img-fluid " alt="..."> <span>
-                                                    <img src="Admin_assets/images/Group 152.svg " class="img-fluid for_cancel_icon_in_profile  "  alt="...">
+                                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}" class="img-fluid " alt="..."> <span>
+                                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg')}}" class="img-fluid for_cancel_icon_in_profile  "  alt="...">
                                             </div>
 
                                             @endif
 
                                         </div>
-                                        <!-- <div>
+                                        <div>
                                             <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
                                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                                 <span>
@@ -244,7 +245,7 @@
                                                     Upload Broshe Image
                                                 </span>
                                             </button>
-                                        </div> -->
+                                        </div>
 
 
                                         <!-- Start Second Div -->
@@ -367,41 +368,70 @@
                                                 <span class="on_week_separate">Availability On Week</span>
                                                 <div class="row">
                                                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                        @php
-                                                           $saloon_chosen_days = [];
-                                                        @endphp
+                                                      {{-- {{  dd($updateProfile)}} --}}
+                                                        @if($updateProfile->days != [])
 
-                                                        @foreach ($updateProfile->days as $saloon_day)
                                                             @php
-                                                                $saloon_days[] = $saloon_day->day;
+                                                            $saloon_chosen_days = [];
                                                             @endphp
 
-                                                        @endforeach
-
-                                                        @php
-
-                                                            $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-
-                                                        @endphp
-
-                                                        <ul class='timeline'>
-                                                            @php
-                                                                $chosen_days=  array_diff($days, $saloon_days??[]);
-
-                                                            @endphp
-
-                                                            @foreach ($days as $day)
-                                                                    @if(in_array($day, $chosen_days))
-                                                                        <li> <input type="checkbox" name="days[]" id="day"  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
-                                                                    @else
-                                                                        <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
-                                                                    @endif
+                                                            @foreach ($updateProfile->days as $saloon_day)
+                                                                @php
+                                                                    $saloon_days[] = $saloon_day->day;
+                                                                @endphp
 
                                                             @endforeach
-                                                            @error('days')
-                                                                <div class="alert alert-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </ul>
+
+                                                            @php
+
+                                                                $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
+                                                            @endphp
+
+                                                            <ul class='timeline'>
+                                                                @php
+                                                                    $chosen_days=  array_diff($days, $saloon_days??[]);
+
+                                                                @endphp
+
+                                                                @foreach ($days as $day)
+                                                                        @if(in_array($day, $chosen_days))
+                                                                            <li> <input type="checkbox" name="days[]" id="day"  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                        @else
+                                                                            <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+                                                                        @endif
+
+                                                                @endforeach
+                                                                @error('days')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
+                                                            </ul>
+
+
+                                                        @else
+                                                                @php
+
+                                                                    $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
+                                                                @endphp
+
+
+
+                                                                <ul class='timeline'>
+
+                                                                    @foreach ($days as $day)
+                                                                                <li > <input type="checkbox" name="days[]" id="" > {{ ucfirst(trans($day)) }}</li>
+                                                                    @endforeach
+
+                                                                </ul>
+
+
+                                                        @endif
+
+
+
+
+
                                                     </div>
                                                 </div>
                                             </div>

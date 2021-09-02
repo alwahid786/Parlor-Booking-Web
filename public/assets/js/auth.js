@@ -14,11 +14,15 @@ $(function(event) {
             },
             phone_code: {
                 required: true,
+                digits: true,
+                minlength: 1,
                 maxlength: 3,
             },
             phone_number: {
                 required: true,
+                digits: true,
                 minlength: 10,
+                maxlength: 12,
             },
             password: {
                 required: true,
@@ -43,11 +47,15 @@ $(function(event) {
             },
             phone_code: {
                 required: "Phone code is Required.",
+                digits: "Please enter valid phone code ",
+                minlength: 'Minimun code should have 1 digit ',
                 maxlength: "Phone code Should have max 3 digits",
             },
             phone_number: {
                 required: "Phone number is Required.",
-                minlength: "Phone number Should have atleast 10 digits",
+                digits: "Please enter valid phone number",
+                minlength: "Phone number have atleast 10 digits",
+                maxlength: "Phone code Should have max 3 digits",
             },
             password: {
                 required: "Password is Required.",

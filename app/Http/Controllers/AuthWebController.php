@@ -45,8 +45,10 @@ class AuthWebController extends Controller
         }
         else {
             // dd($request->all());
+            $phone_code = "+".$request->phone_code;
             $request->merge([
                 'is_social' => 0,
+                'phone_code' => $phone_code
             ]);
             // dd($request->all());
             $authCntrl = $this->authApiCntrl;

@@ -6,7 +6,8 @@
                 <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
                 <ul class="navbar-nav ml-auto ">
                     <li>
-                        <img src="{{ asset('assets/images/saloon_dashboard_images/Ellipse 46.svg') }}"
+                        {{-- {{ dd($id) }} --}}
+                        <img src="{{    asset('assets/images/saloon_dashboard_images/Ellipse 46.svg') }}"
                             class="img-fluid  for_nav_bar_icon_img">
                     </li>
                     <li class="nav-item dropdown dmenu">
