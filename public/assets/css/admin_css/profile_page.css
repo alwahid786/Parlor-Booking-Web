@@ -381,3 +381,48 @@
 .overflow_auto-s{
   overflow-x: auto;
 }
+
+
+/* Mina Work  */
+
+.available_days-s{
+  background: #133e59;
+  border-radius: 13px;
+  /* height: 241px; */
+}
+
+.weekdays_heading-s{
+  font-family: SF UI Display;
+  font-style: normal;
+  line-height: 24px;
+  color: #f5b51b;
+}
+
+.week_calander-s{
+  color: #f5b51b;
+}
+
+.days_circle-s{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.days_lines-s{
+  width: 13%;
+  height: 3px;
+  background-color: white;
+}
+
+/* @media screen and(max-width:1024px) {
+    .days_circle-s{
+      width: 83px;
+    }
+}
+
+@media screen and (max-width:768px) {
+  .days_circle-s{
+    width: 48px;
+  }
+} */
