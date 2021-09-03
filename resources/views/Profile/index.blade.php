@@ -255,7 +255,7 @@
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                                                     <input class="inp" placeholder="abcd@gmail.com"
-                                                        value="{{ $profile->address ?? '' }}" disabled />
+                                                        value="{{ $profile->email ?? '' }}" disabled />
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +280,7 @@
                                                 <span>Location</span>
                                                 <div class="input-group mb-3 w-75 border-bottom">
                                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                    <input class="inp" placeholder="123 Royal Street New York"  disabled/>
+                                                    <input class="inp"  value="{{ $profile->address ?? '' }}"  disabled/>
                                                 </div>
                                             </div>
                                         </div>
