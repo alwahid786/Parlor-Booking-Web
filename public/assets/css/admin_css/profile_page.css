@@ -406,7 +406,19 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+
+}
+
+.white_border-s{
   border: 5px solid white;
+}
+
+.mustard_border-s{
+  border: 5px solid #f5b51b;
+}
+
+.fg_mustard-s{
+  color: #f5b51b;
 }
 
 .days_lines-s{
