@@ -15,29 +15,37 @@
             $dt = new DateTime();
             $current_date = $dt->format('Y-m-d');
         @endphp
-        @foreach ($appointments as $appointment)
-        <input type="hidden" name="appointment_dates[]" class="appointment_dates" value="{{ $appointment->date }}">
-            @if ($appointment->date == $current_date)
-                @foreach ($appointment->appointment_details as $details)
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-8 for_today_img">
-                        <img src="{{ asset('assets/images/saloon_dashboard_images/Ellipse 47.svg') }}"
-                            class="img-circle img-fluid" alt="Cinque Terre">
-                        <span>{{ $appointment->user->name  }} <br>
-                            <span class="for_waxing">{{ $details->services->name }}</span>
-                        </span>
+        @if ($appointments !=[])
 
-                    </div>
+            @foreach ($appointments as $appointment)
+                <input type="hidden" name="appointment_dates[]" class="appointment_dates" value="{{ $appointment->date }}">
+                    @if ($appointment->date == $current_date)
+                        @foreach ($appointment->appointment_details as $details)
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 for_today_img">
+                                <img src="{{ asset('assets/images/saloon_dashboard_images/Ellipse 47.svg') }}"
+                                    class="img-circle img-fluid" alt="Cinque Terre">
+                                <span>{{ $appointment->user->name  }} <br>
+                                    <span class="for_waxing">{{ $details->services->name }}</span>
+                                </span>
 
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 ">
-                        <div class="text-end for_finished_css">{{ $appointment->status == 'completed' ? 'Finished' : 'Pending'  }}</div>
+                            </div>
 
-                    </div>
-                @endforeach
-            @endif
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 ">
+                                <div class="text-end for_finished_css">{{ $appointment->status == 'completed' ? 'Finished' : 'Pending'  }}</div>
+
+                            </div>
+                        @endforeach
+                    @endif
             @endforeach
             @if ($appointment->date != $current_date)
                 <h5>Not Appointments Available Today</h5>
             @endif
+
+
+        @else
+                <h5>Not Appointments Available Today</h5>
+
+        @endif
      </div>
 
 

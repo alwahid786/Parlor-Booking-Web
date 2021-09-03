@@ -168,7 +168,7 @@
 
                             <!--After Nav Services Page Start !-->
                             {{-- {{ dd($profile, date('h:i A', strtotime($profile->start_time)) ) }} --}}
-                            {{--  {{ dd($updateProfile) }}  --}}
+                             {{-- {{ dd($updateProfile) }} --}}
                               {{--  @if (count($errors) > 0)
                                     <div class = "alert alert-danger">
                                         <ul>
@@ -305,9 +305,9 @@
                                                     <span>Location</span>
                                                     <div class="input-group mb-3 w-75 border-bottom">
                                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                                        <input type="text" class="inp" name="location"
-                                                             value="{{ $updateProfile->address ?? '' }}" />
-                                                        @error('location')
+                                                        <input type="text" name="address_copy" class="inp"  value="{{ $updateProfile->address ?? '' }}" />
+                                                        {{-- <input type="text" name="address" class="inp"  value="{{ $updateProfile->address ?? '' }}" /> --}}
+                                                        @error('address')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
                                                     </div>
@@ -420,7 +420,7 @@
                                                                 <ul class='timeline'>
 
                                                                     @foreach ($days as $day)
-                                                                                <li > <input type="checkbox" name="days[]" id="" > {{ ucfirst(trans($day)) }}</li>
+                                                                                <li > <input type="checkbox" name="days[]" id="" value="{{ $day }}" > {{ ucfirst(trans($day)) }}</li>
                                                                     @endforeach
 
                                                                 </ul>

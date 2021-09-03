@@ -165,62 +165,67 @@
                                         </div>
                                     </div>  --}}
                                     {{-- {{ dd($getServices) }} --}}
-                                    @foreach ($getServices as $key => $service)
-                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 " >
-                                            {{-- <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example-{{ $service->uuid }}"> --}}
-                                            <div class="card for_border_card_dashed" class="list_service-d">
-                                                <div class="card-body for_spa_text" id="service_list-d_{{ $key }}">
-                                                    <h5 class="service_name-d"> {{ $service->name }}  </h5>
-                                                        <span class="pull-right">
-                                                            <img src="{{ asset('assets/images/saloon_dashboard_images/Group 356.svg') }} " class="img-fluid  for_icon_modal edit_service-d "  alt="...">
-                                                        </span>
+                                    @if (null != $getServices )
+                                        @foreach ($getServices as $key => $service)
+                                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 " >
+                                                {{-- <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example-{{ $service->uuid }}"> --}}
+                                                <div class="card for_border_card_dashed" class="list_service-d">
+                                                    <div class="card-body for_spa_text" id="service_list-d_{{ $key }}">
+                                                        <h5 class="service_name-d"> {{ $service->name }}  </h5>
+                                                            <span class="pull-right">
+                                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Group 356.svg') }} " class="img-fluid  for_icon_modal edit_service-d "  alt="...">
+                                                            </span>
 
-                                                    {{-- <p >With supporting text below as a natural lead-in to additional content...</p> --}}
-                                                    <h4>Price</h4>
-                                                    <h4 class="for_20_text service_price-d">${{ $service->price }}</h4>
-                                                    <input type="hidden" name="service_uuid" class="service_uuid" value="{{ $service->uuid }}">
+                                                        {{-- <p >With supporting text below as a natural lead-in to additional content...</p> --}}
+                                                        <h4>Price</h4>
+                                                        <h4 class="for_20_text service_price-d">${{ $service->price }}</h4>
+                                                        <input type="hidden" name="service_uuid" class="service_uuid" value="{{ $service->uuid }}">
+                                                    </div>
+
                                                 </div>
-
                                             </div>
-                                        </div>
 
 
-                                        <!-- Common Modal Start -->
+                                            <!-- Common Modal Start -->
 
 
-                                        {{-- <div class="modal fade" id="example-{{ $service->uuid }}" tabindex="-1" aria-labelledby="example" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
+                                            {{-- <div class="modal fade" id="example-{{ $service->uuid }}" tabindex="-1" aria-labelledby="example" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                <div class="modal-body">
-                                                    <h5 class="modal_title_services_child">Services
-                                                        <span class="pull-right">
-                                                            <span>
-                                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Group 356.svg') }} " class="img-fluid  for_icon_modal edit_service-d" id="edit_service-d"  alt="...">
+                                                    <div class="modal-body">
+                                                        <h5 class="modal_title_services_child">Services
+                                                            <span class="pull-right">
+                                                                <span>
+                                                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Group 356.svg') }} " class="img-fluid  for_icon_modal edit_service-d" id="edit_service-d"  alt="...">
+
+                                                                </span>
+                                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} " class="img-fluid for_modal_cancel_img_services  "  data-bs-dismiss="modal" aria-label="Close" alt="...">
 
                                                             </span>
-                                                            <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} " class="img-fluid for_modal_cancel_img_services  "  data-bs-dismiss="modal" aria-label="Close" alt="...">
+                                                        </h5>
 
-                                                        </span>
-                                                    </h5>
-
-                                                    <div class="mt-n5">
-                                                            <p class="Menicure_Predicure">{{ $service->name }}</p>
-                                                            <p class="price">
-                                                                Price
-                                                                <span class="price_thirty_dollars">
-                                                                    ${{ $service->price }}
-                                                                </span>
-                                                            </p>
-                                                    </div>
+                                                        <div class="mt-n5">
+                                                                <p class="Menicure_Predicure">{{ $service->name }}</p>
+                                                                <p class="price">
+                                                                    Price
+                                                                    <span class="price_thirty_dollars">
+                                                                        ${{ $service->price }}
+                                                                    </span>
+                                                                </p>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div> --}}
+                                            </div> --}}
 
-                                        <!-- Common Modal ENd -->
+                                            <!-- Common Modal ENd -->
 
-                                    @endforeach
+                                        @endforeach
+                                    @else
+                                        <h5>No Services Added Yet</h5>
+                                    @endif
+
 
                                     {{--  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                                         <div class="card for_border_card_dashed for_facial_w" data-bs-toggle="modal" data-bs-target="#example">

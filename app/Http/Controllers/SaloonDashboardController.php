@@ -68,14 +68,17 @@ class SaloonDashboardController extends Controller
         if ($request->getMethod() == 'GET') {
             $request->merge(['salon_uuid' => $request->uuid]);
             $serviceCntrl = $this->serviceApiCntrl;
+            // dd($request->all());
             $apiResponse = $serviceCntrl->getService($request)->getData();
-
+            // dd($apiResponse);
             if ($apiResponse->status) {
                 $getServices = $apiResponse->data;
-                return view('Profile.service', ['id' => $uuid, 'getServices' =>$getServices]);
+                return view('Profile.service', ['id' => $uuid, 'getServices' => $getServices]);
+
             }
 
-            return view('Profile.service',['id'=>$uuid]);
+            $getServices = null;
+            return view('Profile.service',['id'=>$uuid, 'getServices' => $getServices]);
             // $request->merge(['id' => $request->uuid]);
             // $userCntrl = $this->userApiCntrl;
             // $apiResponse = $userCntrl->getUser($request)->getData();
@@ -275,24 +278,26 @@ class SaloonDashboardController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'saloon_email' => 'required|string',
-                'location' => 'required|string',
-                'lat' => 'numeric',
-                'long' => 'numeric',
+                'address_copy' => 'required|string',
                 'opening_time' => 'required|date_format:H:i',
                 'closing_time' => 'required|date_format:H:i|after:opening_time',
                 'description' => 'required|string',
                 'days' => 'required',
             ]);
 
-            $request->merge(['brosche*' => $request->brosche]);
+            // $request->merge([
+            //     'brosche*' => $request->brosche,
+            //     'address' => $request->address_copy,
+            // ]);
 
             $days = json_encode($request->days);
             // $brosche = json_decode($request->brosche);
             $request->merge([
                 'user_uuid' => $uuid,
+                'brosche*' => $request->brosche,
                 'start_time' => $request->opening_time,
                 'end_time' => $request->closing_time,
-                'address' => $request->location,
+                'address' => $request->address_copy,
                 'days' =>   $days,
 
             ]);
@@ -311,7 +316,7 @@ class SaloonDashboardController extends Controller
                 ]);
             }
 
-            // dd($request->all(), getType($request->media));
+            // dd($request->all(), getType($request->address));
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->updateUser($request)->getData();
             // dd($apiResponse->data);
