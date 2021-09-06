@@ -20,6 +20,10 @@ use App\Http\Controllers\UserAppointmentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
+
+Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->name('bookingSalon');
+
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){

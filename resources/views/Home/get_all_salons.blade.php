@@ -15,11 +15,7 @@
                 </div>
 
             </div>
-            <div class="col-2 d-flex justify-content-end">
-                    <a href="{{ route('allSalons') }}"><span class="fg_mustard-s">View more<i class="fa fa-arrow-right"
-                                aria-hidden="true"></i></span></a>
 
-            </div>
         </div>
 
         <div class="row ">
@@ -30,8 +26,8 @@
                         <div class="col">
                             <div class="card border-0">
                                 <div class="position-absolute discount_ticket-s">
-                                    <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} "
-                                        class="img-fluid " width="100" alt="...">
+                                        <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} "class="img-fluid " width="100" alt="...">
+
                                     <div class="position-absolute discount_text-s">
                                         <h6 class="mb-0  text-white">Discount</h6>
                                         <span
@@ -39,8 +35,11 @@
                                     </div>
                                 </div>
                                 <div class="br_20px-s w_165px-s">
-                                    <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}"
-                                        class="card-img-top img-fluid br_20px-s" alt="...">
+                                    <a href="{{ route('bookingSalon', $salon->uuid) }}">
+                                        <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}"
+                                            class="card-img-top img-fluid br_20px-s" alt="...">
+                                    </a>
+
                                 </div>
                                 <div class="card-body px-0">
                                     <h4 class="text-break text-wrap">{{ $salon->name ?? '' }}</h4>
@@ -60,7 +59,7 @@
     <!--Home Bar Page End !-->
 
     <!-- After navBar Third -->
-    <div class="container pt-5">
+    {{-- <div class="container pt-5">
 
             <div class="row">
                 <div class="col-10 text-center">
@@ -77,9 +76,9 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
-            <div class="row for_after_nav_second_css">
+            {{-- <div class="row for_after_nav_second_css">
                 @foreach ($salonsNearByMe as $salon)
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
                         <div class="card border-0">
@@ -115,7 +114,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
 
         <!--Home Bar Page End !-->
 
