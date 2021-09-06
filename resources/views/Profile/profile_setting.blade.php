@@ -371,7 +371,7 @@
                                             <div class="col-12 my-5 d-flex px-lg-2 px-0">
 
 
-                                                  @if($updateProfile->days != [])
+                                                @if($updateProfile->days != [])
 
                                                             @php
                                                             $saloon_chosen_days = [];
@@ -414,7 +414,7 @@
                                                                                 <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " value="{{ $day }}"  id="{{ $day }}-d">
                                                                             </div>
 
-                                                                              @if (!$loop->last)
+                                                                            @if (!$loop->last)
                                                                                 <div class="days_lines-s mt-3"></div>
                                                                             @endif
                                                                         @endif
@@ -425,7 +425,7 @@
                                                                 @enderror
 
 
-                                                        @else
+                                                @else
                                                                 @php
 
                                                                     $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
@@ -445,8 +445,9 @@
                                                                                 {{-- {{ dd('last') }} --}}
                                                                                 <div class="days_lines-s mt-3"></div>
                                                                             @endif
+                                                                    @endforeach
 
-                                                    @endif
+                                                @endif
 
 
                                             </div>
