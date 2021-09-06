@@ -361,7 +361,69 @@
                                         {{-- {{ dd($profile->days) }} --}}
 
                                         <!-- Third Div Start -->
-                                        <div class="availability_on_week_bg">
+                                        <div class="row w-100 py-5 px-xl-5 available_days-s">
+                                            <div class="col-12 my-4">
+                                                <h4>
+                                                    <i class="fa fa-calendar-check-o week_calander-s" aria-hidden="true"></i>
+                                                    <span class="weekdays_heading-s">Availability On Week..</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-12 my-5 d-flex">
+                                                <div class="days_circle-s days_circle-d"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                                <div class="days_lines-s mt-3"></div>
+                                                <div class="days_circle-s"></div>
+                                            </div>
+                                            <div class="col-12 text-white d-flex justify-content-between">
+                                                <span>Monday</span>
+                                                <span>Tuesday</span>
+                                                <span>Wednesday</span>
+                                                <span>Thursday</span>
+                                                <span>Friday</span>
+                                                <span>Saturday</span>
+                                                <span>Sunday</span>
+                                            </div>
+                                            <!-- <div class="col-12 d-flex justify-content-between">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="monday-d">
+                                                    <label class="form-check-label text-white" for="monday-d">Monday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="tuesday-d">
+                                                    <label class="form-check-label text-white" for="tuesday-d">Tuesday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="wednesday-s">
+                                                    <label class="form-check-label text-white" for="wednesday-s">Wednesday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="thursday-d">
+                                                    <label class="form-check-label text-white" for="thursday-d">Thursday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="friday-d">
+                                                    <label class="form-check-label text-white" for="friday-d">Friday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="saturday-d">
+                                                    <label class="form-check-label text-white" for="saturday-d">Saturday</label>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input" id="sunday-d">
+                                                    <label class="form-check-label text-white" for="sunday-d">Sunday</label>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <!-- <div class="availability_on_week_bg">
                                             <div class="on_week_text ">
 
                                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
@@ -435,7 +497,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Third Div End -->
 
 

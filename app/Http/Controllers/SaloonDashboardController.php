@@ -248,7 +248,7 @@ class SaloonDashboardController extends Controller
 
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse = $userCntrl->updateUser($request)->getData();
-                dd($apiResponse);
+                // dd($apiResponse);
                 if ($apiResponse->status) {
                     $update_profile = $apiResponse->data;
                     // dd($update_profile, 'response of coordinates');
@@ -301,6 +301,7 @@ class SaloonDashboardController extends Controller
                 'days' =>   $days,
 
             ]);
+         
 
             if(isset($request->media) && ('' !== $request->media)  )
             {
@@ -316,7 +317,8 @@ class SaloonDashboardController extends Controller
                 ]);
             }
 
-            // dd($request->all(), getType($request->address));
+            dd($request->all(), getType($request->address));
+
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->updateUser($request)->getData();
             // dd($apiResponse->data);
