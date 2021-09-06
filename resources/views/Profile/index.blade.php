@@ -334,7 +334,7 @@
                                                             $saloon_chosen_days = [];
                                                             @endphp
 
-                                                            @foreach ($$profile->days as $saloon_day)
+                                                            @foreach ($profile->days as $saloon_day)
                                                                 @php
                                                                     $saloon_days[] = $saloon_day->day;
                                                                 @endphp

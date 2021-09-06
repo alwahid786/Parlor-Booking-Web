@@ -96,11 +96,11 @@
   font-family: SF UI Display;
   margin-bottom: 50px;
 }
-/* 
+/*
   .timeline li:before {
     color: danger;
     content: counter(step);
-  
+
     width: 35px;
     height: 35px;
     display: block;
@@ -425,6 +425,10 @@
   width: 13%;
   height: 3px;
   background-color: white;
+}
+
+.opacity_0-s{
+    opacity: 0;
 }
 
 /* @media screen and(max-width:1024px) {

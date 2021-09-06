@@ -211,13 +211,13 @@
                                     <div class="row">
 
 
-                                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
+                                        <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
                                             @if(null != $updateProfile->brosche)
                                             {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
                                                 <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
                                                     <div>
-                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
+                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
                                                         class="img-fluid for_cancel_icon_in_profile  " alt="...">
                                                     </div>
                                                     <div>
@@ -361,36 +361,50 @@
                                         {{-- {{ dd($profile->days) }} --}}
 
                                         <!-- Third Div Start -->
-                                        <div class="row w-100 py-5 px-xl-5 available_days-s">
+                                        <div class="row w-100 py-5 px-xl-5 mt-4 available_days-s">
                                             <div class="col-12 my-4">
                                                 <h4>
                                                     <i class="fa fa-calendar-check-o week_calander-s" aria-hidden="true"></i>
                                                     <span class="weekdays_heading-s">Availability On Week..</span>
                                                 </h4>
                                             </div>
-                                            <div class="col-12 my-5 d-flex">
-                                                <div class="days_circle-s days_circle-d"></div>
+                                            <div class="col-12 my-5 d-flex px-lg-2 px-0">
+                                                <div class="days_circle-s white_border-s text-center ">
+                                                    <input type="checkbox" name="monday" data-parent="monday" class="form-check-input opacity_0-s days_circle-d"  id="monday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center ">
+                                                    <input type="checkbox" name="tuesday" data-parent="tuesday" class="form-check-input opacity_0-s days_circle-d"  id="tuesday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center">
+                                                    <input type="checkbox" name="wednesday" data-parent="wednesday" class="form-check-input opacity_0-s days_circle-d"  id="wednesday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center">
+                                                    <input type="checkbox" name="thursday" data-parent="thursday" class="form-check-input opacity_0-s days_circle-d"  id="thursday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center">
+                                                    <input type="checkbox" name="friday" data-parent="friday" class="form-check-input opacity_0-s days_circle-d"  id="friday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center">
+                                                    <input type="checkbox" name="satruday" data-parent="saturday" class="form-check-input opacity_0-s days_circle-d"  id="saturday-d">
+                                                </div>
                                                 <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s"></div>
+                                                <div class="days_circle-s white_border-s text-center">
+                                                    <input type="checkbox" name="sunday" data-parent="sunday" class="form-check-input opacity_0-s days_circle-d"  id="sunday-d">
+                                                </div>
                                             </div>
                                             <div class="col-12 text-white d-flex justify-content-between">
-                                                <span>Monday</span>
-                                                <span>Tuesday</span>
-                                                <span>Wednesday</span>
-                                                <span>Thursday</span>
-                                                <span>Friday</span>
-                                                <span>Saturday</span>
-                                                <span>Sunday</span>
+                                                <span id="monday" class="text-white">Monday</span>
+                                                <span id="tuesday" class="text-white">Tuesday</span>
+                                                <span id="wednesday" class="text-white">Wednesday</span>
+                                                <span id="thursday" class="text-white">Thursday</span>
+                                                <span id="friday" class="text-white">Friday</span>
+                                                <span id="saturday" class="text-white">Saturday</span>
+                                                <span id="sunday" class="text-white">Sunday</span>
                                             </div>
                                             <!-- <div class="col-12 d-flex justify-content-between">
                                                 <div class="form-group form-check">
@@ -592,6 +606,7 @@
 <script src="{{ asset('assets/js/common.js') }}"></script>
 <script src="{{ asset('assets/js/profileService.js') }}"></script>
 <script src="{{ asset('assets/js/profile_location.js') }}"></script>
+<script src="{{ asset('assets/js/profile_setting.js') }}"></script>
 
 </body>
 
