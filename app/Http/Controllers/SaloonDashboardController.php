@@ -259,7 +259,7 @@ class SaloonDashboardController extends Controller
                 }
 
             }else {
-                // dd($request->all(), 'else part of coordinates');
+                // dd($request->all());
                 $request->merge(['id' => $request->uuid]);
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse = $userCntrl->getUser($request)->getData();
@@ -301,7 +301,7 @@ class SaloonDashboardController extends Controller
                 'days' =>   $days,
 
             ]);
-         
+
 
             if(isset($request->media) && ('' !== $request->media)  )
             {
@@ -316,8 +316,6 @@ class SaloonDashboardController extends Controller
                     'brosche*' => $request->brosche,
                 ]);
             }
-
-            dd($request->all(), getType($request->address));
 
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->updateUser($request)->getData();

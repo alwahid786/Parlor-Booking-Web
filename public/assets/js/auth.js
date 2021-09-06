@@ -194,7 +194,7 @@ $(function(event) {
                         }).then((result) => {
                             console.log(response);
                             let type = response.data.user.type;
-                            return false;
+                            // return false;
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
                             if (type == 'salon') {
                                 console.log('salon')

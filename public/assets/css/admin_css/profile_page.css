@@ -431,6 +431,15 @@
     opacity: 0;
 }
 
+.checked_days-s {
+    border: 5px solid #f5b51b;
+}
+
+.text-color-s {
+    color:  #f5b51b !important;
+
+}
+
 /* @media screen and(max-width:1024px) {
     .days_circle-s{
       width: 83px;
