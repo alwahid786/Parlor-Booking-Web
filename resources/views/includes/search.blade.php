@@ -1,3 +1,9 @@
+
+@if ($book_salon == 1)
+    <div>in booking page</div>
+@else
+
+
 <div class="container">
     <div class="wellcome_GLITTER_ups">
         <p>WELLCOME TO</p>
@@ -34,3 +40,5 @@
         
     </div>
 </div>
+    
+@endif

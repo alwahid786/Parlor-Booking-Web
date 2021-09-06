@@ -36,7 +36,7 @@
 
               </div>
 
-              <form action="{{ route('weblogin') }}" id="frm_login-d" method="post">
+              <form action="{{ route('weblogin') }}" class="frm_login-d" method="post">
                 @csrf
                 <div class="for_common_email_pass pt-4">
                     <p>Email Address</p>
@@ -50,7 +50,7 @@
                     <p>Password</p>
                       <div class="input-group mb-3 w-75 border-bottom">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input type="password" class="inp" name="password" placeholder="***********" required/>
+                        <input type="password" class="inp" name="password" placeholder="" required/>
                       </div>
                 </div>
 

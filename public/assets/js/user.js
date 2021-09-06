@@ -60,4 +60,64 @@ $(document).ready(function() {
     });
 
 
+   $("#ok").click(function () {
+        alert('helo');
+    });
+
+    // open modal for user to go to login
+    $('#check_account_modal-d').click(function () { 
+        $("#open_signin_modal-d").modal('show');
+        // $("#signinoptionModal").modal('show');
+
+        // switchModal('signinModal', 'signinoptionModal');
+    });
+
+    // open login modal and close previous modal
+    $('#option_sign_modal-d').click(function () { 
+        switchModal('open_signin_modal-d', 'signin_modal-d');
+
+    });
+
+    // open forgot password modal and close login modal 
+    $('#option_forgot_modal-d').click(function () { 
+        switchModal('signin_modal-d', 'forgot_modal-d');
+
+    });
+    
+
+    // open enter password modal and cloe forogot password modal 
+    $('#option_forgot_modal-d').click(function () { 
+        switchModal('signin_modal-d', 'forgot_modal-d');
+
+    });
+    
+
+    // open signup socail modal and close login modal 
+    $("#option_signup_socail_modal-d").click(function () { 
+        switchModal('signin_modal-d', 'signup_socail_modal-d');
+    });
+
+    // open signup modal and close signup socail  modal 
+    $("#option_signup_modal-d").click(function () { 
+        switchModal('signup_socail_modal-d', 'signup_modal-d');
+    });
+
+
+
+   // from forgot password code modal , if user want to go to singup modal  
+    $("#goto_signup_modal-d").click(function () { 
+        switchModal('forgot_modal-d', 'signup_modal-d');
+    });
+
+
+  // from singup  modal , if user want to go to login modal  
+    $("#goto_login_modal-d").click(function () { 
+        switchModal('signup_modal-d', 'signin_modal-d');
+    });
+
+
+});
+
+$(function(event) {
+ 
 });

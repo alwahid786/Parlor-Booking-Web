@@ -138,7 +138,7 @@ $(function(event) {
 
 
     // validate and process login form
-    $('#frm_login-d').validate({
+    $('.frm_login-d').validate({
         ignore: ".ignore",
         rules: {
             email: {
@@ -193,8 +193,8 @@ $(function(event) {
                             timer: 2000
                         }).then((result) => {
                             console.log(response);
-                            // return false;
                             let type = response.data.user.type;
+                            return false;
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
                             if (type == 'salon') {
                                 console.log('salon')
