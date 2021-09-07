@@ -398,8 +398,8 @@
                                                                 @foreach ($days as $day)
                                                                         @if(in_array($day, $chosen_days))
 
-                                                                            <div class="days_circle-s white_border-s text-center checked_days-s ">
-                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d" checked value="{{ $day }}"  id="{{ $day }}-d">
+                                                                            <div class="days_circle-s white_border-s text-center  ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  value="{{ $day }}"  id="{{ $day }}-d">
                                                                             </div>
 
                                                                             @if (!$loop->last)
@@ -410,8 +410,8 @@
 
                                                                             @else
 
-                                                                              <div class="days_circle-s white_border-s text-center ">
-                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " value="{{ $day }}"  id="{{ $day }}-d">
+                                                                              <div class="days_circle-s white_border-s text-center checked_days-s ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " checked value="{{ $day }}"  id="{{ $day }}-d">
                                                                             </div>
 
                                                                             @if (!$loop->last)
@@ -438,7 +438,7 @@
                                                                     @foreach ($days as $day)
 
                                                                             <div class="days_circle-s white_border-s text-center ">
-                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  id="{{ $day }}-d">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d" value="{{ $day }}"  id="{{ $day }}-d">
                                                                             </div>
 
                                                                             @if (!$loop->last)
@@ -452,16 +452,23 @@
 
                                             </div>
                                             <div class="col-12 text-white d-flex justify-content-between">
-                                                @foreach ($days as $day)
+                                                @if($updateProfile->days != [])
+                                                    @foreach ($days as $day)
+                                                        @if (in_array($day, $chosen_days))
+                                                            <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
 
-                                                    @if (in_array($day, $chosen_days))
+                                                        @else
+                                                            <span id="{{ $day }}" class="text-white text-color-s ">{{ ucfirst(trans($day)) }}</span>
 
-                                                        <span id="{{ $day }}" class="text-white text-color-s ">{{ ucfirst(trans($day)) }}</span>
-                                                    @else
-                                                        <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
 
-                                                    @endif
-                                                @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($days as $day)
+                                                            <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
+
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                         <!-- Third Div End -->

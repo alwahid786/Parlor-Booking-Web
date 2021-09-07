@@ -194,6 +194,10 @@ $(function(event) {
                         }).then((result) => {
                             console.log(response);
                             let type = response.data.user.type;
+
+                            let service = $(".service-d").val();
+                            console.log('service: ', service);
+
                             // return false;
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
                             if (type == 'salon') {
@@ -201,9 +205,18 @@ $(function(event) {
                                 window.location.href = venderProfile + '?uuid=' + response.data.user.uuid;
 
                             } else {
-                                console.log('user');
+                                if((null != service ) && (service == 1))
+                                {
+                                    // window.history.back();
+                                    location.reload()
+                                    // window.location.href = SalonServices + '?uuid=' + response.data.user.uuid;
+                                }
+                                else
+                                {
+                                    console.log('user');
 
-                                window.location.href = UserAppointments + '?uuid=' + response.data.user.uuid;
+                                    window.location.href = UserAppointments + '?uuid=' + response.data.user.uuid;
+                                }
 
                             }
 

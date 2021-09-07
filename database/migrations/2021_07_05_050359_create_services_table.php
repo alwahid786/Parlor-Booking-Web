@@ -24,6 +24,7 @@ class CreateServicesTable extends Migration
             $table->double('price')->default(0.0);
 
             $table->integer('slot')->nullable();
+            $table->text('description')->nullable();
             $table->enum('status', ['active','in-active'])->default('active');
             $table->time('time')->nullable();
 

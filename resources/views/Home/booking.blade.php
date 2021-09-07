@@ -42,28 +42,30 @@
 
 
     <div class="text-center for_booking_now_btn">
-        @if (Auth::user())
+        {{-- @if (Auth::user())
             <a href="../HomepageComponent/booking_now_salon_child_two.php">
             <a href="">
                 <button type="button" class="btn btn-warning">Booking Now</button>
             </a>
-        @else
+        @else --}}
             {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#signinModal">Booking Now</button> --}}
-            <button type="button" class="btn btn-warning" id="check_account_modal-d">Booking Now</button>
-        @endif
-
+            {{-- <button type="button" class="btn btn-warning" id="check_account_modal-d">Booking Now</button>
+        @endif --}}
+            <a href="{{ route('bookingSalonServices', $salon_uuid) }}">
+                <button type="button" class="btn btn-warning">Booking Now</button>
+            </a>
     </div>
 
 
-    @include('UserAuthModals.goto_signin_modal',[]);
+    {{-- @include('UserAuthModals.goto_signin_modal',[]);
     @include('UserAuthModals.signin_modal',[]);
     @include('UserAuthModals.signup_socail_modal',[]);
     @include('UserAuthModals.signup_modal',[]);
-    @include('UserAuthModals.forgot_password_modal',[]);
+    @include('UserAuthModals.forgot_password_modal',[]); --}}
 
 @endsection
 
 @section('footer-scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
 
 @endsection

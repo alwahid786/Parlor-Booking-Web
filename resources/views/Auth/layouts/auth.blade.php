@@ -51,8 +51,7 @@
     let ResetPassword = "{{ route('resetPassword') }}";
     let venderProfile = "{{ route('profileSetting') }}"
 
-    // user routes
-    let UserAppointments = "{{ route('userAppointments') }}"
+
 </script>
 
 
