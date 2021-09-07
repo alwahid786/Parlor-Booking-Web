@@ -10,11 +10,13 @@ class HomeController extends Controller
 {
 
     private $salonApiCntrl;
+    private $salonApiServiceCntrl;
 
 
-    public function __construct(UserController $salonApiCntrl)
+    public function __construct(UserController $salonApiCntrl, ServiceController $salonApiServiceCntrl)
     {
         $this->salonApiCntrl = $salonApiCntrl;
+        $this->salonApiServiceCntrl = $salonApiServiceCntrl;
     }
 
     public function index(Request $request)
@@ -120,10 +122,30 @@ class HomeController extends Controller
             $userCntrl = $this->salonApiCntrl;
             $apiResponse = $userCntrl->getUser($request)->getData();
             if ($apiResponse->status) {
-                $saloon_available_days = $apiResponse->data;
-                $salon_days = $saloon_available_days->days;
-                return view('Home.booking', ['salon_days'=>$salon_days,  'book_salon' => 1]);
+                $salon_available_days = $apiResponse->data;
+                $salon_uuid = $salon_available_days->uuid;
+                $salon_days = $salon_available_days->days;
+                return view('Home.booking', ['salon_uuid'=>$salon_uuid, 'salon_days'=>$salon_days,  'book_salon' => 1]);
             }
         }
     }
+
+
+    public function bookingSalonServices($uuid = null, Request $request)
+    {
+        if ($request->getMethod() == 'GET') {
+            $request->merge([
+                'salon_uuid' => $uuid,
+            ]);
+
+            $userCntrl = $this->salonApiServiceCntrl;
+            $apiResponse = $userCntrl->getService($request)->getData();
+            if ($apiResponse->status) {
+                $saloon_service = $apiResponse->data;
+                return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1]);
+            }
+        }
+    }
+
+
 }

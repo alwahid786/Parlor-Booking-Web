@@ -22,7 +22,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
 
+//saloon book
 Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->name('bookingSalon');
+
+//booking details
+Route::any('/booking-salon-service/{uuid?}', [HomeController::class, 'bookingSalonServices'])->name('bookingSalonServices');
 
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 

@@ -290,7 +290,9 @@ class SaloonDashboardController extends Controller
             //     'address' => $request->address_copy,
             // ]);
 
+            // dd($request->all());
             $days = json_encode($request->days);
+
             // $brosche = json_decode($request->brosche);
             $request->merge([
                 'user_uuid' => $uuid,
@@ -316,6 +318,7 @@ class SaloonDashboardController extends Controller
                     'brosche*' => $request->brosche,
                 ]);
             }
+
 
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->updateUser($request)->getData();

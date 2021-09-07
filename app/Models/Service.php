@@ -10,6 +10,8 @@ class Service extends Model
 {
     use HasFactory,softDeletes;
 
+    // protected $appends = ['total_price'];
+
     protected $table = 'services';
 
         /**
@@ -31,5 +33,11 @@ class Service extends Model
     function appointmentDetails(){
         return $this->hasMany(AppointmentDetail::class, 'service_id', 'id');
     }
+
+
+    // public function getTotalPriceAttribute()
+    // {
+    //     return Service::where('salon_id', $this->id)->sum('price');
+    // }
 
 }

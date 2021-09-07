@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/navbar_css/nav_bar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/past_appointments.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/profile_page.css') }}">
+
     <title>Profile</title>
     <style>
         .pic:hover {
@@ -326,7 +327,7 @@
                                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                             <span class="on_week_separate">Availability On Week</span>
                                             <div class="row">
-                                                <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="col-12 my-5 d-flex px-lg-2 px-0">
 
                                                         @if($profile->days != [])
 
@@ -347,21 +348,36 @@
 
                                                             @endphp
 
-                                                            <ul class='timeline'>
                                                                 @php
                                                                     $chosen_days=  array_diff($days, $saloon_days??[]);
 
                                                                 @endphp
 
                                                                 @foreach ($days as $day)
-                                                                        @if(in_array($day, $chosen_days))
-                                                                            <li  >{{ ucfirst(trans($day)) }}</li>
-                                                                        @else
-                                                                            <li style="color:green" >{{ ucfirst(trans($day)) }}</li>
+                                                                       @if(in_array($day, $chosen_days))
+
+                                                                            <div class="days_circle-s white_border-s text-center  ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  value="{{ $day }}"  id="{{ $day }}-d">
+                                                                            </div>
+
+                                                                            @if (!$loop->last)
+                                                                                {{-- {{ dd('last') }} --}}
+                                                                                <div class="days_lines-s mt-3"></div>
+                                                                            @endif
+
+
+                                                                            @else
+
+                                                                              <div class="days_circle-s white_border-s text-center checked_days-s">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " checked value="{{ $day }}"  id="{{ $day }}-d">
+                                                                            </div>
+
+                                                                            @if (!$loop->last)
+                                                                                <div class="days_lines-s mt-3"></div>
+                                                                            @endif
                                                                         @endif
 
                                                                 @endforeach
-                                                            </ul>
 
 
                                                         @else
@@ -371,24 +387,52 @@
 
                                                                 @endphp
 
+                                                                @foreach ($days as $day)
+                                                                            {{ dd($days) }}
+                                                                    <div class="days_circle-s white_border-s text-center ">
+                                                                        <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  id="{{ $day }}-d">
+                                                                    </div>
 
-
-                                                                <ul class='timeline'>
-
-                                                                    @foreach ($days as $day)
-                                                                            <li>{{ ucfirst(trans($day)) }}</li>
-                                                                    @endforeach
-
-                                                                </ul>
+                                                                    @if (!$loop->last)
+                                                                        {{-- {{ dd('last') }} --}}
+                                                                        <div class="days_lines-s mt-3"></div>
+                                                                    @endif
+                                                                @endforeach
 
 
                                                         @endif
 
 
-                                                    </ul>
+
 
                                                 </div>
+
+
+
                                             </div>
+
+                                            <div class="col-12 text-white d-flex justify-content-between">
+                                                @if($profile->days != [])
+                                                    @foreach ($days as $day)
+
+                                                        @if (in_array($day, $chosen_days))
+                                                            <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
+
+                                                            @else
+
+                                                            <span id="{{ $day }}" class="text-white text-color-s ">{{ ucfirst(trans($day)) }}</span>
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($days as $day)
+                                                            <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
+
+                                                    @endforeach
+                                                @endif
+
+                                            </div>
+
+
                                         </div>
                                     </div>
                                     <!-- Third Div End -->
@@ -474,6 +518,8 @@
 
         })
     </script>
+
+<script src="{{ asset('assets/js/profile_setting.js') }}"></script>
 
 </body>
 
