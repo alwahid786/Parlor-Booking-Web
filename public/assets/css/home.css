@@ -1,1769 +1,366 @@
 .wellcome_GLITTER_ups {
-  padding-top: 100px;
-  margin-left: 180px;
-}
-
-.wellcome_GLITTER_ups p {
-  font-family: SF UI Display;
-  font-style: normal;
-  color: aliceblue;
-}
-
-.wellcome_GLITTER_ups h1 {
-  font-family: Bebas Neue;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 32px;
-  color: aliceblue;
-}
-
-.for_text_yellow_color {
-  color: #f5b51b !important;
-}
-
-.for_text_dummy {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: aliceblue;
-}
-
-.finds_deal_on_parlour {
-  margin-left: 100px;
-  padding-top: 50px;
-}
-
-.input-text {
-  /* border-width: 3px solid #f5b51b !important; */
-  border: 3px solid #f5b51b !important;
-  border-radius: 4px;
-}
-
-.input-group-append button {
-  border: 3px solid #f5b51b;
-}
-
-.search_btn_bg {
-  background-color: #133e59 !important;
-  color: aliceblue;
-}
-
-:-webkit-input-placeholder {
-  /* Edge */
-  color: red !important;
-}
-::placeholder {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px !important;
-  color: #c4c4c4;
-}
-
-.input-group:not(.has-validation)
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 1px;
-}
-.discount_imgggggg {
-  position: absolute;
-  margin-left: -86px;
-  width: 72px;
-  height: 106px;
-}
-
-button {
-  z-index: 0 !important;
-}
-
-/* After Nav Second Div Start   */
-.for_tap_salon_css h1 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 29px;
-  /* identical to box height */
-
-  color: #000000;
-}
-.first_bottom {
-  /* border-bottom: 2px solid #f5b51b; */
-  /* display: inline-flex; */
-  width: 149px;
-  /* justify-content: center; */
-  text-align: center !important;
-  margin-left: 394px;
-  margin-top: 0px;
-  color: #f5b51b;
-  height: 2px !important;
-}
-.for_after_nav_second_css {
-  overflow-x: auto;
-}
-.second_bottom {
-  width: 100px;
-  height: 2px !important;
-  margin-left: 421px;
-  margin-top: -8px;
-  color: #f5b51b;
-}
-
-.for_dollor_bg {
-  background-color: #fff3e8;
-}
-
-button {
-  position: absolute;
-
-  z-index: -1;
-}
-.css_for_1681_vine {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  /* font-size: 8px;
-  line-height: 19px; */
-  /* identical to box height */
-
-  color: #353535;
-}
-
-.dot {
-  height: 35px;
-  width: 35px;
-  background: #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
-}
-
-.for_icon_arrow_right {
-  text-align: center;
-  margin-top: -18px;
-}
-
-.for_glitter_ups_css {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 16px;
-  color: #353535;
-}
-.for_card_body_ml {
-  margin-left: -17px;
-}
-
-.for_firts_div_card_first {
-  height: 150px;
-  margin-left: -14px;
-}
-
-.for_dollor_bg h6 {
-  padding: 11px;
-}
-.for_icon_arrow_right i {
-  margin-top: 8px;
-}
-
-.fa-map-marker {
-  color: #f5b51b;
-  font-size: 13px;
-}
-.for_1669_css {
-  font-weight: normal;
-  font-size: 8px;
-  font-family: cursive;
-  -webkit-text-decoration-line: line-through; /* Safari */
-  text-decoration-line: line-through;
-}
-
-.for_icon_arrow_left {
-  position: absolute;
-  margin-top: 79px;
-  /* margin-right: 10px !important; */
-  margin-left: -30px;
-  color: #ff7a00;
-}
-
-.fa-arrow-left {
-  margin-left: 10px;
-  margin-top: 8px;
-}
-
-.for_arrow_left {
-  position: absolute;
-  margin-left: 97px;
-  margin-top: 79px;
-  color: #ff7a00;
-}
-
-.fa-arrow-right {
-  margin-left: 12px;
-  margin-top: 8px;
-}
-.discount_img {
-  position: absolute;
-  margin-left: -86px;
-  width: 72px;
-  height: 106px;
-}
-
-.discount_text_css {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 34px;
-  font-family: SF UI Display;
-  font-style: normal;
-  color: #ffffff;
-  font-size: 12px;
-}
-.up_to_fifty_percent {
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 9px;
-  /* line-height: 5px; */
-  color: #ffffff;
-}
-.getone_free_img {
-  position: absolute;
-  margin-left: -53px;
-  margin-top: 22px;
-  height: 90px;
-}
-
-.buyone_getone_Big_css {
-  position: absolute;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 9px;
-  line-height: 11px;
-  color: #ffffff;
-  margin-top: 29px;
-  margin-left: -48px;
-}
-
-/* After Nav Second Div End  */
-
-/* After NAv Third Div Start */
-.for_card_body_mll {
-  margin-left: 0px;
-}
-.for_card_body_mll_home {
-  margin-left: 0px;
-}
-.for_glitter_ups_csss {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 20px;
-  color: #353535;
-}
-
-.css_for_1681_vinee {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px !important;
-  line-height: 19px;
-  color: #353535;
-}
-.discount_text_cssssss {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 34px;
-  font-family: SF UI Display;
-  font-style: normal;
-  color: #ffffff;
-  font-size: 12px;
-}
-.getone_free_imggggg {
-  position: absolute;
-  margin-left: -53px;
-  margin-top: 22px;
-  height: 90px;
-}
-
-/* My Appointmetns Start */
-.for_appointments_img_commonn {
-  width: 110px;
-}
-.for_main_row_appointmentt {
-  padding-top: 100px;
-}
-
-.btn_saturday_css {
-  margin-left: 97px;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  color: #000000;
-}
-
-.btn_view {
-  font-size: 12px;
-  width: 79px;
-  margin-left: 6px;
-  background: rgba(27, 245, 140, 0.26);
-  border-radius: 10px;
-  color: #000000;
-}
-.for_active_btn {
-  left: calc(50% - 131px / 2 - 506.5px);
-  top: 2183px;
-  width: 58px;
-  background: rgba(27, 245, 140, 0.26);
-}
-
-.card_body_for_appointmentt {
-  margin-top: -16px;
-}
-
-.card_body_for_appointmentt h5 {
-  margin-top: 40px;
-  margin-left: 6px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 30px;
-  /* identical to box height, or 125% */
-
-  color: #000000;
-}
-
-.card_body_for_appointmentt h6 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 19px;
-  color: #f5b51b;
-  margin-left: 8px;
-  margin-top: -11px;
-}
-
-.card_body_for_appointmentt i {
-  color: #f5b51b;
-  font-size: 14px;
-}
-
-.card_body_for_appointmentt span {
-  font-size: 10px;
-}
-.card_body_for_appointmentt h4 {
-  margin-top: -15px;
-  margin-left: 9px;
-}
-.fa-map-marker {
-  margin-left: 9px;
-}
-.card_body_for_appointmentt p {
-  margin-top: -10px;
-}
-.for_appointments_bottom_border {
-  border-bottom: 2px solid #f5b51b;
-}
-.for_border_bottom_text h4 {
-  margin-bottom: 55px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  /* identical to box height */
-
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
-}
-.for_appointments_hr {
-  width: 62px;
-  margin-left: 453px;
-  margin-top: 9px;
-  text-decoration: none;
-  color: yellow;
-  border-bottom: 2px solid #f5b51b;
-}
-.for_view_more_text p {
-  margin-top: -88px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-
-  color: #f5b51b;
-}
-
-.wellcome_GLITTER_ups {
-  padding-top: 100px;
-  margin-left: 180px;
-}
-
-.wellcome_GLITTER_ups p {
-  font-family: SF UI Display;
-  font-style: normal;
-  color: aliceblue;
-}
-
-.wellcome_GLITTER_ups h1 {
-  font-family: Bebas Neue;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 32px;
-  color: aliceblue;
-}
-
-.for_text_yellow_color {
-  color: #f5b51b !important;
-}
-
-.for_text_dummy {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: aliceblue;
-}
-
-.finds_deal_on_parlour {
-  margin-left: 100px;
-  padding-top: 50px;
-}
-
-.input-text {
-  /* border-width: 3px solid #f5b51b !important; */
-  border: 3px solid #f5b51b !important;
-  border-radius: 4px;
-}
-
-.input-group-append button {
-  border: 3px solid #f5b51b;
-}
-
-.search_btn_bg {
-  background-color: #133e59 !important;
-  color: aliceblue;
-}
-
-:-webkit-input-placeholder {
-  /* Edge */
-  color: red !important;
-}
-::placeholder {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px !important;
-  color: #c4c4c4;
-}
-
-.input-group:not(.has-validation)
-  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 1px;
-}
-
-button {
-  z-index: 0 !important;
-}
-
-/* After Nav Second Div Start   */
-.for_tap_salon_css h1 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 29px;
-  /* identical to box height */
-
-  color: #000000;
-}
-.for_card_body_mll_home {
-  margin-left: -12px;
-}
-.for_second_card_text {
-  margin-left: -7px;
-}
-.first_bottom {
-  /* border-bottom: 2px solid #f5b51b; */
-  /* display: inline-flex; */
-  width: 149px;
-  /* justify-content: center; */
-  text-align: center !important;
-  margin-left: 394px;
-  margin-top: 0px;
-  color: #f5b51b;
-  height: 2px !important;
-}
-.for_after_nav_second_css {
-  margin-left: 15px;
-}
-.second_bottom {
-  width: 100px;
-  height: 2px !important;
-  margin-left: 421px;
-  margin-top: -8px;
-  color: #f5b51b;
-}
-
-.for_dollor_bg {
-  background-color: #fff3e8;
-}
-
-button {
-  position: absolute;
-
-  z-index: -1;
-}
-.css_for_1681_vine {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  line-height: 19px;
-  /* identical to box height */
-
-  color: #353535;
-}
-
-.dot {
-  height: 35px;
-  width: 35px;
-  background: #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
-}
-
-.for_icon_arrow_right {
-  text-align: center;
-  margin-top: -18px;
-}
-
-.for_glitter_ups_css {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 16px;
-  color: #353535;
-}
-.for_card_body_ml {
-  margin-left: -17px;
-}
-
-.for_firts_div_card_first {
-  height: 150px;
-  margin-left: -14px;
-}
-
-.for_dollor_bg h6 {
-  padding: 11px;
-}
-.for_icon_arrow_right i {
-  margin-top: 8px;
-}
-
-.fa-map-marker {
-  color: #f5b51b;
-  font-size: 13px;
-}
-.for_1669_css {
-  font-weight: normal;
-  font-size: 8px;
-  font-family: cursive;
-  -webkit-text-decoration-line: line-through; /* Safari */
-  text-decoration-line: line-through;
-}
-
-.for_icon_arrow_left {
-  position: absolute;
-  margin-top: 79px;
-  /* margin-right: 10px !important; */
-  margin-left: -30px;
-  color: #ff7a00;
-}
-
-.fa-arrow-left {
-  margin-left: 10px;
-  margin-top: 8px;
-}
-
-.for_arrow_left {
-  position: absolute;
-  margin-left: 97px;
-  margin-top: 79px;
-  color: #ff7a00;
-}
-
-.fa-arrow-right {
-  margin-left: 12px;
-  margin-top: 8px;
-}
-.discount_img {
-  position: absolute;
-  margin-left: -86px;
-  width: 72px;
-  height: 106px;
-}
-
-.discount_text_css {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 34px;
-  font-family: SF UI Display;
-  font-style: normal;
-  color: #ffffff;
-  font-size: 12px;
-}
-.up_to_fifty_percent {
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 9px;
-  /* line-height: 5px; */
-  color: #ffffff;
-}
-.getone_free_img {
-  position: absolute;
-  margin-left: -53px;
-  margin-top: 22px;
-  height: 90px;
-}
-
-.buyone_getone_Big_css {
-  position: absolute;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 9px;
-  line-height: 11px;
-  color: #ffffff;
-  margin-top: 29px;
-  margin-left: -48px;
-}
-.first_bottom_home {
-  /* border-bottom: 2px solid #f5b51b; */
-  /* display: inline-flex; */
-  width: 149px;
-  /* justify-content: center; */
-  text-align: center !important;
-  margin-left: 394px;
-  margin-top: 0px;
-  color: #f5b51b;
-  height: 2px !important;
-}
-.second_bottom_home {
-  width: 100px;
-  height: 2px !important;
-  margin-left: 421px;
-  margin-top: -8px;
-  color: #f5b51b;
-}
-
-/* After Nav Second Div End  */
-
-/* After NAv Third Div Start */
-.for_card_body_mll {
-  margin-left: 0px;
-}
-.for_glitter_ups_csss {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 20px;
-  color: #353535;
-}
-
-.css_for_1681_vinee {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 19px;
-  color: #353535;
-}
-.buyone_getone_Big_cssssssss {
-  position: absolute;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 9px;
-  line-height: 11px;
-  color: #ffffff;
-  margin-top: 29px;
-  margin-left: -48px;
-}
-
-/* My Appointmetns Start */
-.for_appointments_img_commonn {
-  width: 110px;
-}
-.for_main_row_appointmentt {
-  padding-top: 100px;
-}
-
-.btn_saturday_css {
-  margin-left: 97px;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  color: #000000;
-}
-
-.btn_view {
-  font-size: 12px;
-  width: 79px;
-  margin-left: 6px;
-  background: rgba(27, 245, 140, 0.26);
-  border-radius: 10px;
-  color: #000000;
-}
-.for_active_btn {
-  left: calc(50% - 131px / 2 - 506.5px);
-  top: 2183px;
-  width: 58px;
-  background: rgba(27, 245, 140, 0.26);
-}
-
-.card_body_for_appointmentt {
-  margin-top: -16px;
-}
-
-.card_body_for_appointmentt h5 {
-  margin-top: 40px;
-  margin-left: 6px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 30px;
-  /* identical to box height, or 125% */
-
-  color: #000000;
-}
-
-.card_body_for_appointmentt h6 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 19px;
-  color: #f5b51b;
-  margin-left: 8px;
-  margin-top: -11px;
-}
-
-.card_body_for_appointmentt i {
-  color: #f5b51b;
-  font-size: 14px;
-}
-
-.card_body_for_appointmentt span {
-  font-size: 10px;
-}
-.card_body_for_appointmentt h4 {
-  margin-top: -15px;
-  margin-left: 9px;
-}
-.fa-map-marker {
-  margin-left: 9px;
-}
-.card_body_for_appointmentt p {
-  margin-top: -10px;
-}
-.for_appointments_bottom_border {
-  border-bottom: 2px solid #f5b51b;
-}
-
-.for_appointments_bottom_borderr {
-  border-bottom: 2px solid #f5b51b;
-}
-.for_border_bottom_text h4 {
-  margin-bottom: 55px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  /* identical to box height */
-
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
-}
-
-.for_border_bottom_textt h4 {
-  margin-bottom: 55px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  /* identical to box height */
-
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
-}
-.for_appointments_hr {
-  width: 62px;
-  margin-left: 453px;
-  margin-top: 9px;
-  text-decoration: none;
-  color: yellow;
-  border-bottom: 2px solid #f5b51b;
-}
-.for_appointments_hrr {
-  width: 62px;
-  margin-left: 437px;
-  margin-top: 9px;
-  text-decoration: none;
-  color: yellow;
-  border-bottom: 2px solid #f5b51b;
-}
-.for_view_more_text p {
-  margin-top: -88px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-
-  color: #f5b51b;
-}
-
-.for_view_more_textt p {
-  margin-top: -89px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: right;
-  color: #f5b51b;
-}
-.dot {
-  background: #f5b51b;
-  /* shadow02 */
-  margin-left: 43px;
-  position: absolute;
-
-  box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
-}
-.for_dollor_bg {
-  border-radius: 0px 60px 60px 0px;
-}
-.for_glitter_ups_css {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  /* line-height: 24px; */
-  color: #f5b51b;
-  margin-top: 0px;
-}
-.icon_location_css {
-  margin-left: -10px;
-  margin-top: -7px;
-}
-
-/* My Appointmetns End */
-
-/* Salons Child One start */
-.salons_child_one_div_one {
-  padding: 50px;
-}
-.salons_child_one_div_one h1 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 60px;
-  /* identical to box height */
-
-  color: #f5b51b;
-}
-.salons_child_one_div_one p {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 19px;
-  line-height: 21px;
-  color: #3d3d3d;
-}
-
-.timeline {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: #f5b51b;
-  counter-reset: step;
-  margin-left: -160px;
-  margin-top: 50px;
-}
-
-.timeline li {
-  color: whitesmoke;
-  float: left;
-  text-align: center;
-  width: 150px;
-  position: relative;
-  font-size: 13px;
-  font-weight: normal;
-  font-family: SF UI Display;
-  margin-bottom: 50px;
-  text-align: end;
-  margin-left: 20px;
-}
-
-.timeline li:before {
-  color: danger;
-  content: counter(step);
-  /* counter-increment: step; */
-  /* line-height: 35px; */
-  width: 40px;
-  height: 40px;
-  display: block;
-  border-radius: 100%;
-  border: 5px solid #f5b51b;
-  margin: 0 auto 15px auto;
-  background: #133e59;
-  margin-left: 110px;
-  text-align: center;
-}
-
-.timeline li:after {
-  content: "";
-  width: 100%;
-  height: 2px;
-  background: #f5b51b;
-  display: block;
-  position: absolute;
-  top: 17.5px;
-  left: 98%;
-}
-
-.timeline li:last-child:after {
-  content: none;
-}
-
-.timeline li:first-child:before {
-  border-color: #f5b51b;
-}
-.timeline li:first-child:after {
-  background: orrange;
-}
-
-.for_availability_description_text h5 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 31px;
-  /* identical to box height */
-
-  color: #133e59;
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-.for_availability_description_text p {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  /* line-height: 31px; */
-  color: #595757;
-}
-
-.availability_on_week_bg {
-  background: #133e59;
-
-  margin-top: 30px;
-}
-
-.on_week_text {
-  padding: 75px;
-}
-.on_week_text {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 31px;
-  /* identical to box height */
-
-  color: white;
-}
-
-.on_week_separate {
-  font-family: SF UI Display;
-  font-style: normal;
-  /* font-weight: bold; */
-  font-size: 21px;
-  line-height: 24px;
-  color: white;
-}
-.on_week_text span {
-  margin-top: -20px !important;
-}
-
-.for_booking_now_btn {
-  padding-top: 50px;
-  margin-bottom: 100px;
-}
-.for_booking_now_btn button {
-  width: 200px;
-  margin-left: -85px;
-}
-.discount_img_salon {
-  position: absolute;
-  margin-left: -86px;
-  width: 72px;
-  height: 106px;
-}
-.getone_free_img_salon {
-  position: absolute;
-  margin-left: -53px;
-  margin-top: 22px;
-  height: 90px;
-}
-.discount_text_css_salon {
-  position: absolute;
-  margin-left: -70px;
-  margin-top: 34px;
-  font-family: SF UI Display;
-  font-style: normal;
-  color: #ffffff;
-  font-size: 12px;
-}
-.buyone_getone_Big_css_salon {
-  position: absolute;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 9px;
-  line-height: 11px;
-  color: #ffffff;
-  margin-top: 29px;
-  margin-left: -48px;
-}
-/* Salons Child One End */
-
-/* Booking Now Salon Page  Child Two  */
-.booking_now_child_two_actual_price {
-  padding: 70px;
-}
-
-.for_bg_actual_price {
-  background: #fafafa;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  border-radius: 21px;
-  height: 55px;
-}
-.for_bg_actual_price p {
-}
-.bg_booking_now_text {
-  background: #fafafa;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  border-radius: 21px;
-  height: 230px;
-  margin-top: 80px;
-}
-.bg_booking_now_text p {
-  padding: 17px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 17px;
-  /* line-height: 36px; */
-  color: #133e59;
-
-  border-bottom: dashed 1px #cccccc;
-}
-.bg_booking_now_text h5 {
-  border-bottom: none;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 17px;
-  line-height: 36px;
-
-  color: #f5b51b;
-}
-/* Booking Now Salon Page  Child Two End  */
-
-/* Booking Now Salon Page Child Two Third Div Start*/
-.for_third_main {
-  margin-top: 50px;
-}
-.beauty_salon_services p {
-  font-family: SF Pro Text;
-}
-.for_spa_text h5 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 48px;
-  /* identical to box height */
-
-  color: #133e59;
-}
-.for_spa_text {
-  font-family: SF Pro Text;
-}
-.for_spa_text h4 {
-  color: #f5b51b;
-  font-weight: bold;
-}
-.for_done_btn_css {
-  margin-bottom: 170px !important;
-}
-.for_done_btn_css button {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  width: 200px;
-  margin-left: -50px;
-}
-
-.for_may_text h1 {
-  font-size: 20px;
-  color: #f5b51b;
-  font-family: SF UI Display;
-  margin-left: 20px;
-}
-/* .for_mon_to_friday_text:hover {
-  background-color: red;
-  width: 40px;
-  border-radius: 4px;
-} */
-.for_text_tuesday {
-  margin-left: 30px;
-  margin-top: 20px;
-  color: #fafafa;
-}
-.for_clock_celender_icon {
-  margin-left: 30px;
-  margin-top: 10px;
-}
-.for_modal_boy_May_text {
-  height: 600px;
-}
-.for_row_btn_group {
-  margin-top: 20px;
-}
-.for_common_btn_group {
-  width: 110px;
-}
-.for_row_btn_groupp {
-  margin-top: 70px;
-}
-.for_row_btn_grouppp {
-  margin-top: 65px;
-}
-.for_price_22_text h2 {
-  margin-top: 100px;
-  font-family: SF UI Display;
-  font-style: normal;
-  /* font-weight: 600; */
-  font-size: 21px;
-  line-height: 72px;
-  color: #ffffff;
-}
-.for_price_22_text button {
-  width: 150px;
-  /* margin-right: 20px; */
-  margin-left: -63px;
-}
-.signin_main {
-  margin-top: 75px;
-}
-.signin_img {
-  width: 120px;
-}
-.signin_main p {
-  margin-top: 20px;
-  line-height: 0px;
-  color: white;
-}
-.signin_main span {
-  margin-top: -20px !important;
-}
-
-.signin_option_text a {
-  color: #f5b51b;
-}
-.login_main_option_div {
-  padding-top: 30px;
-}
-.login_main_option_div h3 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  /* line-height: 9px; */
-  color: #ffffff;
-}
-.login_main_option_div span {
-  color: #f5b51b;
-}
-.login_main_option_div p {
-  color: #187bba;
-}
-.input_class {
-  border: none;
-  /* border-bottom: 1px solid #1890ff;
-  padding: 5px 10px; */
-  outline: none !important;
-  background: #133e59;
-  color: white;
-  font-size: 12px;
-}
-.border-bottom {
-  margin-left: 100px;
-  margin-top: -13px;
-  width: 70%;
-}
-.for_icon_email_span {
-  font-size: 20px;
-  color: white;
-  position: absolute;
-  margin-left: -29px;
-  margin-top: -4px;
-}
-[placeholder]::-webkit-input-placeholder {
-  color: #818b8f;
-}
-
-.input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-  margin-left: -1px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  /* margin-top: 13px; */
-}
-.for_form_email_class p {
-  margin-left: 70px;
-  color: white;
-}
-.for_form_email_class {
-  margin-top: 50px;
-}
-.for_forgot_pass_text {
-  margin-top: 60px;
-}
-.for_forgot_pass_text h5 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 39px;
-  text-align: center;
-  letter-spacing: 0.3px;
-  text-decoration-line: underline;
-
-  color: #ffffff;
-}
-.for_forgot_pass_text a {
-  color: #ffffff;
-}
-.signin_h {
-  height: 600px !important;
-}
-.for_forgot_pass_text button {
-  width: 200px;
-  /* margin-right: 100px; */
-  margin-left: -91px;
-  margin-top: 40px;
-}
-.dont_have_account {
-  margin-top: 130px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-  /* line-height: 14px; */
-}
-.account_css {
-  line-height: 0px;
-  margin-top: -4px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-}
-.account_css span {
-  color: #f5b51b;
-}
-.account_css a {
-  color: #f5b51b;
-}
-.for_sihnup_logo_main img {
-  width: 100px;
-  padding-top: 20px;
-}
-.for_sihnup_logo_main p {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 19px;
-  line-height: 70px;
-  color: #ffffff;
-}
-.for_btn_group button {
-  width: 300px;
-  border-radius: 350px;
-  margin-left: 80px;
-  margin-top: 10px;
-  background: #4267b2;
-}
-.for_btn_group span {
-  margin-left: 11px;
-  font-family: SF UI Display;
-  font-style: normal;
-  /* font-weight: 500; */
-  font-size: 22px;
-  /* line-height: 60px; */
-  color: #ffffff;
-}
-.for_btn_group i {
-  font-size: 24px;
-  color: white;
-}
-.btn_Google {
-  margin-top: 100px !important;
-  background: #db4437 !important;
-}
-.btn_apple {
-  margin-top: 180px !important;
-  background: #000000 !important;
-}
-.dont_have_accountt {
-  margin-top: 300px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-  /* line-height: 14px; */
-}
-
-.new_account_text h3 {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 72px;
-  /* identical to box height */
-
-  color: #ffffff;
-}
-.new_account_text {
-  margin-left: 50px;
-  margin-top: 35px;
-}
-.new_account_text span {
-  color: #f5b51b;
-}
-.new_account_text p {
-  font-family: SF Pro Text;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 0px;
-  /* identical to box height */
-
-  letter-spacing: 0.3px;
-
-  color: #187bba;
-}
-.for_inputs_group {
-  margin-left: -18px;
-  margin-top: 30px;
-}
-.for_create_btn button {
-  width: 182px;
-  color: #ffffff;
-  margin-top: 50px;
-  margin-left: -101px;
-}
-.for_email_pass_common {
-  width: 60%;
-}
-.for_signup_dont_have_account {
-  margin-left: 37px;
-}
-.dont_have_accounttt {
-  margin-top: 143px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-}
-.forgot_account_input {
-  width: 65%;
-}
-.forgot_modal_bg {
-  background: #133e59;
-  border-radius: 23px;
-  height: 560px !important;
-}
-.for_modal_bgg {
-  background: #133e59;
-  border-radius: 23px;
-  height: 700px !important;
-}
-.dont_have_accounttt {
-  margin-top: 143px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-  margin-left: -60px;
-}
-.create_acount_text {
-  margin-left: -55px;
-}
-.for_form_email_clasds {
-  margin-top: 80px;
-}
-.for_send_btn button {
-  width: 200px;
-  margin-left: -100px;
-  margin-top: 51px;
-  color: white;
-}
-.forgot_dont_have_account {
-  margin-left: 60px;
-}
-/* .one {
-  width: 300px !important;
-} */
-
-.dott {
-  height: 50px;
-  width: 50px;
-  background: #f5b51b;
-  border-radius: 50%;
-  display: inline-block;
-  letter-spacing: 25px;
-  margin-left: 60px;
-}
-.for_dots_main {
-  margin-left: -436px;
-  margin-top: 75px;
-}
-.for_integer_enter_code {
-  position: absolute;
-  font-size: 26px;
-  font-weight: bold;
-  margin-top: 3px;
-  margin-left: -7px;
-  color: white;
-}
-.dont_have_accountttt {
-  margin-top: 275px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-  margin-left: -60px;
-}
-.for_submit_btn button {
-  margin-top: 100px;
-  width: 180px;
-  margin-left: -85px;
-}
-.for_modal_bggg {
-  background: #133e59;
-  border-radius: 23px;
-  height: 500px !important;
-}
-.for_modal_newPassord_bg {
-  background: #133e59;
-  border-radius: 23px;
-}
-.entercode_donthave_account {
-  margin-left: 67px;
-}
-.new_pass_input {
-  width: 63%;
-}
-.for_submit_btn_new_pass button {
-  width: 150px;
-  margin-left: -75px;
-  margin-top: 50px;
-}
-.newpass_donthave_account {
-  margin-left: 70px;
-}
-.dont_have_account_newpass {
-  margin-top: 160px;
-  color: #ffffff;
-  font-family: SF Pro Text;
-  margin-left: -66px;
-}
-/* Booking Now Salon Page Child Two Third Div End*/
-
-/* Page Sixteen Css Start */
-.for_main_container {
-  background: #f2f2f2;
-  border-radius: 11px;
-  width: 100%px;
-  margin-top: 100px;
-  height: 80px;
-}
-.for_img_first {
-  width: 50px;
-  margin-top: 15px;
-}
-.for_headings_katrina_salon {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 29px;
-  /* identical to box height */
-
-  color: #133e59;
-}
-.for_heading_text {
-  font-size: 12px;
-  font-weight: normal;
-  font-family: SF UI Display;
-}
-.for_12_minutes_ago {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 34px;
-  color: #92929d;
-  margin-left: 55px;
-  margin-top: -30px !important;
-  position: absolute;
-}
-.for_dots {
-  font-size: 40px;
-  color: #92929d;
-  margin-top: -10px;
-}
-.for_second_row_css {
-  margin-top: -75px;
-}
-.for_all_notification {
-  padding: 30px;
-  margin-bottom: -115px;
-  margin-top: 50px;
-  font-family: SF UI Display;
-}
-
-/* Page Sixteen Css End */
-
-@media (min-width: 360px) and (max-width: 767px) {
-  .nav_bar_main_bg {
-    background: #000000;
-    color: aliceblue;
-    width: 555px;
-  }
-  .after_navBar_bg_main {
-    width: 555px;
-  }
-  .wellcome_GLITTER_ups {
     padding-top: 100px;
-    margin-left: 51px;
-  }
-  .for_appointments_hr {
-    width: 62px;
-    margin-left: 162px;
-    margin-top: 9px;
-    text-decoration: none;
-    color: yellow;
-    border-bottom: 2px solid #f5b51b;
-  }
-  .for_view_more_text {
-    text-align: right !important;
-    margin-left: 76px;
-  }
-  /* .for_firts_div_card_first {
-    height: 150px;
-    margin-left: -120px;
-  } */
-  .for_sm_res_third_div {
-    width: 527px;
-  }
-  .for_md_res_card_body {
-    margin-left: 45px;
-  }
-  .for_dollor_bg {
-    width: 98px;
-  }
-  .for_second_last_div {
-    background: #133e59;
-    padding-top: 70px;
-    overflow: hidden;
-    width: 527px;
-  }
-  .wellcome_GLITTER_ups h1 {
+    margin-left: 180px;
+}
+
+.wellcome_GLITTER_ups p {
+    font-family: SF UI Display;
+    font-style: normal;
+    color: aliceblue;
+}
+
+.wellcome_GLITTER_ups h1 {
     font-family: Bebas Neue;
     font-style: normal;
     font-weight: normal;
-    font-size: 26px;
+    font-size: 38px;
     line-height: 32px;
     color: aliceblue;
-  }
+}
 
-  .finds_deal_on_parlour {
-    margin-left: -3px;
+.for_text_yellow_color {
+    color: #f5b51b !important;
+}
+
+.for_text_dummy {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: aliceblue;
+}
+
+.finds_deal_on_parlour {
+    margin-left: 100px;
     padding-top: 50px;
-  }
+}
 
-  ::placeholder {
+.input-text {
+    /* border-width: 3px solid #f5b51b !important; */
+    border: 3px solid #f5b51b !important;
+    border-radius: 4px;
+}
+
+.input-group-append button {
+    border: 3px solid #f5b51b;
+}
+
+.search_btn_bg {
+    background-color: #133e59 !important;
+    color: aliceblue;
+}
+
+:-webkit-input-placeholder {
+    /* Edge */
+    color: red !important;
+}
+
+::placeholder {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 7px !important;
+    font-size: 12px !important;
     color: #c4c4c4;
-  }
-  .for_card_body_ml {
-    margin-left: 0px;
-  }
-  .discount_img {
-    position: absolute;
-    margin-left: -108px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -92px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -77px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .discount_text_cssssss {
-    position: absolute;
-    margin-left: -74px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -73px;
-  }
-  .for_card_body_ml {
-    margin-left: 10px;
-  }
-  /* Home Page Again */
-  .getone_free_imggggg {
-    position: absolute;
-    margin-left: -55px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .buyone_getone_Big_cssssssss {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -51px;
-  }
-  /* Salon Page Again */
-  .discount_text_css_salon {
-    position: absolute;
-    margin-left: -72px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .buyone_getone_Big_css_salon {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -49px;
-  }
-  .first_bottom_home {
-    margin-left: 195px;
-  }
-  .second_bottom_home {
-    margin-left: 219px;
-  }
-
-  /* PageSixteen Css */
-  .for_main_container {
-    width: 507px;
-    margin-left: 10px;
-  }
-  .for_headings_katrina_salon {
-    font-size: 12px;
-  }
-  .for_heading_text {
-    font-size: 9px;
-  }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .for_appointments_hr {
-    width: 62px;
-    margin-left: 335px;
-    margin-top: 9px;
-    text-decoration: none;
-    color: yellow;
-    border-bottom: 2px solid #f5b51b;
-  }
-  .btn_view {
-    width: 55px;
-    margin-left: 1px;
-  }
-  .for_appointments_img_commonn {
-    width: 90px;
-  }
-  .btn_saturday_css {
-    margin-left: 57px;
-  }
-  .card_body_for_appointmentt h5 {
-    margin-top: 30px;
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 1px;
+}
+
+.discount_imgggggg {
+    position: absolute;
+    margin-left: -86px;
+    width: 72px;
+    height: 106px;
+}
+
+button {
+    z-index: 0 !important;
+}
+
+
+/* After Nav Second Div Start   */
+
+.for_tap_salon_css h1 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.first_bottom {
+    /* border-bottom: 2px solid #f5b51b; */
+    /* display: inline-flex; */
+    width: 149px;
+    /* justify-content: center; */
+    text-align: center !important;
+    margin-left: 394px;
+    margin-top: 0px;
+    color: #f5b51b;
+    height: 2px !important;
+}
+
+.for_after_nav_second_css {
+    overflow-x: auto;
+}
+
+.second_bottom {
+    width: 100px;
+    height: 2px !important;
+    margin-left: 421px;
+    margin-top: -8px;
+    color: #f5b51b;
+}
+
+.for_dollor_bg {
+    background-color: #fff3e8;
+}
+
+button {
+    position: absolute;
+    z-index: -1;
+}
+
+.css_for_1681_vine {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    /* font-size: 8px;
+  line-height: 19px; */
+    /* identical to box height */
+    color: #353535;
+}
+
+.dot {
+    height: 35px;
+    width: 35px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
+}
+
+.for_icon_arrow_right {
+    text-align: center;
+    margin-top: -18px;
+}
+
+.for_glitter_ups_css {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #353535;
+}
+
+.for_card_body_ml {
+    margin-left: -17px;
+}
+
+.for_firts_div_card_first {
+    height: 150px;
+    margin-left: -14px;
+}
+
+.for_dollor_bg h6 {
+    padding: 11px;
+}
+
+.for_icon_arrow_right i {
+    margin-top: 8px;
+}
+
+.fa-map-marker {
+    color: #f5b51b;
+    font-size: 13px;
+}
+
+.for_1669_css {
+    font-weight: normal;
+    font-size: 8px;
+    font-family: cursive;
+    -webkit-text-decoration-line: line-through;
+    /* Safari */
+    text-decoration-line: line-through;
+}
+
+.for_icon_arrow_left {
+    position: absolute;
+    margin-top: 79px;
+    /* margin-right: 10px !important; */
+    margin-left: -30px;
+    color: #ff7a00;
+}
+
+.fa-arrow-left {
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.for_arrow_left {
+    position: absolute;
+    margin-left: 97px;
+    margin-top: 79px;
+    color: #ff7a00;
+}
+
+.fa-arrow-right {
+    margin-left: 12px;
+    margin-top: 8px;
+}
+
+.discount_img {
+    position: absolute;
+    margin-left: -86px;
+    width: 72px;
+    height: 106px;
+}
+
+.discount_text_css {
+    position: absolute;
+    margin-left: -70px;
+    margin-top: 34px;
+    font-family: SF UI Display;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.up_to_fifty_percent {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    /* line-height: 5px; */
+    color: #ffffff;
+}
+
+.getone_free_img {
+    position: absolute;
+    margin-left: -53px;
+    margin-top: 22px;
+    height: 90px;
+}
+
+.buyone_getone_Big_css {
+    position: absolute;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 9px;
+    line-height: 11px;
+    color: #ffffff;
+    margin-top: 29px;
+    margin-left: -48px;
+}
+
+
+/* After Nav Second Div End  */
+
+
+/* After NAv Third Div Start */
+
+.for_card_body_mll {
+    margin-left: 0px;
+}
+
+.for_card_body_mll_home {
+    margin-left: 0px;
+}
+
+.for_glitter_ups_csss {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #353535;
+}
+
+.css_for_1681_vinee {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 19px;
+    color: #353535;
+}
+
+.discount_text_cssssss {
+    position: absolute;
+    margin-left: -70px;
+    margin-top: 34px;
+    font-family: SF UI Display;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.getone_free_imggggg {
+    position: absolute;
+    margin-left: -53px;
+    margin-top: 22px;
+    height: 90px;
+}
+
+
+/* My Appointmetns Start */
+
+.for_appointments_img_commonn {
+    width: 110px;
+}
+
+.for_main_row_appointmentt {
+    padding-top: 100px;
+}
+
+.btn_saturday_css {
+    margin-left: 97px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    color: #000000;
+}
+
+.btn_view {
+    font-size: 12px;
+    width: 79px;
+    margin-left: 6px;
+    background: rgba(27, 245, 140, 0.26);
+    border-radius: 10px;
+    color: #000000;
+}
+
+.for_active_btn {
+    left: calc(50% - 131px / 2 - 506.5px);
+    top: 2183px;
+    width: 58px;
+    background: rgba(27, 245, 140, 0.26);
+}
+
+.card_body_for_appointmentt {
+    margin-top: -16px;
+}
+
+.card_body_for_appointmentt h5 {
+    margin-top: 40px;
     margin-left: 6px;
     font-family: SF UI Display;
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 24px;
     line-height: 30px;
+    /* identical to box height, or 125% */
     color: #000000;
-  }
-  .card_body_for_appointmentt h6 {
+}
+
+.card_body_for_appointmentt h6 {
     font-family: SF UI Display;
     font-style: normal;
     font-weight: normal;
@@ -1771,75 +368,318 @@ button {
     line-height: 19px;
     color: #f5b51b;
     margin-left: 8px;
-    margin-top: -16px;
-  }
-  .card_body_for_appointmentt h4 {
-    margin-top: -19px;
-    margin-left: 9px;
-  }
-  .card_body_for_appointmentt span {
-    font-size: 7px;
-  }
-  .twenty_four_dollor_text {
-    font-size: 12px;
-    margin-top: 10px;
-  }
+    margin-top: -11px;
+}
 
-  .for_appointments_hrr {
+.card_body_for_appointmentt i {
+    color: #f5b51b;
+    font-size: 14px;
+}
+
+.card_body_for_appointmentt span {
+    font-size: 10px;
+}
+
+.card_body_for_appointmentt h4 {
+    margin-top: -15px;
+    margin-left: 9px;
+}
+
+.fa-map-marker {
+    margin-left: 9px;
+}
+
+.card_body_for_appointmentt p {
+    margin-top: -10px;
+}
+
+.for_appointments_bottom_border {
+    border-bottom: 2px solid #f5b51b;
+}
+
+.for_border_bottom_text h4 {
+    margin-bottom: 55px;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.for_appointments_hr {
     width: 62px;
-    margin-left: 318px;
+    margin-left: 453px;
     margin-top: 9px;
     text-decoration: none;
     color: yellow;
     border-bottom: 2px solid #f5b51b;
-  }
-  .for_md_res_card_body {
-    margin-left: 33px;
-  }
-  .for_dollor_bg {
-    width: 98px;
-  }
-  .for_second_last_div {
-    background: #133e59;
-    padding-top: 70px;
-    overflow: hidden;
-    width: 795px;
-  }
-  .wellcome_GLITTER_ups {
-    padding-top: 100px;
-    margin-left: 105px;
-  }
-  .finds_deal_on_parlour {
-    margin-left: -9px;
-    padding-top: 50px;
-    margin-right: -7px;
-  }
-  .for_card_body_ml {
-    margin-left: 25px;
-  }
+}
 
-  .discount_img {
+.for_view_more_text p {
+    margin-top: -88px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f5b51b;
+}
+
+.wellcome_GLITTER_ups {
+    padding-top: 100px;
+    margin-left: 180px;
+}
+
+.wellcome_GLITTER_ups p {
+    font-family: SF UI Display;
+    font-style: normal;
+    color: aliceblue;
+}
+
+.wellcome_GLITTER_ups h1 {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 38px;
+    line-height: 32px;
+    color: aliceblue;
+}
+
+.for_text_yellow_color {
+    color: #f5b51b !important;
+}
+
+.for_text_dummy {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: aliceblue;
+}
+
+.finds_deal_on_parlour {
+    margin-left: 100px;
+    padding-top: 50px;
+}
+
+.input-text {
+    /* border-width: 3px solid #f5b51b !important; */
+    border: 3px solid #f5b51b !important;
+    border-radius: 4px;
+}
+
+.input-group-append button {
+    border: 3px solid #f5b51b;
+}
+
+.search_btn_bg {
+    background-color: #133e59 !important;
+    color: aliceblue;
+}
+
+:-webkit-input-placeholder {
+    /* Edge */
+    color: red !important;
+}
+
+::placeholder {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px !important;
+    color: #c4c4c4;
+}
+
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 1px;
+}
+
+button {
+    z-index: 0 !important;
+}
+
+
+/* After Nav Second Div Start   */
+
+.for_tap_salon_css h1 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.for_card_body_mll_home {
+    margin-left: -12px;
+}
+
+.for_second_card_text {
+    margin-left: -7px;
+}
+
+.first_bottom {
+    /* border-bottom: 2px solid #f5b51b; */
+    /* display: inline-flex; */
+    width: 149px;
+    /* justify-content: center; */
+    text-align: center !important;
+    margin-left: 394px;
+    margin-top: 0px;
+    color: #f5b51b;
+    height: 2px !important;
+}
+
+.for_after_nav_second_css {
+    margin-left: 15px;
+}
+
+.second_bottom {
+    width: 100px;
+    height: 2px !important;
+    margin-left: 421px;
+    margin-top: -8px;
+    color: #f5b51b;
+}
+
+.for_dollor_bg {
+    background-color: #fff3e8;
+}
+
+button {
     position: absolute;
-    margin-left: -123px;
+    z-index: -1;
+}
+
+.css_for_1681_vine {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 19px;
+    /* identical to box height */
+    color: #353535;
+}
+
+.dot {
+    height: 35px;
+    width: 35px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
+}
+
+.for_icon_arrow_right {
+    text-align: center;
+    margin-top: -18px;
+}
+
+.for_glitter_ups_css {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #353535;
+}
+
+.for_card_body_ml {
+    margin-left: -17px;
+}
+
+.for_firts_div_card_first {
+    height: 150px;
+    margin-left: -14px;
+}
+
+.for_dollor_bg h6 {
+    padding: 11px;
+}
+
+.for_icon_arrow_right i {
+    margin-top: 8px;
+}
+
+.fa-map-marker {
+    color: #f5b51b;
+    font-size: 13px;
+}
+
+.for_1669_css {
+    font-weight: normal;
+    font-size: 8px;
+    font-family: cursive;
+    -webkit-text-decoration-line: line-through;
+    /* Safari */
+    text-decoration-line: line-through;
+}
+
+.for_icon_arrow_left {
+    position: absolute;
+    margin-top: 79px;
+    /* margin-right: 10px !important; */
+    margin-left: -30px;
+    color: #ff7a00;
+}
+
+.fa-arrow-left {
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.for_arrow_left {
+    position: absolute;
+    margin-left: 97px;
+    margin-top: 79px;
+    color: #ff7a00;
+}
+
+.fa-arrow-right {
+    margin-left: 12px;
+    margin-top: 8px;
+}
+
+.discount_img {
+    position: absolute;
+    margin-left: -86px;
     width: 72px;
     height: 106px;
-  }
-  .discount_text_css {
+}
+
+.discount_text_css {
     position: absolute;
-    margin-left: -105px;
+    margin-left: -70px;
     margin-top: 34px;
     font-family: SF UI Display;
     font-style: normal;
     color: #ffffff;
     font-size: 12px;
-  }
-  .getone_free_img {
+}
+
+.up_to_fifty_percent {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    /* line-height: 5px; */
+    color: #ffffff;
+}
+
+.getone_free_img {
     position: absolute;
-    margin-left: -88px;
+    margin-left: -53px;
     margin-top: 22px;
     height: 90px;
-  }
-  .buyone_getone_Big_css {
+}
+
+.buyone_getone_Big_css {
     position: absolute;
     font-family: SF UI Display;
     font-style: normal;
@@ -1848,30 +688,432 @@ button {
     line-height: 11px;
     color: #ffffff;
     margin-top: 29px;
+    margin-left: -48px;
+}
+
+.first_bottom_home {
+    /* border-bottom: 2px solid #f5b51b; */
+    /* display: inline-flex; */
+    width: 149px;
+    /* justify-content: center; */
+    text-align: center !important;
+    margin-left: 394px;
+    margin-top: 0px;
+    color: #f5b51b;
+    height: 2px !important;
+}
+
+.second_bottom_home {
+    width: 100px;
+    height: 2px !important;
+    margin-left: 421px;
+    margin-top: -8px;
+    color: #f5b51b;
+}
+
+
+/* After Nav Second Div End  */
+
+
+/* After NAv Third Div Start */
+
+.for_card_body_mll {
+    margin-left: 0px;
+}
+
+.for_glitter_ups_csss {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #353535;
+}
+
+.css_for_1681_vinee {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    color: #353535;
+}
+
+.buyone_getone_Big_cssssssss {
+    position: absolute;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 9px;
+    line-height: 11px;
+    color: #ffffff;
+    margin-top: 29px;
+    margin-left: -48px;
+}
+
+
+/* My Appointmetns Start */
+
+.for_appointments_img_commonn {
+    width: 110px;
+}
+
+.for_main_row_appointmentt {
+    padding-top: 100px;
+}
+
+.btn_saturday_css {
+    margin-left: 97px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    color: #000000;
+}
+
+.btn_view {
+    font-size: 12px;
+    width: 79px;
+    margin-left: 6px;
+    background: rgba(27, 245, 140, 0.26);
+    border-radius: 10px;
+    color: #000000;
+}
+
+.for_active_btn {
+    left: calc(50% - 131px / 2 - 506.5px);
+    top: 2183px;
+    width: 58px;
+    background: rgba(27, 245, 140, 0.26);
+}
+
+.card_body_for_appointmentt {
+    margin-top: -16px;
+}
+
+.card_body_for_appointmentt h5 {
+    margin-top: 40px;
+    margin-left: 6px;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    /* identical to box height, or 125% */
+    color: #000000;
+}
+
+.card_body_for_appointmentt h6 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 19px;
+    color: #f5b51b;
+    margin-left: 8px;
+    margin-top: -11px;
+}
+
+.card_body_for_appointmentt i {
+    color: #f5b51b;
+    font-size: 14px;
+}
+
+.card_body_for_appointmentt span {
+    font-size: 10px;
+}
+
+.card_body_for_appointmentt h4 {
+    margin-top: -15px;
+    margin-left: 9px;
+}
+
+.fa-map-marker {
+    margin-left: 9px;
+}
+
+.card_body_for_appointmentt p {
+    margin-top: -10px;
+}
+
+.for_appointments_bottom_border {
+    border-bottom: 2px solid #f5b51b;
+}
+
+.for_appointments_bottom_borderr {
+    border-bottom: 2px solid #f5b51b;
+}
+
+.for_border_bottom_text h4 {
+    margin-bottom: 55px;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.for_border_bottom_textt h4 {
+    margin-bottom: 55px;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.for_appointments_hr {
+    width: 62px;
+    margin-left: 453px;
+    margin-top: 9px;
+    text-decoration: none;
+    color: yellow;
+    border-bottom: 2px solid #f5b51b;
+}
+
+.for_appointments_hrr {
+    width: 62px;
+    margin-left: 437px;
+    margin-top: 9px;
+    text-decoration: none;
+    color: yellow;
+    border-bottom: 2px solid #f5b51b;
+}
+
+.for_view_more_text p {
+    margin-top: -88px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f5b51b;
+}
+
+.for_view_more_textt p {
+    margin-top: -89px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #f5b51b;
+}
+
+.dot {
+    background: #f5b51b;
+    /* shadow02 */
+    margin-left: 43px;
+    position: absolute;
+    box-shadow: 0px 14px 26px rgba(39, 13, 48, 0.25);
+}
+
+.for_dollor_bg {
+    border-radius: 0px 60px 60px 0px;
+}
+
+.for_glitter_ups_css {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    /* line-height: 24px; */
+    color: #f5b51b;
+    margin-top: 0px;
+}
+
+.icon_location_css {
+    margin-left: -10px;
+    margin-top: -7px;
+}
+
+
+/* My Appointmetns End */
+
+
+/* Salons Child One start */
+
+.salons_child_one_div_one {
+    padding: 50px;
+}
+
+.salons_child_one_div_one h1 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 60px;
+    /* identical to box height */
+    color: #f5b51b;
+}
+
+.salons_child_one_div_one p {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 21px;
+    color: #3d3d3d;
+}
+
+.timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #f5b51b;
+    counter-reset: step;
+    margin-left: -160px;
+    margin-top: 50px;
+}
+
+.timeline li {
+    color: whitesmoke;
+    float: left;
+    text-align: center;
+    width: 150px;
+    position: relative;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: SF UI Display;
+    margin-bottom: 50px;
+    text-align: end;
+    margin-left: 20px;
+}
+
+.timeline li:before {
+    color: danger;
+    content: counter(step);
+    /* counter-increment: step; */
+    /* line-height: 35px; */
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 100%;
+    border: 5px solid #f5b51b;
+    margin: 0 auto 15px auto;
+    background: #133e59;
+    margin-left: 110px;
+    text-align: center;
+}
+
+.timeline li:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #f5b51b;
+    display: block;
+    position: absolute;
+    top: 17.5px;
+    left: 98%;
+}
+
+.timeline li:last-child:after {
+    content: none;
+}
+
+.timeline li:first-child:before {
+    border-color: #f5b51b;
+}
+
+.timeline li:first-child:after {
+    background: orrange;
+}
+
+.for_availability_description_text h5 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 31px;
+    /* identical to box height */
+    color: #133e59;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.for_availability_description_text p {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    /* line-height: 31px; */
+    color: #595757;
+}
+
+.availability_on_week_bg {
+    background: #133e59;
+    margin-top: 30px;
+}
+
+.on_week_text {
+    padding: 75px;
+}
+
+.on_week_text {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 31px;
+    /* identical to box height */
+    color: white;
+}
+
+.on_week_separate {
+    font-family: SF UI Display;
+    font-style: normal;
+    /* font-weight: bold; */
+    font-size: 21px;
+    line-height: 24px;
+    color: white;
+}
+
+.on_week_text span {
+    margin-top: -20px !important;
+}
+
+.for_booking_now_btn {
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+
+.for_booking_now_btn button {
+    width: 200px;
     margin-left: -85px;
-  }
-  .discount_imgg {
+}
+
+.discount_img_salon {
     position: absolute;
-    margin-left: -78px;
+    margin-left: -86px;
     width: 72px;
     height: 106px;
-  }
-  .for_glitter_ups_csss {
+}
+
+.getone_free_img_salon {
     position: absolute;
-    margin-left: -66px;
+    margin-left: -53px;
+    margin-top: 22px;
+    height: 90px;
+}
+
+.discount_text_css_salon {
+    position: absolute;
+    margin-left: -70px;
     margin-top: 34px;
     font-family: SF UI Display;
     font-style: normal;
     color: #ffffff;
     font-size: 12px;
-  }
-  .getone_free_imgg {
-    position: absolute;
-    margin-left: -46px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .buyone_getone_Big_csss {
+}
+
+.buyone_getone_Big_css_salon {
     position: absolute;
     font-family: SF UI Display;
     font-style: normal;
@@ -1880,688 +1122,1603 @@ button {
     line-height: 11px;
     color: #ffffff;
     margin-top: 29px;
-    margin-left: -43px;
-  }
-  .discount_text_csss {
-    position: absolute;
-    margin-left: -61px;
-    margin-top: 34px;
+    margin-left: -48px;
+}
+
+
+/* Salons Child One End */
+
+
+/* Booking Now Salon Page  Child Two  */
+
+.booking_now_child_two_actual_price {
+    padding: 70px;
+}
+
+.for_bg_actual_price {
+    background: #fafafa;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 21px;
+    height: 55px;
+}
+
+.for_bg_actual_price p {}
+
+.bg_booking_now_text {
+    background: #fafafa;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 21px;
+    height: 230px;
+    margin-top: 80px;
+}
+
+.bg_booking_now_text p {
+    padding: 17px;
     font-family: SF UI Display;
     font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    /* line-height: 36px; */
+    color: #133e59;
+    border-bottom: dashed 1px #cccccc;
+}
+
+.bg_booking_now_text h5 {
+    border-bottom: none;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 36px;
+    color: #f5b51b;
+}
+
+
+/* Booking Now Salon Page  Child Two End  */
+
+
+/* Booking Now Salon Page Child Two Third Div Start*/
+
+.for_third_main {
+    margin-top: 50px;
+}
+
+.beauty_salon_services p {
+    font-family: SF Pro Text;
+}
+
+.for_spa_text h5 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 48px;
+    /* identical to box height */
+    color: #133e59;
+}
+
+.for_spa_text {
+    font-family: SF Pro Text;
+}
+
+.for_spa_text h4 {
+    color: #f5b51b;
+    font-weight: bold;
+}
+
+.for_done_btn_css {
+    margin-bottom: 170px !important;
+}
+
+.for_done_btn_css button {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 200px;
+    margin-left: -50px;
+}
+
+.for_may_text h1 {
+    font-size: 20px;
+    color: #f5b51b;
+    font-family: SF UI Display;
+    margin-left: 20px;
+}
+
+
+/* .for_mon_to_friday_text:hover {
+  background-color: red;
+  width: 40px;
+  border-radius: 4px;
+} */
+
+.for_text_tuesday {
+    margin-left: 30px;
+    margin-top: 20px;
+    color: #fafafa;
+}
+
+.for_clock_celender_icon {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.for_modal_boy_May_text {
+    height: 600px;
+}
+
+.for_row_btn_group {
+    margin-top: 20px;
+}
+
+.for_common_btn_group {
+    width: 110px;
+}
+
+.for_row_btn_groupp {
+    margin-top: 70px;
+}
+
+.for_row_btn_grouppp {
+    margin-top: 65px;
+}
+
+.for_price_22_text h2 {
+    margin-top: 100px;
+    font-family: SF UI Display;
+    font-style: normal;
+    /* font-weight: 600; */
+    font-size: 21px;
+    line-height: 72px;
     color: #ffffff;
+}
+
+.for_price_22_text button {
+    width: 150px;
+    /* margin-right: 20px; */
+    margin-left: -63px;
+}
+
+.signin_main {
+    margin-top: 75px;
+}
+
+.signin_img {
+    width: 120px;
+}
+
+.signin_main p {
+    margin-top: 20px;
+    line-height: 0px;
+    color: white;
+}
+
+.signin_main span {
+    margin-top: -20px !important;
+}
+
+.signin_option_text a {
+    color: #f5b51b;
+}
+
+.login_main_option_div {
+    padding-top: 30px;
+}
+
+.login_main_option_div h3 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    /* line-height: 9px; */
+    color: #ffffff;
+}
+
+.login_main_option_div span {
+    color: #f5b51b;
+}
+
+.login_main_option_div p {
+    color: #187bba;
+}
+
+.input_class {
+    border: none;
+    /* border-bottom: 1px solid #1890ff;
+  padding: 5px 10px; */
+    outline: none !important;
+    background: #133e59;
+    color: white;
     font-size: 12px;
-  }
-  .first_bottom_home {
-    margin-left: 275px;
-  }
-  .second_bottom_home {
-    margin-left: 297px;
-  }
-  .navbar-toggler-icon {
-    background: grey;
-    margin-left: 700px;
-  }
+}
+
+.border-bottom {
+    margin-left: 100px;
+    margin-top: -13px;
+    width: 70%;
+}
+
+.for_icon_email_span {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    margin-left: -29px;
+    margin-top: -4px;
+}
+
+[placeholder]::-webkit-input-placeholder {
+    color: #818b8f;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    /* margin-top: 13px; */
+}
+
+.for_form_email_class p {
+    margin-left: 70px;
+    color: white;
+}
+
+.for_form_email_class {
+    margin-top: 50px;
+}
+
+.for_forgot_pass_text {
+    margin-top: 60px;
+}
+
+.for_forgot_pass_text h5 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    text-decoration-line: underline;
+    color: #ffffff;
+}
+
+.for_forgot_pass_text a {
+    color: #ffffff;
+}
+
+.signin_h {
+    height: 600px !important;
+}
+
+.for_forgot_pass_text button {
+    width: 200px;
+    /* margin-right: 100px; */
+    margin-left: -91px;
+    margin-top: 40px;
+}
+
+.dont_have_account {
+    margin-top: 130px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+    /* line-height: 14px; */
+}
+
+.account_css {
+    line-height: 0px;
+    margin-top: -4px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+}
+
+.account_css span {
+    color: #f5b51b;
+}
+
+.account_css a {
+    color: #f5b51b;
+}
+
+.for_sihnup_logo_main img {
+    width: 100px;
+    padding-top: 20px;
+}
+
+.for_sihnup_logo_main p {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 70px;
+    color: #ffffff;
+}
+
+.for_btn_group button {
+    width: 300px;
+    border-radius: 350px;
+    margin-left: 80px;
+    margin-top: 10px;
+    background: #4267b2;
+}
+
+.for_btn_group span {
+    margin-left: 11px;
+    font-family: SF UI Display;
+    font-style: normal;
+    /* font-weight: 500; */
+    font-size: 22px;
+    /* line-height: 60px; */
+    color: #ffffff;
+}
+
+.for_btn_group i {
+    font-size: 24px;
+    color: white;
+}
+
+.btn_Google {
+    margin-top: 100px !important;
+    background: #db4437 !important;
+}
+
+.btn_apple {
+    margin-top: 180px !important;
+    background: #000000 !important;
+}
+
+.dont_have_accountt {
+    margin-top: 300px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+    /* line-height: 14px; */
+}
+
+.new_account_text h3 {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 72px;
+    /* identical to box height */
+    color: #ffffff;
+}
+
+.new_account_text {
+    margin-left: 50px;
+    margin-top: 35px;
+}
+
+.new_account_text span {
+    color: #f5b51b;
+}
+
+.new_account_text p {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 0px;
+    /* identical to box height */
+    letter-spacing: 0.3px;
+    color: #187bba;
+}
+
+.for_inputs_group {
+    margin-left: -18px;
+    margin-top: 30px;
+}
+
+.for_create_btn button {
+    width: 182px;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-left: -101px;
+}
+
+.for_email_pass_common {
+    width: 60%;
+}
+
+.for_signup_dont_have_account {
+    margin-left: 37px;
+}
+
+.dont_have_accounttt {
+    margin-top: 143px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+}
+
+.forgot_account_input {
+    width: 65%;
+}
+
+.forgot_modal_bg {
+    background: #133e59;
+    border-radius: 23px;
+    height: 560px !important;
+}
+
+.for_modal_bgg {
+    background: #133e59;
+    border-radius: 23px;
+    height: 700px !important;
+}
+
+.dont_have_accounttt {
+    margin-top: 143px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+    margin-left: -60px;
+}
+
+.create_acount_text {
+    margin-left: -55px;
+}
+
+.for_form_email_clasds {
+    margin-top: 80px;
+}
+
+.for_send_btn button {
+    width: 200px;
+    margin-left: -100px;
+    margin-top: 51px;
+    color: white;
+}
+
+.forgot_dont_have_account {
+    margin-left: 60px;
+}
+
+
+/* .one {
+  width: 300px !important;
+} */
+
+.dott {
+    height: 50px;
+    width: 50px;
+    background: #f5b51b;
+    border-radius: 50%;
+    display: inline-block;
+    letter-spacing: 25px;
+    margin-left: 60px;
+}
+
+.for_dots_main {
+    margin-left: -436px;
+    margin-top: 75px;
+}
+
+.for_integer_enter_code {
+    position: absolute;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-left: -7px;
+    color: white;
+}
+
+.dont_have_accountttt {
+    margin-top: 275px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+    margin-left: -60px;
+}
+
+.for_submit_btn button {
+    margin-top: 100px;
+    width: 180px;
+    margin-left: -85px;
+}
+
+.for_modal_bggg {
+    background: #133e59;
+    border-radius: 23px;
+    height: 500px !important;
+}
+
+.for_modal_newPassord_bg {
+    background: #133e59;
+    border-radius: 23px;
+}
+
+.entercode_donthave_account {
+    margin-left: 67px;
+}
+
+.new_pass_input {
+    width: 63%;
+}
+
+.for_submit_btn_new_pass button {
+    width: 150px;
+    margin-left: -75px;
+    margin-top: 50px;
+}
+
+.newpass_donthave_account {
+    margin-left: 70px;
+}
+
+.dont_have_account_newpass {
+    margin-top: 160px;
+    color: #ffffff;
+    font-family: SF Pro Text;
+    margin-left: -66px;
+}
+
+
+/* Booking Now Salon Page Child Two Third Div End*/
+
+
+/* Page Sixteen Css Start */
+
+.for_main_container {
+    background: #f2f2f2;
+    border-radius: 11px;
+    width: 100%px;
+    margin-top: 100px;
+    height: 80px;
+}
+
+.for_img_first {
+    width: 50px;
+    margin-top: 15px;
+}
+
+.for_headings_katrina_salon {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #133e59;
+}
+
+.for_heading_text {
+    font-size: 12px;
+    font-weight: normal;
+    font-family: SF UI Display;
+}
+
+.for_12_minutes_ago {
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 34px;
+    color: #92929d;
+    margin-left: 55px;
+    margin-top: -30px !important;
+    position: absolute;
+}
+
+.for_dots {
+    font-size: 40px;
+    color: #92929d;
+    margin-top: -10px;
+}
+
+.for_second_row_css {
+    margin-top: -75px;
+}
+
+.for_all_notification {
+    padding: 30px;
+    margin-bottom: -115px;
+    margin-top: 50px;
+    font-family: SF UI Display;
+}
+
+
+/* Page Sixteen Css End */
+
+@media (min-width: 360px) and (max-width: 767px) {
+    .nav_bar_main_bg {
+        background: #000000;
+        color: aliceblue;
+        width: 555px;
+    }
+    .after_navBar_bg_main {
+        width: 555px;
+    }
+    .wellcome_GLITTER_ups {
+        padding-top: 100px;
+        margin-left: 51px;
+    }
+    .for_appointments_hr {
+        width: 62px;
+        margin-left: 162px;
+        margin-top: 9px;
+        text-decoration: none;
+        color: yellow;
+        border-bottom: 2px solid #f5b51b;
+    }
+    .for_view_more_text {
+        text-align: right !important;
+        margin-left: 76px;
+    }
+    /* .for_firts_div_card_first {
+    height: 150px;
+    margin-left: -120px;
+  } */
+    .for_sm_res_third_div {
+        width: 527px;
+    }
+    .for_md_res_card_body {
+        margin-left: 45px;
+    }
+    .for_dollor_bg {
+        width: 98px;
+    }
+    .for_second_last_div {
+        background: #133e59;
+        padding-top: 70px;
+        overflow: hidden;
+        width: 527px;
+    }
+    .wellcome_GLITTER_ups h1 {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 32px;
+        color: aliceblue;
+    }
+    .finds_deal_on_parlour {
+        margin-left: -3px;
+        padding-top: 50px;
+    }
+     ::placeholder {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 7px !important;
+        color: #c4c4c4;
+    }
+    .for_card_body_ml {
+        margin-left: 0px;
+    }
+    .discount_img {
+        position: absolute;
+        margin-left: -108px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -92px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -77px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .discount_text_cssssss {
+        position: absolute;
+        margin-left: -74px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -73px;
+    }
+    .for_card_body_ml {
+        margin-left: 10px;
+    }
+    /* Home Page Again */
+    .getone_free_imggggg {
+        position: absolute;
+        margin-left: -55px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_cssssssss {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -51px;
+    }
+    /* Salon Page Again */
+    .discount_text_css_salon {
+        position: absolute;
+        margin-left: -72px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .buyone_getone_Big_css_salon {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -49px;
+    }
+    .first_bottom_home {
+        margin-left: 195px;
+    }
+    .second_bottom_home {
+        margin-left: 219px;
+    }
+    /* PageSixteen Css */
+    .for_main_container {
+        width: 507px;
+        margin-left: 10px;
+    }
+    .for_headings_katrina_salon {
+        font-size: 12px;
+    }
+    .for_heading_text {
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .for_appointments_hr {
+        width: 62px;
+        margin-left: 335px;
+        margin-top: 9px;
+        text-decoration: none;
+        color: yellow;
+        border-bottom: 2px solid #f5b51b;
+    }
+    .btn_view {
+        width: 55px;
+        margin-left: 1px;
+    }
+    .for_appointments_img_commonn {
+        width: 90px;
+    }
+    .btn_saturday_css {
+        margin-left: 57px;
+    }
+    .card_body_for_appointmentt h5 {
+        margin-top: 30px;
+        margin-left: 6px;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 30px;
+        color: #000000;
+    }
+    .card_body_for_appointmentt h6 {
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 19px;
+        color: #f5b51b;
+        margin-left: 8px;
+        margin-top: -16px;
+    }
+    .card_body_for_appointmentt h4 {
+        margin-top: -19px;
+        margin-left: 9px;
+    }
+    .card_body_for_appointmentt span {
+        font-size: 7px;
+    }
+    .twenty_four_dollor_text {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .for_appointments_hrr {
+        width: 62px;
+        margin-left: 318px;
+        margin-top: 9px;
+        text-decoration: none;
+        color: yellow;
+        border-bottom: 2px solid #f5b51b;
+    }
+    .for_md_res_card_body {
+        margin-left: 33px;
+    }
+    .for_dollor_bg {
+        width: 98px;
+    }
+    .for_second_last_div {
+        background: #133e59;
+        padding-top: 70px;
+        overflow: hidden;
+        width: 795px;
+    }
+    .wellcome_GLITTER_ups {
+        padding-top: 100px;
+        margin-left: 105px;
+    }
+    .finds_deal_on_parlour {
+        margin-left: -9px;
+        padding-top: 50px;
+        margin-right: -7px;
+    }
+    .for_card_body_ml {
+        margin-left: 25px;
+    }
+    .discount_img {
+        position: absolute;
+        margin-left: -123px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -105px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -88px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -85px;
+    }
+    .discount_imgg {
+        position: absolute;
+        margin-left: -78px;
+        width: 72px;
+        height: 106px;
+    }
+    .for_glitter_ups_csss {
+        position: absolute;
+        margin-left: -66px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_imgg {
+        position: absolute;
+        margin-left: -46px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_csss {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -43px;
+    }
+    .discount_text_csss {
+        position: absolute;
+        margin-left: -61px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .first_bottom_home {
+        margin-left: 275px;
+    }
+    .second_bottom_home {
+        margin-left: 297px;
+    }
+    .navbar-toggler-icon {
+        background: grey;
+        margin-left: 700px;
+    }
 }
 
 @media (min-width: 1200px) and (max-width: 1439px) {
-  .first_bottom_home {
-    margin-left: 482px !important;
-  }
-  .second_bottom_home {
-    margin-left: 508px;
-  }
-  .discount_img {
-    position: absolute;
-    margin-left: -104px;
-    width: 72px;
-    height: 106px;
-  }
-
-  element.style {
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -86px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -67px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -63px;
-  }
-  .for_card_body_mll_home {
-    margin-left: 4px;
-  }
-  .first_bottom {
-    /* border-bottom: 2px solid #f5b51b; */
-    /* display: inline-flex; */
-    width: 149px;
-    /* justify-content: center; */
-    text-align: center !important;
-    margin-left: 484px;
-  }
-  .second_bottom {
-    width: 100px;
-    height: 2px !important;
-    margin-left: 511px;
-    margin-top: -8px;
-    color: #f5b51b;
-  }
+    .first_bottom_home {
+        margin-left: 482px !important;
+    }
+    .second_bottom_home {
+        margin-left: 508px;
+    }
+    .discount_img {
+        position: absolute;
+        margin-left: -104px;
+        width: 72px;
+        height: 106px;
+    }
+    element.style {}
+    .discount_text_css {
+        position: absolute;
+        margin-left: -86px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -67px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -63px;
+    }
+    .for_card_body_mll_home {
+        margin-left: 4px;
+    }
+    .first_bottom {
+        /* border-bottom: 2px solid #f5b51b; */
+        /* display: inline-flex; */
+        width: 149px;
+        /* justify-content: center; */
+        text-align: center !important;
+        margin-left: 484px;
+    }
+    .second_bottom {
+        width: 100px;
+        height: 2px !important;
+        margin-left: 511px;
+        margin-top: -8px;
+        color: #f5b51b;
+    }
 }
+
 @media (min-width: 1440px) and (max-width: 2559px) {
-  .discount_img {
-    position: absolute;
-    margin-left: -118px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -99px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .for_card_body_ml {
-    margin-left: 24px;
-  }
-  .for_icon_arrow_left {
-    position: absolute;
-    margin-top: 79px;
-    /* margin-right: 10px !important; */
-    margin-left: 0px;
-  }
-  .for_arrow_left {
-    position: absolute;
-    margin-left: 117px;
-    margin-top: 79px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -82px;
-    margin-top: 22px;
-    height: 90px;
-  }
-
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -78px;
-  }
-  .first_bottom_home {
-    /* border-bottom: 2px solid #f5b51b; */
-    /* display: inline-flex; */
-    width: 149px;
-    /* justify-content: center; */
-    text-align: center !important;
-    margin-left: 572px;
-  }
-
-  .second_bottom_home {
-    width: 100px;
-    height: 2px !important;
-    margin-left: 597px;
-    margin-top: -8px;
-    color: #f5b51b;
-  }
-
-  .for_card_body_mll_home {
-    margin-left: 18px;
-  }
-  .for_firts_div_card_first {
-    height: 210px;
-    margin-left: -14px;
-    /* width: 212px; */
-  }
-  .first_bottom {
-    /* border-bottom: 2px solid #f5b51b; */
-    /* display: inline-flex; */
-    width: 149px;
-    /* justify-content: center; */
-    text-align: center !important;
-    margin-left: 571px;
-  }
-  .second_bottom {
-    width: 100px;
-    height: 2px !important;
-    margin-left: 598px;
-    margin-top: -8px;
-    color: #f5b51b;
-  }
+    .discount_img {
+        position: absolute;
+        margin-left: -118px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -99px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .for_card_body_ml {
+        margin-left: 24px;
+    }
+    .for_icon_arrow_left {
+        position: absolute;
+        margin-top: 79px;
+        /* margin-right: 10px !important; */
+        margin-left: 0px;
+    }
+    .for_arrow_left {
+        position: absolute;
+        margin-left: 117px;
+        margin-top: 79px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -82px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -78px;
+    }
+    .first_bottom_home {
+        /* border-bottom: 2px solid #f5b51b; */
+        /* display: inline-flex; */
+        width: 149px;
+        /* justify-content: center; */
+        text-align: center !important;
+        margin-left: 572px;
+    }
+    .second_bottom_home {
+        width: 100px;
+        height: 2px !important;
+        margin-left: 597px;
+        margin-top: -8px;
+        color: #f5b51b;
+    }
+    .for_card_body_mll_home {
+        margin-left: 18px;
+    }
+    .for_firts_div_card_first {
+        height: 210px;
+        margin-left: -14px;
+        /* width: 212px; */
+    }
+    .first_bottom {
+        /* border-bottom: 2px solid #f5b51b; */
+        /* display: inline-flex; */
+        width: 149px;
+        /* justify-content: center; */
+        text-align: center !important;
+        margin-left: 571px;
+    }
+    .second_bottom {
+        width: 100px;
+        height: 2px !important;
+        margin-left: 598px;
+        margin-top: -8px;
+        color: #f5b51b;
+    }
 }
+
 @media (min-width: 2560px) {
-  .discount_img {
-    position: absolute;
-    margin-left: -118px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -99px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .for_card_body_ml {
-    margin-left: 24px;
-  }
-  .for_icon_arrow_left {
-    position: absolute;
-    margin-top: 79px;
-    /* margin-right: 10px !important; */
-    margin-left: 0px;
-  }
-  .for_arrow_left {
-    position: absolute;
-    margin-left: 117px;
-    margin-top: 79px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -82px;
-    margin-top: 22px;
-    height: 90px;
-  }
-
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -78px;
-  }
+    .discount_img {
+        position: absolute;
+        margin-left: -118px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -99px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .for_card_body_ml {
+        margin-left: 24px;
+    }
+    .for_icon_arrow_left {
+        position: absolute;
+        margin-top: 79px;
+        /* margin-right: 10px !important; */
+        margin-left: 0px;
+    }
+    .for_arrow_left {
+        position: absolute;
+        margin-left: 117px;
+        margin-top: 79px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -82px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -78px;
+    }
 }
+
 
 /* Second last Div Start */
-.for_second_last_div {
-  background: #133e59;
-  padding-top: 70px;
-  overflow: hidden;
-}
-.past_appointments_text {
-  padding: 30px;
-}
-.past_appointments_text h4 {
-  padding: 30px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 45px;
-  /* identical to box height */
 
-  color: #ffffff;
+.for_second_last_div {
+    background: #133e59;
+    padding-top: 70px;
+    overflow: hidden;
+}
+
+.past_appointments_text {
+    padding: 30px;
+}
+
+.past_appointments_text h4 {
+    padding: 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 45px;
+    /* identical to box height */
+    color: #ffffff;
 }
 
 .past_appointments_text p {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  /* line-height: 2px; */
-  color: #ffffff;
-  margin-left: 30px;
-  margin-top: -16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    /* line-height: 2px; */
+    color: #ffffff;
+    margin-left: 30px;
+    margin-top: -16px;
 }
 
 .second_last_img_w {
-  margin-top: 17px;
-  margin-left: 10px;
+    margin-top: 17px;
+    margin-left: 10px;
 }
+
 .for_appointments_card_last {
-  background: #f5b51b;
-  border-radius: 20px;
+    background: #f5b51b;
+    border-radius: 20px;
 }
+
 .for_black_icon {
-  color: #000000 !important;
+    color: #000000 !important;
 }
 
 .card_body_for_last_div h5 {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height, or 150% */
-
-  color: #133e59;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    color: #133e59;
 }
 
 .card_body_for_last_div h6 {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  /* line-height: 30px; */
-  color: #ffffff;
-  margin-top: -3px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    /* line-height: 30px; */
+    color: #ffffff;
+    margin-top: -3px;
 }
+
 .card_body_for_last_div h3 {
-  font-family: SF UI Display;
-  font-style: normal;
-  /* font-weight: 600; */
-  font-size: 11px;
-  /* line-height: 24px; */
-  color: #ffffff;
-  margin-top: -4px;
+    font-family: SF UI Display;
+    font-style: normal;
+    /* font-weight: 600; */
+    font-size: 11px;
+    /* line-height: 24px; */
+    color: #ffffff;
+    margin-top: -4px;
 }
 
 .card_body_for_last_div h4 {
-  font-size: 12px;
-  margin-top: 10px;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .card_body_for_last_div p {
-  font-size: 10px;
-  margin-left: -8px;
+    font-size: 10px;
+    margin-left: -8px;
 }
+
 .for_second_last_dollor_text {
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px !important;
-  line-height: 24px;
-  color: #000000;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px !important;
+    line-height: 24px;
+    color: #000000;
 }
+
 .card_body_for_last_div {
-  margin-left: 15px !important;
+    margin-left: 15px !important;
 }
+
+
 /* End Second Last Div */
+
 .for_modal_cancel_img_my_appointments {
-  position: absolute;
-  width: 30px;
-  margin-top: -30px;
+    position: absolute;
+    width: 30px;
+    margin-top: -30px;
 }
+
 .for_modal_icon_pagefive {
-  margin-top: -15px;
+    margin-top: -15px;
 }
+
 .for_modal_icon_pagefive span {
-  font-size: 30px;
-  word-spacing: 14px;
-  margin-right: 25px;
-  margin-top: -20px !important;
-  color: #ffffff;
+    font-size: 30px;
+    word-spacing: 14px;
+    margin-right: 25px;
+    margin-top: -20px !important;
+    color: #ffffff;
 }
+
 .for_modal_bg {
-  background: #133e59;
-  border-radius: 23px;
+    background: #133e59;
+    border-radius: 23px;
 }
+
 .for_modal_img_radius {
-  width: 40px;
-  margin-top: 22px;
+    width: 40px;
+    margin-top: 22px;
 }
+
 .for_clock_celender_icon span {
-  color: aliceblue;
+    color: aliceblue;
 }
+
 .clock_icon_css {
-  margin-right: 50px;
-  color: #f5b51b;
+    margin-right: 50px;
+    color: #f5b51b;
 }
+
 .fa-calendar {
-  margin-right: -20px;
-  margin-left: 39px;
-  color: #f5b51b;
+    margin-right: -20px;
+    margin-left: 39px;
+    color: #f5b51b;
 }
+
 .for_spa_text_css {
-  padding: 22px;
-  font-family: SF UI Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 53px;
-  /* identical to box height */
-
-  color: #ffffff;
+    padding: 22px;
+    font-family: SF UI Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 53px;
+    /* identical to box height */
+    color: #ffffff;
 }
+
 .for_mt_spa_text_etc {
-  margin-top: -15px;
+    margin-top: -15px;
 }
-.for_discount p {
-  background: #113952;
 
-  /* text-align: center; */
-  padding: 20px;
-  color: #f5b51b;
+.for_discount p {
+    background: #113952;
+    /* text-align: center; */
+    padding: 20px;
+    color: #f5b51b;
 }
+
 
 /* My Appointmetns End */
 
 @media (min-width: 360px) and (max-width: 767px) {
-  .wellcome_GLITTER_ups {
-    padding-top: 100px;
-    margin-left: 51px;
-  }
-
-  .wellcome_GLITTER_ups h1 {
-    font-family: Bebas Neue;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 26px;
-    line-height: 32px;
-    color: aliceblue;
-  }
-
-  .finds_deal_on_parlour {
-    margin-left: -3px;
-    padding-top: 50px;
-  }
-
-  ::placeholder {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 7px !important;
-    color: #c4c4c4;
-  }
-  .for_card_body_ml {
-    margin-left: 0px;
-  }
-  .discount_img {
-    position: absolute;
-    margin-left: -143px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -127px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -105px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -101px;
-  }
-  .for_card_body_ml {
-    margin-left: 10px;
-  }
-  .for_card_body_mll {
-    margin-left: 45px;
-  }
-
-  .for_card_body_mll_home {
-    margin-left: 45px;
-  }
+    .wellcome_GLITTER_ups {
+        padding-top: 100px;
+        margin-left: 51px;
+    }
+    .wellcome_GLITTER_ups h1 {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 32px;
+        color: aliceblue;
+    }
+    .finds_deal_on_parlour {
+        margin-left: -3px;
+        padding-top: 50px;
+    }
+     ::placeholder {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 7px !important;
+        color: #c4c4c4;
+    }
+    .for_card_body_ml {
+        margin-left: 0px;
+    }
+    .discount_img {
+        position: absolute;
+        margin-left: -143px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -127px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -105px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -101px;
+    }
+    .for_card_body_ml {
+        margin-left: 10px;
+    }
+    .for_card_body_mll {
+        margin-left: 45px;
+    }
+    .for_card_body_mll_home {
+        margin-left: 45px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .wellcome_GLITTER_ups {
-    padding-top: 100px;
-    margin-left: 105px;
-  }
-  .finds_deal_on_parlour {
-    margin-left: -9px;
-    padding-top: 50px;
-    margin-right: -7px;
-  }
-  .for_card_body_ml {
-    margin-left: 25px;
-  }
-
-  .discount_img {
-    position: absolute;
-    margin-left: -123px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -105px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -88px;
-    margin-top: 22px;
-    height: 90px;
-  }
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -85px;
-  }
-  .for_card_body_mll_home {
-    margin-left: 25px !important;
-  }
+    .wellcome_GLITTER_ups {
+        padding-top: 100px;
+        margin-left: 105px;
+    }
+    .finds_deal_on_parlour {
+        margin-left: -9px;
+        padding-top: 50px;
+        margin-right: -7px;
+    }
+    .for_card_body_ml {
+        margin-left: 25px;
+    }
+    .discount_img {
+        position: absolute;
+        margin-left: -123px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -105px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -88px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -85px;
+    }
+    .for_card_body_mll_home {
+        margin-left: 25px !important;
+    }
 }
 
 @media (min-width: 1440px) and (max-width: 2559px) {
-  .discount_img {
-    position: absolute;
-    margin-left: -118px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -99px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .for_card_body_ml {
-    margin-left: 24px;
-  }
-  .for_icon_arrow_left {
-    position: absolute;
-    margin-top: 79px;
-    /* margin-right: 10px !important; */
-    margin-left: 0px;
-  }
-  .for_arrow_left {
-    position: absolute;
-    margin-left: 117px;
-    margin-top: 79px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -82px;
-    margin-top: 22px;
-    height: 90px;
-  }
-
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -78px;
-  }
+    .discount_img {
+        position: absolute;
+        margin-left: -118px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -99px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .for_card_body_ml {
+        margin-left: 24px;
+    }
+    .for_icon_arrow_left {
+        position: absolute;
+        margin-top: 79px;
+        /* margin-right: 10px !important; */
+        margin-left: 0px;
+    }
+    .for_arrow_left {
+        position: absolute;
+        margin-left: 117px;
+        margin-top: 79px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -82px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -78px;
+    }
 }
+
 @media (min-width: 2560px) {
-  .discount_img {
-    position: absolute;
-    margin-left: -118px;
-    width: 72px;
-    height: 106px;
-  }
-  .discount_text_css {
-    position: absolute;
-    margin-left: -99px;
-    margin-top: 34px;
-    font-family: SF UI Display;
-    font-style: normal;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .for_card_body_ml {
-    margin-left: 24px;
-  }
-  .for_icon_arrow_left {
-    position: absolute;
-    margin-top: 79px;
-    /* margin-right: 10px !important; */
-    margin-left: 0px;
-  }
-  .for_arrow_left {
-    position: absolute;
-    margin-left: 117px;
-    margin-top: 79px;
-  }
-  .getone_free_img {
-    position: absolute;
-    margin-left: -82px;
-    margin-top: 22px;
-    height: 90px;
-  }
-
-  .buyone_getone_Big_css {
-    position: absolute;
-    font-family: SF UI Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 9px;
-    line-height: 11px;
-    color: #ffffff;
-    margin-top: 29px;
-    margin-left: -78px;
-  }
+    .discount_img {
+        position: absolute;
+        margin-left: -118px;
+        width: 72px;
+        height: 106px;
+    }
+    .discount_text_css {
+        position: absolute;
+        margin-left: -99px;
+        margin-top: 34px;
+        font-family: SF UI Display;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .for_card_body_ml {
+        margin-left: 24px;
+    }
+    .for_icon_arrow_left {
+        position: absolute;
+        margin-top: 79px;
+        /* margin-right: 10px !important; */
+        margin-left: 0px;
+    }
+    .for_arrow_left {
+        position: absolute;
+        margin-left: 117px;
+        margin-top: 79px;
+    }
+    .getone_free_img {
+        position: absolute;
+        margin-left: -82px;
+        margin-top: 22px;
+        height: 90px;
+    }
+    .buyone_getone_Big_css {
+        position: absolute;
+        font-family: SF UI Display;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 9px;
+        line-height: 11px;
+        color: #ffffff;
+        margin-top: 29px;
+        margin-left: -78px;
+    }
 }
+
 
 /*  Mina css */
-.br_20px-s{
-  border-radius: 20px;
+
+.br_20px-s {
+    border-radius: 20px;
 }
 
-.w_165px-s{
-  width: 165px;
+.w_165px-s {
+    width: 165px;
 }
 
-.discount_ticket-s{
-  right: 37px;
-  top: 12px;
-  
+.discount_ticket-s {
+    right: 37px;
+    top: 12px;
 }
 
-.discount_text-s{
-  left: 12px;
-  top: 2px;
+.discount_text-s {
+    left: 12px;
+    top: 2px;
 }
 
-.w_55px-s{
-  width: 55px;
+.w_55px-s {
+    width: 55px;
 }
 
-.fs_9px-s{
-  font-size: 9px;
+.fs_9px-s {
+    font-size: 9px;
 }
 
-.discount_ticket_2-s{
-  left: 109px;
-  top: 0;
+.discount_ticket_2-s {
+    left: 109px;
+    top: 0;
 }
 
-.discount_text_2-s{
-  left: 6px;
-  top: 0;
+.discount_text_2-s {
+    left: 6px;
+    top: 0;
 }
 
-.salon_list-s{
-  overflow-x: auto;
+.salon_list-s {
+    overflow-x: auto;
 }
 
-.salon_list-s::-webkit-scrollbar{
-  display: none;
+.salon_list-s::-webkit-scrollbar {
+    display: none;
 }
 
-.left_scroll-btn-s{
-  color: #FF7A00;
-  width: 57px;
-  height: 57px;
+.left_scroll-btn-s {
+    color: #FF7A00;
+    width: 57px;
+    height: 57px;
 }
 
-.w_max_content-s{
-  width: max-content;
+.w_max_content-s {
+    width: max-content;
 }
 
-.fg_mustard-s{
-  color: #FF7A00;
+.fg_mustard-s {
+    color: #FF7A00;
 }
 
-.discount_large_ticket-s{
-  top: 51px;
-  right: -1px;
+.discount_large_ticket-s {
+    top: 51px;
+    right: -1px;
 }
 
-.discount_large_text-s{
-  top: 0;
-  left: 13px;
+.discount_large_text-s {
+    top: 0;
+    left: 13px;
 }
 
-.discount_large_ticket2-s{
-  top: 30px;
-  right: 21px;
+.discount_large_ticket2-s {
+    top: 30px;
+    right: 21px;
 }
 
-.discount_large_text2-s{
-  top: 5px;
-  left: 11px;
-  font-size: 11px;
+.discount_large_text2-s {
+    top: 5px;
+    left: 11px;
+    font-size: 11px;
 }
 
-.h_126px-s{
-  height: 126px;
+.h_126px-s {
+    height: 126px;
 }

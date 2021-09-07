@@ -369,83 +369,9 @@
                                                 </h4>
                                             </div>
                                             <div class="col-12 my-5 d-flex px-lg-2 px-0">
-                                                <div class="days_circle-s white_border-s text-center ">
-                                                    <input type="checkbox" name="monday" data-parent="monday" class="form-check-input opacity_0-s days_circle-d"  id="monday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center ">
-                                                    <input type="checkbox" name="tuesday" data-parent="tuesday" class="form-check-input opacity_0-s days_circle-d"  id="tuesday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center">
-                                                    <input type="checkbox" name="wednesday" data-parent="wednesday" class="form-check-input opacity_0-s days_circle-d"  id="wednesday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center">
-                                                    <input type="checkbox" name="thursday" data-parent="thursday" class="form-check-input opacity_0-s days_circle-d"  id="thursday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center">
-                                                    <input type="checkbox" name="friday" data-parent="friday" class="form-check-input opacity_0-s days_circle-d"  id="friday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center">
-                                                    <input type="checkbox" name="satruday" data-parent="saturday" class="form-check-input opacity_0-s days_circle-d"  id="saturday-d">
-                                                </div>
-                                                <div class="days_lines-s mt-3"></div>
-                                                <div class="days_circle-s white_border-s text-center">
-                                                    <input type="checkbox" name="sunday" data-parent="sunday" class="form-check-input opacity_0-s days_circle-d"  id="sunday-d">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 text-white d-flex justify-content-between">
-                                                <span id="monday" class="text-white">Monday</span>
-                                                <span id="tuesday" class="text-white">Tuesday</span>
-                                                <span id="wednesday" class="text-white">Wednesday</span>
-                                                <span id="thursday" class="text-white">Thursday</span>
-                                                <span id="friday" class="text-white">Friday</span>
-                                                <span id="saturday" class="text-white">Saturday</span>
-                                                <span id="sunday" class="text-white">Sunday</span>
-                                            </div>
-                                            <!-- <div class="col-12 d-flex justify-content-between">
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="monday-d">
-                                                    <label class="form-check-label text-white" for="monday-d">Monday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="tuesday-d">
-                                                    <label class="form-check-label text-white" for="tuesday-d">Tuesday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="wednesday-s">
-                                                    <label class="form-check-label text-white" for="wednesday-s">Wednesday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="thursday-d">
-                                                    <label class="form-check-label text-white" for="thursday-d">Thursday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="friday-d">
-                                                    <label class="form-check-label text-white" for="friday-d">Friday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="saturday-d">
-                                                    <label class="form-check-label text-white" for="saturday-d">Saturday</label>
-                                                </div>
-                                                <div class="form-group form-check">
-                                                    <input type="checkbox" class="form-check-input" id="sunday-d">
-                                                    <label class="form-check-label text-white" for="sunday-d">Sunday</label>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                        <!-- <div class="availability_on_week_bg">
-                                            <div class="on_week_text ">
 
-                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                                <span class="on_week_separate">Availability On Week</span>
-                                                <div class="row">
-                                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                      {{-- {{  dd($updateProfile)}} --}}
-                                                        @if($updateProfile->days != [])
+
+                                                @if($updateProfile->days != [])
 
                                                             @php
                                                             $saloon_chosen_days = [];
@@ -464,7 +390,6 @@
 
                                                             @endphp
 
-                                                            <ul class='timeline'>
                                                                 @php
                                                                     $chosen_days=  array_diff($days, $saloon_days??[]);
 
@@ -472,19 +397,35 @@
 
                                                                 @foreach ($days as $day)
                                                                         @if(in_array($day, $chosen_days))
-                                                                            <li> <input type="checkbox" name="days[]" id="day"  value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
-                                                                        @else
-                                                                            <li style="color:green" > <input type="checkbox" name="days[]" id="" checked value="{{ $day }}"> {{ ucfirst(trans($day)) }}</li>
+
+                                                                            <div class="days_circle-s white_border-s text-center checked_days-s ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d" checked value="{{ $day }}"  id="{{ $day }}-d">
+                                                                            </div>
+
+                                                                            @if (!$loop->last)
+                                                                                {{-- {{ dd('last') }} --}}
+                                                                                <div class="days_lines-s mt-3"></div>
+                                                                            @endif
+
+
+                                                                            @else
+
+                                                                              <div class="days_circle-s white_border-s text-center ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " value="{{ $day }}"  id="{{ $day }}-d">
+                                                                            </div>
+
+                                                                            @if (!$loop->last)
+                                                                                <div class="days_lines-s mt-3"></div>
+                                                                            @endif
                                                                         @endif
 
                                                                 @endforeach
                                                                 @error('days')
                                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                                 @enderror
-                                                            </ul>
 
 
-                                                        @else
+                                                @else
                                                                 @php
 
                                                                     $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
@@ -493,25 +434,36 @@
 
 
 
-                                                                <ul class='timeline'>
 
                                                                     @foreach ($days as $day)
-                                                                                <li > <input type="checkbox" name="days[]" id="" value="{{ $day }}" > {{ ucfirst(trans($day)) }}</li>
+
+                                                                            <div class="days_circle-s white_border-s text-center ">
+                                                                                <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  id="{{ $day }}-d">
+                                                                            </div>
+
+                                                                            @if (!$loop->last)
+                                                                                {{-- {{ dd('last') }} --}}
+                                                                                <div class="days_lines-s mt-3"></div>
+                                                                            @endif
                                                                     @endforeach
 
-                                                                </ul>
+                                                @endif
 
 
-                                                        @endif
-
-
-
-
-
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div> -->
+                                            <div class="col-12 text-white d-flex justify-content-between">
+                                                @foreach ($days as $day)
+
+                                                    @if (in_array($day, $chosen_days))
+
+                                                        <span id="{{ $day }}" class="text-white text-color-s ">{{ ucfirst(trans($day)) }}</span>
+                                                    @else
+                                                        <span id="{{ $day }}" class="text-white ">{{ ucfirst(trans($day)) }}</span>
+
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
                                         <!-- Third Div End -->
 
 
