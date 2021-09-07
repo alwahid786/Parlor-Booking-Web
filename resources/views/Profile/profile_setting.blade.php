@@ -211,20 +211,26 @@
                                     <div class="row">
 
 
-                                        <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
+                                        <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="row row-cols-5 justify-content-center ">
                                             @if(null != $updateProfile->brosche)
                                             {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
-                                                <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
-                                                    <div>
-                                                        <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
-                                                        class="img-fluid for_cancel_icon_in_profile  " alt="...">
+
+                                                    <div class="col px-0">
+                                                        <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
+                                                            <div>
+                                                                <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
+                                                                class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                            </div>
+                                                            <div>
+                                                                <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
-                                                    </div>
-                                                </div>
+
                                                 @endforeach
+
                                             @else
 
                                             <div class="pt-5 for_upload_img_set_h_w">
@@ -233,9 +239,9 @@
                                             </div>
 
                                             @endif
-
+                                            </div>
                                         </div>
-                                        <div>
+                                        <div class="pt-3 d-flex justify-content-right">
                                             <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
                                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                                 <span>

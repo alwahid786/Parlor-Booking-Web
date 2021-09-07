@@ -440,6 +440,15 @@
 
 }
 
+.h_493px-s{
+    height: 493px;
+}
+
+.w_h_120px-s{
+    width: 120px;
+    height: 120px;
+}
+
 /* @media screen and(max-width:1024px) {
     .days_circle-s{
       width: 83px;

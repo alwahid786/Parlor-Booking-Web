@@ -40,17 +40,17 @@
                 @csrf
                 <div class="for_common_email_pass pt-4">
                     <p>Email Address</p>
-                      <div class="input-group mb-3 w-75 border-bottom">
+                      <div class="input-group mb-3 w-75 ">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input type="email" class="inp" name="email" placeholder="abcd@gmail.com" required/>
+                        <input type="email" class="inp w-100 border-bottom" name="email" placeholder="abcd@gmail.com" required/>
                       </div>
                 </div>
 
                 <div class="for_common_email_pass ">
                     <p>Password</p>
-                      <div class="input-group mb-3 w-75 border-bottom">
+                      <div class="input-group mb-3 w-75">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input type="password" class="inp" name="password" placeholder="" required/>
+                        <input type="password" class="inp w-100 border-bottom" name="password" placeholder="" required/>
                       </div>
                 </div>
 
