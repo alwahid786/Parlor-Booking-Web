@@ -255,12 +255,14 @@ class UserController extends Controller
         }
         if(isset($request->keywords))
             $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->keywords}%");
+
         if(isset($request->popular))
             $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');
+
         if(isset($request->limit))
             $salon->offset($request->offset??0)->limit($request->limit);
 
-        $salon = $salon->get();
+        $salon = $salon->with('services')->get();
 
         return SendSuccess('Salons',$salon);
     }
