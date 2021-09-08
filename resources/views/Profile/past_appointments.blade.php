@@ -137,7 +137,7 @@
                         <div class="for_all_appointments">
                             <h4>Past Appointments
                                 <span class="pull-right">
-                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
+                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id , 'updateProfile'=>$user_details])
                                 </span>
                             </h4>
                             <div>

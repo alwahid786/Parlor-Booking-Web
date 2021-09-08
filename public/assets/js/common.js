@@ -1,3 +1,10 @@
+   $(document).ready(function () {
+    $('#exampleModal').modal({
+           backdrop: 'static',
+           keyboard: false
+    })
+   });
+
 function showPreLoader() {
     $('#loader').fadeIn('fast');
 }

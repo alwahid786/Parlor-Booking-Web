@@ -137,7 +137,7 @@
                             <div>
 
                                <span class="pull-right">
-                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
+                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id, 'updateProfile'=>$user_details])
                                 </span>
                             </div>
 

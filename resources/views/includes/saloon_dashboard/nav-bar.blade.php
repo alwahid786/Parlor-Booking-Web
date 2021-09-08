@@ -6,9 +6,13 @@
                 <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
                 <ul class="navbar-nav ml-auto ">
                     <li>
-                        {{-- {{ dd($id) }} --}}
-                        <img src="{{    asset('assets/images/saloon_dashboard_images/Ellipse 46.svg') }}"
-                            class="img-fluid  for_nav_bar_icon_img">
+                        {{--  {{ dd($updateProfile) }}  --}}
+                        @if (($updateProfile !=[]) && (null != $updateProfile->media) )
+                            <img src="{{ asset('/'.$updateProfile->media[0]->path) }} "  class="img-fluid  for_nav_bar_icon_img">
+                        @else
+                            <img src="{{    asset('assets/images/saloon_dashboard_images/Ellipse 46.svg') }}"
+                                class="img-fluid  for_nav_bar_icon_img">
+                        @endif
                     </li>
                     <li class="nav-item dropdown dmenu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

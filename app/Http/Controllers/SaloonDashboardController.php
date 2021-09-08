@@ -31,18 +31,30 @@ class SaloonDashboardController extends Controller
                 $request->merge(['user_uuid' => $request->uuid]);
                 $appointments = $this->appointmentApiCntrl;
                 $apiResponse = $appointments->getAppointment($request)->getData();
-                if ($apiResponse->status){
+
+                $userCntrl = $this->userApiCntrl;
+                $apiResponse_user = $userCntrl->getUser($request)->getData();
+
+                if ($apiResponse->status && $apiResponse_user->status){
                     $appointments = $apiResponse->data;
-                    return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments' => $appointments]);
+                    $user_details = $apiResponse_user->data;
+
+                    return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments' => $appointments, 'user_details' => $user_details]);
                 }
                 return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments'=>'']);
             }
             $request->merge(['user_uuid' => $uuid]);
             $appointments = $this->appointmentApiCntrl;
             $apiResponse = $appointments->getAppointment($request)->getData();
-            if ($apiResponse->status) {
+
+            $userCntrl = $this->userApiCntrl;
+            $apiResponse_user = $userCntrl->getUser($request)->getData();
+
+            if ($apiResponse->status&& $apiResponse_user->status) {
                 $appointments = $apiResponse->data;
-                return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => $appointments]);
+                $user_details = $apiResponse_user->data;
+
+                return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => $appointments, 'user_details' => $user_details]);
             }
             return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => '']);
         }
@@ -70,15 +82,20 @@ class SaloonDashboardController extends Controller
             $serviceCntrl = $this->serviceApiCntrl;
             // dd($request->all());
             $apiResponse = $serviceCntrl->getService($request)->getData();
+            $user = $this->userApiCntrl;
+            $apiResponse_user = $user->getUser($request)->getData();
+
             // dd($apiResponse);
-            if ($apiResponse->status) {
+            if ($apiResponse->status && $apiResponse_user->status) {
                 $getServices = $apiResponse->data;
-                return view('Profile.service', ['id' => $uuid, 'getServices' => $getServices]);
+                $user_details = $apiResponse_user->data;
+
+                return view('Profile.service', ['id' => $uuid, 'getServices' => $getServices ?? null, 'user_details' => $user_details]);
 
             }
 
-            $getServices = null;
-            return view('Profile.service',['id'=>$uuid, 'getServices' => $getServices]);
+            // $getServices = null;
+            // return view('Profile.service',['id'=>$uuid, 'getServices' => $getServices]);
             // $request->merge(['id' => $request->uuid]);
             // $userCntrl = $this->userApiCntrl;
             // $apiResponse = $userCntrl->getUser($request)->getData();
@@ -131,7 +148,7 @@ class SaloonDashboardController extends Controller
             $apiResponse = $userCntrl->getUser($request)->getData();
             if ($apiResponse->status) {
                 $appointments = $apiResponse->data;
-                return view('Profile.availability', ['id'=> $uuid , 'appointments'=> $appointments->days]);
+                return view('Profile.availability', ['id'=> $uuid , 'appointments'=> $appointments->days, 'user_details' => $appointments]);
             }
             return sendError('Service are not added successfully', []);
 
@@ -142,7 +159,16 @@ class SaloonDashboardController extends Controller
     {
         if($request->getMethod() == 'GET')
         {
-            return view('Profile.aboutus',['id'=> $uuid ]);
+            $request->merge(['user_uuid' => $uuid]);
+
+            $user = $this->userApiCntrl;
+            $apiResponse_user = $user->getUser($request)->getData();
+
+            if ($apiResponse_user->status) {
+                $user_details = $apiResponse_user->data;
+                return view('Profile.aboutus',['id'=> $uuid , 'user_details' => $user_details]);
+            }
+
         }
     }
 
@@ -152,10 +178,13 @@ class SaloonDashboardController extends Controller
         {
             $request->merge(['user_uuid'=> $uuid ]);
             $appointments = $this->appointmentApiCntrl;
+            $user = $this->userApiCntrl;
             $apiResponse = $appointments->getAppointment($request)->getData();
-            if ($apiResponse->status) {
+            $apiResponse_user = $user->getUser($request)->getData();
+            if ($apiResponse->status && $apiResponse_user->status) {
                 $all_appointments = $apiResponse->data;
-                return view('Profile.appointments', ['id'=> $uuid, 'all_appointments' => $all_appointments]);
+                $user_details = $apiResponse_user->data;
+                return view('Profile.appointments', ['id'=> $uuid, 'all_appointments' => $all_appointments , 'user_details' =>$user_details]);
             }
             return view('Profile.appointments', ['id' => $uuid]);
         }
@@ -170,10 +199,15 @@ class SaloonDashboardController extends Controller
                 'past_appointments' => 1
             ]);
             $appointments = $this->appointmentApiCntrl;
+            $user = $this->userApiCntrl;
+            $apiResponse_user = $user->getUser($request)->getData();
+
             $apiResponse = $appointments->getAppointment($request)->getData();
-            if ($apiResponse->status) {
+            if ($apiResponse->status&& $apiResponse_user->status) {
                 $past_appointments = $apiResponse->data;
-                return view('Profile.past_appointments', ['id' => $uuid, 'past_appointments' => $past_appointments]);
+                $user_details = $apiResponse_user->data;
+
+                return view('Profile.past_appointments', ['id' => $uuid, 'past_appointments' => $past_appointments, 'user_details' => $user_details]);
             }
             return view('Profile.past_appointments', ['id' => $uuid]);
         }

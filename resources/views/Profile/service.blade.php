@@ -143,7 +143,7 @@
 
                             <div>
                                 <span class="pull-right">
-                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
+                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id,'updateProfile'=>$user_details])
 
                                 </span>
                             </div>
@@ -356,7 +356,7 @@
                 <!-- Service Modal Start -->
                             <!-- Modal -->
                             {{-- <div class="modal fade" id="exampleModal edit_model-d" class="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
-                            <div class="modal fade" id="exampleModal" class="edit_model-d" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal" class="edit_model-d"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 

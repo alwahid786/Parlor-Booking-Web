@@ -125,6 +125,7 @@
 
 <body>
     <!--Asside Bar Page Start !-->
+    {{--  {{ dd($all_appointments , $id ,$user_details) }}  --}}
     <div class="for-overflow">
         <div class="row">
             <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 for_asside_bar_bg">
@@ -136,7 +137,7 @@
                         <div class="for_all_appointments">
                             <h4>All Appointments
                                 <span class="pull-right">
-                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
+                                    @include('includes.saloon_dashboard.nav-bar',['id'=>$id , 'updateProfile'=>$user_details])
                                 </span>
                             </h4>
 
