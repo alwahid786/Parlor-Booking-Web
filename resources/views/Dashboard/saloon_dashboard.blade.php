@@ -164,14 +164,14 @@
             border-top-right-radius: 5px;
             border-top-left-radius: 5px;
         }
-        
+
 
     </style>
 </head>
 
 <body>
     <!--Asside Bar Page Start !-->
-    <div class="for-overflow">
+
         <div class="row">
             <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 for_asside_bar_bg">
                 @include('includes.saloon_dashboard.saloon_dashboard_navbar',['id'=>$id])
@@ -182,9 +182,9 @@
                     <span class="pull-right">
                         @include('includes.saloon_dashboard.nav-bar',['id'=>$id])
                     </span>
-                
-            
-          
+
+
+
         <div class="pt-5">
             <div class="row pt-5 w-100">
                 <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
@@ -223,7 +223,7 @@
             </div>
         </div>
 
-    </div>
+
 
     <!--Asside Bar Page End !-->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

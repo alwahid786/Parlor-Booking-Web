@@ -113,6 +113,8 @@
     margin-left: 0px;
     font-size: 6px;
 }
+
+
 }
     </style>
 </head>
@@ -124,7 +126,7 @@
                 @include('includes.saloon_dashboard.saloon_dashboard_navbar',['id'=>$id])
 
             </div>
-            <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-9 col-9 for_add_aboutus_bg">
+            <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-9 col-9 for_add_aboutus_bg h_100vh-s">
                   <div class="row">
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="for_aboutus_text">
@@ -172,14 +174,15 @@
                                     </div>
 
                                 </div>
+                            </div>
                         </div>
 
 
                     </div>
 
 
-                  </div>
-             </div>
+                </div>
+            </div>
         </div>
     </div>
 

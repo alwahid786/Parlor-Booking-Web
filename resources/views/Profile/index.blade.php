@@ -194,42 +194,45 @@
                                 <div class="row">
                                     <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
+                                        <div class="row row-cols-5 justify-content-center ">
+                                        @if(null != $profile->brosche)
+                                            {{-- {{ dd($updateProfile->brosche) }} --}}
+                                                @foreach (array_slice($profile->brosche, 1,5) as $brosche)
+                                                <div class="col px-0">
+                                                    <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
+                                                        <div>
+                                                            <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
+                                                            class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                        </div>
+                                                        <div>
+                                                            <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            @else
 
-                                    @if(null != $profile->brosche)
-                                        {{-- {{ dd($updateProfile->brosche) }} --}}
-                                            @foreach (array_slice($profile->brosche, 1,5) as $brosche)
-                                            <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
-                                                <div>
-                                                    <img src=" {{ asset('assets/images/saloon_dashboard_images/Rectangle 195.svg') }} "
-                                                    class="img-fluid for_cancel_icon_in_profile  " alt="...">
-                                                </div>
-                                                <div>
-                                                    <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
-                                                </div>
+                                            <div class="pt-5 for_upload_img_set_h_w">
+                                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}" class="img-fluid " alt="..."> <span>
+                                                    <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg')}}" class="img-fluid for_cancel_icon_in_profile  "  alt="...">
                                             </div>
-                                            @endforeach
-                                        @else
 
-                                        <div class="pt-5 for_upload_img_set_h_w">
-                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}" class="img-fluid " alt="..."> <span>
-                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Group 152.svg')}}" class="img-fluid for_cancel_icon_in_profile  "  alt="...">
+                                            @endif
+
+
+
+
+                                            {{-- <div class="pt-5 for_upload_img_set_h_w">
+                                                <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
+                                                    class="img-fluid " alt="...">
+                                                <span>
+                                                    <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
+                                                        class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                </span>
+
+
+                                            </div> --}}
                                         </div>
-
-                                        @endif
-
-
-
-
-                                        {{-- <div class="pt-5 for_upload_img_set_h_w">
-                                            <img src="{{ asset('assets/images/saloon_dashboard_images/Rectangle 260.svg') }}"
-                                                class="img-fluid " alt="...">
-                                            <span>
-                                                <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
-                                                    class="img-fluid for_cancel_icon_in_profile  " alt="...">
-                                            </span>
-
-
-                                        </div> --}}
 
                                     </div>
 
@@ -321,13 +324,14 @@
                                     {{-- {{ dd($profile->days) }} --}}
 
                                     <!-- Third Div Start -->
-                                    <div class="availability_on_week_bg">
-                                        <div class="on_week_text">
-
-                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                            <span class="on_week_separate">Availability On Week</span>
-                                            <div class="row">
-                                                <div class="col-12 my-5 d-flex px-lg-2 px-0">
+                                    <div class="row w-100 py-5 px-xl-5 mt-4 available_days-s">
+                                            <div class="col-12 my-4">
+                                                <h4>
+                                                    <i class="fa fa-calendar-check-o week_calander-s" aria-hidden="true"></i>
+                                                    <span class="weekdays_heading-s">Availability On Week..</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-12 my-5 d-flex px-lg-2 px-0">
 
                                                         @if($profile->days != [])
 
@@ -405,7 +409,7 @@
 
 
 
-                                                </div>
+
 
 
 

@@ -24,9 +24,9 @@
             @csrf
             <div class="for_common_email_pass sm_name_css pt-4">
                 <p>Name</p>
-                  <div class="input-group mb-3 w-75 border-bottom">
+                  <div class="input-group mb-3 w-75 ">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="text" name="name"  class="inp" placeholder="David Miller" />
+                    <input type="text" name="name"  class="inp w-100 border-bottom" placeholder="David Miller" />
                     @error('name')
                       <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
@@ -35,9 +35,9 @@
 
             <div class="for_common_email_pass ">
                 <p>Email</p>
-                  <div class="input-group mb-3 w-75 border-bottom">
+                  <div class="input-group mb-3 w-75 ">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="email" class="inp" name="email" placeholder="abcd@gmail.com" required/>
+                    <input type="email" class="inp w-100 border-bottom" name="email" placeholder="abcd@gmail.com" required/>
                   </div>
             </div>
 
@@ -76,7 +76,7 @@
               </div> --}}
               <div class="for_common_email_pass col form-group">
                 <label>Phone</label>
-                  {{-- <div class="input-group mb-3 w-75 border-bottom"> --}}
+                  {{-- <div class="input-group mb-3 w-75 "> --}}
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                     <input type="tel" class="form-control form-control-lg inp rounded-0` border-bottom" name="phone_number" maxlength="12" placeholder=" 000 00 00 000"  required/>
                   {{-- </div> --}}
@@ -86,17 +86,17 @@
 
             <div class="for_common_email_pass ">
                 <p>Password</p>
-                  <div class="input-group mb-3 w-75 border-bottom">
+                  <div class="input-group mb-3 w-75 ">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="password" class="inp pswd_password-d" name="password" placeholder="************" required/>
+                    <input type="password" class="inp pswd_password-d w-100 border-bottom" name="password" placeholder="************" required/>
                   </div>
             </div>
 
             <div class="for_common_email_pass ">
                 <p>Confirm Password</p>
-                  <div class="input-group mb-3 w-75 border-bottom">
+                  <div class="input-group mb-3 w-75 ">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                    <input type="password" class="inp" name="password_confirmation" placeholder="************" required/>
+                    <input type="password" class="inp w-100 border-bottom" name="password_confirmation" placeholder="************" required/>
                   </div>
             </div>
 
