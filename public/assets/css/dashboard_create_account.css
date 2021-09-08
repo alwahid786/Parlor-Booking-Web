@@ -50,7 +50,7 @@
 }
 
 /* [placeholder]:focus::-webkit-input-placeholder {
-      transition: text-indent 0.4s 0.4s ease; 
+      transition: text-indent 0.4s 0.4s ease;
       text-indent: -100%;
       opacity: 1;
    } */
@@ -190,4 +190,9 @@
   .forgot_password_css span {
     margin-left: 15px;
   }
+}
+
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu){
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
 }
