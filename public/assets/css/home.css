@@ -2722,3 +2722,18 @@ button {
 .h_126px-s {
     height: 126px;
 }
+
+.fs_20px-s{
+    font-size:20px;
+}
+
+.phone_input-s{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.w_75-s{
+    width: 75%;
+}

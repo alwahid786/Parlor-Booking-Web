@@ -40,7 +40,7 @@
 
               </div>
 
-                <form action="{{ route('forgotPassword') }}" id="frm_forgot_password-d" method="post">
+                <form action="{{ route('forgotPassword') }}" class="frm_forgot_password-d" method="post">
                     <div class="for_common_email_pass">
                         <p>Email Address</p>
                             <div class="input-group mb-3 w-75 border-bottom">
@@ -50,6 +50,7 @@
                     </div>
 
                     <div class=" text-center button_signin_css ">
+                        <input type="hidden" name="" id="reset_password-d" value="reset_password">
                         <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Send</span></button>
                     </div>
                 </form>

@@ -74,6 +74,7 @@ class AuthWebController extends Controller
         }
         else {
 
+            // dd($request->all());
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->verifyUserWithCode($request)->getData();
             if ($apiResponse->status) {

@@ -1,7 +1,7 @@
 $(function(event) {
 
     // Validate and then process registeration form
-    $('#frm_signup-d').validate({
+    $('.frm_signup-d').validate({
         ignore: ".ignore",
         rules: {
             name: {
@@ -95,10 +95,25 @@ $(function(event) {
                         }).then((result) => {
                             console.log(response);
                             // return false;
+                            let type = response.data.user.type;
 
-                            $('.email-d').val(response.data.user.email);
+                            if(type == 'salon')
+                            {
+                                $('.email-d').val(response.data.user.email);
+                                window.location.href = verify_account_page_link + '?email=' + response.data.user.email + '&user_type=' + response.data.user.type;
 
-                            window.location.href = verify_account_page_link + '?email=' + response.data.user.email + '&user_type=' + response.data.user.type;
+                            }
+                            else {
+
+                                $('.email-d').val(response.data.user.email);
+                                $('.user_type-d').val(type);
+
+                                $("#enter_code_modal-d").modal('show');
+                                $("#signup_modal-d").modal('hide');
+
+                            }
+
+
 
                         });
                     } else {
@@ -260,7 +275,7 @@ $(function(event) {
 
 
     // move to next input field
-    $('#frm_validate_code-d').on('keydown', '.v_code-d', function(e) {
+    $('.frm_validate_code-d').on('keydown', '.v_code-d', function(e) {
         let elm = $(this);
         let text = $(elm).val().trim();
 
@@ -272,7 +287,7 @@ $(function(event) {
     });
 
 
-    $('#frm_validate_code-d').on('keyup', '.v_code-d', function(e) {
+    $('.frm_validate_code-d').on('keyup', '.v_code-d', function(e) {
         let elm = $(this);
         let text = $(elm).val().trim();
         console.log('ok');
@@ -308,11 +323,11 @@ $(function(event) {
     $('#frm_validate_code-d').validate({
         ignore: ".ignore",
         rules: {
-            email: {
-                required: true,
-                email: true,
-                minlength: 5,
-            },
+            // email: {
+            //     required: true,
+            //     email: true,
+            //     minlength: 5,
+            // },
             activation_code: {
                 required: true,
                 minlength: 4
@@ -343,11 +358,11 @@ $(function(event) {
             }
         },
         messages: {
-            email: {
-                required: "Email is Required",
-                minlength: "Email Should have atleast 5 characters",
-                email: "Email Format is not valid"
-            },
+            // email: {
+            //     required: "Email is Required",
+            //     minlength: "Email Should have atleast 5 characters",
+            //     email: "Email Format is not valid"
+            // },
             activation_code: {
                 required: "Activation Code is Required.",
                 minlength: "Activation Code Should have atleast 4 characters",
@@ -379,19 +394,33 @@ $(function(event) {
             $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
         },
         success: function(label, element) {
-            // console.log(label, element);
             $(element).removeClass('error text-danger');
             $(element).parent().find('span.error').remove();
         },
         submitHandler: function(form) {
-            // console.log('submit handler');
+          console.log(form);
+
+            // alert('ok');
             let type = $('.type-d').val();
+            console.log(type);
+            // return false;
             if (type == 'reset_password') {
                 // alert(ResetPassword);
                 window.location.href = ResetPassword + '?code=' + $("#hdn_activation_code-d").val() + '&email=' + $(".email-d").val();
                 // window.location.href = ResetPassword;
                 // return false;
-            } else {
+            }
+            else if(type == 'user_reset_modal')
+            {
+                let code = $("#hdn_activation_code-d").val();
+                let email = $("#user_email-d").val();
+                console.log(code,email );
+                $('#code_user-d').val(code);
+                $('#email_user-d').val(email);
+                $("#new_password_modal-d").modal('show');
+                $("#enter_code_modal-d").modal('hide');
+            }
+            else {
                 $.ajax({
                     url: $(form).attr('action'),
                     type: 'POST',
@@ -412,11 +441,14 @@ $(function(event) {
                                 console.log(response);
 
 
-                                let user_type = $("user_type-d").val();
+                                let user_type = $(".user_type-d").val();
                                 if (user_type == 'salon') {
                                     window.location.href = SaloonDashboard;
                                 } else {
-                                    window.location.href = UserAppointments;
+                                    // window.location.href = UserAppointments;
+                                    // location.reload();
+                                    $("#signin_modal-d").modal('show');
+                                    $("#enter_code_modal-d").modal('hide');
                                 }
                                 // if (type == 'reset_password') {
                                 //     window.location.href = ResetPassword;
@@ -455,7 +487,7 @@ $(function(event) {
 
 
     // Forogot password
-    $('#frm_forgot_password-d').validate({
+    $('.frm_forgot_password-d').validate({
         ignore: ".ignore",
         rules: {
             reference: {
@@ -502,11 +534,24 @@ $(function(event) {
                             showConfirmButton: false,
                             timer: 2000
                         }).then((result) => {
+                            console.log(response);
                             // return false;
                             // $('#validate_code_container-d').hide();
                             // $('#set_password_container-d').show();
-                            console.log(response.data);
-                            window.location.href = enterCode + '?email=' + response.data.name + '&type=' + 'reset_password';
+                            let user = $("#forgot_user_type-d").val();
+
+                            console.log(user);
+
+                            if(user == 'user')
+                            {
+                                $("#enter_code_modal-d").modal('show');
+                                $("#forgot_modal-d").modal('hide');
+                            }
+                            else {
+                                console.log(response.data);
+                                window.location.href = enterCode + '?email=' + response.data.name + '&type=' + 'reset_password';
+                            }
+
                         });
                     } else {
                         errorAlert(response.message);
@@ -588,11 +633,17 @@ $(function(event) {
                             timer: 2000
                         }).then((result) => {
                             let user_type = $('.user_type-d').val();
+                                if (user_type == 'salon') {
+                                    window.location.href = SaloonLogin;
+                                }
+                                else {
+                                    $("#signin_modal-d").modal('show');
+                                    $("#new_password_modal-d").modal('hide');
+                                }
                             // return false;
                             // $('#validate_code_container-d').hide();
                             // $('#set_password_container-d').show();
                             // console.log(response.data);
-                            window.location.href = SaloonLogin;
                         });
                     } else {
                         errorAlert(response.message);
