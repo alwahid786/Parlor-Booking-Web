@@ -131,6 +131,23 @@
 
         }
 
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ffc107;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffc107;
+        }
+
+        .custom-file-upload:hover {
+            background-color:  #ffc107;
+            color: white;
+
+        }
+
     </style>
 </head>
 
@@ -196,7 +213,7 @@
 
                                     @endif
                                     <div class="upload_img_profile_main text-center">
-                                        <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                        <!-- <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
 
                                             <i class="fa fa-upload" aria-hidden="true"></i>
                                             <span>
@@ -204,7 +221,11 @@
                                                 <input type="file" name="media" class="form-control" id="media12">
                                                 Upload Image
                                             </span>
-                                        </button>
+                                        </button> -->
+                                        <label for="media12" class="custom-file-upload rounded-pill p-3 shadow-lg">
+                                            <i class="fa fa-upload " aria-hidden="true"></i>Upload Profile Image
+                                        </label>
+                                        <input id="media12" type="file"  name="media"/>
                                     </div>
 
 
@@ -212,12 +233,12 @@
 
 
                                         <div class="col-xxl-12 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                            <div class="row row-cols-5 justify-content-center ">
+                                            <div class="row justify-content-center ">
                                             @if(null != $updateProfile->brosche)
                                             {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
 
-                                                    <div class="col px-0">
+                                                    <div class="col-2 px-0">
                                                         <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
                                                             <div>
                                                                 <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
@@ -241,8 +262,8 @@
                                             @endif
                                             </div>
                                         </div>
-                                        <div class="pt-3 d-flex justify-content-right">
-                                            <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded">
+                                        <div class="pt-3 text-end">
+                                            <!-- <button type="button" class="btn btn-outline-warning px-5 shadow-lg rounded-pill">
                                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                                 <span>
                                                     {{--  <input type="file" id='files' name="files[]" multiple>  --}}
@@ -250,7 +271,13 @@
                                                         multiple>
                                                     Upload Broshe Image
                                                 </span>
-                                            </button>
+
+                                            </button> -->
+                                            <label for="broshe12" class="custom-file-upload rounded-pill p-3 shadow-lg">
+                                                <i class="fa fa-upload " aria-hidden="true"></i>Upload Broshe Image
+                                            </label>
+                                            <input id="broshe12" type="file"  name="brosche[]" multiple/>
+
                                         </div>
 
 

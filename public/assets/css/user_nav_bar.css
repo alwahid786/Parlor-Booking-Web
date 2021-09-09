@@ -63,3 +63,35 @@ a:active {
 
 @media (min-width: 2560px) {
 }
+
+.signin_button-s{
+    color: #f5b51b;
+    border: 2px solid #f5b51b;
+    background-color: black;
+}
+
+.signin_button-s:hover{
+    color: black !important;
+    border: 2px solid #f5b51b;
+    background-color: #f5b51b;
+}
+
+.fg_yellow-s{
+    color: #f5b51b;
+}
+
+.spacing_none-s{
+    word-spacing: 0;
+    letter-spacing: 0;
+}
+
+.spacing_none-s:hover{
+    background-color:#f5b51b;
+    color: black !important;
+}
+
+.alignment-s{
+    top: 30px;
+    left: -10px;
+}
+

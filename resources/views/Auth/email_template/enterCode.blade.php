@@ -40,7 +40,7 @@
                                 <div class="for_common_email_pass pt-4 ">
                                     <div class="input-group mb-3 w-75 ">
                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                        <input type="number" class="inp dot dot_one v_code-d v_code-s"  name='number_box_1'  id='number_box_1' min='0' max="9" maxlength="1" placeholder="0"/>
+                                        <input type="number" class="inp dot dot_one v_code-d v_code-s text-center"  name='number_box_1'  id='number_box_1' min='0' max="9" maxlength="1" placeholder="0"/>
                                     </div>
 
                                 </div>
@@ -51,7 +51,7 @@
 
                                     <div class="input-group mb-3 w-75 ">
                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                        <input  type="number"  class="inp dot dot_two v_code-d v_code-s" name='number_box_2' id='number_box_2' min='0' max="9" maxlength="1"  placeholder="1"/>
+                                        <input  type="number"  class="inp dot dot_two v_code-d v_code-s text-center" name='number_box_2' id='number_box_2' min='0' max="9" maxlength="1"  placeholder="1"/>
                                     </div>
 
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="for_common_email_pass pt-4">
                                     <div class="input-group mb-3 w-75 ">
                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                        <input type="number" class="inp dot dot_three v_code-d v_code-s"   name='number_box_3' id='number_box_3' min='0' max="9" maxlength="1"  placeholder="2"/>
+                                        <input type="number" class="inp dot dot_three v_code-d v_code-s text-center"   name='number_box_3' id='number_box_3' min='0' max="9" maxlength="1"  placeholder="2"/>
                                     </div>
 
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="for_common_email_pass pt-4">
                                     <div class="input-group mb-3 w-75 ">
                                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                        <input type="number" class="inp dot dot_four v_code-d v_code-s last-d" name='number_box_4' id='number_box_4' min='0' max="9" maxlength="1"   placeholder="3"/>
+                                        <input type="number" class="inp dot dot_four v_code-d v_code-s last-d text-center" name='number_box_4' id='number_box_4' min='0' max="9" maxlength="1"   placeholder="3"/>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                 <input type="hidden" name="email" class="email-d" value="{{ $email ?? '' }}">
                                 <input type='hidden' name='activation_code' id='hdn_activation_code-d' />
                                 <input type="hidden" name="type" class="type-d" value="{{ $type ?? '' }}">
-                                <input type="hidden" name="user_type" class="user_type-d" value="{{ $user_type ?? '' }}"> >
+                                <input type="hidden" name="user_type" class="user_type-d" value="{{ $user_type ?? '' }}">
                                 <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Okay</span></button>
                             </div>
                         </form>

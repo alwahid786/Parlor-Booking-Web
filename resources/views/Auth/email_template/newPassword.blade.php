@@ -45,17 +45,17 @@
                 @csrf
                 <div class="for_common_email_pass pt-4">
                     <p>Password</p>
-                        <div class="input-group mb-3 w-75 border-bottom">
+                        <div class="input-group mb-3 w-75">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input type="password" name="password" class="inp reset_password-d" placeholder="***********"/>
+                        <input type="password" name="password" class="inp reset_password-d w-100 border-bottom" placeholder="***********"/>
                         </div>
                 </div>
 
                 <div class="for_common_email_pass pt-4">
                     <p>Password</p>
-                        <div class="input-group mb-3 w-75 border-bottom">
+                        <div class="input-group mb-3 w-75">
                         <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                        <input type="password" name="password_confirmation" class="inp" placeholder="***********"/>
+                        <input type="password" name="password_confirmation" class="inp w-100 border-bottom" placeholder="***********"/>
                         </div>
                 </div>
 

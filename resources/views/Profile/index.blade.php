@@ -194,11 +194,11 @@
                                 <div class="row">
                                     <div class="xol-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                                        <div class="row row-cols-5 justify-content-center ">
+                                        <div class="row justify-content-center ">
                                         @if(null != $profile->brosche)
                                             {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($profile->brosche, 1,5) as $brosche)
-                                                <div class="col px-0">
+                                                <div class="col-2 px-0">
                                                     <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
                                                         <div>
                                                             <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
@@ -404,14 +404,6 @@
 
 
                                                         @endif
-
-
-
-
-
-
-
-
                                             </div>
 
                                             <div class="col-12 text-white d-flex justify-content-between">

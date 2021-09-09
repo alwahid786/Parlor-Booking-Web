@@ -26,7 +26,7 @@
 
 
           <li class="nav-item for_sign_in_button_css">
-          <i class="fa fa-bell-o " aria-hidden="true">
+          <i class="fa fa-bell-o bell_icon-s" aria-hidden="true">
               <span>
                   @if (\Auth::user())
                     {{-- <div class="dropdown">
@@ -44,9 +44,19 @@
                     </a>
 
                   @else
-                  <a href="{{ route('weblogin') }}">
+                  <!-- <a href="{{ route('weblogin') }}">
                     <button type="button" class="btn btn-outline-warning px-4">Sign In</button>
                   </a>
+                  <br> -->
+                    <div class="btn-group">
+                        <button type="button" class="btn signin_button-s dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sign In
+                        </button>
+                        <ul class="dropdown-menu bg-dark alignment-s text-start px-0 show">
+                            <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="#">User</a></li>
+                            <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="#">Saloon</a></li>
+                        </ul>
+                    </div>
 
                   @endif
                   <!-- <button type="button" class="btn btn-warning">Warning</button> -->

@@ -43,9 +43,9 @@
                 <form action="{{ route('forgotPassword') }}" class="frm_forgot_password-d" method="post">
                     <div class="for_common_email_pass">
                         <p>Email Address</p>
-                            <div class="input-group mb-3 w-75 border-bottom">
+                            <div class="input-group mb-3 w-75 ">
                             <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                            <input type="email" name="reference" class="inp" placeholder="abcd@gmail.com"/>
+                            <input type="email" name="reference" class="inp w-100 border-bottom" placeholder="abcd@gmail.com"/>
                             </div>
                     </div>
 
