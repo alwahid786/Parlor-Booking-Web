@@ -54,7 +54,7 @@
                         </button>
                         <ul class="dropdown-menu bg-dark alignment-s text-start px-0 show">
                             <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="#">User</a></li>
-                            <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="#">Saloon</a></li>
+                            <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="{{ route('weblogin') }}">Saloon</a></li>
                         </ul>
                     </div>
 
