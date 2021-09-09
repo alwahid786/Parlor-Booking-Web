@@ -372,7 +372,7 @@
 
                                                                             @else
 
-                                                                              <div class="days_circle-s white_border-s text-center checked_days-s">
+                                                                            <div class="days_circle-s white_border-s text-center checked_days-s">
                                                                                 <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d " checked value="{{ $day }}"  id="{{ $day }}-d">
                                                                             </div>
 
@@ -392,7 +392,6 @@
                                                                 @endphp
 
                                                                 @foreach ($days as $day)
-                                                                            {{ dd($days) }}
                                                                     <div class="days_circle-s white_border-s text-center ">
                                                                         <input type="checkbox" name="days[]" data-parent="{{ $day }}" class="form-check-input opacity_0-s days_circle-d"  id="{{ $day }}-d">
                                                                     </div>

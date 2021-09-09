@@ -25,12 +25,42 @@
 
             <div class="row for_over_flow">
                 <div class="col-xxl-12  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 for_col_12_child_one_dots">
+                    <div class="col-12 my-5 d-flex px-lg-2 px-0">
 
-                    <ul class='timeline'>
+                        {{--  {{ dd($salon_days) }}  --}}
+                        @if ($salon_days != [])
+                            @foreach ($salon_days as $available_day)
+                                {{--  <li style="color:green" >{{ ucfirst(trans($available_day->day)) }}</li>  --}}
+
+                                <div class="days_circle-s white_border-s text-center checked_days-s">
+                                    <input type="checkbox" name="days[]" data-parent="{{ $available_day->day }}" class="form-check-input opacity_0-s days_circle-d " checked value="{{ $available_day->day }}"  id="{{ $available_day->day }}-d">
+                                </div>
+
+                                @if (!$loop->last)
+                                    <div class="days_lines-s mt-3"></div>
+                                @endif
+                            @endforeach
+
+                        @else
+                                <h4>No Available Days</h4>
+                        @endif
+
+                    </div>
+
+
+
+                    <div class="col-12 text-white d-flex ">
+                        @if ($salon_days != [])
+
                         @foreach ($salon_days as $available_day)
-                            <li style="color:green" >{{ ucfirst(trans($available_day->day)) }}</li>
+                            <span id="{{ $available_day->day }}" class="text-white text-color-s px-4 text-left ">{{ ucfirst(trans($available_day->day)) }}</span>
                         @endforeach
-                    </ul>
+
+                        @else
+                                {{--  <h4>No Available Days</h4>  --}}
+                        @endif
+
+                    </div>
 
                 </div>
             </div>

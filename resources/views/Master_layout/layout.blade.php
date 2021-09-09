@@ -20,7 +20,9 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/user_nav_bar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin_css/profile_page.css') }}">
 
 
 
