@@ -132,7 +132,7 @@ class AuthController extends Controller
             
             'social_id'    => 'required_if:is_social,1',
             'social_type'  => 'required_if:is_social,1',
-            'gender'       => 'in:male,female,other',
+            'gender'       => 'in:male,female,other,both',
         ]);
         if($validator->fails()){
             $data['validation_error'] = $validator->getMessageBag();

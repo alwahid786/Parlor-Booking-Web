@@ -37,6 +37,8 @@ class UserController extends Controller
     		'description' => 'string',
             'media' => 'image',
             'brosche*' => 'image',
+            'gender' => 'in:male,female,both',
+
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +58,7 @@ class UserController extends Controller
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
 	        else{
-
+                $user->gender = $request->gender??$user->gender;
 	        	$user->name = $request->name??$user->name;
 	        	$user->address = $request->address??$user->address;
 	        	$user->lat = $request->lat??$user->lat;

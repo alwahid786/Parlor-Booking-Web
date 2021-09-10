@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_social_password_updated')->default(false);
 
             $table->string('password')->nullable();
-            $table->enum('gender', ['male','female','other'])->nullable();
+            $table->enum('gender', ['male','female','other','both'])->nullable();
             $table->boolean('is_online')->nullable();
 
             $table->enum('type', ['user','salon','admin'])->nullable();
