@@ -173,14 +173,6 @@ class AppointmentController extends Controller
         DB::beginTransaction();
         try{            
 
-            $offer = $salon->where('id',$salon->id)->with(['offer' => function ($query){
-                $query->where('status','active');
-            }])->first();
-
-            if(null != $offer->offer){
-                $discount = $offer->offer->discount == 0 ? 1 : $offer->offer->discount/100;
-            }
-
             $total_price = 0;
             $appointment = new Appointment;
             $appointment->uuid        = str::uuid();
@@ -191,6 +183,7 @@ class AppointmentController extends Controller
             $appointment->end_time    = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
             $appointment->date        = $request->date;
             $appointment->total_price = $total_price;
+            $appointment->discount    = $salon->offer->discount ?? NULL;
             $appointment->save();
 
             if(!$appointment->save()){
@@ -206,10 +199,8 @@ class AppointmentController extends Controller
                 $appointment_details->uuid           = str::uuid();
                 $appointment_details->appointment_id = $appointment->id;
                 $appointment_details->service_id     = $service->id;
-                $appointment_details->price          = $service->price;
-                if(isset($discount)){
-                    $appointment_details->discount = $discount * 100;
-                }
+                $appointment_details->price          = $service->price - ($service->price * (($service->offer->discount??0)/100) );
+                $appointment_details->discount       = $service->offer->discount ?? NULL;
                 $appointment_details->save();
 
                 if(!$appointment->save()){
@@ -218,12 +209,13 @@ class AppointmentController extends Controller
                     return sendError("Internal Server Error",[]);
                 }
             }
+
             $total_price = AppointmentDetail::where('appointment_id',$appointment->id)->pluck('price')->sum();
             $appointment->total_price = $total_price;
 
-            if(isset($discount)){
-                $appointment->total_price = $total_price - ($total_price * $discount);
-            }
+            if(isset($salon->offer->discount))
+                $appointment->total_price = $total_price - ($total_price * (($salon->offer->discount??0)/100) );
+            
             
             $appointment->save();
 
