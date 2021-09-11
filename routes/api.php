@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -53,6 +54,9 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('delete_appointment'     , [AppointmentController::class , 'deleteAppointment']);
     Route::post('available_appointments' , [AppointmentController::class , 'availableAppointments']);
     Route::post('salon_offering'         , [AppointmentController::class , 'salonOff']);
+
+    //review
+    Route::post('give_review'         , [ReviewController::class , 'review']);
 
         // Notification
     Route::post('update_notification_setting'    , 'App\Http\Controllers\NotificationController@updateNotificationSetting');

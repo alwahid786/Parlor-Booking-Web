@@ -111,6 +111,7 @@ class AppointmentController extends Controller
             'time'             => 'required_with:user_uuid|date_format:H:i',
             'date'             => 'required_with:user_uuid|date',
             'appointment_uuid' => 'exists:appointments,uuid',
+            'is_attended'      => 'in:1',
             'status'           => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
         ]);
 
@@ -126,6 +127,9 @@ class AppointmentController extends Controller
         if(isset($request->appointment_uuid)){
 
             $status = Appointment::where('uuid', $request->appointment_uuid)->first();
+
+            if(isset($request->is_attended))
+                $status->is_attended = $request->is_attended  ?? 1;
 
             $status->status = $request->status;
             $status->save();
@@ -184,6 +188,7 @@ class AppointmentController extends Controller
             $appointment->date        = $request->date;
             $appointment->total_price = $total_price;
             $appointment->discount    = $salon->offer->discount ?? NULL;
+            $appointment->is_attended = $request->is_attended ?? NULL;
             $appointment->save();
 
             if(!$appointment->save()){
@@ -253,6 +258,7 @@ class AppointmentController extends Controller
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
         $salon = $result['data'];
+
         //time & date to proper format
         $startTime = Carbon::parse($salon->start_time)->modify('-30 minutes');
         $endTime = Carbon::parse($salon->end_time);
@@ -261,6 +267,7 @@ class AppointmentController extends Controller
         $result = $this->userService->checkAvailableDate($request,$salon);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
+        
         //making intervals of 30 minutes 
         if(!($startTime->modify('+30 minutes') < $endTime))
             return sendError('Invalid Time',[]);
