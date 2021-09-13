@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     //review
     Route::post('give_review'         , [ReviewController::class , 'review']);
+    Route::post('get_review'         , [ReviewController::class , 'getReview']);
 
         // Notification
     Route::post('update_notification_setting'    , 'App\Http\Controllers\NotificationController@updateNotificationSetting');

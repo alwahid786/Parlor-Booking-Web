@@ -23,7 +23,8 @@ class Appointment extends Model
     protected $fillable = [];
     protected $appends = [
         'day',
-        'state'
+        'state',
+        'rating'
     ];
 
     protected $with = [
@@ -39,12 +40,20 @@ class Appointment extends Model
     function appointmentDetails(){
         return $this->hasMany(AppointmentDetail::class, 'appointment_id', 'id');
     }
+    function review(){
+        return $this->hasOne(Review::class,'appointment_id','id');
+    }
 
     public function getDayAttribute(){
         // return $this->date;
         // return date('D', strtotime($this->date));
         return Carbon::parse($this->date)->format('l');
     }
+
+    public function getRatingAttribute(){
+        return $this->review->rating ?? 0;
+    }
+
     public function getStateAttribute(){
 
         if(Carbon::now() == Carbon::parse($this->date))

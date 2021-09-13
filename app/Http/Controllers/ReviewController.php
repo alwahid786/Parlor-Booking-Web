@@ -33,7 +33,7 @@ class ReviewController extends Controller
     	$validator = Validator::make($request->all(), [
             'appointment_uuid' => 'required|exists:appointments,uuid',
 
-            'review'           => 'required|string',
+            'review'           => 'string',
             'rating'           => 'required|numeric|min:1|max:5',
 
             'user_uuid'        => 'exists:users,uuid',
@@ -105,6 +105,51 @@ class ReviewController extends Controller
             DB::rollBack();
             return sendError($e->getMessage(), $e->getTrace());
         }
+
+    }
+
+    public function getReview(Request $request){
+
+        $validator = Validator::make($request->all(), [
+
+            'appointment_uuid' => 'exists:appointments,uuid',
+            'salon_uuid'       => 'exists:users,uuid',
+
+        ]);
+
+        if ($validator->fails()) {
+
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+
+        if(isset($request->salon_uuid)){
+
+            $result = $this->userService->checkSalon($request);
+            if(!$result['status'])
+                return sendError($result['message'] ,$result['data']);
+            $salon = $result['data'];
+        }
+
+        //Check Appointment
+        if(isset($request->appointment_uuid)){
+
+            $appointment = Appointment::where('uuid',$request->appointment_uuid)->first();
+            if(NULL == $appointment)
+                return sendError('Invalid Appointment',[]);
+        }
+
+        $review = Review::orderBy('created_at','DESC');
+
+        if(isset($request->appointment_uuid))
+            $review = $review->where('appointment_id',$appointment->id);
+
+        if(isset($request->salon_uuid))
+            $review = $review->where('salon_id',$salon->id);
+
+        $data['review'] = $review->get();
+    
+        return sendSuccess('Reviews',$data);
 
     }
 }
