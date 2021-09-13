@@ -141,6 +141,7 @@ class ServiceController extends Controller
         $offer->service_id = $service->id;
         $offer->discount   = $request->discount;
         $offer->status     = $request->status;
+        $offer->price      = ($request->discount/100) * $service->price;
 
         $offer->save();
 
