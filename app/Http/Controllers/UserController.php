@@ -233,10 +233,13 @@ class UserController extends Controller
     public Function getSalon(Request $request){
 
         $validator = Validator::make($request->all(), [
+
             'keywords' => 'string',
-            'popular' => 'numeric|in:1',
-            'lat' => 'numeric|required_with:long',
-            'long' => 'numeric|required_with:lat',
+            'popular'  => 'numeric|in:1',
+            'lat'      => 'numeric|required_with:long',
+            'long'     => 'numeric|required_with:lat',
+            'gender'   => 'in:male,female,both',
+
         ]);
         if ($validator->fails()) {
             $data['validation_error'] = $validator->getMessageBag();
@@ -244,6 +247,9 @@ class UserController extends Controller
         }
 
         $salon = User::where('type','salon')->where('name', '<>', '');
+
+        if(isset($request->gender))
+            $salon = $salon->where('gender',$request->gender);            
 
         if(isset($request->lat) && isset($request->long)){
             $salon = $salon->Raw("SELECT *,
@@ -255,6 +261,7 @@ class UserController extends Controller
                 ) * 60 * 1.1515 * 1.609344
               ) as distance HAVING distance <= ? ",[$request->lat,$request->lat,$request->long]);
         }
+        
         if(isset($request->keywords))
             $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->keywords}%");
 

@@ -64,6 +64,7 @@ class ServiceController extends Controller
             'name'         => 'string|required_with:salon_uuid',
             'price'        => 'numeric|required_with:salon_uuid',
             'status'       => 'in:active,in-active'
+            'discount'     => 'numeric',
         ]);
 
         if ($validator->fails()) {
@@ -92,11 +93,27 @@ class ServiceController extends Controller
         DB::beginTransaction();
         try{
             
-            $service->name = $request->name??$service->name;
+            $service->name = $request->name ?? $service->name;
             $service->price = (int)($request->price ?? $service->price);
             $service->salon_id = $service->salon_id ?? $salon->id;
             $service->status = $request->status ?? $service->status ?? 'active';
             $service->save();
+
+            if($service->save())){
+
+
+
+            //     $offer = Offer::where('service_id',$service->id)->first();
+            //     if(NULL == $offer){
+            //         $offer = new Offer;
+            //         $offer->uuid = str::uuid();
+            //     }
+
+            //     $offer->service_id = $service->id;
+            //     $offer->discount   = $request->discount;
+            //     $offer->status     = $request->status;
+            //     $offer->price      = ($request->discount/100) * $service->price;
+            // }
 
             if(!$service->save()){
 
