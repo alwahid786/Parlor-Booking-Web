@@ -99,10 +99,10 @@ class ServiceController extends Controller
             $service->status = $request->status ?? $service->status ?? 'active';
             $service->save();
 
-            if($service->save())){
 
 
 
+            // if($service->save())){
             //     $offer = Offer::where('service_id',$service->id)->first();
             //     if(NULL == $offer){
             //         $offer = new Offer;
