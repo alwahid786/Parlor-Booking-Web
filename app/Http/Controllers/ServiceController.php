@@ -63,7 +63,7 @@ class ServiceController extends Controller
             'service_uuid' => 'required_without:salon_uuid|exists:services,uuid',
             'name'         => 'string|required_with:salon_uuid',
             'price'        => 'numeric|required_with:salon_uuid',
-            'status'       => 'in:active,in-active'
+            'status'       => 'in:active,in-active',
             'discount'     => 'numeric',
         ]);
 
