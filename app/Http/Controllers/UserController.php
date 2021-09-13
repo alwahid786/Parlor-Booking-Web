@@ -249,7 +249,9 @@ class UserController extends Controller
         $salon = User::where('type','salon')->where('name', '<>', '');
 
         if(isset($request->gender))
-            $salon = $salon->where('gender',$request->gender);            
+            $salon = $salon->where(function($q) use ($request){
+                $q->where('gender',$request->gender)->orWhere('gender','both');
+            });            
 
         if(isset($request->lat) && isset($request->long)){
             $salon = $salon->Raw("SELECT *,
