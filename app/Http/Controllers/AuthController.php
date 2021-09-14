@@ -31,7 +31,7 @@ class AuthController extends Controller
             'type' => 'required in:salon,user',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }

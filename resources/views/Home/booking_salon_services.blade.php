@@ -2,8 +2,8 @@
 
 
 @section('content')
-    {{-- {{ dd($saloon_service) }}
-
+    {{--  {{ dd($saloon_service) }}  --}}
+{{--
     "id": 6
     +"uuid": "c267cb65-fa6c-4b97-a8b0-58a37efaf7da"
     +"salon_id": 9
@@ -29,22 +29,23 @@
      <div class="bg_booking_now_text">
         <p>
             Actual Price
-            <span class="pull-right">
+            <span class="pull-right" >
                 {{-- ${{ $saloon_service->sum('total_price') }} --}}
-
+                $ <span id="actual_price-d">0</span>
             </span>
         </p>
         <p>
-            Actual Price
-            <span class="pull-right">
-                $30
+            Discount
+            <span class="pull-right" >
+                $ <span id="discount-d">0</span>
 
             </span>
         </p>
         <p class="for_border_none_actual_price">
-            Actual Price
-            <span class="pull-right">
-                $30
+            Total Price
+            <span class="pull-right" >
+                $ <span id="total_price-d">0</span>
+
 
             </span>
         </p>
@@ -71,15 +72,14 @@
         </div>
 
         @foreach ($saloon_service as $service)
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
-                <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example"
-                    onclick="javascript:myFunction1();" id="demo1">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 single_salon_service_container-d ">
+                <div class="card for_border_card_dashed salon_service-s  " >
                     <div class="card-body for_spa_text">
                         <h5 id="for_java_spa1">{{ $service->name }} </h5>
 
                         <p>{{ $service->description }}</p>
                         <h4>Price</h4>
-                        <h4 class="for_20_text">${{ $service->price }}</h4>
+                        <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price }}</span></h4>
                     </div>
                 </div>
             </div>

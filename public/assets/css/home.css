@@ -2737,3 +2737,56 @@ button {
 .w_75-s{
     width: 75%;
 }
+
+.salon_service-s:hover,
+.salon_service-s:hover h5 {
+    color: white !important;
+    background-color: #133e59;
+}
+
+.check_saloon_service-s , h5 {
+color: white !important;
+background-color: #133e59;
+}
+
+/*
+     button {
+         display: inline-block;
+         margin: 5px 5px 0 0;
+         padding: 10px 30px;
+         outline: 0;
+         border: 0;
+         cursor: pointer;
+         background: #5185a8;
+         color: #fff;
+         text-decoration: none;
+         font-family: arial, verdana, sans-serif;
+         font-size: 14px;
+         font-weight: 100;
+     }
+
+     input {
+         width: 100%;
+         margin: 0 0 5px 0;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 0;
+         font-family: arial, verdana, sans-serif;
+         font-size: 14px;
+         box-sizing: border-box;
+         -webkit-appearance: none;
+     } */
+
+     .mbsc-page {
+         padding: 1em;
+         min-height: 0 !important;
+     }
+
+     .custom-view .mbsc-segmented .mbsc-icon {
+         font-size: 20px;
+     }
+
+
+     .mbsc-ios.mbsc-segmented-button.mbsc-button{
+        display: none;
+     }

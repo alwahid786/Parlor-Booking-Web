@@ -1,3 +1,7 @@
+<style>
+
+</style>
+
 <!-- Done Modal Start -->
 <div class="modal " id="book_service-d">
     <div class="modal-dialog">
@@ -23,7 +27,14 @@
                     </span>
                 </div>
 
-                <div class="for_may_text">
+
+              <div mbsc-page class="demo-week-to-month">
+                    <div style="height:10%">
+                        <div id="demo"></div>
+                    </div>
+              </div>
+
+                {{--  <div class="for_may_text">
                     <h1>May</h1>
 
                 </div>
@@ -71,7 +82,7 @@
                             14
                         </span>
                     </p>
-                </div>
+                </div>  --}}
                 <div class=" for_clock_celender_icon">
                     <i class="fa fa-clock-o clock_icon_css" aria-hidden="true">
                         <span> Select Time </span>

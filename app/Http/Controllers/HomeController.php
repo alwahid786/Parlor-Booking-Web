@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AppointmentController;
 
 class HomeController extends Controller
 {
 
     private $salonApiCntrl;
     private $salonApiServiceCntrl;
+    private $salonApiAppointmentCntrl;
 
-
-    public function __construct(UserController $salonApiCntrl, ServiceController $salonApiServiceCntrl)
+    public function __construct(UserController $salonApiCntrl, ServiceController $salonApiServiceCntrl, AppointmentController $salonApiAppointmentCntrl )
     {
         $this->salonApiCntrl = $salonApiCntrl;
         $this->salonApiServiceCntrl = $salonApiServiceCntrl;
+        $this->salonApiAppointmentCntrl = $salonApiAppointmentCntrl;
     }
 
     public function index(Request $request)
@@ -134,9 +136,33 @@ class HomeController extends Controller
     public function bookingSalonServices($uuid = null, Request $request)
     {
         if ($request->getMethod() == 'GET') {
+            // dd(Auth::user()->uuid);
+
             $request->merge([
                 'salon_uuid' => $uuid,
             ]);
+
+            // if(Auth::user())
+            // {
+            //     $request->merge([
+            //         'user_uuid'=> Auth::user()->uuid,
+            //     ]);
+            //     $appointmentCntrl = $this->salonApiAppointmentCntrl;
+            //     $apiResponseAppointment = $appointmentCntrl->updateAppointment($request)->getData();
+
+            //     $userCntrl = $this->salonApiServiceCntrl;
+            //     $apiResponse = $userCntrl->getService($request)->getData();
+
+
+            //     if($apiResponseAppointment->status && $apiResponse->status)
+            //     {
+            //         $saloon_service = $apiResponse->data;
+            //         $add_appointment = $apiResponseAppointment->data;
+            //         return view('Home.booking_salon_services', ['saloon_service' => $saloon_service, 'add_appointment' => $add_appointment , 'book_salon' => 1]);
+
+            //     }
+            // }
+
 
             $userCntrl = $this->salonApiServiceCntrl;
             $apiResponse = $userCntrl->getService($request)->getData();

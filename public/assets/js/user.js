@@ -1,4 +1,54 @@
 $(document).ready(function() {
+    // alert('helo');
+    //  $('#inline-picker').mobiscroll().datepicker({
+    //        calendarType: 'week',
+    //         weeks: 1
+
+    //         //   controls: ['calendar'],
+    //         //     display: 'inline',
+    //         //     touchUi: true
+    // });
+
+        window.isMbscDemo = true;
+
+          mobiscroll.setOptions({
+        locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+        theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'     // More info about themeVariant: https://docs.mobiscroll.com/5-9-1/calendar#opt-themeVariant
+    });
+
+    var myCalendar = $('#demo').mobiscroll().datepicker({
+            controls: ['calendar'],   // More info about controls: https://docs.mobiscroll.com/5-9-1/calendar#opt-controls
+            display: 'inline',        // Specify display mode like: display: 'bottom' or omit setting to use default
+            calendarType: 'week',
+            weeks: 1,                 // More info about weeks: https://docs.mobiscroll.com/5-9-1/calendar#opt-weeks
+            renderCalendarHeader: function () {
+                return '<div mbsc-calendar-nav class="custom-view-nav"></div><div class="custom-view">' +
+                    '<label><input data-icon="material-date-range" mbsc-segmented type="radio" name="view" value="week" class="view-change" checked></label>' +
+                    '<label><input data-icon="material-event-note" mbsc-segmented typce="radio" name="view" value="month" class="view-change"></label></div>' +
+                    '<div mbsc-calendar-prev></div>' +
+                    '<div mbsc-calendar-next></div>';
+            }
+        }).mobiscroll('getInst');
+
+        // $('.view-change').change(function (ev) {
+        //     switch (ev.target.value) {
+        //         case 'week':
+        //             myCalendar.setOptions({
+        //                 calendarType: 'week'
+        //             });
+        //             break;
+        //         case 'month':
+        //             myCalendar.setOptions({
+        //                 calendarType: 'month'
+        //             });
+        //             break;
+        //     }
+        // });
+    // });
+
+
+
     function handlePermission() {
         navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
             if (result.state == 'granted') {
@@ -125,8 +175,67 @@ $(document).ready(function() {
     });
 
 
+    // $('.salon_service-s').click(function () {
+    //     // debugger;
+    //     let elm = $(this);
+    //     elm.toggleClass('check_saloon_service-s');
+
+    //     if(elm.hasClass('check_saloon_service-s'))
+    //     {
+    //        let service_price = elm.find("#service_price-d").val()
+
+    //        console.log(service_price);
+
+    //         // alert(service_price);
+    //     }
+    //     else {
+    //         alert('error');
+    //     }
+
+    // });
+
+    $('.single_salon_service_container-d').on('click',  function () {
+
+        let elm = $(this);
+        // console.log('elm: ', elm);
+
+        let innerDiv = elm.find(".salon_service-s");
+        console.log('innerDiv: ', innerDiv);
+
+
+
+        innerDiv.toggleClass('check_saloon_service-s');
+
+        if(innerDiv.hasClass('check_saloon_service-s'))
+        {
+            let service_price = parseInt(elm.find(".service_price-d").text());
+            let actualPrice =  parseInt($("#actual_price-d").text());
+
+            console.log(actualPrice);
+
+            actualPrice = actualPrice + service_price;
+
+            $("#actual_price-d").text(actualPrice);
+            $("#total_price-d").text(actualPrice);
+            // console.log(service_price);
+            // console.log(actualPrice);
+
+            // alert(service_price);
+        }
+        else {
+            // alert('error');
+             let service_price = parseInt(elm.find(".service_price-d").text());
+            let actualPrice =  parseInt($("#actual_price-d").text());
+                actualPrice = actualPrice - service_price;
+
+            $("#actual_price-d").text(actualPrice);
+            $("#total_price-d").text(actualPrice);
+
+        }
+
+    });
+
+
+
 });
 
-$(function(event) {
-
-});
