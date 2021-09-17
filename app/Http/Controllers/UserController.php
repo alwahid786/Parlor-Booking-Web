@@ -37,6 +37,8 @@ class UserController extends Controller
     		'description' => 'string',
             'media' => 'image',
             'brosche*' => 'image',
+            'gender' => 'in:male,female,both',
+
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +58,7 @@ class UserController extends Controller
 	        if('user'== $user->type)
 	        	$user->name = $request->name??$user->name;
 	        else{
-
+                $user->gender = $request->gender??$user->gender;
 	        	$user->name = $request->name??$user->name;
 	        	$user->address = $request->address??$user->address;
 	        	$user->lat = $request->lat??$user->lat;
@@ -212,7 +214,7 @@ class UserController extends Controller
 
     public function getUser(Request $request){
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'exists:users,uuid',
+            'user_uuid' => 'required|exists:users,uuid',
         ]);
 
         if ($validator->fails()) {
@@ -230,10 +232,13 @@ class UserController extends Controller
     public Function getSalon(Request $request){
 
         $validator = Validator::make($request->all(), [
+
             'keywords' => 'string',
-            'popular' => 'numeric|in:1',
-            'lat' => 'numeric|required_with:long',
-            'long' => 'numeric|required_with:lat',
+            'popular'  => 'numeric|in:1',
+            'lat'      => 'numeric|required_with:long',
+            'long'     => 'numeric|required_with:lat',
+            'gender'   => 'in:male,female,both',
+
         ]);
         if ($validator->fails()) {
             $data['validation_error'] = $validator->getMessageBag();
@@ -241,6 +246,11 @@ class UserController extends Controller
         }
 
         $salon = User::where('type','salon')->where('name', '<>', '');
+
+        if(isset($request->gender))
+            $salon = $salon->where(function($q) use ($request){
+                $q->where('gender',$request->gender)->orWhere('gender','both');
+            });
 
         if(isset($request->lat) && isset($request->long)){
             $salon = $salon->Raw("SELECT *,
@@ -252,14 +262,18 @@ class UserController extends Controller
                 ) * 60 * 1.1515 * 1.609344
               ) as distance HAVING distance <= ? ",[$request->lat,$request->lat,$request->long]);
         }
+
         if(isset($request->keywords))
             $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->keywords}%");
+
         if(isset($request->popular))
             $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');
+
         if(isset($request->limit))
             $salon->offset($request->offset??0)->limit($request->limit);
 
-        $salon = $salon->get();
+        $salon = $salon->with('services')->get();
+
         return SendSuccess('Salons',$salon);
     }
 

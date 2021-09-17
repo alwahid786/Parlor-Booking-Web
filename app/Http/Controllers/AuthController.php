@@ -122,17 +122,18 @@ class AuthController extends Controller
 
     public function signup(Request $request){
         $validator = Validator::make($request->all(), [
-            'is_social' => 'required|in:1,0',
+            'is_social'    => 'required|in:1,0',
 
-            'name' => 'required_if:is_social,0|string',
-            'email' => 'required_if:is_social,0|unique:users,email|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-            'phone_code' => 'required_if:is_social,0',
+            'name'         => 'required_if:is_social,0|string',
+            'email'        => 'required_if:is_social,0|unique:users,email|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'phone_code'   => 'required_if:is_social,0',
             'phone_number' => 'required_if:is_social,0|unique:users,phone_number',
-            'password' => 'required_if:is_social,0',
-            'type' => 'required_if:is_social,0|in:salon,user',
+            'password'     => 'required_if:is_social,0',
+            'type'         => 'required_if:is_social,0|in:salon,user',
 
-            'social_id' => 'required_if:is_social,1',
-            'social_type' => 'required_if:is_social,1',
+            'social_id'    => 'required_if:is_social,1',
+            'social_type'  => 'required_if:is_social,1',
+            'gender'       => 'in:male,female,other,both',
         ]);
         if($validator->fails()){
             $data['validation_error'] = $validator->getMessageBag();
@@ -149,6 +150,24 @@ class AuthController extends Controller
 
         $code = mt_rand(1000, 9999);
         $check = new User;
+        $msg = '';
+
+        if($request->is_social == 0){
+
+            $check = User::where('email', $request->email)
+                ->orWhere('social_email', $request->email)->first();
+        }
+        else{
+            $check = User::where('email', $request->social_email)
+               ->orWhere('social_email', $request->social_email)->first();
+        }
+
+
+        // dd($check);
+
+        if(null != $check){
+            return sendError('Email exists already','');
+        }
 
         if($request->is_social == 0){
             $check = User::where('email', $request->email)->orWhere('phone_number', $request->phone_number)->first();
@@ -181,6 +200,8 @@ class AuthController extends Controller
                 $user->email_verified_at = Carbon::now()->format('Y-m-d H:i:s');
                 $user->phone_verified_at = Carbon::now()->format('Y-m-d H:i:s');
 
+                if(isset($request->gender))
+                    $user->gender = $request->gender;
                 if(isset($request->name))
                     $user->name = $request->name;
                 if(isset($request->type))
@@ -201,6 +222,8 @@ class AuthController extends Controller
 
                 $user->name = $request->name;
                 $user->type = $request->type;
+                if(isset($request->gender))
+                    $user->gender = $request->gender;
                 if(isset($request->is_social))
                     $user->is_social = $request->is_social;
 

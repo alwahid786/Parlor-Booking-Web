@@ -9,6 +9,7 @@ use App\Models\NotificationPermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -99,7 +100,8 @@ class NotificationController extends Controller
     }
 
     // Needs to Update According to Sellx
-    public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti){
+    public function addNotification($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti,$bo = false){
+    // dd($sender_id, $receiver_id, $type_id, $noti_type, $noti_text, $is_send_noti);
         // dd();
 
         $check = Notification::where('sender_id', $sender_id)->where('type_id', $type_id)->where('noti_type', $noti_type)->where('receiver_id', $receiver_id)->latest()->first();
@@ -121,8 +123,15 @@ class NotificationController extends Controller
         $sender_profile = User::where('id', $sender_id)->first();
 
         $noti = Notification::find($noti->id);
-        if($is_send_noti){
-            $this->sendPushNotification([$receiver_id], $sender_profile->name.' '.$noti_text, $noti->toJson());
+        $apt_uuid = $noti->appointment->uuid;
+        if('appointment' == $noti_type){
+            $noti = json_encode(['appointment_uuid' => $apt_uuid,'bo' => $bo]);
+        }
+        else{
+            $noti = $noti->getAttributes();
+        }
+	if($is_send_noti){
+            $this->sendPushNotification([$receiver_id],$noti_text, $noti);
         }
         return $noti;
     }
@@ -167,12 +176,17 @@ class NotificationController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
+	// Log::info($ch);
         $response = curl_exec($ch);
         curl_close($ch);
 
+
+	Log::info(config('onesignal.rest_api_key'));
         Log::info('NotificationsController => function sendPushNotification');
         Log::info($response);
 
+
+        // dd($response);
         return $response;
     }
 
