@@ -2,7 +2,7 @@
 
 
 @section('content')
-    {{--  {{ dd($saloon_service) }}  --}}
+     {{-- {{ dd($saloon_service, $salon_uuid) }} --}}
 {{--
     "id": 6
     +"uuid": "c267cb65-fa6c-4b97-a8b0-58a37efaf7da"
@@ -82,6 +82,8 @@
                         <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price }}</span></h4>
                     </div>
                 </div>
+                <input type="hidden" name="" class="salon_service_uuid-d" value="{{ $service->uuid }}">
+
             </div>
 
         @endforeach
@@ -161,10 +163,11 @@
 
 
     <!-- Boking Now Salon Child Three Div Second End -->
-
+        <input type="hidden" name="" class="check_service-d" value="">
     @if (Auth::user())
+
         <div class="text-center for_done_btn_css">
-            <button type="button" class="btn btn-warning" id="book_modal-d">Done</button>
+            <button type="button" class="btn btn-warning" id="book_modal-d" disabled>Done</button>
         </div>
     @else
         <div class="text-center for_done_btn_css">
@@ -176,7 +179,7 @@
 
 
 
-    @include('UserBookModal.book_service_modal',[])
+    @include('UserBookModal.book_service_modal',[$salon_uuid])
     @include('UserAuthModals.goto_signin_modal',[])
     @include('UserAuthModals.signup_socail_modal',[])
     @include('UserAuthModals.signin_modal',[]);
@@ -191,10 +194,9 @@
 
 @section('footer-scripts')
     <script>
-           // user routes
-    let UserAppointments = "{{ route('userAppointments') }}"
 
-    let SalonServices = "{{ route('bookingSalonServices')}}"
+    let SalonBookTime = "{{ route('bookingTime')}}";
+    let userAPpointment = "{{route('userAppointments')}}";
     </script>
 
 @endsection

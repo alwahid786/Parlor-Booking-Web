@@ -27,12 +27,14 @@
                     </span>
                 </div>
 
-
-              <div mbsc-page class="demo-week-to-month">
+                {{-- <div class="calendar"></div> --}}
+               {{-- <div mbsc-page class="demo-week-to-month">
                     <div style="height:10%">
                         <div id="demo"></div>
                     </div>
-              </div>
+              </div> --}}
+
+              <input type="text" id="text-calendar" class="calendar" />
 
                 {{--  <div class="for_may_text">
                     <h1>May</h1>
@@ -83,63 +85,60 @@
                         </span>
                     </p>
                 </div>  --}}
-                <div class=" for_clock_celender_icon">
-                    <i class="fa fa-clock-o clock_icon_css" aria-hidden="true">
-                        <span> Select Time </span>
 
-                    </i>
+                <form action="{{ route('bookService') }}" id="frm_booking_service-d">
+                    @csrf
+                    <div class=" for_clock_celender_icon">
+                        <i class="fa fa-clock-o clock_icon_css" aria-hidden="true">
+                            <span> Select Time </span>
+                        </i>
+                            <div class="row for_row_btn_group available_slots_main_container-d" id="main_container-d">
+                                {{-- <div class="col-lg-4 col-md-4 col-sm-4 col-4 single_container"> --}}
+                                    {{-- <input type="tel" name="time-d " class="time-d btn btn-danger for_common_btn_group" > --}}
+                                    {{-- <input type="hidden" name="original_time" class="" > --}}
 
-                    <div class="row for_row_btn_group">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">9:00 am</button>
+                                    {{-- <button type="button" class="btn btn-danger for_common_btn_group"></button> --}}
+                                {{-- </div> --}}
 
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">10:00 am</button>
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">11:00 am</button>
-                        </div>
-
+                            </div>
                     </div>
 
-                    <div class="row for_row_btn_groupp">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">9:00 am</button>
-
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">10:00 am</button>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">11:00 am</button>
-                        </div>
-                    </div>
-
-                    <div class="row for_row_btn_grouppp">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                            <button type="button" class="btn btn-danger for_common_btn_group">9:00 am</button>
-                        </div>
+                    <div class="text-center for_price_22_text">
+                        {{-- <span>$<span id="total_booking_price-d"></span></span> --}}
+                           <p class="for_border_none_actual_price">
+                            Total Price
+                            <span class="pull-right" >
+                                $ <span id="total_booking_price-d">0</span>
+                            </span>
+                        </p>
+                        <button type="submit" class="btn btn-warning"  id="done-d">Done</button>
+                        <input type="hidden" name="salon_uuid" class="salon_uuid-d" value="{{ $salon_uuid }}">
+                        <input type="hidden" name="date" class="booking_date-d" value="">
+                        <input type="hidden" name="services_uuid[]" class="service_book_uuid-d" value="">
+                        <input type="hidden" name="user_uuid" class="user_uuid-d" value="{{ Auth::user()->uuid }}">
 
                     </div>
-
-                </div>
-
-                <div class="text-center for_price_22_text">
-                    <h2>Price $22</h2>
-                    <button type="button" class="btn btn-warning" data-toggle="modal"
-                        data-target="#signinModal">Done</button>
-                </div>
+                </form>
 
             </div>
 
+        </div>
+    </div>
+
+    <div class="clonables-d" style="display: none">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4 single_container mt-2" id="available_slot_single_container-d">
+            {{-- <input type="radio" name="time-d " class="time-d btn btn-danger for_common_btn_group available_slots" > --}}
+
+            <input type="radio"  name="time"  class="btn-check btn btn-danger for_common_btn_group available_slots" id="option1" autocomplete="off" >
+            <label class="btn btn-danger for_common_btn_group available_slots-d" for="option1"></label>
+            {{-- <input type="hidden" name="original_time" class="original_time-d " > --}}
+
+            {{-- <button type="button" class="btn btn-danger for_common_btn_group available_slots">9:00 am</button> --}}
         </div>
     </div>
 </div>
 <!-- Done Modal End -->
 
 <!-- SignIn Modal Start -->
+
+

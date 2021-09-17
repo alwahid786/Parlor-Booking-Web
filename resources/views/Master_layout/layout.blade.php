@@ -15,6 +15,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous" />
 
+    {{-- user calender css --}}
+    <link rel="stylesheet" href="{{ asset('lib/dist/css/pignose.calendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/icon_navs.eot') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/icon_navs.svg') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/icon_navs.ttf') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/icon_navs.woff') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/pignose.calendar.eot') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/pignose.calendar.svg') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/pignose.calendar.ttf') }}">
+    <link rel="stylesheet" href="{{ asset('lib/dist/fonts/pignose.calendar.woff') }}">
+
+
+
     <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
     {{-- <link rel="stylesheet" href="{{ dd(asset('assets/css/dashboard_create_account.css')) }}" /> --}}
 
@@ -25,8 +38,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/profile_page.css') }}">
 
     {{--  calender for user appointment   --}}
-    <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/css/mobiscroll.jquery.min.css') }}" rel="stylesheet">
+    {{-- <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/mobiscroll.jquery.min.css') }}" rel="stylesheet"> --}}
+
 
 
     <title>Document</title>
@@ -93,6 +107,12 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="{{ asset('lib/dist/js/pignose.calendar.min.js') }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
@@ -107,7 +127,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script> --}}
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js "></script>
@@ -119,9 +139,9 @@
 
 
         {{--  calender scripts on user appointment  --}}
-        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        {{-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-        <script src="{{ asset('assets/js/mobiscroll.jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/mobiscroll.jquery.min.js') }}"></script> --}}
 
     <script src="{{ asset('assets/js/common.js') }}"></script>
     <script src="{{ asset('assets/js/auth.js') }}"></script>

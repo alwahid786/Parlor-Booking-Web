@@ -168,10 +168,40 @@ class HomeController extends Controller
             $apiResponse = $userCntrl->getService($request)->getData();
             if ($apiResponse->status) {
                 $saloon_service = $apiResponse->data;
-                return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1]);
+                return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1, 'salon_uuid'=>$uuid]);
             }
         }
     }
+
+
+    public function bookingTime(Request $request)
+    {
+
+        $availableAppointment = $this->salonApiAppointmentCntrl;
+        $apiResponse = $availableAppointment->availableAppointments($request)->getData();
+        // dd($apiResponse);
+        if($apiResponse->status)
+        {
+            return sendSuccess('get available Appointments successfully', $apiResponse->data);
+
+        }
+            return sendError('Error', []);
+
+    }
+
+    public function bookService(Request $request)
+    {
+        // dd($request->all());
+
+        $availableAppointment = $this->salonApiAppointmentCntrl;
+        $apiResponse = $availableAppointment->updateAppointment($request)->getData();
+        if ($apiResponse->status) {
+            return sendSuccess('Appointment booked successfully', $apiResponse->data);
+        }
+        return sendError('Error', []);
+    }
+
+
 
 
 }

@@ -28,6 +28,14 @@ Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->na
 //booking details
 Route::any('/booking-salon-service/{uuid?}', [HomeController::class, 'bookingSalonServices'])->name('bookingSalonServices');
 
+
+// get booking time against date
+Route::any('/booking-time', [HomeController::class, 'bookingTime'])->name('bookingTime');
+
+
+Route::any('/book-service', [HomeController::class, 'bookService'])->name('bookService');
+
+
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){
@@ -79,6 +87,7 @@ Route::group(['middleware' => 'auth'],function () {
 
         //user authenticated routes
         Route::any('/user/appointment/{uuid?}', [UserAppointmentController::class, 'userAppointments'])->name('userAppointments');
+        Route::any('/user/all/appointment/{uuid?}', [UserAppointmentController::class, 'userAllAppointments'])->name('userAllAppointments');
 
 
     // });

@@ -11,41 +11,162 @@ $(document).ready(function() {
 
         window.isMbscDemo = true;
 
-          mobiscroll.setOptions({
-        locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
-        theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
-            themeVariant: 'light'     // More info about themeVariant: https://docs.mobiscroll.com/5-9-1/calendar#opt-themeVariant
-    });
-
-    var myCalendar = $('#demo').mobiscroll().datepicker({
-            controls: ['calendar'],   // More info about controls: https://docs.mobiscroll.com/5-9-1/calendar#opt-controls
-            display: 'inline',        // Specify display mode like: display: 'bottom' or omit setting to use default
-            calendarType: 'week',
-            weeks: 1,                 // More info about weeks: https://docs.mobiscroll.com/5-9-1/calendar#opt-weeks
-            renderCalendarHeader: function () {
-                return '<div mbsc-calendar-nav class="custom-view-nav"></div><div class="custom-view">' +
-                    '<label><input data-icon="material-date-range" mbsc-segmented type="radio" name="view" value="week" class="view-change" checked></label>' +
-                    '<label><input data-icon="material-event-note" mbsc-segmented typce="radio" name="view" value="month" class="view-change"></label></div>' +
-                    '<div mbsc-calendar-prev></div>' +
-                    '<div mbsc-calendar-next></div>';
-            }
-        }).mobiscroll('getInst');
-
-        // $('.view-change').change(function (ev) {
-        //     switch (ev.target.value) {
-        //         case 'week':
-        //             myCalendar.setOptions({
-        //                 calendarType: 'week'
-        //             });
-        //             break;
-        //         case 'month':
-        //             myCalendar.setOptions({
-        //                 calendarType: 'month'
-        //             });
-        //             break;
-        //     }
-        // });
+    //       mobiscroll.setOptions({
+    //     locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+    //     theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
+    //         themeVariant: 'light'     // More info about themeVariant: https://docs.mobiscroll.com/5-9-1/calendar#opt-themeVariant
     // });
+
+    // var myCalendar = $('#demo').mobiscroll().datepicker({
+    //         controls: ['calendar'],
+    //         touchUi: true,  // More info about controls: https://docs.mobiscroll.com/5-9-1/calendar#opt-controls
+    //         display: 'inline',        // Specify display mode like: display: 'bottom' or omit setting to use default
+    //         calendarType: 'week',
+    //         weeks: 1,                 // More info about weeks: https://docs.mobiscroll.com/5-9-1/calendar#opt-weeks
+    //         renderCalendarHeader: function () {
+    //             return '<div mbsc-calendar-nav class="custom-view-nav"></div><div class="custom-view">' +
+    //                 '<label id="calendar_div-d"><input data-icon="material-date-range" mbsc-segmented type="radio" name="view" value="week" class="view-change" checked></label>' +
+    //                 '<label><input data-icon="material-event-note" mbsc-segmented typce="radio" name="view" value="month" class="view-change"></label></div>' +
+    //                 '<div mbsc-calendar-prev></div>' +
+    //                 '<div mbsc-calendar-next></div>';
+    //         }
+    //     });
+
+    //     document.querySelectorAll('.view-change').forEach(function (elm) {
+    //         elm.addEventListener('change', function (ev) {
+    //             switch (ev.target.value) {
+    //                 case 'week':
+    //                     myCalendar.setOptions({
+    //                         calendarType: 'week'
+    //                     });
+    //                 break;
+    //             case 'month':
+    //                     myCalendar.setOptions({
+    //                         calendarType: 'month'
+    //                     });
+    //                 break;
+    //             }
+    //         });
+    //     });
+
+    // $('#input-picker').mobiscroll().datepicker({
+    //     controls: ['calendar'],
+    //     touchUi: true
+    // });
+
+    // var change = ('.mbsc-popup-button-primary').mobiscroll().datepicker({
+    //     onCellClick: function (event, inst) {
+    //     alert('clicker');
+    // }
+    // });
+
+    // $("").on('click', function() {
+    //     alert('clicker');
+    //     alert($('.date').val());
+    // })
+
+
+    // if($("#main_container-d").length > 0) {
+    //     $("#main_container-d").remove();
+    //     console.log('remove');
+    // }
+
+
+     $('input.calendar').pignoseCalendar({
+		format: 'YYYY-MM-DD', // date format string. (2017-02-02)
+        // buttons:true, //
+        // date: moment(),
+
+     click(event, context){
+        let date = $("#text-calendar").val();
+        let salon_uuid = $(".salon_uuid-d").val();
+
+        // alert(SalonBookTime);
+        $(".booking_date-d").val(date);
+
+        $.ajax({
+            type: "Post",
+            url: SalonBookTime,
+            data: {date: date, salon_uuid: salon_uuid},
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response.status == true) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: response.message,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then((result) => {
+                        console.log(response.data);
+
+                        let all_slots = response.data.all_slots;
+                            console.log('all_slots: ', all_slots);
+
+                        // console.log($("#main_container-d").length);
+
+                        if($("#available_slot_single_container-d").length > 0)
+                        {
+                            $(".available_slots_main_container-d").html("");
+                            $.each(all_slots, function(i, elm){
+                                    let clonedElm = $("#available_slot_single_container-d").clone();
+                                    clonedElm.removeAttr('id');
+                                    // $(clonedElm).find('.available_slots').text
+
+                                    const converTime = (time) => {
+                                        let hour = (time.split(':'))[0]
+                                        let min = (time.split(':'))[1]
+                                        let part = hour > 12 ? 'pm' : 'am';
+
+                                        min = (min+'').length == 1 ? `0${min}` : min;
+                                        hour = hour > 12 ? hour - 12 : hour;
+                                        hour = (hour+'').length == 1 ? `0${hour}` : hour;
+
+                                        return (`${hour}:${min} ${part}`)
+                                        }
+
+                                        console.log(converTime(elm), 'ok');
+
+                                        let time = converTime(elm);
+
+                                        let id = i+1;
+                                    clonedElm.find('.available_slots').prop('id', 'newID'+id);
+
+                                    let contract_time = elm.slice(0,5);
+
+                                    clonedElm.find('.available_slots').val(contract_time);
+                                    clonedElm.find('.available_slots-d').text(time);
+                                    clonedElm.find('.available_slots-d').prop('for', 'newID'+id);
+
+                                    // clonedElm.find('.original_time-d').val(elm);
+
+
+                                    $(".available_slots_main_container-d").append(clonedElm);
+
+                                    console.log(elm);
+                                });
+                            }
+
+
+
+                            // return false;
+
+                    });
+                } else {
+                    errorAlert(response.message);
+                }
+            }
+        });
+
+
+        console.log($("#text-calendar").val());
+
+     }
+
+	});
+
+
 
 
 
@@ -194,6 +315,7 @@ $(document).ready(function() {
 
     // });
 
+    let service = [];
     $('.single_salon_service_container-d').on('click',  function () {
 
         let elm = $(this);
@@ -211,12 +333,22 @@ $(document).ready(function() {
             let service_price = parseInt(elm.find(".service_price-d").text());
             let actualPrice =  parseInt($("#actual_price-d").text());
 
-            console.log(actualPrice);
+            let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
+
+            // service.push($(this).find(".salon_service_uuid-d").val());
+            service.push(add_service_uuid);
+
+
+            // console.log(service);
+
+            // console.log(actualPrice);
 
             actualPrice = actualPrice + service_price;
 
             $("#actual_price-d").text(actualPrice);
             $("#total_price-d").text(actualPrice);
+            $("#total_booking_price-d").text(actualPrice);
+
             // console.log(service_price);
             // console.log(actualPrice);
 
@@ -228,12 +360,118 @@ $(document).ready(function() {
             let actualPrice =  parseInt($("#actual_price-d").text());
                 actualPrice = actualPrice - service_price;
 
+
+            let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
+
+            let index = service.indexOf(add_service_uuid);
+             service.splice(index,1);
+                // console.log(service_slice);
+
             $("#actual_price-d").text(actualPrice);
             $("#total_price-d").text(actualPrice);
 
+
+            if(service.length == 0) {
+                $("#book_modal-d").attr('disabled',true);
+            }
+
+
         }
+            // console.log(service);
+
+            $(".service_book_uuid-d").val(service);
+            $(".check_service-d").val(service);
+
+
+            // console.log(service.length);
+
+               if(service.length > 0) {
+                    $("#book_modal-d").removeAttr("disabled");
+                }
+
 
     });
+
+
+    $(".pignose-calendar-button-apply").on("click", function(){
+        console.log($("#text-calendar").val());
+    })
+
+
+
+    // validate book salon
+    $('#frm_booking_service-d').validate({
+        ignore: ".ignore",
+        rules: {
+            options: {
+                required: true,
+            }
+        },
+        messages: {
+            options: {
+                required: "Select time for booking appointment.",
+            }
+        },
+        errorPlacement: function(error, element) {
+            $('#' + error.attr('id')).remove();
+            error.insertAfter(element);
+            $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
+        },
+        success: function(label, element) {
+            $(element).removeClass('error text-danger');
+            $(element).parent().find('span.error').remove();
+        },
+        submitHandler: function(form) {
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $(form).serialize(),
+                    beforeSend: function() {
+                        showPreLoader();
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: response.message,
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then((result) => {
+                                console.log(response);
+                                let user_uuid = $(".user_uuid-d").val();
+                                window.location.href = userAPpointment + '?uuid=' + user_uuid;
+
+                            });
+                        } else {
+                            errorAlert(response.message);
+                        }
+                    },
+                    error: function(xhr, message, code) {
+                        response = xhr.responseJSON;
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 2000
+                        }).then((result) => {
+                            // do nothing
+                        });
+                        // console.log(xhr, message, code);
+                        hidePreLoader();
+                    },
+                    complete: function() {
+                        hidePreLoader();
+                    },
+                });
+                return false;
+            }
+
+
+    });
+
 
 
 
