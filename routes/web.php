@@ -90,6 +90,12 @@ Route::group(['middleware' => 'auth'],function () {
         Route::any('/user/all/appointment/{uuid?}', [UserAppointmentController::class, 'userAllAppointments'])->name('userAllAppointments');
 
 
+
+    //delete brosche images
+            Route::any('/delete-broshe-images', [SaloonDashboardController::class, 'deleteBrosche'])->name('deleteBrosche');
+
+
+
     // });
     Route::any('/logout', [AuthWebController::class, 'logout'])->name('logout');
 

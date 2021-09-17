@@ -209,6 +209,7 @@ $(function(event) {
                         }).then((result) => {
                             console.log(response);
                             let type = response.data.user.type;
+                            console.log('type: ', type);
 
                             let service = $(".service-d").val();
                             console.log('service: ', service);
@@ -442,6 +443,8 @@ $(function(event) {
 
 
                                 let user_type = $(".user_type-d").val();
+                                console.log('user_type: ', user_type);
+
                                 if (user_type == 'salon') {
                                     window.location.href = SaloonDashboard;
                                 } else {

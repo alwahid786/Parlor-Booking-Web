@@ -260,16 +260,17 @@ $(document).ready(function() {
 
     // open forgot password modal and close login modal
     $('#option_forgot_modal-d').click(function () {
+        $("#reset_password-d").val('user_reset_modal');
         switchModal('signin_modal-d', 'forgot_modal-d');
 
     });
 
 
-    // open enter password modal and cloe forogot password modal
-    $('#option_forgot_modal-d').click(function () {
-        switchModal('signin_modal-d', 'forgot_modal-d');
+    // // open enter password modal and cloe forogot password modal
+    // $('#option_forgot_modal-d').click(function () {
+    //     switchModal('signin_modal-d', 'forgot_modal-d');
 
-    });
+    // });
 
 
     // open signup socail modal and close login modal
@@ -474,6 +475,12 @@ $(document).ready(function() {
 
 
 
+
+    //user login open modal
+    $("#user_login-d").on('click', function(){
+        console.log('test');
+        $(`#signin_modal-d`).modal('show');
+    });
 
 });
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\NotificationController;
 
 class SaloonDashboardController extends Controller
 {
@@ -15,12 +16,14 @@ class SaloonDashboardController extends Controller
     private $userApiCntrl;
     private $serviceApiCntrl;
     private $appointmentApiCntrl;
+    private $notificationApiCntrl;
 
-    public function __construct(UserController $userApiCntrl, ServiceController $serviceApiCntrl, AppointmentController $appointmentApiCntrl)
+    public function __construct(UserController $userApiCntrl, ServiceController $serviceApiCntrl, AppointmentController $appointmentApiCntrl, NotificationController $notificationApiCntrl)
     {
         $this->userApiCntrl = $userApiCntrl;
         $this->serviceApiCntrl = $serviceApiCntrl;
         $this->appointmentApiCntrl = $appointmentApiCntrl;
+        $this->notificationApiCntrl = $notificationApiCntrl;
     }
 
 
@@ -35,11 +38,16 @@ class SaloonDashboardController extends Controller
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse_user = $userCntrl->getUser($request)->getData();
 
-                if ($apiResponse->status && $apiResponse_user->status){
+                $salonNotification = $this->notificationApiCntrl;
+                $apiResponse_salon_notification = $salonNotification->getNotifications($request)->getData();
+
+
+                if ($apiResponse->status && $apiResponse_user->status &&  $apiResponse_salon_notification->status){
                     $appointments = $apiResponse->data;
                     $user_details = $apiResponse_user->data;
+                    $salon_notifications = $apiResponse_salon_notification->data;
 
-                    return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments' => $appointments, 'user_details' => $user_details]);
+                    return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments' => $appointments, 'user_details' => $user_details, 'salon_notifications' => $salon_notifications ]);
                 }
                 return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments'=>'']);
             }
@@ -50,11 +58,15 @@ class SaloonDashboardController extends Controller
             $userCntrl = $this->userApiCntrl;
             $apiResponse_user = $userCntrl->getUser($request)->getData();
 
-            if ($apiResponse->status&& $apiResponse_user->status) {
+            $salonNotification = $this->notificationApiCntrl;
+            $apiResponse_salon_notification = $salonNotification->getNotifications($request)->getData();
+
+            if ($apiResponse->status&& $apiResponse_user->status &&  $apiResponse_salon_notification->status) {
                 $appointments = $apiResponse->data;
                 $user_details = $apiResponse_user->data;
+                $salon_notifications = $apiResponse_salon_notification->data;
 
-                return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => $appointments, 'user_details' => $user_details]);
+                return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => $appointments, 'user_details' => $user_details, 'salon_notifications' => $salon_notifications]);
             }
             return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => '']);
         }
@@ -63,7 +75,7 @@ class SaloonDashboardController extends Controller
     public function profile($uuid, Request $request)
     {
         if ($request->getMethod() == 'GET') {
-            $request->merge(['id' => $request->uuid]);
+            $request->merge(['user_uuid' => $request->uuid]);
             $userCntrl = $this->userApiCntrl;
             $apiResponse = $userCntrl->getUser($request)->getData();
             $data = $apiResponse->data;
@@ -78,15 +90,18 @@ class SaloonDashboardController extends Controller
     public function service($uuid, Request $request)
     {
         if ($request->getMethod() == 'GET') {
-            $request->merge(['salon_uuid' => $request->uuid]);
+            $request->merge([
+                'salon_uuid' => $request->uuid,
+                'user_uuid' => $request->uuid
+            ]);
             $serviceCntrl = $this->serviceApiCntrl;
             // dd($request->all());
             $apiResponse = $serviceCntrl->getService($request)->getData();
             $user = $this->userApiCntrl;
             $apiResponse_user = $user->getUser($request)->getData();
 
-            // dd($apiResponse);
-            if ($apiResponse->status && $apiResponse_user->status) {
+            // dd($apiResponse , $apiResponse_user);
+            if ($apiResponse->status || $apiResponse_user->status) {
                 $getServices = $apiResponse->data;
                 $user_details = $apiResponse_user->data;
 
@@ -141,7 +156,7 @@ class SaloonDashboardController extends Controller
     public function availability($uuid, Request $request)
     {
         $request->merge([
-            'salon_uuid' => $uuid,
+            'user_uuid' => $uuid,
         ]);
         if ($request->getMethod() == 'GET') {
             $userCntrl = $this->userApiCntrl;
@@ -265,7 +280,6 @@ class SaloonDashboardController extends Controller
 
     public function profileSetting($uuid= null, Request $request)
     {
-        // dd($request->all());
         if ($request->getMethod() == 'GET') {
 
             if ((isset($request->lat) && ('' != $request->lat)) && (isset($request->long) && ('' != $request->long)) && (isset($request->salon_id) && ('' != $request->salon_id))) {
@@ -294,7 +308,7 @@ class SaloonDashboardController extends Controller
 
             }else {
                 // dd($request->all());
-                $request->merge(['id' => $request->uuid]);
+                $request->merge(['user_uuid' => $request->uuid]);
                 $userCntrl = $this->userApiCntrl;
                 $apiResponse = $userCntrl->getUser($request)->getData();
                 // dd($apiResponse->data);
@@ -396,5 +410,21 @@ class SaloonDashboardController extends Controller
             }
 
         }
+    }
+
+    //delete brosche image
+    public function deleteBrosche(Request $request)
+    {
+        // dd($request->all());
+
+        $deleteBroscheImage = $this->userApiCntrl;
+        $apiResponse = $deleteBroscheImage->deleteBrosche($request)->getData();
+        // dd($apiResponse);
+
+        if($apiResponse->status) {
+            return sendSuccess('Brosche Image deleted successfully', []);
+        }
+        return sendError(' Image does not deleted ', []);
+
     }
 }

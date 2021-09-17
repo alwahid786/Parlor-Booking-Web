@@ -106,6 +106,17 @@
 
 
 
+    {{--  @include('UserBookModal.book_service_modal',[$salon_uuid])  --}}
+    @include('UserAuthModals.goto_signin_modal',[])
+    @include('UserAuthModals.signup_socail_modal',[])
+    @include('UserAuthModals.signin_modal',[]);
+    @include('UserAuthModals.enter_code_modal',[])
+    @include('UserAuthModals.signup_modal',[])
+    @include('UserAuthModals.forgot_password_modal',[])
+    @include('UserAuthModals.reset_password_modal',[])
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <script src="{{ asset('lib/dist/js/pignose.calendar.min.js') }}"></script>
