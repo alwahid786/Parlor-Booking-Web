@@ -195,6 +195,8 @@ class HomeController extends Controller
 
         $availableAppointment = $this->salonApiAppointmentCntrl;
         $apiResponse = $availableAppointment->updateAppointment($request)->getData();
+        dd($apiResponse);
+
         if ($apiResponse->status) {
             return sendSuccess('Appointment booked successfully', $apiResponse->data);
         }

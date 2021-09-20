@@ -160,24 +160,26 @@ $(function(event) {
 
             if (0 != future_appointments.length) {
 
-                $.each(future_appointments, function(i, elm) {
+                // $.each(future_appointments, function(i, elm) {
                     $('.calendar').pignoseCalendar({
-                        theme: 'blue', // light, dark, blue,
-                        scheduleOptions: {
-                            colors: {
-                                offer: '#2fabb7',
-                            }
-                        },
-                        schedules: [{
-                            name: 'offer',
-                            date: elm
 
-                        }],
+                        theme: 'blue', // light, dark, blue,
+                        // scheduleOptions: {
+                        //     colors: {
+                        //         offer: '#2fabb7',
+                        //     }
+                        // },
+                        // schedules: [{
+                        //     name: 'offer',
+                        //     date: elm
+
+                        // }],
+                        disabledDates: future_appointments,
                         // date: '2021-08-29',
-                        disabledDates: past_appointments
+                        // disabledDates: past_appointments
                     });
-                    console.log('elm: ', elm);
-                })
+                    // console.log('elm: ', elm);
+                // });
             } else {
                 console.log('ok');
                 $.each(past_appointments, function(i, elm) {

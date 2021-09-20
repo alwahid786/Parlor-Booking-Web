@@ -380,7 +380,27 @@ $(document).ready(function() {
         }
             // console.log(service);
 
-            $(".service_book_uuid-d").val(service);
+            if($('*').hasClass('del_services'))
+            {
+                // console.log('hidden_service_uuid: ', hidden_service_uuid);
+                // hidden_service_uuid = " ";
+                $(".del_services").remove();
+
+            }
+
+            $.each(service, function(i,elm){
+
+                let hidden_service_uuid = $(".service_uuid-d").val();
+
+
+                    console.log(elm);
+                    $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" class="service_uuid-d del_services" value=${elm} />`);
+
+            })
+
+                // $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" value=${service} />`);
+
+
             $(".check_service-d").val(service);
 
 
