@@ -53,7 +53,7 @@
                         @if ($salon_days != [])
 
                         @foreach ($salon_days as $available_day)
-                            <span id="{{ $available_day->day }}" class="text-white text-color-s px-4 text-left ">{{ ucfirst(trans($available_day->day)) }}</span>
+                            <span id="{{ $available_day->day }}" class="text-white text-color-s px-5 text-left ">{{ ucfirst(trans($available_day->day)) }}</span>
                         @endforeach
 
                         @else

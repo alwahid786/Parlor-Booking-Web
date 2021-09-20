@@ -1,8 +1,8 @@
 <!-- SignIn Option Modal Start -->
 
-<div class="modal " id="signin_modal-d">
-    <div class="modal-dialog">
-      <div class="modal-content modal-lg for_modal_bg signin_h">
+<div class="modal " id="signin_modal-d" tabindex="-1" aria-labelledby="view-head" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content for_modal_bg ">
 
         <!-- Modal Header -->
 
@@ -20,10 +20,10 @@
                 @csrf
               <div class="for_form_email_class ">
                   <p>Email</p>
-                  <div class="input-group mb-3  for_email_pass_common border-bottom">
+                  <div class="input-group mb-3  for_email_pass_common ">
                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                     <span class="for_icon_email_span"> <i class="fa fa-envelope-o" aria-hidden="true"></i> </span>
-                     <input type="email" name="email" class="input_class" placeholder="abcd@gmail.com"/>
+                     <input type="email" name="email" class="input_class border-bottom w-100" placeholder="abcd@gmail.com"/>
                   </div>
               </div>
 

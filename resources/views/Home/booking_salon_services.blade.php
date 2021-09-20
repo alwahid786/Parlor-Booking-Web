@@ -77,7 +77,7 @@
                     <div class="card-body for_spa_text">
                         <h5 id="for_java_spa1">{{ $service->name }} </h5>
 
-                        <p>{{ $service->description }}</p>
+                        <p>{{ $service->description ?? '' }}</p>
                         <h4>Price</h4>
                         <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price }}</span></h4>
                     </div>
