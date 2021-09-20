@@ -378,7 +378,7 @@
 
                                                         <div class="mb-3 mt-4">
 
-                                                            <input type="text" name="price" class="form-control edit_service_price-d" id="recipient-name" placeholder="Price">
+                                                            <input type="number" name="price" class="form-control edit_service_price-d" id="recipient-name" placeholder="Price">
                                                         </div>
 
                                                         <div class="text-center pt-3 mb-5">

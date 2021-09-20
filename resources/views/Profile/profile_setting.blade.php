@@ -237,12 +237,13 @@
                                             @if(null != $updateProfile->brosche)
                                             {{-- {{ dd($updateProfile->brosche) }} --}}
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
-
-                                                    <div class="col-2 px-0">
-                                                        <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s">
-                                                            <div>
+                                                    {{--  {{ dd($brosche) }}  --}}
+                                                    <div class="col-2 px-0" id="brosche-d{{ $brosche->uuid}}">
+                                                        <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s single_img_container-d">
+                                                            <div >
                                                                 <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
-                                                                class="img-fluid for_cancel_icon_in_profile  " alt="...">
+                                                                class="img-fluid for_cancel_icon_in_profile  delete_brosche-d"   alt="..." data-val={{ $brosche->uuid }}>
+                                                                {{--  <input type="hidden" class="brosche_uuid-d" value={{ $brosche->uuid }}>  --}}
                                                             </div>
                                                             <div>
                                                                 <img src="{{ asset('/'.$brosche->path) }}" class="img-fluid w_h_120px-s " alt="...">
@@ -599,6 +600,12 @@
 <script src="{{ asset('assets/js/profileService.js') }}"></script>
 <script src="{{ asset('assets/js/profile_location.js') }}"></script>
 <script src="{{ asset('assets/js/profile_setting.js') }}"></script>
+
+
+<script>
+    let deleteBrosche = "{{ route('deleteBrosche') }}";
+</script>
+
 
 </body>
 

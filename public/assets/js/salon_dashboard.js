@@ -4,7 +4,7 @@ $(function(event) {
     $(".main_container-d").on("click", '.approve-d', function() {
         let uuid = $(this).data("setid");
         $.ajax({
-            url: "http://localhost/glitterups/accpet-appointment/" + uuid,
+            url: "https://privatehost.dev/glitterups/accpet-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
@@ -64,7 +64,7 @@ $(function(event) {
         let uuid = $(this).data("setid");
 
         $.ajax({
-            url: "http://localhost/glitterups/cancel-appointment/" + uuid,
+            url: "https://privatehost.dev/glitterups/cancel-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
@@ -131,59 +131,79 @@ $(function(event) {
             appointments.push($(elm).val());
         });
 
-        //impt syntax
-        // (function(next) {
-        //     next();
-        // }(function() {
-        // }));
+
+        console.log(appointments.length);
+        if(appointments.length > 0) {
 
 
-        let current_date = (new Date()).toISOString().split('T')[0];
-        // console.log(current_date);
-        let past_appointments = [];
-        let future_appointments = [];
-        $.each(appointments, function(i, elm) {
-            if (current_date > elm) {
-                past_appointments.push(elm);
+            //impt syntax
+            // (function(next) {
+            //     next();
+            // }(function() {
+            // }));
+
+
+            let current_date = (new Date()).toISOString().split('T')[0];
+            // console.log(current_date);
+            let past_appointments = [];
+            let future_appointments = [];
+            $.each(appointments, function(i, elm) {
+                if (current_date > elm) {
+                    past_appointments.push(elm);
+                } else {
+                    future_appointments.push(elm);
+                }
+                // console.log(elm);
+            });
+
+            console.log(future_appointments.length);
+
+            if (0 != future_appointments.length) {
+
+                // $.each(future_appointments, function(i, elm) {
+                    $('.calendar').pignoseCalendar({
+
+                        theme: 'blue', // light, dark, blue,
+                        // scheduleOptions: {
+                        //     colors: {
+                        //         offer: '#2fabb7',
+                        //     }
+                        // },
+                        // schedules: [{
+                        //     name: 'offer',
+                        //     date: elm
+
+                        // }],
+                        disabledDates: future_appointments,
+                        // date: '2021-08-29',
+                        // disabledDates: past_appointments
+                    });
+                    // console.log('elm: ', elm);
+                // });
             } else {
-                future_appointments.push(elm);
+                console.log('ok');
+                $.each(past_appointments, function(i, elm) {
+                    $('.calendar').pignoseCalendar({
+                        theme: 'blue', // light, dark, blue,
+
+                        // date: '2021-08-29',
+                        disabledDates: past_appointments
+                    });
+                    console.log('elm: ', elm);
+                })
             }
-            // console.log(elm);
-        });
 
-        console.log(future_appointments.length);
 
-        if (0 != future_appointments.length) {
-
-            $.each(future_appointments, function(i, elm) {
-                $('.calendar').pignoseCalendar({
-                    theme: 'blue', // light, dark, blue,
-                    scheduleOptions: {
-                        colors: {
-                            offer: '#2fabb7',
+        }else {
+              $('.calendar').pignoseCalendar({
+                        theme: 'blue', // light, dark, blue,
+                        scheduleOptions: {
+                            colors: {
+                                offer: '#2fabb7',
+                            }
                         }
-                    },
-                    schedules: [{
-                        name: 'offer',
-                        date: elm
-
-                    }],
-                    // date: '2021-08-29',
-                    disabledDates: past_appointments
-                });
-                console.log('elm: ', elm);
-            })
-        } else {
-            console.log('ok');
-            $.each(past_appointments, function(i, elm) {
-                $('.calendar').pignoseCalendar({
-                    theme: 'blue', // light, dark, blue,
-
-                    // date: '2021-08-29',
-                    disabledDates: past_appointments
-                });
-                console.log('elm: ', elm);
-            })
+                        // date: '2021-08-29',
+                    });
         }
 
 

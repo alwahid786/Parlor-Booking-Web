@@ -12,4 +12,5 @@ class Offer extends Model
     function salon(){
         return $this->hasOne(User::class, 'salon_id','id')->where('type', 'salon');
     }
+
 }

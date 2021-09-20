@@ -29,13 +29,13 @@ class AppointmentController extends Controller
     public function getAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'exists:users,uuid',
-            'status' => 'in:active,cancelled,completed',
-            'offset' => 'numeric',
-            'limit' => 'numeric',
-            'appointment_uuid' => 'exists:appointments,uuid',
+            'user_uuid'         => 'exists:users,uuid',
+            'status'            => 'in:active,cancelled,completed',
+            'offset'            => 'numeric',
+            'limit'             => 'numeric',
+            'appointment_uuid'  => 'exists:appointments,uuid',
             'past_appointments' => 'in:1',
-            'date' => 'date'
+            'date'              => 'date'
         ]);
 
         if ($validator->fails()) {
@@ -43,6 +43,11 @@ class AppointmentController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
+
+        $appointments = Appointment::orderBy('created_at','DESC')
+            ->where('status','on-hold')
+            ->where('created_at','>',carbon::now()->addSecond(60))
+            ->update(['status' => 'cancelled']);
 
         $appointments = Appointment::orderBy('created_at','DESC');
 
@@ -86,6 +91,9 @@ class AppointmentController extends Controller
         if(isset($request->past_appointments))
             $appointments->where('date','<',Carbon::now()->format('Y-m-d'));
 
+        if(isset($request->upcoming_appointments))
+            $appointments->where('date','>=',Carbon::now()->format('Y-m-d'));
+
         if(isset($request->limit))
             $appointments->offset($request->offset??0)->limit($request->limit);
 
@@ -97,13 +105,14 @@ class AppointmentController extends Controller
     public function updateAppointment(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'user_uuid' => 'required_without:appointment_uuid|exists:users,uuid',
-            'salon_uuid' => 'required_with:user_uuid|exists:users,uuid',
-            'services_uuid' => 'required_with:user_uuid|exists:services,uuid',
-            'time' => 'required_with:user_uuid|date_format:H:i',
-            'date' => 'required_with:user_uuid|date',
+            'user_uuid'        => 'required_without:appointment_uuid|exists:users,uuid',
+            'salon_uuid'       => 'required_with:user_uuid|exists:users,uuid',
+            'services_uuid'    => 'required_with:user_uuid|exists:services,uuid',
+            'time'             => 'required_with:user_uuid|date_format:H:i',
+            'date'             => 'required_with:user_uuid|date',
             'appointment_uuid' => 'exists:appointments,uuid',
-            'status' => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
+            'is_attended'      => 'in:1',
+            'status'           => 'required_with:appointment_uuid|in:active,cancelled,completed,rejected'
         ]);
 
         if ($validator->fails()) {
@@ -119,11 +128,23 @@ class AppointmentController extends Controller
 
             $status = Appointment::where('uuid', $request->appointment_uuid)->first();
 
+            if(isset($request->is_attended))
+                $status->is_attended = $request->is_attended  ?? 1;
+
             $status->status = $request->status;
             $status->save();
 
-            $noti_text = 'Your Appointment Has Been'.' '.$request->status;
-            $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,False);
+            $msg = $request->status == 'active' ? 'accepted' : $request->status;
+
+            if($status->user_id != $request->user()->id){
+
+                $noti_text = 'Your Appointment Has Been'.' '.$msg.' by '.$status->salon->name;
+                $noti_result = $this->NotificationController->addNotification($status->salon_id,$status->user_id,$status->id,'appointment',$noti_text,true);
+            } else {
+
+                $noti_text = 'The Appointment Has Been'.' '.$msg.' by '.$request->user()->name;
+                $noti_result = $this->NotificationController->addNotification($status->user_id,$status->salon_id,$status->id,'appointment',$noti_text,true);
+            }
 
             return sendSuccess('Updated Appointment',$status);
         }
@@ -156,24 +177,18 @@ class AppointmentController extends Controller
         DB::beginTransaction();
         try{
 
-            $offer = $salon->where('id',$salon->id)->with(['offer' => function ($query){
-                $query->where('status','active');
-            }])->first();
-
-            if(null != $offer->offer){
-                $discount = $offer->offer->discount == 0?1:$offer->offer->discount/100;
-            }
-
             $total_price = 0;
             $appointment = new Appointment;
-            $appointment->uuid = str::uuid();
-            $appointment->salon_id = $salon->id;
-            $appointment->user_id = $user->id;
-            $appointment->status = $request->status ?? 'on-hold';
-            $appointment->start_time = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
-            $appointment->end_time = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
-            $appointment->date = $request->date;
+            $appointment->uuid        = str::uuid();
+            $appointment->salon_id    = $salon->id;
+            $appointment->user_id     = $user->id;
+            $appointment->status      = $request->status ?? 'on-hold';
+            $appointment->start_time  = Carbon::parse(implode($appointment_time))->format('H:i');//implode array to string
+            $appointment->end_time    = Carbon::parse($request->time)->addMinutes('30')->format('H:i');
+            $appointment->date        = $request->date;
             $appointment->total_price = $total_price;
+            $appointment->discount    = $salon->offer->discount ?? NULL;
+            $appointment->is_attended = $request->is_attended ?? NULL;
             $appointment->save();
 
             if(!$appointment->save()){
@@ -183,12 +198,14 @@ class AppointmentController extends Controller
             }
 
             foreach($request->services_uuid as $service_uuid){
+
                 $service = Service::where('uuid',$service_uuid)->first();
                 $appointment_details = new AppointmentDetail;
-                $appointment_details->uuid = str::uuid();
+                $appointment_details->uuid           = str::uuid();
                 $appointment_details->appointment_id = $appointment->id;
-                $appointment_details->service_id = $service->id;
-                $appointment_details->price = $service->price;
+                $appointment_details->service_id     = $service->id;
+                $appointment_details->price          = $service->price - ($service->price * (($service->offer->discount??0)/100) );
+                $appointment_details->discount       = $service->offer->discount ?? NULL;
                 $appointment_details->save();
 
                 if(!$appointment->save()){
@@ -197,18 +214,21 @@ class AppointmentController extends Controller
                     return sendError("Internal Server Error",[]);
                 }
             }
+
             $total_price = AppointmentDetail::where('appointment_id',$appointment->id)->pluck('price')->sum();
             $appointment->total_price = $total_price;
-            if(isset($discount))
-                $appointment->total_price = $total_price - ($total_price * $discount);
+
+            if(isset($salon->offer->discount))
+                $appointment->total_price = $total_price - ($total_price * (($salon->offer->discount??0)/100) );
+
 
             $appointment->save();
 
             if(!$appointment->save())
                 return sendError('Internal Server Error',[]);
 
-            $noti_text = $user->name.' Need Appointment in your salon';
-            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,False);
+            $noti_text = $user->name.' need appointment in your salon';
+            $noti_result = $this->NotificationController->addNotification($user->id,$salon->id,$appointment->id,'appointment',$noti_text,true,true);
             // dd($noti_result);
 
 
@@ -238,6 +258,7 @@ class AppointmentController extends Controller
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
         $salon = $result['data'];
+
         //time & date to proper format
         $startTime = Carbon::parse($salon->start_time)->modify('-30 minutes');
         $endTime = Carbon::parse($salon->end_time);
@@ -246,6 +267,7 @@ class AppointmentController extends Controller
         $result = $this->userService->checkAvailableDate($request,$salon);
         if(!$result['status'])
             return sendError($result['message'] ,$result['data']);
+
         //making intervals of 30 minutes
         if(!($startTime->modify('+30 minutes') < $endTime))
             return sendError('Invalid Time',[]);

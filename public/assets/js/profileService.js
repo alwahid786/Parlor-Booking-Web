@@ -128,7 +128,7 @@ $(function(event) {
         $(".edit_service_name-d").val(service_name);
         $(".edit_service_price-d").val(result_price);
         $(".edit_service_uuid-d").val(service_uuid);
-        $(".edit-d").text('Edit');
+        $(".edit-d").text('Update');
 
         $("#exampleModal").modal('show');
     });
@@ -239,7 +239,7 @@ $(function(event) {
             }
             console.log(fd);
 
-            return false;
+            // return false;
 
 
             $(form).append('media', $("#media").files);
@@ -318,5 +318,39 @@ $(function(event) {
     });
 
 
+
+
+    $(".delete_brosche-d").on('click', function(){
+        let elm = $(this);
+
+        let brosche_uuid = elm.attr('data-val');
+
+        $.ajax({
+            type: "get",
+            url: deleteBrosche,
+            data: {brosche_uuid: brosche_uuid},
+            dataType: "json",
+            success: function (response) {
+                if (response.status == true) {
+                        Swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        }).then((result) => {
+                            console.log(response);
+                            location.reload();
+                            // return false;
+                            // window.location.href = SaloonDashboard + '?uuid=' + response.data.user.uuid;
+                        });
+                    } else {
+                        errorAlert(response.message);
+                    }
+
+            }
+        });
+        console.log();
+    });
 
 });

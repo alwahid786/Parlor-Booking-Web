@@ -31,7 +31,7 @@
                 </div>
                         <div class="for_send_btn text-center">
                             <input type="hidden" name="user_type" id="forgot_user_type-d" value="user">
-                            <input type="hidden" name="type" class="type-d" id="reset_password-d" value="user_reset_modal">
+                            <input type="hidden" name="type" class="type-d" id="reset_password-d" value="">
 
                         <button type="submit" class="btn btn-warning">Send</button>
                 </div>
