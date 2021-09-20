@@ -4,7 +4,7 @@ $(function(event) {
     $(".main_container-d").on("click", '.approve-d', function() {
         let uuid = $(this).data("setid");
         $.ajax({
-            url: "http://localhost/glitterups/accpet-appointment/" + uuid,
+            url: "https://privatehost.dev/glitterups/accpet-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
@@ -64,7 +64,7 @@ $(function(event) {
         let uuid = $(this).data("setid");
 
         $.ajax({
-            url: "http://localhost/glitterups/cancel-appointment/" + uuid,
+            url: "https://privatehost.dev/glitterups/cancel-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
