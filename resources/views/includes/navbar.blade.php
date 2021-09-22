@@ -7,21 +7,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="UserSide/HomePageComponent/salons_page.php">Salons</a>
+            <a class="nav-link" href="{{ route('allSalons') }}">Salons</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="UserSide/HomePageComponent/my_appointments.php">Active Appointments</a>
-          </li>
-          <li class="nav-item">
+
+          @if (Auth::user())
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('userAppointments', Auth::user()->uuid ?? '') }}">Active Appointments</a>
+            </li>
+
+          @else
+
+          @endif
+          {{-- <li class="nav-item">
             <a class="nav-link" href="#">Past Appointments</a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">About Us</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">About Us</a>
           </li>
 
 

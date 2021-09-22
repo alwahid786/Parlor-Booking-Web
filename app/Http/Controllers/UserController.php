@@ -238,6 +238,7 @@ class UserController extends Controller
             'lat'      => 'numeric|required_with:long',
             'long'     => 'numeric|required_with:lat',
             'gender'   => 'in:male,female,both',
+            'address'  => 'string'
 
         ]);
         if ($validator->fails()) {
@@ -263,8 +264,8 @@ class UserController extends Controller
               ) as distance HAVING distance <= ? ",[$request->lat,$request->lat,$request->long]);
         }
 
-        if(isset($request->keywords))
-            $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->keywords}%");
+        if(isset($request->keywords) || isset($request->address))
+            $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->address}%");
 
         if(isset($request->popular))
             $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');

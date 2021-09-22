@@ -22,6 +22,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
 
+
+Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
+
 //saloon book
 Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->name('bookingSalon');
 
@@ -33,7 +36,7 @@ Route::any('/booking-salon-service/{uuid?}', [HomeController::class, 'bookingSal
 Route::any('/booking-time', [HomeController::class, 'bookingTime'])->name('bookingTime');
 
 
-Route::any('/book-service', [HomeController::class, 'bookService'])->name('bookService');
+Route::post('/book-service', [HomeController::class, 'bookService'])->name('bookService');
 
 
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
@@ -58,6 +61,11 @@ Route::group(['middleware' => 'guest'],function () {
         Route::any('/forgot-password', [AuthWebController::class, 'forgotPassword'])->name('forgotPassword');
 
         Route::any('/reset-password', [AuthWebController::class, 'resetPassword'])->name('resetPassword');
+
+
+    // search results
+    Route::any('/search-saloon', [UserAppointmentController::class, 'search'])->name('search');
+
 
 
 });
