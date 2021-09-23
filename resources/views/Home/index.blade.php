@@ -95,14 +95,21 @@
                             <div class="position-absolute discount_large_ticket-s">
                                 <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"
                                     class="img-fluid  " alt="...">
-                                <div class="position-absolute text-white discount_large_text-s">
-                                    <h6 class="mb-0">Discount</h6>
-                                    <span
-                                        class="up_to_fifty_percent">{{ $salon->offer == null ? 'O' : $salon->offer }}</span>
-                                </div>
-
-
-                                </span>
+                               @if(isset($salon->offer->discount))
+                                        <div class="position-absolute discount_text-s">
+                                            <h6 class="mb-0  text-white">Discount</h6>
+                                            <span class=" text-white fs_9px-s">
+                                                {{ $salon->offer->discount }}
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="position-absolute discount_text-s">
+                                            <h6 class="mb-0  text-white">Discount</h6>
+                                            <span class=" text-white fs_9px-s">
+                                                0
+                                            </span>
+                                        </div>
+                                    @endif
                             </div>
                             <div>
                                 {{-- <a href="#"> --}}
