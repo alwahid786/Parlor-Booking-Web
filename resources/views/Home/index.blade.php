@@ -33,7 +33,7 @@
                                         class="img-fluid " width="100" alt="...">
                                     <div class="position-absolute discount_text-s">
                                         <h6 class="mb-0  text-white">Discount</h6>
-                                        <span
+                                        <span>
                                             class=" text-white fs_9px-s">{{ $salon->offer ?? 0 }}
                                         </span>
                                     </div>
