@@ -75,14 +75,14 @@
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 single_salon_service_container-d ">
                 <div class="card for_border_card_dashed salon_service-s  " >
                     <div class="card-body for_spa_text">
-                        <h5 id="for_java_spa1">{{ $service->name }} </h5>
+                        <h5 id="for_java_spa1">{{ $service->name ?? ''}} </h5>
 
-                        <p>{{ $service->description }}</p>
+                        <p>{{ $service->description ?? ''}}</p>
                         <h4>Price</h4>
-                        <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price }}</span></h4>
+                        <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price ?? '' }}</span></h4>
                     </div>
                 </div>
-                <input type="hidden" name="" class="salon_service_uuid-d" value="{{ $service->uuid }}">
+                <input type="hidden" name="" class="salon_service_uuid-d" value="{{ $service->uuid ?? '' }}">
 
             </div>
 
