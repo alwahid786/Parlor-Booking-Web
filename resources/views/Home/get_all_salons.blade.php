@@ -21,18 +21,26 @@
         <div class="row ">
             <div class="col d-flex salon_list-s">
                 @foreach ($allSalons as $salon)
-                    {{-- {{ dd($salon) }} --}}
                     <div class="row px-1 ">
                         <div class="col">
                             <div class="card border-0">
                                 <div class="position-absolute discount_ticket-s">
                                         <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} "class="img-fluid " width="100" alt="...">
-
-                                    <div class="position-absolute discount_text-s">
-                                        <h6 class="mb-0  text-white">Discount</h6>
-                                        <span
-                                            class=" text-white fs_9px-s">{{ $salon->offer == null ? 'O' : $salon->offer }}</span>
-                                    </div>
+                                    @if(isset($salon->offer->discount))
+                                        <div class="position-absolute discount_text-s">
+                                            <h6 class="mb-0  text-white">Discount</h6>
+                                            <span class=" text-white fs_9px-s">
+                                                {{ $salon->offer->discount }}
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="position-absolute discount_text-s">
+                                            <h6 class="mb-0  text-white">Discount</h6>
+                                            <span class=" text-white fs_9px-s">
+                                                0
+                                            </span>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="br_20px-s w_165px-s">
                                     <a href="{{ route('bookingSalon', $salon->uuid) }}">
