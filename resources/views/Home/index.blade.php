@@ -35,7 +35,8 @@
                                     <div class="position-absolute discount_text-s">
                                         <h6 class="mb-0  text-white">Discount</h6>
                                         <span
-                                            class=" text-white fs_9px-s">{{ $salon->offer == null ? 'O' : $salon->offer }}</span>
+                                            class=" text-white fs_9px-s">{{ $salon->offer ?? 'O' }}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="br_20px-s w_165px-s">
