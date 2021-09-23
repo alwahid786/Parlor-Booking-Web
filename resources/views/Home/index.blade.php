@@ -25,7 +25,6 @@
         <div class="row ">
             <div class="col d-flex salon_list-s">
                 @foreach ($allSalons as $salon)
-                    {{-- {{ dd($salon) }} --}}
                     <div class="row px-1 ">
                         <div class="col">
                             <div class="card border-0">
@@ -35,7 +34,7 @@
                                     <div class="position-absolute discount_text-s">
                                         <h6 class="mb-0  text-white">Discount</h6>
                                         <span
-                                            class=" text-white fs_9px-s">{{ $salon->offer ?? 'O' }}
+                                            class=" text-white fs_9px-s">{{ $salon->offer ?? 0 }}
                                         </span>
                                     </div>
                                 </div>
