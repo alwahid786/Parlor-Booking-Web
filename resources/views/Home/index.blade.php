@@ -105,10 +105,10 @@
                                 </span>
                             </div>
                             <div>
-                                <a href="UserSide/HomePageComponent/salons_child_one.php">
+                                {{-- <a href="#"> --}}
                                     <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
                                         class="card-img-top  mt-4 img-fluid" alt="...">
-                                </a>
+                                {{-- </a> --}}
                             </div>
 
 
