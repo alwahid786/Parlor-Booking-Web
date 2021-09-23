@@ -290,6 +290,7 @@ $(function(event) {
 
     $('.frm_validate_code-d').on('keyup', '.v_code-d', function(e) {
         let elm = $(this);
+        let parentForm = $(elm).parents('form');
         let text = $(elm).val().trim();
         console.log('ok');
 
@@ -305,7 +306,8 @@ $(function(event) {
 
         // set hidden field in form to send in request
         let codeValue = '';
-        $.each($('.v_code-d'), function(index, elm) {
+        let codeFields = $(parentForm).find('.v_code-d');
+        $.each(codeFields, function(index, elm) {
             let elmValue = $(elm).val();
             if (elmValue == '') {
                 codeValue = '';
@@ -313,8 +315,8 @@ $(function(event) {
             }
             codeValue += elmValue;
         });
-        $('#hdn_activation_code-d').val(codeValue).attr('value', codeValue);
-        $('#hdn_set_pass_activation_code-d').val(codeValue).attr('value', codeValue);
+        $(parentForm).find('#hdn_activation_code-d').val(codeValue).attr('value', codeValue);
+        $(parentForm).find('#hdn_set_pass_activation_code-d').val(codeValue).attr('value', codeValue);
     });
 
 
@@ -329,10 +331,10 @@ $(function(event) {
             //     email: true,
             //     minlength: 5,
             // },
-            activation_code: {
-                required: true,
-                minlength: 4
-            },
+            // activation_code: {
+            //     required: true,
+            //     minlength: 4
+            // },
             number_box_1: {
                 required: true,
                 min: 0,
@@ -364,10 +366,10 @@ $(function(event) {
             //     minlength: "Email Should have atleast 5 characters",
             //     email: "Email Format is not valid"
             // },
-            activation_code: {
-                required: "Activation Code is Required.",
-                minlength: "Activation Code Should have atleast 4 characters",
-            },
+            // activation_code: {
+            //     required: "Activation Code is Required.",
+            //     minlength: "Activation Code Should have atleast 4 characters",
+            // },
             number_box_1: {
                 required: '***',
                 max: 'max 09',
