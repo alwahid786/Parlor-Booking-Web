@@ -115,7 +115,7 @@
                         <input type="hidden" name="salon_uuid" class="salon_uuid-d" value="{{ $salon_uuid }}">
                         <input type="hidden" name="date" class="booking_date-d" value="">
                         {{--  <input type="hidden" name="services_uuid[]" class="service_book_uuid-d" value="">  --}}
-                        <input type="hidden" name="user_uuid" class="user_uuid-d" value="{{ Auth::user()->uuid }}">
+                        <input type="hidden" name="user_uuid" class="user_uuid-d" value="{{ Auth::user()->uuid ?? '' }}">
 
                     </div>
                 </form>
