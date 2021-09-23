@@ -86,7 +86,7 @@
                                 <div class="position-absolute text-white discount_large_text-s">
                                     <h6 class="mb-0">Discount</h6>
                                     <span
-                                        class="up_to_fifty_percent">{{ $salon->offer == null ? 'O' : $salon->offer }}</span>
+                                        class="up_to_fifty_percent"></span>
                                 </div>
 
 
