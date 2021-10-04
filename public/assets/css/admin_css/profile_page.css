@@ -449,6 +449,9 @@
     height: 120px;
 }
 
+.mr_150px-s{
+    margin-right: 150px;
+}
 /* @media screen and(max-width:1024px) {
     .days_circle-s{
       width: 83px;

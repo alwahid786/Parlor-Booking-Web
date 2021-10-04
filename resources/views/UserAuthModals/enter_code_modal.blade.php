@@ -1,5 +1,5 @@
-<div class="modal " id="enter_code_modal-d">
-    <div class="modal-dialog">
+<div class="modal static_modal-d" id="enter_code_modal-d" tabindex="-1" aria-labelledby="view-head" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-lg for_modal_bggg signin_h">
 
         <!-- Modal Header -->
@@ -7,7 +7,7 @@
 
           <div class="modal-body ">
                 <div class="pull-right text-end">
-                <img src="./assets/images/Group 152.svg " class="img-fluid for_modal_cancel_img_my_appointments  "  data-dismiss="modal" aria-label="Close" alt="...">
+                <img src="{{asset('assets/images/home_page_component/Group 152.svg')}}" class="img-fluid for_modal_cancel_img_my_appointments close"  data-dismiss="modal" aria-label="Close" alt="...">
                 </div>
                 <div class=" new_account_text ">
                   <h3>Enter <span> Code</span></h3>
@@ -20,9 +20,9 @@
                     <div class="row mt-5 for_row_enter_code">
                         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 for_enter_code_responsive_main_div code_border-s code_border-d ">
                             <div class="for_common_email_pass pt-4 ">
-                                <div class="input-group mb-3 w-75 ">
+                                <div class="input-group mb-5 w-75 ">
                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                    <input type="number" class="inp dot dot_one v_code-d v_code-s"  name='number_box_1'  id='number_box_1' min='0' max="9" maxlength="1" placeholder="0"/>
+                                    <input type="number" class="inp dot dot_one v_code-d v_code-s text-center text-white"  name='number_box_1'  id='number_box_1' min='0' max="9" maxlength="1" placeholder="0"/>
                                 </div>
 
                             </div>
@@ -31,9 +31,9 @@
                         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 code_border-s code_border-d">
                             <div class="for_common_email_pass pt-4">
 
-                                <div class="input-group mb-3 w-75 ">
+                                <div class="input-group mb-5 w-75 ">
                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                    <input  type="number"  class="inp dot dot_two v_code-d v_code-s" name='number_box_2' id='number_box_2' min='0' max="9" maxlength="1"  placeholder="1"/>
+                                    <input  type="number"  class="inp dot dot_two v_code-d v_code-s text-center text-white" name='number_box_2' id='number_box_2' min='0' max="9" maxlength="1"  placeholder="1"/>
                                 </div>
 
                             </div>
@@ -41,9 +41,9 @@
 
                         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 code_border-s code_border-d">
                             <div class="for_common_email_pass pt-4">
-                                <div class="input-group mb-3 w-75 ">
+                                <div class="input-group mb-5 w-75 ">
                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                    <input type="number" class="inp dot dot_three v_code-d v_code-s"   name='number_box_3' id='number_box_3' min='0' max="9" maxlength="1"  placeholder="2"/>
+                                    <input type="number" class="inp dot dot_three v_code-d v_code-s text-center text-white"   name='number_box_3' id='number_box_3' min='0' max="9" maxlength="1"  placeholder="2"/>
                                 </div>
 
                             </div>
@@ -51,9 +51,9 @@
 
                         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 code_border-s code_border-d">
                             <div class="for_common_email_pass pt-4">
-                                <div class="input-group mb-3 w-75 ">
+                                <div class="input-group mb-5 w-75 ">
                                     <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                                    <input type="number" class="inp dot dot_four v_code-d v_code-s last-d" name='number_box_4' id='number_box_4' min='0' max="9" maxlength="1"   placeholder="3"/>
+                                    <input type="number" class="inp dot dot_four v_code-d v_code-s text-center text-white last-d" name='number_box_4' id='number_box_4' min='0' max="9" maxlength="1"   placeholder="3"/>
                                 </div>
                             </div>
                         </div>

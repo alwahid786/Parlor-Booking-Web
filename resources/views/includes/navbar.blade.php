@@ -25,8 +25,8 @@
           </li>
 
 
-          <li class="nav-item for_sign_in_button_css">
-          <i class="fa fa-bell-o bell_icon-s" aria-hidden="true">
+          <li class="nav-item for_sign_in_button_css d-flex">
+          <i class="fa fa-bell-o bell_icon-s" aria-hidden="true"></i>
               <span>
                   @if (\Auth::user())
                     {{-- <div class="dropdown">
@@ -48,26 +48,35 @@
                     <button type="button" class="btn btn-outline-warning px-4">Sign In</button>
                   </a>
                   <br> -->
-                    <div class="btn-group">
-                        <button type="button" class="btn signin_button-s dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <div class="btn-group">
+                        <button type="button" class="btn signin_button-s dropdown-toggle dropdown-toggle-split signin_dropdown-d" data-bs-toggle="dropdown" aria-expanded="false">
                             Sign In
                         </button>
-                        <ul class="dropdown-menu bg-dark alignment-s text-start px-0 show">
+                        <ul class="dropdown-menu bg-dark alignment-s text-start px-0">
                             <li><span class="dropdown-item spacing_none-s fg_yellow-s" id="user_login-d">User</span></li>
                             <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="{{ route('weblogin') }}">Saloon</a></li>
                         </ul>
+                    </div> -->
+                    <div class="dropdown ">
+                    <a class="nav-link dropdown-toggle no_link-s align-self-center signin_dropdown-d" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ asset('assets/images/home_page_component/signup_logo.svg')}}" width="40" class="rounded-circle mr-3" alt="user img">
+                        <!-- <span class="mr-3">Adil</span> -->
+                    </a>
+                    <div class="dropdown-menu bg-dark alignment-s text-start px-0 mt-4">
+                        <a class="dropdown-item fg_yellow-s spacing_none-s" href="{{ route('logout') }}">Log Out</a>
                     </div>
+                        </div>
 
                   @endif
                   <!-- <button type="button" class="btn btn-warning">Warning</button> -->
 
 
               </span>
-          </i>
 
 
 
-          </li>
+
+        </li>
         </ul>
         <!-- <form class="d-flex ml-auto">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

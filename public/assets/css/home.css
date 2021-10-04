@@ -1366,7 +1366,7 @@ button {
 }
 
 .for_forgot_pass_text {
-    margin-top: 60px;
+    margin-top: 53px;
 }
 
 .for_forgot_pass_text h5 {
@@ -1393,11 +1393,11 @@ button {
     width: 200px;
     /* margin-right: 100px; */
     margin-left: -91px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .dont_have_account {
-    margin-top: 130px;
+    margin-top: 100px;
     color: #ffffff;
     font-family: SF Pro Text;
     /* line-height: 14px; */
@@ -1515,7 +1515,8 @@ button {
 }
 
 .for_email_pass_common {
-    width: 60%;
+    width: 94%;
+    margin-left: 94px;
 }
 
 .for_signup_dont_have_account {
@@ -2354,7 +2355,7 @@ button {
 .for_modal_cancel_img_my_appointments {
     position: absolute;
     width: 30px;
-    margin-top: -30px;
+    top: -14px;
 }
 
 .for_modal_icon_pagefive {
@@ -2371,7 +2372,7 @@ button {
 
 .for_modal_bg {
     background: #133e59;
-    border-radius: 23px;
+    border-radius: 8px;
 }
 
 .for_modal_img_radius {
@@ -2734,8 +2735,8 @@ button {
     border-radius: 0;
 }
 
-.w_75-s{
-    width: 75%;
+.w_70-s{
+    width: 70%;
 }
 
 .salon_service-s:hover,
@@ -2791,7 +2792,41 @@ background-color: #133e59;
         display: none;
      }
 
+     .cursor_pointer-s{
+         cursor: pointer;
+     }
 
+    .ms_-28px-s{
+        margin-left: -28px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    /* Change the white to any color */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px #133e59 inset !important;
+        box-shadow: none;
+        -webkit-text-fill-color: white !important;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"] textarea, select {
+        outline: none;
+        border: none;
+        box-shadow: none;
+        background-color: transparent !important;
+    }
 
      /* .custom-view {
          display: -webkit-box;
