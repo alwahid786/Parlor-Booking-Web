@@ -19,19 +19,26 @@
     </div>
 
 
-    <div class="finds_deal_on_parlour">
-        <div class="centered-query">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-text one fa fa-university" aria-hidden="true"  placeholder="What You Looking For">
+        <div class="finds_deal_on_parlour">
+            <div class="centered-query">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-12">
+                        <div class="input-group">
+                                <form action="{{ route('search') }}" id="frm_search-d" method="post">
+                                    @csrf
+                                    <input type="text" name="keyword" class="form-control input-text one fa fa-university" id="keyword-d" aria-hidden="true"  placeholder="What You Looking For">
+                                        @error('keyword')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
 
-                        <!-- <input type="text" class="form-control input-text two fa fa-university" aria-hidden="true"  placeholder="Date">  -->
-
-                        <input type="text" class="form-control input-text three fa fa-university" aria-hidden="true"  placeholder="Location">
-
-                        <div class="input-group-append">
-                        <button type="button" class="btn search_btn_bg">Search</button>
+                                    <input type="text" name="location"  class="form-control input-text two fa fa-university" id="location-d" aria-hidden="true"  placeholder="Location">
+                                    {{-- <input type="text" class="form-control input-text two fa fa-university" aria-hidden="true"  placeholder="Date">  --}}
+                                        @error('location')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    <div class="input-group-append">
+                                    <button type="submit" class="btn search_btn_bg">Search</button>
+                                </form>
                         </div>
                     </div>
                 </div>

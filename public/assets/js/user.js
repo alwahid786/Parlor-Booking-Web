@@ -470,6 +470,7 @@ $(document).ready(function() {
                         }
                     },
                     error: function(xhr, message, code) {
+                        console.log(message, code, xhr);
                         response = xhr.responseJSON;
                         Swal.fire({
                             title: 'Error',
@@ -501,6 +502,102 @@ $(document).ready(function() {
         console.log('test');
         $(`#signin_modal-d`).modal('show');
     });
+
+
+
+
+    // // user search result
+    // $('#frm_search-d').validate({
+    //     ignore: ".ignore",
+    //     rules: {
+    //         keyword: {
+    //             required:function(element){
+    //                 return $("#location-d").val() =="";
+    //             },
+    //             minlength: 5,
+    //         },
+    //         location: {
+    //             required:function(element){
+    //                 return $("#keyword-d").val() =="";
+    //              },
+    //             minlength: 10,
+    //         }
+
+    //     },
+    //     messages: {
+    //         keyword: {
+    //             required: "keyword required.",
+    //             minlength: "keyword should have atleast 5 characters"
+    //         },
+    //           location: {
+    //             required: "location required.",
+    //             minlength: "location should have atleast 5 characters"
+    //         }
+    //     },
+    //     errorPlacement: function(error, element) {
+    //         $('#' + error.attr('id')).remove();
+    //         error.insertAfter(element);
+    //         $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
+    //     },
+    //     success: function(label, element) {
+    //         $(element).removeClass('error text-danger');
+    //         $(element).parent().find('span.error').remove();
+    //     },
+    //     submitHandler: function(form) {
+    //             $.ajax({
+    //                 url: $(form).attr('action'),
+    //                 type: 'POST',
+    //                 dataType: 'json',
+    //                 data: $(form).serialize(),
+    //                 beforeSend: function() {
+    //                     showPreLoader();
+    //                 },
+    //                 success: function(response) {
+    //                     console.log(response);
+    //                     if (response.status) {
+
+    //                         Swal.fire({
+    //                             title: 'Success',
+    //                             text: response.message,
+    //                             icon: 'success',
+    //                             showConfirmButton: false,
+    //                             timer: 2000
+    //                         }).then((result) => {
+    //                             // console.log(response);
+    //                             // let user_uuid = $(".user_uuid-d").val();
+    //                             // window.location.href = userAPpointment + '?uuid=' + user_uuid;
+    //                             location.reload();
+
+    //                         });
+    //                     } else {
+    //                         errorAlert(response.message);
+    //                     }
+    //                 },
+    //                 error: function(xhr, message, code) {
+    //                     response = xhr.responseJSON;
+    //                     Swal.fire({
+    //                         title: 'Error',
+    //                         text: response.message,
+    //                         icon: 'error',
+    //                         showConfirmButton: false,
+    //                         timer: 2000
+    //                     }).then((result) => {
+    //                         // do nothing
+    //                     });
+    //                     // console.log(xhr, message, code);
+    //                     hidePreLoader();
+    //                 },
+    //                 complete: function() {
+    //                     hidePreLoader();
+    //                 },
+    //             });
+    //             return false;
+    //         }
+
+
+    // });
+
+
 
 });
 

@@ -195,7 +195,7 @@ class HomeController extends Controller
 
         $availableAppointment = $this->salonApiAppointmentCntrl;
         $apiResponse = $availableAppointment->updateAppointment($request)->getData();
-        dd($apiResponse);
+        // dd($apiResponse);
 
         if ($apiResponse->status) {
             return sendSuccess('Appointment booked successfully', $apiResponse->data);
@@ -203,6 +203,12 @@ class HomeController extends Controller
         return sendError('Error', []);
     }
 
+
+
+    public function aboutUsUser()
+    {
+        return view('Home.aboutus', ['book_salon' => 1]);
+    }
 
 
 

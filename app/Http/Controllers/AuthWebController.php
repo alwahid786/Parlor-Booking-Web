@@ -130,4 +130,6 @@ class AuthWebController extends Controller
         Auth::logout();
         return redirect()->route('weblogin');
     }
+
+
 }

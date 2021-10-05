@@ -36,6 +36,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/profile_page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin_css/aboutsus.css') }}" >
+
 
     {{--  calender for user appointment   --}}
     {{-- <link href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet">

@@ -20,7 +20,10 @@
                         </p>
                     </div>
             </div>
-                    @foreach ($user_appointments as $user_appointment)
+
+                {{-- {{ dd(count($user_appointments)) }} --}}
+                @if (count($user_appointments) > 0)
+                    @foreach (array_slice($user_appointments, 0,3) as $user_appointment)
 
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                         <div class=" mb-3 for_appointments_card_width">
@@ -34,11 +37,11 @@
                                     <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                                         <div class="card-body card_body_for_appointmentt">
                                             <button type="button" class="btn btn-secondary btn_view">{{ $user_appointment->status ?? '' }}
-                                                <span class="ml-3"> <button type="button"
+                                                {{-- <span class="ml-3"> <button type="button"
                                                         class="btn btn-primary btn_saturday_css">
                                                         {{ $user_appointment->day ?? 'No day available' }} <span class="badge bg-secondary">9</span>
                                                         <span class="visually-hidden">unread messages</span>
-                                                    </button></span>
+                                                    </button></span> --}}
                                             </button>
                                             <h5 style = "background: none !important; color:black !important">{{ $user_appointment->salon->name ?? 'David' }}</h5>
                                             <h6> {{ $user_appointment->appointment_details->services->name ?? 'Hair Color' }} </h6>
@@ -63,6 +66,10 @@
 
                         </div>
                     @endforeach
+
+                @else
+                        <h3>No Active Appointments</h3>
+                @endif
 
 
             </div>
