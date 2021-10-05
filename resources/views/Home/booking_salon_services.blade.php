@@ -27,26 +27,23 @@
         </p>
      </div> -->
      <div class="bg_booking_now_text">
-        <p>
-            Actual Price
-            <span class="pull-right" >
+        <p class="px-5">
+            <strong>Actual Price</strong>
+            <span class="pull-right pt-4" >
                 {{-- ${{ $saloon_service->sum('total_price') }} --}}
-                $ <span id="actual_price-d">0</span>
+                <strong>$ <span id="actual_price-d ">0</span></strong>
             </span>
         </p>
-        <p>
-            Discount
-            <span class="pull-right" >
-                $ <span id="discount-d">0</span>
-
+        <p class="px-5">
+            <strong>Discount</strong>
+            <span class="pull-right pt-4" >
+                <strong>$ <span id="discount-d">0</span></strong>
             </span>
         </p>
-        <p class="for_border_none_actual_price">
-            Total Price
-            <span class="pull-right" >
-                $ <span id="total_price-d">0</span>
-
-
+        <p class="for_border_none_actual_price border-0 mb-0 for_text_yellow_color px-5">
+            <strong>Total Price</strong>
+            <span class="pull-right pt-4" >
+                <strong>$ <span id="total_price-d">0</span></strong>
             </span>
         </p>
      </div>
@@ -62,8 +59,8 @@
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                 <div class="">
                                             <div class=" card-body beauty_salon_services">
-                    <h5>Beauty Salon </h5>
-                    <h5 class="for_services_text_css">Services</h5>
+                    <h3>Beauty Salon </h3>
+                    <h3 class="for_services_text_css">Services</h3>
                     <p>With supporting text below as a natural lead-in to additional content...</p>
 
                 </div>
