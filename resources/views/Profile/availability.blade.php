@@ -162,7 +162,7 @@
                                    </div>
 
                                    <div class="availability_on_week_bg">
-                                       <div class="on_week_text">
+                                       <div class="fg_mustard-s p-4">
 
                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                            <span class="on_week_separate">Availability On Week</span>

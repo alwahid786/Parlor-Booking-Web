@@ -77,7 +77,7 @@ a:active {
 }
 
 .fg_yellow-s{
-    color: #f5b51b;
+    color: #f5b51b !important;
 }
 
 .spacing_none-s{

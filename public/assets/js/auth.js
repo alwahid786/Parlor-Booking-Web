@@ -65,7 +65,7 @@ $(function(event) {
         },
         errorPlacement: function(error, element) {
             $('#' + error.attr('id')).remove();
-            error.insertAfter(element);
+            error.insertAfter(element.closest('div'));
             $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
         },
         success: function(label, element) {
@@ -180,7 +180,7 @@ $(function(event) {
         },
         errorPlacement: function(error, element) {
             $('#' + error.attr('id')).remove();
-            error.insertAfter(element);
+            error.insertAfter(element.closest('div'));
             $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
         },
         success: function(label, element) {
@@ -371,29 +371,29 @@ $(function(event) {
             //     minlength: "Activation Code Should have atleast 4 characters",
             // },
             number_box_1: {
-                required: '***',
+                // required: '***',
                 max: 'max 09',
                 maxlength: "Length = 1"
             },
             number_box_2: {
-                required: '***',
+                // required: '***',
                 max: 'max 09',
                 maxlength: "Length = 1"
             },
             number_box_3: {
-                required: '***',
+                // required: '***',
                 max: 'max 09',
                 maxlength: "Length = 1"
             },
             number_box_4: {
-                required: '***',
+                // required: '***',
                 max: 'max 09',
                 maxlength: "Length = 1"
             },
         },
         errorPlacement: function(error, element) {
             $('#' + error.attr('id')).remove();
-            error.insertAfter(element);
+            error.insertAfter(element.closest('div'));
             $('#' + error.attr('id')).replaceWith('<span id="' + error.attr('id') + '" class="' + error.attr('class') + ' text-danger" for="' + error.attr('for') + '">' + error.text() + '</span>');
         },
         success: function(label, element) {

@@ -15,7 +15,7 @@
 
     <!-- Salon Child One After Nav Div Two Strat -->
     <div class="availability_on_week_bg">
-        <div class="on_week_text">
+        <div class="fg_mustard-s p-5">
 
             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
             <span class="on_week_separate">Availability On Week</span>
@@ -53,7 +53,7 @@
                         @if ($salon_days != [])
 
                         @foreach ($salon_days as $available_day)
-                            <span id="{{ $available_day->day }}" class="text-white text-color-s px-4 text-left ">{{ ucfirst(trans($available_day->day)) }}</span>
+                            <span id="{{ $available_day->day }}" class="text-white text-color-s mr_150px-s text-left ">{{ ucfirst(trans($available_day->day)) }}</span>
                         @endforeach
 
                         @else

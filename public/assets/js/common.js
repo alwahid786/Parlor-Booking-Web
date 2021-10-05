@@ -2,7 +2,29 @@
     $('#exampleModal').modal({
            backdrop: 'static',
            keyboard: false
-    })
+    });
+
+    // don't close modal when click oustside the modal
+    $(".static_modal-d").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+    // don't close modal when click oustside the modal end
+
+    // close modal when click on close button
+    $(".close").click(function () {
+        $(".static_modal-d").modal("hide");
+    });
+    // close modal when click on close button end
+
+    //onclick signin dropdown toggle
+    $('.signin_dropdown-d').on("click",function(){
+        console.log("kjgkjgk")
+        // "this" in $(this) --> means the current clicked element
+        // .find() will search the CHILDREN of the clicked element with the class "dropdown-menu"
+        $(".dropdown-menu").toggle();
+      });
+
    });
 
 function showPreLoader() {
