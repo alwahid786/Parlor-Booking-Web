@@ -5,30 +5,30 @@
 
 
     <!--Home Bar Page Start !-->
-    <div class="container pt-5">
-        <div class="row">
-            <div class="col-10 text-center">
-                <div class=" for_tap_salon_css">
+    <div class="container-fluid px-5 mt-3 py-5 bg_grey-s">
+        <div class="row px-xl-5">
+            <div class="col-lg-10 col-9 text-center">
+                <div class=" for_tap_salon_css ms-5 ps-5">
                     <h1>Top Salon</h1>
                     <hr class="mx-auto fg_mustard-s my-2" width="120">
                     <hr class="mx-auto fg_mustard-s mt-0" width="64">
                 </div>
 
             </div>
-            <div class="col-2 d-flex justify-content-end">
+            <div class="col-lg-2 col-3 d-flex justify-content-end">
                     <a href="{{ route('allSalons') }}"><span class="fg_mustard-s">View more<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></span></a>
 
             </div>
         </div>
 
-        <div class="row ">
+        <div class="row px-xl-5">
             <div class="col d-flex salon_list-s">
                 @foreach ($allSalons as $salon)
                     {{-- {{ dd($salon) }} --}}
                     <div class="row px-1 ">
                         <div class="col">
-                            <div class="card border-0">
+                            <div class="card border-0 bg_grey-s">
                                 <div class="position-absolute discount_ticket-s">
                                     <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} "
                                         class="img-fluid " width="100" alt="...">
@@ -60,18 +60,18 @@
     <!--Home Bar Page End !-->
 
     <!-- After navBar Third -->
-    <div class="container pt-5">
+    <div class="container-fluid px-5 mt-3 py-5">
 
-            <div class="row">
-                <div class="col-10 text-center">
-                    <div class=" for_tap_salon_css">
+            <div class="row px-xl-5">
+                <div class="col-lg-10 col-9 text-center">
+                    <div class=" for_tap_salon_css ms-5 ps-5">
                         <h1> Salon Near by me</h1>
                         <hr class="mx-auto fg_mustard-s my-2" width="120">
                         <hr class="mx-auto fg_mustard-s mt-0" width="64">
                     </div>
 
                 </div>
-                <div class="col-2 d-flex justify-content-end">
+                <div class="col-lg-2 col-3 d-flex justify-content-end">
                     <a href="{{ route('allSalons') }}"><span class="fg_mustard-s">View more<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></span></a>
 
@@ -79,7 +79,7 @@
 
             </div>
 
-            <div class="row for_after_nav_second_css">
+            <div class="row for_after_nav_second_css px-xl-5">
                 @foreach ($salonsNearByMe as $salon)
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
                         <div class="card border-0">

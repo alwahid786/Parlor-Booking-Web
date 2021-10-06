@@ -32,19 +32,19 @@
 }
 
 .finds_deal_on_parlour {
-    margin-left: 100px;
+    margin-left: 75px;
     padding-top: 50px;
 }
 
-.input-text {
-    /* border-width: 3px solid #f5b51b !important; */
+/* .input-text {
+    /* border-width: 3px solid #f5b51b !important;
     border: 3px solid #f5b51b !important;
     border-radius: 4px;
-}
+} */
 
-.input-group-append button {
+/* .input-group-append button {
     border: 3px solid #f5b51b;
-}
+} */
 
 .search_btn_bg {
     background-color: #133e59 !important;
@@ -462,19 +462,19 @@ button {
 }
 
 .finds_deal_on_parlour {
-    margin-left: 100px;
+    margin-left: 75px;
     padding-top: 50px;
 }
 
-.input-text {
-    /* border-width: 3px solid #f5b51b !important; */
+/* .input-text {
+    /* border-width: 3px solid #f5b51b !important;
     border: 3px solid #f5b51b !important;
     border-radius: 4px;
-}
+} */
 
-.input-group-append button {
+/* .input-group-append button {
     border: 3px solid #f5b51b;
-}
+} */
 
 .search_btn_bg {
     background-color: #133e59 !important;
@@ -2650,7 +2650,7 @@ button {
 }
 
 .discount_ticket-s {
-    right: 37px;
+    right: -1px;
     top: 12px;
 }
 
@@ -2741,14 +2741,14 @@ button {
 
 .salon_service-s:hover,
 .salon_service-s:hover h5 {
-    color: white;
+    color: white !important;
     background-color: #133e59;
 }
 
-/* .check_saloon_service-s , h5 {
-color: white !important;
-/* background-color: #133e59;
-} */
+.check_saloon_service-s , h5 {
+color: #133e59 !important;
+/* background-color: #133e59; */
+}
 
 /*
      button {
@@ -2825,7 +2825,16 @@ color: white !important;
         outline: none;
         border: none;
         box-shadow: none;
-        background-color: transparent !important;
+        background-color: transparent;
+    }
+
+    .br_3px_yellow-s{
+        border: 3px solid #f5b51b;
+        background-color: #f5b51b;
+    }
+
+    .bg_grey-s{
+        background-color: #F8F8F8;
     }
 
      /* .custom-view {

@@ -156,8 +156,8 @@
                                     {{--  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                                         <div class="">
                                             <div class="card-body beauty_salon_services">
-                                                <h3>Beauty Salon  </h3>
-                                                <h3 class="for_services_text_css">Services</h3>
+                                                <h5>Beauty Salon  </h5>
+                                                <h5 class="for_services_text_css">Services</h5>
                                                 <p >With supporting text below as a natural lead-in to additional content...</p>
 
                                             </div>

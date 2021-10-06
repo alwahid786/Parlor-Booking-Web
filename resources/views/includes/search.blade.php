@@ -24,20 +24,20 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10 col-12">
                         <div class="input-group">
-                                <form action="{{ route('search') }}" id="frm_search-d" method="post">
+                                <form action="{{ route('search') }}" id="frm_search-d" class="d-flex w-100 br_3px_yellow-s" method="post">
                                     @csrf
-                                    <input type="text" name="keyword" class="form-control input-text one fa fa-university" id="keyword-d" aria-hidden="true"  placeholder="What You Looking For">
+                                    <input type="text" name="keyword" class="form-control one fa fa-university bg_white-s me-1" id="keyword-d" aria-hidden="true"  placeholder="What You Looking For">
                                         @error('keyword')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
-                                    <input type="text" name="location"  class="form-control input-text two fa fa-university" id="location-d" aria-hidden="true"  placeholder="Location">
-                                    {{-- <input type="text" class="form-control input-text two fa fa-university" aria-hidden="true"  placeholder="Date">  --}}
+                                    <input type="text" name="location"  class="form-control two fa fa-university bg_white-s me-1" id="location-d" aria-hidden="true"  placeholder="Location">
+                                    {{-- <input type="text" class="form-control two fa fa-university" aria-hidden="true"  placeholder="Date">  --}}
                                         @error('location')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     <div class="input-group-append">
-                                    <button type="submit" class="btn search_btn_bg">Search</button>
+                                    <button type="submit" class="btn search_btn_bg ">Search</button>
                                 </form>
                         </div>
                     </div>

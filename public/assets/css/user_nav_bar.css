@@ -23,7 +23,7 @@ a:active {
 
 .for_nav_bar_icon {
   width: 139px;
-  margin-left: 100px;
+  /* margin-left: 100px; */
 }
 
 .for_sign_in_button_css {
@@ -71,7 +71,7 @@ a:active {
 }
 
 .signin_button-s:hover{
-    color: black !important;
+    color: white !important;
     border: 2px solid #f5b51b;
     background-color: #f5b51b;
 }
@@ -87,7 +87,7 @@ a:active {
 
 .spacing_none-s:hover{
     background-color:#f5b51b;
-    color: black !important;
+    color: white !important;
 }
 
 .alignment-s{
