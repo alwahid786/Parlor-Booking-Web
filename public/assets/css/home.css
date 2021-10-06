@@ -1147,8 +1147,8 @@ button {
 .bg_booking_now_text {
     background: #fafafa;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-    border-radius: 21px;
-    height: 230px;
+    border-radius: 12px;
+    /* height: 230px; */
     margin-top: 80px;
 }
 
@@ -2696,7 +2696,7 @@ button {
 }
 
 .fg_mustard-s {
-    color: #FF7A00;
+    color: #FF7A00 !important;
 }
 
 .discount_large_ticket-s {
@@ -2741,14 +2741,14 @@ button {
 
 .salon_service-s:hover,
 .salon_service-s:hover h5 {
-    color: white !important;
+    color: white;
     background-color: #133e59;
 }
 
-.check_saloon_service-s , h5 {
+/* .check_saloon_service-s , h5 {
 color: white !important;
-background-color: #133e59;
-}
+/* background-color: #133e59;
+} */
 
 /*
      button {
