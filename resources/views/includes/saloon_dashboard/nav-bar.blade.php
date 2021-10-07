@@ -8,13 +8,13 @@
                     <li>
                         {{--  {{ dd($updateProfile) }}  --}}
                         @if (($updateProfile !=[]) && (null != $updateProfile->media) )
-                            <img src="{{ asset('/'.$updateProfile->media[0]->path) }} "  class="img-fluid  for_nav_bar_icon_img">
+                            <img src="{{ asset('/'.$updateProfile->media[0]->path) }} "  class="img-fluid rounded-circle for_nav_bar_icon_img">
                         @else
                             <img src="{{    asset('assets/images/saloon_dashboard_images/Ellipse 46.svg') }}"
-                                class="img-fluid  for_nav_bar_icon_img">
+                                class="img-fluid rounded-circle for_nav_bar_icon_img">
                         @endif
                     </li>
-                    <li class="nav-item dropdown dmenu">
+                    <li class="nav-item dropdown dmenu align-self-center">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 
                             Beauty Salon
