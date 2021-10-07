@@ -161,7 +161,7 @@
                                        </p>
                                    </div>
 
-                                   <div class="availability_on_week_bg">
+                                   <div class="availability_on_week_bg mb-5">
                                        <div class="fg_mustard-s p-4">
 
                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>

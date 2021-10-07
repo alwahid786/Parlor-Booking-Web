@@ -452,14 +452,31 @@
 .mr_150px-s{
     margin-right: 150px;
 }
-/* @media screen and(max-width:1024px) {
-    .days_circle-s{
-      width: 83px;
+
+@media screen and (min-width:1440px) {
+    .mr_150px-s{
+        margin-right: 166px;
+    }
+}
+@media screen and (max-width:1440px) {
+    .mr_150px-s{
+        margin-right: 150px;
     }
 }
 
+@media screen and (max-width:1024px) {
+    .mr_150px-s{
+        margin-right: 94px;
+    }
+}
+
+
 @media screen and (max-width:768px) {
-  .days_circle-s{
-    width: 48px;
-  }
-} */
+    .mr_150px-s{
+        margin-right: 61px;
+    }
+}
+
+.bg_white-s{
+    background-color: white !important;
+}

@@ -15,7 +15,7 @@
 
     <!-- Salon Child One After Nav Div Two Strat -->
     <div class="availability_on_week_bg">
-        <div class="fg_mustard-s p-5">
+        <div class="for_text_yellow_color p-5">
 
             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
             <span class="on_week_separate">Availability On Week</span>
@@ -75,14 +75,14 @@
         {{-- @if (Auth::user())
             <a href="../HomepageComponent/booking_now_salon_child_two.php">
             <a href="">
-                <button type="button" class="btn btn-warning">Booking Now</button>
+                <button type="button" class="btn btn-warning text-white">Booking Now</button>
             </a>
         @else --}}
             {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#signinModal">Booking Now</button> --}}
             {{-- <button type="button" class="btn btn-warning" id="check_account_modal-d">Booking Now</button>
         @endif --}}
             <a href="{{ route('bookingSalonServices', $salon_uuid) }}">
-                <button type="button" class="btn btn-warning">Booking Now</button>
+                <button type="button" class="btn btn-warning text-white">Booking Now</button>
             </a>
     </div>
 

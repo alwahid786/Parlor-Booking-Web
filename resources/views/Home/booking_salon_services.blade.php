@@ -164,11 +164,11 @@
     @if (Auth::user())
 
         <div class="text-center for_done_btn_css">
-            <button type="button" class="btn btn-warning" id="book_modal-d" disabled>Done</button>
+            <button type="button" class="btn btn-warning text-white" id="book_modal-d" disabled>Done</button>
         </div>
     @else
         <div class="text-center for_done_btn_css">
-            <button type="button" class="btn btn-warning" id="check_account_modal-d">Done</button>
+            <button type="button" class="btn btn-warning text-white" id="check_account_modal-d">Done</button>
         </div>
     @endif
 

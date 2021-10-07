@@ -1,37 +1,37 @@
 <nav class="navbar navbar-expand-lg  nav_bar_main_bg">
-    <div class="container-fluid">
+    <div class="container-fluid px-xxl-5 px-xl-5 px-lg-5 mx-xxl-5 mx-xl-5">
       <img src="{{ asset('assets/images/user_nav_images/Logo.svg') }}" class="img-fluid for_nav_bar_icon">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           <li class="nav-item">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+           <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
             <a class="nav-link" href="{{ route('allSalons') }}">Salons</a>
           </li>
 
 
           @if (Auth::user())
-            <li class="nav-item">
+            <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
                 <a class="nav-link" href="{{ route('userAppointments', Auth::user()->uuid ?? '') }}">Active Appointments</a>
             </li>
 
           @else
 
           @endif
-          {{-- <li class="nav-item">
+          {{-- <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
             <a class="nav-link" href="#">Past Appointments</a>
           </li> --}}
 
-          <li class="nav-item">
+          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
             <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">About Us</a>
           </li>
 
 
-          <li class="nav-item for_sign_in_button_css d-flex">
+          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4 for_sign_in_button_css d-flex">
           <i class="fa fa-bell-o bell_icon-s" aria-hidden="true"></i>
               <span>
                   @if (\Auth::user())
@@ -61,7 +61,7 @@
                             Sign In
                         </button>
                         <ul class="dropdown-menu bg-dark alignment-s text-start px-0">
-                            <li><span class="dropdown-item spacing_none-s fg_yellow-s" id="user_login-d">User</span></li>
+                            <li><span class="dropdown-item spacing_none-s fg_yellow-s cursor_pointer-s" id="user_login-d">User</span></li>
                             <li><a class="dropdown-item spacing_none-s fg_yellow-s" href="{{ route('weblogin') }}">Saloon</a></li>
                         </ul>
                     </div>

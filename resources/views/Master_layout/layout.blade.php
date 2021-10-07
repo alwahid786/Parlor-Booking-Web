@@ -111,7 +111,7 @@
     {{--  @include('UserBookModal.book_service_modal',[$salon_uuid])  --}}
     @include('UserAuthModals.goto_signin_modal',[])
     @include('UserAuthModals.signup_socail_modal',[])
-    @include('UserAuthModals.signin_modal',[]);
+    @include('UserAuthModals.signin_modal',[])
     @include('UserAuthModals.enter_code_modal',[])
     @include('UserAuthModals.signup_modal',[])
     @include('UserAuthModals.forgot_password_modal',[])
