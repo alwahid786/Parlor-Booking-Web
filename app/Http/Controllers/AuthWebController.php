@@ -128,7 +128,7 @@ class AuthWebController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('weblogin');
+        return redirect()->route('home');
     }
 
 
