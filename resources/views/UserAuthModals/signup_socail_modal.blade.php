@@ -21,7 +21,12 @@
 
                     <button type="button" class="btn btn_Google  btn-lg">
                         <i class="fa fa-google" aria-hidden="true"></i>
-                        <span >Sign in with Google</span>
+
+                        <span >
+                            <a href="{{ route('googleLogin') }}">
+                                Sign in with Google
+                            </a>
+                        </span>
                     </button>
 
                     <button type="button" class="btn btn_apple btn-lg">

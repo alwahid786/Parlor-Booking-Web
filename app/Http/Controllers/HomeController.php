@@ -210,6 +210,10 @@ class HomeController extends Controller
         return view('Home.aboutus', ['book_salon' => 1]);
     }
 
+    public function privacy()
+    {
+        return view('home.privacy', ['book_salon' => 1,]);
+    }
 
 
 }

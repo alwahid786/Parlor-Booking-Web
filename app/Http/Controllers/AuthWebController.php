@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthWebController extends Controller
 {
@@ -129,6 +131,54 @@ class AuthWebController extends Controller
     {
         Auth::logout();
         return redirect()->route('home');
+    }
+
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function googleLogin()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        return $user;
+
+        $this->_regirsterOrLoggedIn($user);
+
+        return redirect()->route('home');
+    }
+
+    protected function _regirsterOrLoggedIn($data)
+    {
+        $user = User::where('email', $data->email)->first();
+        if(!$user)
+        {
+            $user = new User;
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->is_social = 1;
+            $user->social_id =$data->id;
+            $user->social_email = $data->email;
+            $user->social_type = 'google';
+            $user->type = 'user';
+            $user->address = $data->address;
+            $user->gender = $data->gender;
+            $user->save();
+        }
+
+        Auth::login($user);
     }
 
 

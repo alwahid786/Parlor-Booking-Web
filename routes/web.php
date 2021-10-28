@@ -39,6 +39,8 @@ Route::any('/booking-time', [HomeController::class, 'bookingTime'])->name('booki
 Route::post('/book-service', [HomeController::class, 'bookService'])->name('bookService');
 
 
+Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
+
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){
@@ -55,6 +57,18 @@ Route::group(['middleware' => 'guest'],function () {
         Route::any('/signin', [AuthWebController::class, 'login'])->name('weblogin');
 
         Route::any('/singup',[AuthWebController::class, 'create'])->name('signup');
+
+        // Route:: for socail google
+        Route::any('/google-login', [AuthWebController::class, 'googleLogin'])->name('googleLogin');
+        Route::any('/google-login/callback', [AuthWebController::class, 'googleLoginCallBack'])->name('googleLoginCallBack');
+
+        // Route:: for socail facebook
+        Route::any('/facebook-login', [AuthWebController::class, 'facebookLogin'])->name('facebookLogin');
+        Route::any('/facebook-login/callback', [AuthWebController::class, 'facebookLoginCallBack'])->name('facebookLoginCallBack');
+
+        // Route:: for socail facebook
+        Route::any('/apple-login', [AuthWebController::class, 'appleLogin'])->name('appleLogin');
+        Route::any('/apple-login/callback', [AuthWebController::class, 'appleLoginCallBack'])->name('appleLoginCallBack');
 
         Route::any('/enter-code', [AuthWebController::class, 'enterCode'])->name('enterCode');
 
