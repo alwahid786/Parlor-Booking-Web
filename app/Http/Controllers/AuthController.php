@@ -28,7 +28,7 @@ class AuthController extends Controller
             'phone_number' => 'required_without:email',
             'phone_code' => 'required_without:email',
             'password' => 'required',
-            'type' => 'required in:salon,user',
+            'type' => 'required|in:salon,user',
         ]);
 
         if ($validator->fails()) {
