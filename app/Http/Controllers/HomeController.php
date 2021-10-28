@@ -212,7 +212,7 @@ class HomeController extends Controller
 
     public function privacy()
     {
-        return view('home.privacy', ['book_salon' => 1,]);
+        return view('Home.privacy', ['book_salon' => 1,]);
     }
 
 
