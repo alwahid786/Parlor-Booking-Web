@@ -65,6 +65,7 @@
                 <div class="pt-5 text-center button_signin_css">
                 <button type="submit" class="btn  btn-lg  w-50 w-sm-25"><span>Sign In</span></button>
                 </div>
+                <input type="hidden" name="type" value="salon">
               </form>
 
             <div class="pt-5 text-center button_signin_css">

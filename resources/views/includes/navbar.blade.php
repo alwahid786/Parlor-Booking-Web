@@ -30,6 +30,13 @@
             <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">About Us</a>
           </li>
 
+          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+            <a class="nav-link active" aria-current="page" href="{{ route('pricatedPolicy') }}">Privacy Policy</a>
+          </li>
+
+          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+            <a class="nav-link active" aria-current="page" href="{{ route('termsCondition') }}">TOC</a>
+          </li>
 
           <li class="nav-item px-xxl-5 px-xl-5 px-lg-4 for_sign_in_button_css d-flex">
           <i class="fa fa-bell-o bell_icon-s" aria-hidden="true"></i>

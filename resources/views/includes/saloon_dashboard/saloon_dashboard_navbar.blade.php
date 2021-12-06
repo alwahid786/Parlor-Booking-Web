@@ -126,6 +126,29 @@
             </div>
          </div>
 
+
+         <div class="pic">
+            <div class="for_common_main_assidebar">
+               <a href="{{ route('privacyPolicy',$id) }}">
+               <img src="{{ asset('assets/images/saloon_dashboard_images/Group 137.svg') }}" class="img-fluid ">
+                 <span>Privacy Policy</span>
+
+               </a>
+            </div>
+         </div>
+
+
+
+         <div class="pic">
+            <div class="for_common_main_assidebar">
+               <a href="{{ route('termsConditions',$id) }}">
+               <img src="{{ asset('assets/images/saloon_dashboard_images/Group 137.svg') }}" class="img-fluid ">
+                 <span>Terms Conditions</span>
+
+               </a>
+            </div>
+         </div>
+
          <!-- NavBar Child One End !-->
 
 

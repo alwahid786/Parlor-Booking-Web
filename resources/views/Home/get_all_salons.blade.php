@@ -125,7 +125,10 @@
             </div> --}}
 
         <!--Home Bar Page End !-->
-
-        @include('Modals.salon_services', [$salon]);
+            @if(isset($salon) && !empty($salon))
+                 @include('Modals.salon_services', [$salon]);
+            @else
+            <h2 class="text-center">No Salon Available</h2>
+                 @endif
     </div>
 @endsection

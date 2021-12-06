@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthWebController;
 use App\Http\Controllers\SaloonDashboardController;
 use App\Http\Controllers\UserAppointmentController;
+use App\Http\Controllers\CmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::post('/book-service', [HomeController::class, 'bookService'])->name('book
 
 Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
 
+Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
+
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
 // Route::get('/', function(){
@@ -50,6 +53,10 @@ Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricate
 // Route::any('/show', function () {
 //     return view('Home.home');
 // });
+
+//cms route
+
+
 
 
 Route::group(['middleware' => 'guest'],function () {
@@ -104,6 +111,10 @@ Route::group(['middleware' => 'auth'],function () {
         Route::any('/appointments/{uuid}', [SaloonDashboardController::class, 'appointments'])->name('appointments');
         Route::any('/past-appointments/{uuid}', [SaloonDashboardController::class, 'pastAppointments'])->name('pastAppointments');
         Route::any('/about-us/{uuid}', [SaloonDashboardController::class, 'aboutUs'])->name('aboutUs');
+
+
+        Route::any('/privacy-policy/{uuid}', [SaloonDashboardController::class, 'privacyPolicy'])->name('privacyPolicy');
+        Route::any('/terms-conditions/{uuid}', [SaloonDashboardController::class, 'termsConditions'])->name('termsConditions');
 
 
 

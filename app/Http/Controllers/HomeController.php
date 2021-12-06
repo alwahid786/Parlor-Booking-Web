@@ -214,6 +214,11 @@ class HomeController extends Controller
     {
         return view('Home.privacy', ['book_salon' => 1,]);
     }
+    public function termsCondition()
+    {
+        return view('Home.terms_conditions', ['book_salon' => 1,]);
+    }
+
 
 
 }

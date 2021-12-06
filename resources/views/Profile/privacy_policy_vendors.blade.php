@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/admin_css/aboutsus.css') }}">
 
 
-    <title>About Us</title>
+    <title>Privacy Policy</title>
     <style>
         .pic:hover {
             background-image: url("{{ asset('assets/images/saloon_dashboard_images/Grouphover.svg') }}");
@@ -141,7 +141,7 @@
                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="for_aboutus_text">
                             <p>
-                                About Us
+                                Confidentiality 
                             </p>
 
                             <div>
@@ -157,50 +157,27 @@
                             <div class="container-fluid">
                                 <div class="for_about_us_text_dummy">
                                     <p>
-                                        Find a stylish new haircut, book last-minute nails, or treat yourself to a
-                                        relaxing
-                                        massage.Fresha is
-                                        easiest and most reliable way to book with local salons and spas. Top features
-                                        include:Instant booking
-                                        confirmation, say goodbye to phone calls and schedule your appointments directly
-                                        in the
-                                        venue's live
-                                        calendar.
+                                        Each party acknowledges that, whether by virtue of and in the course of this Agreement or otherwise, it may receive or otherwise become aware of information relating to the other party, their marketing plans, their clients, customers, businesses, business plans, finances, technology or affairs, which is proprietary and confidential to the other party (“Confidential Information”). 
                                     </p>
                                 </div>
                                 <div class="for_dummy_text_specific">
                                     <p>
-                                        Discover the best new salons and spas by searching across thousands of
-                                        venues, all with live online booking availability.
+                                        Each party undertakes to maintain and procure the maintenance of the confidentiality of Confidential Information at all times and to keep and procure the keeping of all Confidential Information secure and protected against theft, damage, loss or unauthorised access, and not at any time, whether during the term of this Agreement or at any time thereafter, without the prior written consent of the owner of the Confidential Information, directly or indirectly, use, disclose, exploit, copy or modify any Confidential Information, or authorise or permit any third party to do the same, other than for the sole purpose of the performance of its rights and obligations hereunder. 
                                     </p>
                                 </div>
                                 <div class="for_dummy_text_specific">
-                                    <p>
-                                        Stav in control of vour time with features to Book, Cancel, Reschedule
-                                        and Rebook vour own appointments, all without contacting the venue.
-                                    </p>
+                                    <p>The terms of and obligations imposed by this Section 20 shall not apply to any Confidential Information which: </p>
+                                    <ul>
+                                        <li>at the time of receipt by the recipient is in the public domain; </li>
+                                        <li>subsequently comes into the public domain through no fault of the recipient, its officers, employees or agents;</li>
+                                        <li>is lawfully received by the recipient from a third party on an unrestricted basis; or</li>
+                                        <li>is already known to the recipient before receipt hereunder.</li>
+                                    </ul>
+                                    <p>The recipient may disclose Confidential Information in confidence to a professional adviser of the recipient or if it is required to do so by law, regulation or order of a competent authority. This Clause shall survive the termination or expiry of this Agreement.</p>
                                 </div>
-
-                                <div class="for_dummy_text_specific">
-                                    <p>
-                                        Find the best prices with exclusive online discounts for off-peak
-                                        bookings and last-minute reservations.
-                                    </p>
-                                </div>
-
-                                <div class="for_dummy_text_specific">
-                                    <p>
-                                        Read trusted, authentic ratings from customers who reviewed their
-                                        in-store experience.
-                                    </p>
-                                </div>
-
-                                <div class="for_dummy_text_specific">
-                                    <p>
-                                        Easilv find the way to vour appointment location with built-in map
-                                        directions.
-                                    </p>
-                                </div>
+        
+                               
+                              
                             </div>
                         </div>
                     </div>
@@ -213,16 +190,7 @@
         </div>
     </div>
     </div>
-
-
-
-
-
-
-
-
-
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">

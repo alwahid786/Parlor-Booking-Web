@@ -186,6 +186,41 @@ class SaloonDashboardController extends Controller
 
         }
     }
+    public function privacyPolicy($uuid,Request $request)
+    {
+        if($request->getMethod() == 'GET')
+        {
+            $request->merge(['user_uuid' => $uuid]);
+
+            $user = $this->userApiCntrl;
+            $apiResponse_user = $user->getUser($request)->getData();
+
+            if ($apiResponse_user->status) {
+                $user_details = $apiResponse_user->data;
+                return view('Profile.privacy_policy_vendors',['id'=> $uuid , 'user_details' => $user_details]);
+            }
+
+        }
+    }
+
+    public function termsConditions($uuid,Request $request)
+    {
+        if($request->getMethod() == 'GET')
+        {
+            $request->merge(['user_uuid' => $uuid]);
+
+            $user = $this->userApiCntrl;
+            $apiResponse_user = $user->getUser($request)->getData();
+
+            if ($apiResponse_user->status) {
+                $user_details = $apiResponse_user->data;
+                return view('Profile.terms_conditions_vendors',['id'=> $uuid , 'user_details' => $user_details]);
+            }
+
+        }
+    }
+
+    
 
     public function appointments($uuid, Request $request)
     {
