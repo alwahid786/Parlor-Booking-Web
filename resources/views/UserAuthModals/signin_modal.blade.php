@@ -54,6 +54,7 @@
                   <br>
                 <button type="submit" class="btn btn-warning text-white">Log In</button>
                 <input type="hidden" name="service" class="service-d" value="1">
+                <input type="hidden" name="type" class="" value="user">
               </div>
 
           </form>
