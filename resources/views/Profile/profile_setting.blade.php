@@ -239,9 +239,9 @@
                                                 @foreach (array_slice($updateProfile->brosche, 1,5) as $brosche)
                                                     {{--  {{ dd($brosche) }}  --}}
                                                     <div class="col-2 px-0" id="brosche-d{{ $brosche->uuid}}">
-                                                        <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s single_img_container-d">
+                                                        <div class="pt-5 for_upload_img_set_h_w px-2 overflow_auto-s \single_img_container-d">
                                                             <div >
-                                                                <img src=" {{ asset('assets/images/saloon_dashboard_images/group 152.svg') }} "
+                                                                <img src=" {{ asset('assets/images/saloon_dashboard_images/Group 152.svg') }} "
                                                                 class="img-fluid for_cancel_icon_in_profile  delete_brosche-d"   alt="..." data-val={{ $brosche->uuid }}>
                                                                 {{--  <input type="hidden" class="brosche_uuid-d" value={{ $brosche->uuid }}>  --}}
                                                             </div>
