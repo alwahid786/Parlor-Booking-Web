@@ -170,6 +170,9 @@ class HomeController extends Controller
                 $saloon_service = $apiResponse->data;
                 return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1, 'salon_uuid'=>$uuid]);
             }
+            else{
+                return redirect()->back()->with('message', 'No Service Found')->with('type', 'error');
+            }
         }
     }
 

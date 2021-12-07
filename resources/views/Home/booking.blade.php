@@ -1,6 +1,7 @@
 @extends('Master_layout.layout')
 
 @section('content')
+
     <!-- Salon Child One After Nav Start -->
     <div class="salons_child_one_div_one">
         <h1>Glitter Salon</h1>
@@ -9,6 +10,10 @@
             standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
             a type specimen book.
         </p>
+    </div>
+
+    <div class="row">
+        {!! displayFlashAlert() !!}
     </div>
 
     <!-- Salon Child One After Nav End -->
@@ -82,7 +87,7 @@
             {{-- <button type="button" class="btn btn-warning" id="check_account_modal-d">Booking Now</button>
         @endif --}}
             <a href="{{ route('bookingSalonServices', $salon_uuid) }}">
-                <button type="button" class="btn btn-warning text-white">Booking Now</button>
+                <button type="button" class="btn btn-warning text-white" @if ($salon_days == []) disabled='disabled' @endif>Booking Now</button>
             </a>
     </div>
 

@@ -75,6 +75,19 @@ if(!function_exists('isPhoneValid')){
     }
 }
 
+function displayFlashAlert()
+{
+    if (\Session::has('message')) {
+        $message = \Session::get('message');
+        $type = \Session::get('type');
+        $type = ($type == 'error')? 'danger' : 'info';
+
+        return sprintf('<div class="alert alert-%s">%s</div>', $type, $message);
+    }
+
+    return '';
+}
+
 /**
  * Define the notification types || Needs to Update according to Sellx
  */
