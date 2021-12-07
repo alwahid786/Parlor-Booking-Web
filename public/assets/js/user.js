@@ -317,98 +317,153 @@ $(document).ready(function() {
     // });
 
     let service = [];
-    $('.single_salon_service_container-d').on('click',  function () {
-
+    $('.salon_services_main_container-d').on('click', '.single_salon_service_container-d', function(e){
         let elm = $(this);
-        // console.log('elm: ', elm);
+        let service_uuid = $(elm).attr('data-service_uuid')
+        let service_div = $(elm).find(".salon_service-d");
 
-        let innerDiv = elm.find(".salon_service-s");
-        console.log('innerDiv: ', innerDiv);
+        $(service_div).toggleClass('check_saloon_service-s'); // toggle salon service selction
+        let service_price = parseFloat($(service_div).find(".service_price-d").text(), 2);
+        let actual_price_elm = $("#actual_price-d");
+        let actual_price =  parseFloat($(actual_price_elm).text(), 2);
 
+        if($(service_div).hasClass('check_saloon_service-s')){ // case: service is marked as selected
+            service.push(service_uuid);
 
+            actual_price = actual_price + service_price;
 
-        innerDiv.toggleClass('check_saloon_service-s');
-
-        if(innerDiv.hasClass('check_saloon_service-s'))
-        {
-            let service_price = parseInt(elm.find(".service_price-d").text());
-            let actualPrice =  parseInt($("#actual_price-d").text());
-
-            let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
-
-            // service.push($(this).find(".salon_service_uuid-d").val());
-            service.push(add_service_uuid);
-
-
-            // console.log(service);
-
-            // console.log(actualPrice);
-
-            actualPrice = actualPrice + service_price;
-
-            $("#actual_price-d").text(actualPrice);
-            $("#total_price-d").text(actualPrice);
-            $("#total_booking_price-d").text(actualPrice);
-
-            // console.log(service_price);
-            // console.log(actualPrice);
-
-            // alert(service_price);
+            $(actual_price_elm).text(actual_price);
+            $("#total_price-d").text(actual_price);
+            // $("#total_booking_price-d").text(actual_price);
+            if(service.length > 0) {
+                $("#book_modal-d").removeAttr('disabled');
+            }
         }
-        else {
-            // alert('error');
-             let service_price = parseInt(elm.find(".service_price-d").text());
-            let actualPrice =  parseInt($("#actual_price-d").text());
-                actualPrice = actualPrice - service_price;
+        else{ // case: service is cancelled
 
+            service.splice(service.indexOf(service_uuid), 1); // remove selected value from array
+            actual_price = actual_price - service_price;
 
-            let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
-
-            let index = service.indexOf(add_service_uuid);
-             service.splice(index,1);
-                // console.log(service_slice);
-
-            $("#actual_price-d").text(actualPrice);
-            $("#total_price-d").text(actualPrice);
-
+            $(actual_price_elm).text(actual_price);
+            $("#total_price-d").text(actual_price);
 
             if(service.length == 0) {
-                $("#book_modal-d").attr('disabled',true);
+                $("#book_modal-d").attr('disabled','disabled');
             }
+            // $("#total_booking_price-d").text(actual_price);
+            // alert('error');
+            //  let service_price = parseInt(elm.find(".service_price-d").text());
+            // let actualPrice =  parseInt($("#actual_price-d").text());
+            //     actualPrice = actualPrice - service_price;
 
 
+            // let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
+
+            // let index = service.indexOf(add_service_uuid);
+            //  service.splice(index,1);
+            //     // console.log(service_slice);
+
+            // $("#actual_price-d").text(actualPrice);
+            // $("#total_price-d").text(actualPrice);
+
+
+            // if(service.length == 0) {
+            //     $("#book_modal-d").attr('disabled',true);
+            // }
         }
-            // console.log(service);
+    });
+    $('.single_salon_service_container-d').on('click',  function () {
 
-            if($('*').hasClass('del_services'))
-            {
-                // console.log('hidden_service_uuid: ', hidden_service_uuid);
-                // hidden_service_uuid = " ";
-                $(".del_services").remove();
+        // let elm = $(this);
+        // // console.log('elm: ', elm);
 
-            }
-
-            $.each(service, function(i,elm){
-
-                let hidden_service_uuid = $(".service_uuid-d").val();
+        // let innerDiv = elm.find(".salon_service-s");
+        // console.log('innerDiv: ', innerDiv);
 
 
-                    console.log(elm);
-                    $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" class="service_uuid-d del_services" value=${elm} />`);
 
-            })
+        // innerDiv.toggleClass('check_saloon_service-s');
 
-                // $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" value=${service} />`);
+        // if(innerDiv.hasClass('check_saloon_service-s'))
+        // {
+        //     let service_price = parseInt(elm.find(".service_price-d").text());
+        //     let actualPrice =  parseInt($("#actual_price-d").text());
+
+        //     let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
+
+        //     // service.push($(this).find(".salon_service_uuid-d").val());
+        //     service.push(add_service_uuid);
 
 
-            $(".check_service-d").val(service);
+        //     // console.log(service);
+
+        //     // console.log(actualPrice);
+
+        //     actualPrice = actualPrice + service_price;
+
+        //     $("#actual_price-d").text(actualPrice);
+        //     $("#total_price-d").text(actualPrice);
+        //     $("#total_booking_price-d").text(actualPrice);
+
+        //     // console.log(service_price);
+        //     // console.log(actualPrice);
+
+        //     // alert(service_price);
+        // }
+        // else {
+        //     // alert('error');
+        //      let service_price = parseInt(elm.find(".service_price-d").text());
+        //     let actualPrice =  parseInt($("#actual_price-d").text());
+        //         actualPrice = actualPrice - service_price;
 
 
-            // console.log(service.length);
+        //     let add_service_uuid = $(this).find(".salon_service_uuid-d").val();
 
-               if(service.length > 0) {
-                    $("#book_modal-d").removeAttr("disabled");
-                }
+        //     let index = service.indexOf(add_service_uuid);
+        //      service.splice(index,1);
+        //         // console.log(service_slice);
+
+        //     $("#actual_price-d").text(actualPrice);
+        //     $("#total_price-d").text(actualPrice);
+
+
+        //     if(service.length == 0) {
+        //         $("#book_modal-d").attr('disabled',true);
+        //     }
+
+
+        // }
+        //     // console.log(service);
+
+        //     if($('*').hasClass('del_services'))
+        //     {
+        //         // console.log('hidden_service_uuid: ', hidden_service_uuid);
+        //         // hidden_service_uuid = " ";
+        //         $(".del_services").remove();
+
+        //     }
+
+        //     $.each(service, function(i,elm){
+
+        //         let hidden_service_uuid = $(".service_uuid-d").val();
+
+
+        //             console.log(elm);
+        //             $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" class="service_uuid-d del_services" value=${elm} />`);
+
+        //     })
+
+        //         // $('#frm_booking_service-d').prepend(`<input type="hidden" name="services_uuid[]" value=${service} />`);
+
+
+        //     $(".check_service-d").val(service);
+
+
+        //     // console.log(service.length);
+
+        //        if(service.length > 0) {
+        //             $("#book_modal-d").removeAttr("disabled");
+        //         }
 
 
     });

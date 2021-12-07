@@ -2746,8 +2746,8 @@ button {
 }
 
 .check_saloon_service-s , h5 {
-color: #133e59 !important;
-/* background-color: #133e59; */
+    color: #133e59 !important;
+    background-color: #133e59;
 }
 
 /*

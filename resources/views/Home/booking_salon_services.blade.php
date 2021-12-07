@@ -31,7 +31,7 @@
             <strong>Actual Price</strong>
             <span class="pull-right pt-4" >
                 {{-- ${{ $saloon_service->sum('total_price') }} --}}
-                <strong>$ <span id="actual_price-d ">0</span></strong>
+                <strong>$ <span id="actual_price-d">0</span></strong>
             </span>
         </p>
         <p class="px-5">
@@ -55,97 +55,37 @@
 
     <!-- Boking Now Salon Child Three Div Second Start -->
     <div class="for_third_main container">
-        <div class="row for_main_row_appointment ">
+        <div class="row for_main_row_appointment salon_services_main_container-d ">
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                 <div class="">
-                                            <div class=" card-body beauty_salon_services">
-                    <h3>Beauty Salon </h3>
-                    <h3 class="for_services_text_css">Services</h3>
-                    <p>With supporting text below as a natural lead-in to additional content...</p>
-
-                </div>
-
-            </div>
-        </div>
-
-        @foreach ($saloon_service as $service)
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 single_salon_service_container-d ">
-                <div class="card for_border_card_dashed salon_service-s  " >
-                    <div class="card-body for_spa_text">
-                        <h5 id="for_java_spa1">{{ $service->name ?? ''}} </h5>
-
-                        <p>{{ $service->description ?? '' }}</p>
-                        <h4>Price</h4>
-                        <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price ?? '' }}</span></h4>
-                    </div>
-                </div>
-                <input type="hidden" name="" class="salon_service_uuid-d" value="{{ $service->uuid ?? '' }}">
-
-            </div>
-
-        @endforeach
-
-        {{-- <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
-            <div class="card for_border_card_dashed for_facial_w" data-bs-toggle="modal" data-bs-target="#example"
-                onclick="javascript:myFunction2();" id="demo2">
-                <div class="card-body for_spa_text">
-                    <h5 id="for_java_spa2">Facial </h5>
-
-                    <p>With supporting text below as a natural lead-in to additional content...</p>
-                    <h4>Price</h4>
-                    <h4 class="for_20_text">$20</h4>
-                </div>
-
-            </div>
-        </div> --}}
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-        {{-- <div class="row for_main_row_appointment mt-3 ">
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
-                <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example"
-                    onclick="javascript:myFunction3();" id="demo3">
-                    <div class="card-body for_spa_text">
-                        <h5 id="for_java_spa3">Spa </h5>
-
+                    <div class=" card-body beauty_salon_services">
+                        <h3>Beauty Salon </h3>
+                        <h3 class="for_services_text_css">Services</h3>
                         <p>With supporting text below as a natural lead-in to additional content...</p>
-                        <h4>Price</h4>
-                        <h4 class="for_20_text">$20</h4>
                     </div>
-
                 </div>
             </div>
 
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
-                <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example"
-                    onclick="javascript:myFunction4();" id="demo4">
-                    <div class="card-body for_spa_text">
-                        <h5 id="for_java_spa4">Spa </h5>
+            @foreach ($saloon_service as $service)
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 single_salon_service_container-d" data-service_uuid="{{ $service->uuid ?? '' }}">
+                    <div class="card for_border_card_dashed salon_service-s salon_service-d">
+                        <div class="card-body for_spa_text">
+                            <h5 id="for_java_spa1">{{ $service->name ?? ''}} </h5>
 
-                        <p>With supporting text below as a natural lead-in to additional content...</p>
-                        <h4>Price</h4>
-                        <h4 class="for_20_text">$20</h4>
+                            <p>{{ $service->description ?? '' }}</p>
+                            <h4>Price</h4>
+                            <h4 class="for_20_text">$ <span class="service_price-d"> {{ $service->price ?? '' }}</span></h4>
+                        </div>
                     </div>
-
+                    {{--  <input type="hidden" name="" class="salon_service_uuid-d" value="{{ $service->uuid ?? '' }}">  --}}
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+            {{-- <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
                 <div class="card for_border_card_dashed for_facial_w" data-bs-toggle="modal" data-bs-target="#example"
-                    onclick="javascript:myFunction5();" id="demo5">
+                    onclick="javascript:myFunction2();" id="demo2">
                     <div class="card-body for_spa_text">
-                        <h5 id="for_java_spa5">Facial </h5>
+                        <h5 id="for_java_spa2">Facial </h5>
 
                         <p>With supporting text below as a natural lead-in to additional content...</p>
                         <h4>Price</h4>
@@ -153,16 +93,60 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
 
-        </div> --}}
+        </div>
+
+            {{-- <div class="row for_main_row_appointment mt-3 ">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                    <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example"
+                        onclick="javascript:myFunction3();" id="demo3">
+                        <div class="card-body for_spa_text">
+                            <h5 id="for_java_spa3">Spa </h5>
+
+                            <p>With supporting text below as a natural lead-in to additional content...</p>
+                            <h4>Price</h4>
+                            <h4 class="for_20_text">$20</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                    <div class="card for_border_card_dashed" data-bs-toggle="modal" data-bs-target="#example"
+                        onclick="javascript:myFunction4();" id="demo4">
+                        <div class="card-body for_spa_text">
+                            <h5 id="for_java_spa4">Spa </h5>
+
+                            <p>With supporting text below as a natural lead-in to additional content...</p>
+                            <h4>Price</h4>
+                            <h4 class="for_20_text">$20</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                    <div class="card for_border_card_dashed for_facial_w" data-bs-toggle="modal" data-bs-target="#example"
+                        onclick="javascript:myFunction5();" id="demo5">
+                        <div class="card-body for_spa_text">
+                            <h5 id="for_java_spa5">Facial </h5>
+
+                            <p>With supporting text below as a natural lead-in to additional content...</p>
+                            <h4>Price</h4>
+                            <h4 class="for_20_text">$20</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div> --}}
     </div>
 
 
     <!-- Boking Now Salon Child Three Div Second End -->
         <input type="hidden" name="" class="check_service-d" value="">
     @if (Auth::user())
-
         <div class="text-center for_done_btn_css">
             <button type="button" class="btn btn-warning text-white" id="book_modal-d" disabled>Done</button>
         </div>
