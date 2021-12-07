@@ -1,36 +1,44 @@
-<nav class="navbar navbar-expand-lg  nav_bar_main_bg">
+<nav class="navbar navbar-expand-lg  navBar-s">
     <div class="container-fluid px-xxl-5 px-xl-5 px-lg-5 mx-xxl-5 mx-xl-5">
+      <a href="#">
       <img src="{{ asset('assets/images/user_nav_images/Logo.svg') }}" class="img-fluid for_nav_bar_icon">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      </a>
+      <button class="navbar-toggler absolute_position-s" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</span>
+		  </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-           <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+           <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
-          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+          <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
             <a class="nav-link" href="{{ route('allSalons') }}">Salons</a>
           </li>
 
 
           @if (Auth::user())
-            <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+            <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
                 <a class="nav-link" href="{{ route('userAppointments', Auth::user()->uuid ?? '') }}">Active Appointments</a>
             </li>
 
           @else
 
           @endif
-          {{-- <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+          {{-- <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
             <a class="nav-link" href="#">Past Appointments</a>
           </li> --}}
 
-          <li class="nav-item px-xxl-5 px-xl-5 px-lg-4">
+          <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
             <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">About Us</a>
           </li>
-
-
+          <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
+            <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">Privacy Policy</a>
+          </li>
+          <li class="nav-item px-xxl-3 px-xl-3 px-lg-2">
+            <a class="nav-link active" aria-current="page" href="{{ route('aboutUsUser') }}">TOC</a>
+          </li>
           <li class="nav-item px-xxl-5 px-xl-5 px-lg-4 for_sign_in_button_css d-flex">
           <i class="fa fa-bell-o bell_icon-s" aria-hidden="true"></i>
               <span>
@@ -94,3 +102,15 @@
   </nav>
 
 
+@section('footer-scripts')
+<script type="text/javascript">
+	$('document').ready(function(){
+
+		$('.navbar-toggler').click(function(){
+			$('.collapse').toggle();
+		});
+
+	});
+
+</script>
+@endsection

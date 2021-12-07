@@ -1,6 +1,7 @@
-.nav_bar_main_bg {
+.navBar-s {
   background: #000000;
   color: aliceblue;
+  width: 100%;
 }
 
 .navbar-nav {
@@ -47,16 +48,17 @@ a:active {
 }
 
 @media (min-width: 360px) and (max-width: 767px) {
+  
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+/* @media only screen and (max-width: 1023px) {
   .nav_bar_main_bg {
-    width: 795px;
+    width: 100%;
   }
   .after_navBar_bg_main {
-    width: 795px;
+    width: 100%;
   }
-}
+} */
 
 @media (min-width: 1440px) and (max-width: 2559px) {
 }

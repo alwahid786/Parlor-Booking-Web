@@ -18,12 +18,14 @@
 
         </div>
 
-        <div class="row px-xl-5">
-            <div class="col d-flex salon_list-s">
+        <div class="row">
+            <div class="col-3 salon_list-s">
                 @foreach ($allSalons as $salon)
-                    <div class="row px-1 ">
-                        <div class="col">
-                            <div class="card border-0">
+                
+                <!-- Card top image row - START  -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="br_20px-s">
                                 <div class="position-absolute discount_ticket-s">
                                         <img src=" {{ asset('assets/images/home_page_component/absolute_second.svg') }} "class="img-fluid " width="100" alt="...">
                                     @if(isset($salon->offer->discount))
@@ -42,6 +44,8 @@
                                         </div>
                                     @endif
                                 </div>
+                            </div>
+                            <div>
                                 <div class="br_20px-s w_165px-s">
                                     <a href="{{ route('bookingSalon', $salon->uuid) }}">
                                         <img src="{{ asset('assets/images/home_page_component/salon_1.jpg') }}"
@@ -59,11 +63,15 @@
                             </div>
                         </div>
                     </div>
+                <!-- Card top image row - END  -->
+
                 @endforeach
             </div>
 
         </div>
     </div>
+
+    
     <!--Home Bar Page End !-->
 
     <!-- After navBar Third -->

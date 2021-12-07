@@ -1723,7 +1723,7 @@ button {
         width: 555px;
     }
     .after_navBar_bg_main {
-        width: 555px;
+        /* width: 555px; */
     }
     .wellcome_GLITTER_ups {
         padding-top: 100px;
@@ -2045,10 +2045,10 @@ button {
     .second_bottom_home {
         margin-left: 297px;
     }
-    .navbar-toggler-icon {
+    /* .navbar-toggler-icon {
         background: grey;
         margin-left: 700px;
-    }
+    } */
 }
 
 @media (min-width: 1200px) and (max-width: 1439px) {

@@ -4,7 +4,7 @@
 @else
 
 
-<div class="container">
+<div class="container ">
     <div class="wellcome_GLITTER_ups">
         <p>WELLCOME TO</p>
         <h1>Glitter<span class="for_text_yellow_color">UPS</span>
@@ -12,9 +12,9 @@
         <h1 class="for_text_yellow_color">FOR REAL WOMEN'S</h1>
 
         <p class="for_text_dummy">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+        People to look and feel their best – which is why we're trusted by millions of customers and thousands of businesses worldwide
         <br>
-        <span>nonummy nibh euismod</span>
+        <!-- <span>nonummy nibh euismod</span> -->
         </p>
     </div>
 
