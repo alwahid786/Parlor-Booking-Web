@@ -273,7 +273,7 @@ class UserController extends Controller
         if(isset($request->limit))
             $salon->offset($request->offset??0)->limit($request->limit);
 
-        $salon = $salon->with('services')->get();
+        $salon = $salon->with(['services', 'brosche', 'media'])->get();
 
         return SendSuccess('Salons',$salon);
     }

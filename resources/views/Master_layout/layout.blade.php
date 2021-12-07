@@ -79,8 +79,19 @@
             background-position-x: 8px;
             background-image: url("{{ asset('assets/images/home_page_component/location.svg') }}");
             /* margin-left: 10px; */
+       }
+        .br_20px-s{
+            border-radius: 20px
         }
-
+        .h_380px-s{
+            height: 380px;
+        }
+        .object_fit_cover-s{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+      
     </style>
 </head>
 
