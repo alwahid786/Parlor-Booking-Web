@@ -148,6 +148,6 @@
 
         <!--Home Bar Page End !-->
 
-        @include('Modals.salon_services', [$salon ??'']);
+        @include('Modals.salon_services', [$salon ??''])
     </div>
     @endsection
