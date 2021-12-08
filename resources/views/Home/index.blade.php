@@ -8,7 +8,7 @@
 <div class="container-fluid px-5  py-5 bg_grey-s">
     <div class="row px-xl-5">
         <div class="col-lg-10 col-9 text-center">
-            <div class=" for_tap_salon_css ms-5 ps-5">
+            <div class=" for_tap_salon_css ms-sm-5 ps-sm-5">
                 <h1>Top Salon</h1>
                 <hr class="mx-auto fg_mustard-s my-2" width="120">
                 <hr class="mx-auto fg_mustard-s mt-0" width="64">
@@ -78,11 +78,11 @@
 
 
     <!-- After navBar Third -->
-    <div class="container-fluid px-5 mt-3 py-5 bg_grey-s">
+    <div class="container-fluid  mt-3 py-5 bg_grey-s">
 
         <div class="row px-xl-5">
             <div class="col-lg-10 col-9 text-center">
-                <div class=" for_tap_salon_css ms-5 ps-5">
+                <div class=" for_tap_salon_css ms-sm-5 ps-sm-5">
                     <h1> Salon Near by me</h1>
                     <hr class="mx-auto fg_mustard-s my-2" width="120">
                     <hr class="mx-auto fg_mustard-s mt-0" width="64">
@@ -96,7 +96,7 @@
 
         </div>
 
-        <div class="row  px-xl-5 ">
+        <div class="row  ">
             @foreach ($salonsNearByMe as $salon)
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
                 <div class="card border-0 bg_grey-s">
