@@ -44,10 +44,16 @@
                     @endif
                 </div>
                 <div class="br_20px-s overflow-hidden h_380px-s img-hover-zoom">
-                    {{-- <a href="#"> --}}
-                    <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
-                        class="card-img-top  img-fluid object_fit_cover-s" alt="...">
-                    {{-- </a> --}}
+                    @if (isset($salon) && (!empty($salon)))
+                        @if (!empty($salon->brosche))
+                            <img src="{{ asset($salon->brosche[0]->path) }}"
+                            class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                            @else
+
+                            <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
+                            class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                        @endif
+                    @endif
                 </div>
 
 
@@ -114,10 +120,16 @@
                         @endif
                     </div>
                     <div class="br_20px-s overflow-hidden h_380px-s img-hover-zoom">
-                        {{-- <a href="#"> --}}
-                        <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
-                            class="card-img-top  img-fluid object_fit_cover-s" alt="...">
-                        {{-- </a> --}}
+                        @if (isset($salon) && (!empty($salon)))
+                            @if (!empty($salon->brosche))
+                                    <img src="{{ asset($salon->brosche[0]->path) }}"
+                                        class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                                @else
+
+                                <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
+                                    class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                            @endif
+                        @endif
                     </div>
 
 
