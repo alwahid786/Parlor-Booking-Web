@@ -9,33 +9,33 @@
             <span>99 Park Jomblo Street,Panam, Pekanbaru, 28292, Riau</span>
             <div>
                 <span class="for_footer_icon_fb">
-                    <a href="#">
+                    <a href="https://www.facebook.com/">
                         <i class="fa fa-facebook-official" aria-hidden="true"></i>
                     </a>
                     <span>
-                        <a href="#">
+                        <a href="https://www.facebook.com/">
                             <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
                     </span>
 
                     <span>
 
-                        <a href="#">
+                        <a href="https://www.instagram.com/">
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </span>
                     <span>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/">
                             <i class="fa fa-linkedin" aria-hidden="true"></i>
                         </a>
                     </span>
                     <span>
-                        <a href="#">
+                        <a href="https://www.youtube.com/">
                             <i class="fa fa-youtube-play" aria-hidden="true"></i>
                         </a>
                     </span>
                     <span>
-                        <a href="#">
+                        <a href="https://www.google.com/">
                             <i class="fa fa-google" aria-hidden="true"></i>
                         </a>
                     </span>

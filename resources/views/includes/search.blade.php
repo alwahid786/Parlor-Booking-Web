@@ -5,7 +5,7 @@
 
 
 <div class="container ">
-    <div class="wellcome_GLITTER_ups">
+    <div class="wellcome_GLITTER_ups mx-auto">
         <p>WELLCOME TO</p>
         <h1>Glitter<span class="for_text_yellow_color">UPS</span>
         </h1>
@@ -19,9 +19,9 @@
     </div>
 
 
-        <div class="finds_deal_on_parlour">
+        <div class="finds_deal_on_parlour mx-ato ms-0">
             <div class="centered-query">
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="col-lg-10 col-12">
                         <div class="input-group">
                                 <form action="{{ route('search') }}" id="frm_search-d" class="d-flex w-100 br_3px_yellow-s" method="post">

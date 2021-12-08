@@ -119,7 +119,7 @@
         }
 
         .navbar-toggler-icon {
-            background-color: yellow;
+            background-color: rgb(245, 179, 31);
         }
 
         .two {
