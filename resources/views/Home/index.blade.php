@@ -25,45 +25,51 @@
         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
             <div class="card border-0 bg_grey-s">
                 <div class="position-absolute discount_large_ticket-s ">
-                    <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}" class="img-fluid  "
-                        alt="...">
-                    @if(isset($salon->offer->discount))
-                    <div class="position-absolute discount_text-s">
-                        <h6 class="mb-0  text-white">Discount</h6>
-                        <span class=" text-white fs_9px-s">
-                            {{ $salon->offer->discount }}
-                        </span>
-                    </div>
-                    @else
-                    <div class="position-absolute discount_text-s">
-                        <h6 class="mb-0  text-white">Discount</h6>
-                        <span class=" text-white fs_9px-s">
-                            0
-                        </span>
-                    </div>
-                    @endif
+                    <a href="javascript:void(0)">
+                        <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"
+                            class="img-fluid  " alt="...">
+                        @if(isset($salon->offer->discount))
+                        <div class="position-absolute discount_text-s">
+                            <h6 class="mb-0  text-white">Discount</h6>
+                            <span class=" text-white fs_9px-s">
+                                {{ $salon->offer->discount }}
+                            </span>
+                        </div>
+                        @else
+                        <div class="position-absolute discount_text-s">
+                            <h6 class="mb-0  text-white">Discount</h6>
+                            <span class=" text-white fs_9px-s">
+                                0
+                            </span>
+                        </div>
+                        @endif
+                    </a>
                 </div>
                 <div class="br_20px-s overflow-hidden h_380px-s img-hover-zoom">
-                    @if (isset($salon) && (!empty($salon)))
+                    <a href="javascript:void(0)">
+                        @if (isset($salon) && (!empty($salon)))
                         @if (!empty($salon->brosche))
-                            <img src="{{ asset($salon->brosche[0]->path) }}"
+                        <img src="{{ asset($salon->brosche[0]->path) }}"
                             class="card-img-top  img-fluid object_fit_cover-s" alt="...">
-                            @else
+                        @else
 
-                            <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
+                        <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
                             class="card-img-top  img-fluid object_fit_cover-s" alt="...">
                         @endif
-                    @endif
+                        @endif
+                    </a>
                 </div>
 
 
                 <div class="card-body mb-5 p-0 for_card_body_mll">
 
-                    <h6 class="for_glitter_ups_csss mt-2 mb-0">{{ $salon->name ?? '' }}</h6>
-                    <p class="card-text ">
-                        <span><i class="fa fa-map-marker m-0" aria-hidden="true"></i></span>
-                        <span class="css_for_1681_vinee">{{ Str::limit($salon->description, 10, ' ...') }}</span>
-                    </p>
+                    <a href="javascript:void(0)">
+                        <h6 class="for_glitter_ups_csss mt-2 mb-0">{{ $salon->name ?? '' }}</h6>
+                        <p class="card-text ">
+                            <span><i class="fa fa-map-marker m-0" aria-hidden="true"></i></span>
+                            <span class="css_for_1681_vinee">{{ Str::limit($salon->description, 10, ' ...') }}</span>
+                        </p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -101,45 +107,52 @@
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
                 <div class="card border-0 bg_grey-s">
                     <div class="position-absolute discount_large_ticket-s ">
-                        <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"
-                            class="img-fluid  " alt="...">
-                        @if(isset($salon->offer->discount))
-                        <div class="position-absolute discount_text-s">
-                            <h6 class="mb-0  text-white">Discount</h6>
-                            <span class=" text-white fs_9px-s">
-                                {{ $salon->offer->discount }}
-                            </span>
-                        </div>
-                        @else
-                        <div class="position-absolute discount_text-s">
-                            <h6 class="mb-0  text-white">Discount</h6>
-                            <span class=" text-white fs_9px-s">
-                                0
-                            </span>
-                        </div>
-                        @endif
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset('assets/images/home_page_component/absolute_second.svg') }}"
+                                class="img-fluid  " alt="...">
+                            @if(isset($salon->offer->discount))
+                            <div class="position-absolute discount_text-s">
+                                <h6 class="mb-0  text-white">Discount</h6>
+                                <span class=" text-white fs_9px-s">
+                                    {{ $salon->offer->discount }}
+                                </span>
+                            </div>
+                            @else
+                            <div class="position-absolute discount_text-s">
+                                <h6 class="mb-0  text-white">Discount</h6>
+                                <span class=" text-white fs_9px-s">
+                                    0
+                                </span>
+                            </div>
+                            @endif
+                        </a>
                     </div>
                     <div class="br_20px-s overflow-hidden h_380px-s img-hover-zoom">
-                        @if (isset($salon) && (!empty($salon)))
+                        <a href="javascript:void(0)">
+                            @if (isset($salon) && (!empty($salon)))
                             @if (!empty($salon->brosche))
-                                    <img src="{{ asset($salon->brosche[0]->path) }}"
-                                        class="card-img-top  img-fluid object_fit_cover-s" alt="...">
-                                @else
+                            <img src="{{ asset($salon->brosche[0]->path) }}"
+                                class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                            @else
 
-                                <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
-                                    class="card-img-top  img-fluid object_fit_cover-s" alt="...">
+                            <img src="{{ asset('assets/images/home_page_component/placeholder11.svg') }}"
+                                class="card-img-top  img-fluid object_fit_cover-s" alt="...">
                             @endif
-                        @endif
+                            @endif
+                        </a>
                     </div>
 
 
                     <div class="card-body mb-5 p-0 for_card_body_mll">
 
-                        <h6 class="for_glitter_ups_csss mt-2 mb-0">{{ $salon->name ?? '' }}</h6>
-                        <p class="card-text ">
-                            <span><i class="fa fa-map-marker m-0" aria-hidden="true"></i></span>
-                            <span class="css_for_1681_vinee">{{ Str::limit($salon->description, 10, ' ...') }}</span>
-                        </p>
+                        <a href="javascript:void(0)">
+                            <h6 class="for_glitter_ups_csss mt-2 mb-0">{{ $salon->name ?? '' }}</h6>
+                            <p class="card-text ">
+                                <span><i class="fa fa-map-marker m-0" aria-hidden="true"></i></span>
+                                <span
+                                    class="css_for_1681_vinee">{{ Str::limit($salon->description, 10, ' ...') }}</span>
+                            </p>
+                        </a>
                     </div>
                 </div>
             </div>
