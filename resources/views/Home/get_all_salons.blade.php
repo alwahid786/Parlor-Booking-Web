@@ -76,8 +76,6 @@
         @endforeach
     </div>
     </div>
-
-
     <!--Home Bar Page End !-->
 
     <!-- After navBar Third -->
