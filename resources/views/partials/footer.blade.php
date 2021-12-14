@@ -5,22 +5,22 @@
 
             <img src="{{ asset('assets/images/footer/logo_for_footer.svg') }}" class="img-fluid">
             <p>info@yoursite.com</p>
-            <h2>(123) 654-123 987</h2>
-            <span>99 Park Jomblo Street,Panam, Pekanbaru, 28292, Riau</span>
+            <h2>03338888890</h2>
+            <span>M/40-E, Bank Road, Saddar, Rawalpindi</span>
             <div>
                 <span class="for_footer_icon_fb">
-                    <a href="https://www.facebook.com/">
+                    <a href="https://www.facebook.com/Glitterups/">
                         <i class="fa fa-facebook-official" aria-hidden="true"></i>
                     </a>
                     <span>
-                        <a href="https://www.facebook.com/">
+                        <a href="https://twitter.com/">
                             <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
                     </span>
 
                     <span>
 
-                        <a href="https://www.instagram.com/">
+                        <a href="https://www.instagram.com/glitterups/">
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </span>
