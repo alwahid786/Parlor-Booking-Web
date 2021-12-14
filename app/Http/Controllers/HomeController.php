@@ -38,7 +38,7 @@ class HomeController extends Controller
             // dd($request->all());
             $salonCntrl = $this->salonApiCntrl;
             // $apiResponse1 = $salonCntrl->getSalon($request)->getData();
-            $apiResponse1 = $salonCntrl->getSalon($request);
+            $apiResponse1 = $salonCntrl->getAllSalon($request);
             // dd($apiResponse1);
             
             return sendSuccess('Salon near by list',$apiResponse1);
