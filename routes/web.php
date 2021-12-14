@@ -20,6 +20,7 @@ use App\Http\Controllers\CmsController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');
 
 Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
 

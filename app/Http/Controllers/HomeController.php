@@ -37,28 +37,41 @@ class HomeController extends Controller
             ]);
             // dd($request->all());
             $salonCntrl = $this->salonApiCntrl;
-            $apiResponse1 = $salonCntrl->getSalon($request)->getData();
+            // $apiResponse1 = $salonCntrl->getSalon($request)->getData();
+            $apiResponse1 = $salonCntrl->getSalon($request);
+            // dd($apiResponse1);
+            
+            return sendSuccess('Salon near by list',$apiResponse1);
+            // return view('index', ['salonsNearByMe',$apiResponse1->data, 'book_salon' => 0]);
+            //return view('Home.index', ['salonsNearByMe'=>$apiResponse1 , 'book_salon' => 0]);
+            // return \Response::json( $apiResponse1 );
         }
+
         $salonCntrl = $this->salonApiCntrl;
         $request->merge([
             'popular' => '1'
         ]);
 
 
-        // dd($apiResponse1);
-
+        
         $apiResponse2 = $salonCntrl->getSalon($request)->getData();
-        if($apiResponse1->status ?? true || $apiResponse2->status)
+        // dd($apiResponse1);
+        // dd($apiResponse1, $apiResponse2);
+
+        
+        // if($apiResponse1->status ?? true || $apiResponse2->status)
+        if( $apiResponse2->status)
         {
-            $salonsNearByMe = $apiResponse1->data ?? null;
-            if(null == $salonsNearByMe)
-            {
-                $salonsNearByMe = $apiResponse2->data;
-            }
+            // $salonsNearByMe = $apiResponse1->data ?? null;
+            // if(null == $salonsNearByMe)
+            // {
+            //     $salonsNearByMe = $apiResponse2->data;
+            // }
             $allSalons = $apiResponse2->data;
+            // dd($allSalons);
 
             // dd($allSalons, $salonsNearByMe);
-            return view('Home.index', ['allSalons'=>$allSalons, 'salonsNearByMe'=>$salonsNearByMe , 'book_salon' => 0]);
+            return view('Home.index', ['allSalons'=>$allSalons, 'book_salon' => 0]);
         }
 
 
@@ -71,6 +84,10 @@ class HomeController extends Controller
 
     //     return view('Home.index');
 
+    }
+
+    public function getNearbySaloons(Request $request){
+        return view('Home.index', ['salonsNearByMe'=>$request , 'book_salon' => 0]);
     }
 
 

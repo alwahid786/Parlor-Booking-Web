@@ -18,23 +18,24 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
-	private $userService;
+    private $userService;
 
-	public function __construct(UserService $userService)
-	{
-		$this->userService = $userService;
-	}
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
-    public function updateUser(Request $request){
+    public function updateUser(Request $request)
+    {
 
-    	$validator = Validator::make($request->all(), [
-    		'user_uuid' => 'required|exists:users,uuid',
-    		'address' => 'string|required_if:lat,null',
-    		'lat' => 'numeric|required_if:address,null',
-    		'long' => 'numeric|required_if:address,null',
-    		'start_time' => 'date_format:H:i',
-    		'end_time' => 'date_format:H:i|after:start_time',
-    		'description' => 'string',
+        $validator = Validator::make($request->all(), [
+            'user_uuid' => 'required|exists:users,uuid',
+            'address' => 'string|required_if:lat,null',
+            'lat' => 'numeric|required_if:address,null',
+            'long' => 'numeric|required_if:address,null',
+            'start_time' => 'date_format:H:i',
+            'end_time' => 'date_format:H:i|after:start_time',
+            'description' => 'string',
             'media' => 'image',
             'brosche*' => 'image',
             'gender' => 'in:male,female,both',
@@ -49,31 +50,31 @@ class UserController extends Controller
 
 
         $user = User::where('uuid', $request->user_uuid)->first();
-        if(!$user)
-            return sendError("user Not Found",[]);
+        if (!$user)
+            return sendError("user Not Found", []);
 
         DB::beginTransaction();
         try {
 
-	        if('user'== $user->type)
-	        	$user->name = $request->name??$user->name;
-	        else{
-                $user->gender = $request->gender??$user->gender;
-	        	$user->name = $request->name??$user->name;
-	        	$user->address = $request->address??$user->address;
-	        	$user->lat = $request->lat??$user->lat;
-	        	$user->long = $request->long??$user->long;
-	        	$user->start_time = $request->start_time??$user->start_time??'09:00';
-	        	$user->end_time = $request->end_time??$user->end_time??'15:00';
-	        	$user->description = $request->description??$user->description;
+            if ('user' == $user->type)
+                $user->name = $request->name ?? $user->name;
+            else {
+                $user->gender = $request->gender ?? $user->gender;
+                $user->name = $request->name ?? $user->name;
+                $user->address = $request->address ?? $user->address;
+                $user->lat = $request->lat ?? $user->lat;
+                $user->long = $request->long ?? $user->long;
+                $user->start_time = $request->start_time ?? $user->start_time ?? '09:00';
+                $user->end_time = $request->end_time ?? $user->end_time ?? '15:00';
+                $user->description = $request->description ?? $user->description;
 
-                if(isset($request->brosche)){
-                    $result = $this->uploadMedias($request,'brosche','brosche',True);
-                    if(!$result['status'])
-                        return sendError($result['message'] ,$result['data']);
+                if (isset($request->brosche)) {
+                    $result = $this->uploadMedias($request, 'brosche', 'brosche', True);
+                    if (!$result['status'])
+                        return sendError($result['message'], $result['data']);
 
                     $brosches_data = $result['data'];
-                    foreach($brosches_data as $media_data){
+                    foreach ($brosches_data as $media_data) {
                         $media = new Brosche;
                         $media->user_id =  $user->id;
                         $media->uuid = str::uuid();
@@ -84,21 +85,21 @@ class UserController extends Controller
                         $media->media_type = $media_data['type'];
                         $media->media_ratio = $media_data['ratio'];
                         $media->media_thumbnail   = $media_data['thumbnail'];
-                        if(!$media->save()){
+                        if (!$media->save()) {
 
                             DB::rollBack();
-                            return sendError('Internal Server Error,Media not saved',[]);
+                            return sendError('Internal Server Error,Media not saved', []);
                         }
                     }
                 }
-                if(isset($request->days)){
+                if (isset($request->days)) {
                     $days = array_unique(json_decode($request->days));
-                    $database_days =  Day::where('salon_id',$user->id)->pluck('day')->toArray();
-                    $days_to_add = array_diff($days,$database_days);
-                    $days_to_delete = array_diff($database_days,$days);
+                    $database_days =  Day::where('salon_id', $user->id)->pluck('day')->toArray();
+                    $days_to_add = array_diff($days, $database_days);
+                    $days_to_delete = array_diff($database_days, $days);
 
-                    foreach($days_to_delete as $day){
-                        $day_to_delete = Day::where('salon_id',$user->id)->where('day',$day)->delete();
+                    foreach ($days_to_delete as $day) {
+                        $day_to_delete = Day::where('salon_id', $user->id)->where('day', $day)->delete();
                     }
                     foreach ($days_to_add as $day) {
                         $day_obj = new Day;
@@ -108,17 +109,17 @@ class UserController extends Controller
                         $day_obj->save();
                     }
                 }
-	        }
-            if(isset($request->media)){
+            }
+            if (isset($request->media)) {
                 $result = $this->uploadMedias($request);
-                if(!$result['status'])
-                    return sendError($result['message'] ,$result['data']);
+                if (!$result['status'])
+                    return sendError($result['message'], $result['data']);
 
                 $medias_data = $result['data'];
-                foreach($medias_data as $media_data){
-                    $media = Media::where('user_id',$user->id)->first();
-                    if(null != $media){
-                        unlink(public_path().'/'.$media->path);
+                foreach ($medias_data as $media_data) {
+                    $media = Media::where('user_id', $user->id)->first();
+                    if (null != $media) {
+                        unlink(public_path() . '/' . $media->path);
                         $media->delete();
                     }
                     $media = new Media;
@@ -132,46 +133,45 @@ class UserController extends Controller
                     $media->media_type = $media_data['type'];
                     $media->media_ratio = $media_data['ratio'];
                     $media->media_thumbnail   = $media_data['thumbnail'];
-                    if(!$media->save()){
+                    if (!$media->save()) {
 
                         DB::rollBack();
-                        return sendError('Internal Server Error,Media not saved',[]);
+                        return sendError('Internal Server Error,Media not saved', []);
                     }
                 }
             }
 
-	        $user->save();
-	        if(!$user->save()){
+            $user->save();
+            if (!$user->save()) {
 
-	    		DB::rollBack();
-	        	return sendError("Internal Server Error",[]);
-	        }
-
-        	DB::commit();
-	        $data['user'] = $user;
-            unset($data['user']['media']);
-            $data['user']['media'] = $user->media??NULL;
-            if('salon'== $user->type){
-                unset($data['user']['brosche']);
-                unset($data['user']['days']);
-                $data['user']['brosche'] = $user->brosche??NULL;
-                $data['user']['days'] = $user->days??Null;
+                DB::rollBack();
+                return sendError("Internal Server Error", []);
             }
 
-        	return sendSuccess('User updated',$data);
+            DB::commit();
+            $data['user'] = $user;
+            unset($data['user']['media']);
+            $data['user']['media'] = $user->media ?? NULL;
+            if ('salon' == $user->type) {
+                unset($data['user']['brosche']);
+                unset($data['user']['days']);
+                $data['user']['brosche'] = $user->brosche ?? NULL;
+                $data['user']['days'] = $user->days ?? Null;
+            }
 
-	    }
-	    catch (Exception $e) {
-	    	DB::rollBack();
-	        return sendError($e->getMessage(), $e->getTrace());
-	    }
+            return sendSuccess('User updated', $data);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return sendError($e->getMessage(), $e->getTrace());
+        }
     }
 
-    public function deleteProfile(Request $request){
+    public function deleteProfile(Request $request)
+    {
 
-    	$validator = Validator::make($request->all(), [
-    		'user_uuid' => 'required_without:profile_uuid|exists:users,uuid',
-    		'profile_uuid' => 'required_without:user_uuid|exists:profiles,uuid',
+        $validator = Validator::make($request->all(), [
+            'user_uuid' => 'required_without:profile_uuid|exists:users,uuid',
+            'profile_uuid' => 'required_without:user_uuid|exists:profiles,uuid',
         ]);
 
         if ($validator->fails()) {
@@ -181,38 +181,38 @@ class UserController extends Controller
         }
 
 
-    	DB::beginTransaction();
-    	try{
-    		if(isset($request->profile_uuid)){
+        DB::beginTransaction();
+        try {
+            if (isset($request->profile_uuid)) {
 
-    			$profile = Profile::where('uuid',$request->profile_uuid)->where('type','salon')->first();
+                $profile = Profile::where('uuid', $request->profile_uuid)->where('type', 'salon')->first();
 
-        		if(null == $profile)
-        			return sendError('Profile not found',[]);
+                if (null == $profile)
+                    return sendError('Profile not found', []);
 
-				$profile->delete();
-    		}
-    		if(isset($request->user_uuid)){
+                $profile->delete();
+            }
+            if (isset($request->user_uuid)) {
 
-    			$user = User::where('uuid',$request->user_uuid)->first();
+                $user = User::where('uuid', $request->user_uuid)->first();
 
-        		if(null == $user)
-        			return sendError('User not found',[]);
+                if (null == $user)
+                    return sendError('User not found', []);
 
-				$profile = Profile::where('user_id',$user->id)->delete();
-				$user->delete();
-    		}
+                $profile = Profile::where('user_id', $user->id)->delete();
+                $user->delete();
+            }
 
-    		DB::commit();
-    		return sendSuccess('Deleted profile',[]);
-    	}
-    	catch (Exception $e){
-    		DB::rollBack();
-        	return sendError($e->getMessage(), $e->getTrace());
-    	}
+            DB::commit();
+            return sendSuccess('Deleted profile', []);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return sendError($e->getMessage(), $e->getTrace());
+        }
     }
 
-    public function getUser(Request $request){
+    public function getUser(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'user_uuid' => 'required|exists:users,uuid',
         ]);
@@ -223,14 +223,15 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $user = User::where('uuid',$request->user_uuid??$request->user()->uuid)
-            ->with(['media','days','services','brosche'])->first();
+        $user = User::where('uuid', $request->user_uuid ?? $request->user()->uuid)
+            ->with(['media', 'days', 'services', 'brosche'])->first();
 
-        return sendSuccess('User Data',$user);
+        return sendSuccess('User Data', $user);
     }
 
-    public Function getSalon(Request $request){
-
+    public function getSalon(Request $request)
+    {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
 
             'keywords' => 'string',
@@ -246,39 +247,72 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $salon = User::where('type','salon')->where('name', '<>', '');
+        $salon = User::where('type', 'salon')->where('name', '<>', '');
 
-        if(isset($request->gender))
-            $salon = $salon->where(function($q) use ($request){
-                $q->where('gender',$request->gender)->orWhere('gender','both');
+        if (isset($request->gender))
+            $salon = $salon->where(function ($q) use ($request) {
+                $q->where('gender', $request->gender)->orWhere('gender', 'both');
             });
 
-        if(isset($request->lat) && isset($request->long)){
-            $salon = $salon->Raw("SELECT *,
-              (
-                (
-                  ACOS(
-                    SIN(? * PI() / 180) * SIN(latitude * PI() / 180) + COS(? * PI() / 180) * COS(latitude * PI() / 180) * COS((? - longitude) * PI() / 180)
-                  ) * 180 / PI()
-                ) * 60 * 1.1515 * 1.609344
-              ) as distance HAVING distance <= ? ",[$request->lat,$request->lat,$request->long]);
+        if (isset($request->lat) && isset($request->long)) {
+            // dd($request->lat, $request->long, "123123");
+            // dd($request->all(), "343434");
+            // $salon = $salon->Raw("SELECT *,
+            //   (
+            //     (
+            //       ACOS(
+            //         SIN(? * PI() / 180) * SIN(latitude * PI() / 180) + COS(? * PI() / 180) * COS(latitude * PI() / 180) * COS((? - longitude) * PI() / 180)
+            //       ) * 180 / PI()
+            //     ) * 60 * 1.1515 * 1.609344
+            //   ) as distance HAVING distance <= ? ", [$request->lat, $request->lat, $request->long]);
+
+            // dd($request->all());
+            DB::connection()->enableQueryLog();
+            // SELECT  users.*,brosches.*,media.* ,
+            
+            $salonQuery =  \DB::raw("
+                SELECT  users.name AS salon_name ,users.address AS user_address,brosches.path AS brosches_path, offers.discount AS offer_discount,
+                    SQRT(
+                        POW(69.1 * (lat - '$request->lat'), 2) + 
+                        POW(69.1 * ('$request->long' - `long`) * COS(lat / 57.3),2)) AS distance
+                    FROM
+                        users
+                    INNER JOIN 
+                        brosches ON brosches.user_id = users.id
+                    INNER JOIN 
+                        media ON media.user_id = users.id
+                    LEFT JOIN
+                        offers ON offers.salon_id  = users.id
+                    HAVING
+                        distance < 5");
+
+                        
+            $salon =  DB::select($salonQuery);
+            $queries = DB::getQueryLog();
+
+            // dd($salon,$queries);
+             return $salon;
+            // $find_restaurants = restaurants::whereIn('id', $rest_ids)->with('address')->get();
+
+
         }
 
-        if(isset($request->keywords) || isset($request->address))
+        if (isset($request->keywords) || isset($request->address))
             $salon->where('name', 'LIKE', "%{$request->keywords}%")->orWhere('address', 'LIKE', "%{$request->address}%");
 
-        if(isset($request->popular))
+        if (isset($request->popular))
             $salons = $salon->withCount('appointments')->orderBy('appointments_count', 'DESC');
 
-        if(isset($request->limit))
-            $salon->offset($request->offset??0)->limit($request->limit);
+        if (isset($request->limit))
+            $salon->offset($request->offset ?? 0)->limit($request->limit);
 
         $salon = $salon->with(['services', 'brosche', 'media'])->get();
-
-        return SendSuccess('Salons',$salon);
+        // dd($salon);
+        return SendSuccess('Salons', $salon);
     }
 
-    public function uploadBrosche(Request $request){
+    public function uploadBrosche(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'salon_uuid' => 'required|exists:users,uuid',
@@ -290,16 +324,16 @@ class UserController extends Controller
         }
 
         $result = $this->userService->checkSalon($request);
-        if(!$result['status'])
-            return sendError($result['message'] ,$result['data']);
+        if (!$result['status'])
+            return sendError($result['message'], $result['data']);
         $salon = $result['data'];
 
-        $result = $this->uploadMedias($request,'brosche','brosche',True);
-        if(!$result['status'])
-            return sendError($result['message'] ,$result['data']);
+        $result = $this->uploadMedias($request, 'brosche', 'brosche', True);
+        if (!$result['status'])
+            return sendError($result['message'], $result['data']);
 
         $brosches_data = $result['data'];
-        foreach($brosches_data as $media_data){
+        foreach ($brosches_data as $media_data) {
             $media = new Brosche;
             $media->user_id =  $salon->id;
             $media->uuid = str::uuid();
@@ -310,19 +344,20 @@ class UserController extends Controller
             $media->media_type = $media_data['type'];
             $media->media_ratio = $media_data['ratio'];
             $media->media_thumbnail   = $media_data['thumbnail'];
-            if(!$media->save()){
+            if (!$media->save()) {
 
                 DB::rollBack();
-                return sendError('Internal Server Error,Media not saved',[]);
+                return sendError('Internal Server Error,Media not saved', []);
             }
         }
 
         $data['salon'] = $salon;
         $data['salon']['brosche'] = $salon->brosche;
-        return sendSuccess('Brosche Uploaded',$data);
+        return sendSuccess('Brosche Uploaded', $data);
     }
 
-    public function deleteBrosche(Request $request){
+    public function deleteBrosche(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'brosche_uuid' => 'string|required|exists:brosches,uuid',
         ]);
@@ -332,19 +367,20 @@ class UserController extends Controller
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        $brosche = Brosche::where('uuid',$request->brosche_uuid)->first();
+        $brosche = Brosche::where('uuid', $request->brosche_uuid)->first();
 
-        unlink(public_path().'/'.$brosche->path);
+        unlink(public_path() . '/' . $brosche->path);
         $brosche = $brosche->delete();
 
-        return sendSuccess('Deleted',$brosche);
+        return sendSuccess('Deleted', $brosche);
     }
 
-    public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false){
+    public function uploadMedias(Request $request, $fieldName = 'media', $nature = 'profile_image', $multiple = false)
+    {
         $uploadedFiles = [];
-        if($multiple){
+        if ($multiple) {
 
-            if($request->hasFile($fieldName)){
+            if ($request->hasFile($fieldName)) {
 
                 foreach ($request->file($fieldName) as $media) {
                     $file = $media;
@@ -357,25 +393,25 @@ class UserController extends Controller
                     if (in_array($file_extension, $allowedFilesExtensions)) {
                         $temp['title'] = $file->getClientOriginalName();
                         $temp['tag'] = $nature;
-                        $temp['type'] = (in_array($file_extension, $doc_xtensions))? 'pdf' : 'image';
+                        $temp['type'] = (in_array($file_extension, $doc_xtensions)) ? 'pdf' : 'image';
 
                         $targetName = $nature . rand(1000, 9999) . '.' . $file_extension;
                         $temp['filename'] = $targetName;
 
                         // upoad file on server
                         $file->move(getUploadDir($nature), $targetName);
-                        $targetPath = getUploadDir($nature).$targetName;
-                        $temp['path'] = 'uploads/'.$nature .'/'.$targetName;
+                        $targetPath = getUploadDir($nature) . $targetName;
+                        $temp['path'] = 'uploads/' . $nature . '/' . $targetName;
 
                         if (in_array($file_extension, $doc_xtensions)) {
                             $temp['ratio'] = 1;
-                        }else{
+                        } else {
                             $imageSize = getimagesize($targetPath);
                             $temp['ratio'] = $imageSize[0] / $imageSize[1];
                         }
 
                         // generate thumbnail
-                        $thumbnailFilename = $nature.'_thumbnail_' . rand(10, 999999) . '.png';
+                        $thumbnailFilename = $nature . '_thumbnail_' . rand(10, 999999) . '.png';
                         // dd($targetPath);
                         // $contents = \FFMpeg::openUrl($targetPath)
                         // ->export()
@@ -388,15 +424,15 @@ class UserController extends Controller
                         // $temp['thumbnail'] = getUploadDir($nature, true) . $thumbnailFilename;
                         $temp['thumbnail'] = $temp['path'];
                         $uploadedFiles[] = array_merge($uploadedFiles, $temp);
-                    }else{
+                    } else {
 
                         return internalError('File Extension is not supported.', null);
                     }
                 }
-            }else{
+            } else {
                 return internalError('Please provide files.', null);
             }
-        }else{
+        } else {
             $file = $request->file($fieldName);
 
             $video_xtensions = ['flv', 'mp4', 'mpeg', 'mkv', 'avi'];
@@ -417,10 +453,10 @@ class UserController extends Controller
                 // upoad file on server
                 $file->move(getUploadDir($nature), $targetName);
                 $targetPath = getUploadDir($nature) . $targetName;
-                $temp['path'] = 'uploads/'. $nature . '/' . $targetName;
-                if(false == getimagesize($targetPath)){
+                $temp['path'] = 'uploads/' . $nature . '/' . $targetName;
+                if (false == getimagesize($targetPath)) {
                     $temp['ratio'] = 1;
-                }else{
+                } else {
                     $imageSize = getimagesize($targetPath);
                     $temp['ratio'] = $imageSize[0] / $imageSize[1];
                 }
@@ -446,5 +482,4 @@ class UserController extends Controller
 
         return internalSuccess('Success.', $uploadedFiles);
     }
-
 }
