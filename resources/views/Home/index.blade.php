@@ -162,7 +162,9 @@
                     </div>
                 @endforeach
             @endif --}}
-            <h4 class="text-center message_d">No Near By Saloon Found</h4>
+            <div class=" my-5">
+                <h6 class="text-center message_d ">No Nearby Saloon Found</h6>
+            </div>        
         </div>
         @if (isset($salon))
             @include('Modals.salon_services', [$salon ?? ''])
