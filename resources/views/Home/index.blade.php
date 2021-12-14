@@ -162,6 +162,7 @@
                     </div>
                 @endforeach
             @endif --}}
+            <h4 class="text-center message_d">No Near By Saloon Found</h4>
         </div>
         @if (isset($salon))
             @include('Modals.salon_services', [$salon ?? ''])
@@ -210,7 +211,7 @@
                         },
                         dataType: 'json',
                         success: function(response) {
-                            if(response){
+                            if(response.status == true){
                                 // debugger
                                 
                                 console.log(response);
@@ -275,12 +276,14 @@
                                         $("#nearBySaloon").append(div);
 
                                 })
+
+                                $(".message_d").addClass('d-none');
                                 // console.log(JSON.stringify(response));
 
 
                                 // debugger;
                             }
-                            return false;
+                            
                         }
                     })
                 }
