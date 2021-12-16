@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthWebController;
 use App\Http\Controllers\SaloonDashboardController;
 use App\Http\Controllers\UserAppointmentController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CmsController;
 
 /*
@@ -19,10 +20,22 @@ use App\Http\Controllers\CmsController;
 |
 */
 
-Route::get('admin/index', function(){
-    // return"true";
-    return view('Admin.index');
+
+
+Route::prefix('admin')->group(function () {
+    
+    Route::get('admin/index', function(){
+        // return"true";
+        return view('Admin.index');
+    });
+    Route::get('/show', [AdminController::class, 'show'])->name('show');
+    Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
+
+
 });
+
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');

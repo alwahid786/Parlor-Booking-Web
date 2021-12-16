@@ -35,7 +35,7 @@
  @include('Admin._partials.sidebar')
  
 
- <div class="content-wrapper">
+ <div class="content-wrapper" style="height:fit-content;">
   @yield('body-content')
  </div>
     
