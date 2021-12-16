@@ -19,6 +19,11 @@ use App\Http\Controllers\CmsController;
 |
 */
 
+Route::get('admin/index', function(){
+    // return"true";
+    return view('Admin.index');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');
 
