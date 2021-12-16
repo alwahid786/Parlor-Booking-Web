@@ -214,7 +214,6 @@ $(function(event) {
                             let service = $(".service-d").val();
                             console.log('service: ', service);
 
-                            // return false;
                             // window.location.href = verify_account_page_link + '?email=' + response.data.user.email;
                             if (type == 'salon') {
                                 console.log('salon')

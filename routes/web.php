@@ -24,15 +24,19 @@ use App\Http\Controllers\CmsController;
 
 Route::prefix('admin')->group(function () {
     
-    Route::get('admin/index', function(){
-        // return"true";
-        return view('Admin.index');
-    });
+    // Route::get('admin/index', function(){
+    //     // return"true";
+    //     return view('Admin.index');
+    // });
     Route::get('/show', [AdminController::class, 'show'])->name('show');
     Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
 
 
 });
+// Route::get('admin/index', function(){
+//     // return"true";
+//     return view('Admin.index');
+// })->name('adminIndex');
 
 
 
@@ -79,6 +83,11 @@ Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name(
 
 
 Route::group(['middleware' => 'guest'],function () {
+
+    //admin_route
+        Route::any('/admin/signin', [AuthWebController::class, 'adminLogin'])->name('adminLogin');
+
+
 
         Route::any('/signin', [AuthWebController::class, 'login'])->name('weblogin');
 
