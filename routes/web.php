@@ -22,17 +22,11 @@ use App\Http\Controllers\CmsController;
 
 
 
-Route::prefix('admin')->group(function () {
-    
+
     // Route::get('admin/index', function(){
     //     // return"true";
     //     return view('Admin.index');
     // });
-    Route::get('/show', [AdminController::class, 'show'])->name('show');
-    Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
-
-
-});
 // Route::get('admin/index', function(){
 //     // return"true";
 //     return view('Admin.index');
@@ -122,6 +116,17 @@ Route::group(['middleware' => 'guest'],function () {
 
 Route::group(['middleware' => 'auth'],function () {
     // Route::group(['prefix' => 'auth'], function () {
+
+  
+            Route::prefix('admin')->group(function () {
+
+
+            Route::get('/show', [AdminController::class, 'show'])->name('show');
+            Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
+
+
+            });
+
 
         Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
         Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
