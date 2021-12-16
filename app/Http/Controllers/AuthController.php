@@ -28,7 +28,7 @@ class AuthController extends Controller
             'phone_number' => 'required_without:email',
             'phone_code' => 'required_without:email',
             'password' => 'required',
-            'type' => 'required|in:salon,user',
+            'type' => 'required|in:salon,user,admin',
         ]);
 
         if ($validator->fails()) {
@@ -43,6 +43,9 @@ class AuthController extends Controller
         //     return sendError('Invalid Login',[]);
 
         $login_type = 'email';
+
+        // dd($check);
+
 
         if(!$check){
             $check = User::whereRaw("CONCAT(phone_code, phone_number) = ?", [$request->phone_code.$request->phone_number])->first();
@@ -101,7 +104,9 @@ class AuthController extends Controller
             return sendError('User Not Verified. Verification code sent to linked Email.', $data);
         }
         if(Auth::attempt($credentials)){
+        // dd($check, "12312");
             $user = $request->user();
+            // dd($user);
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->token;
 
