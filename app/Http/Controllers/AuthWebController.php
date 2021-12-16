@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class AuthWebController extends Controller
 {
@@ -38,6 +39,58 @@ class AuthWebController extends Controller
         }
 
     }
+
+    //admin login
+    public function adminLogin(Request $request)
+    {
+
+        if ($request->getMethod() == 'GET') {
+            return view('Admin.login');
+        } else {
+            // dd($request->all());
+
+            $validator = Validator::make($request->all(), [
+                'email' => 'required_without:phone_number|string|email|exists:users,email',
+                // 'phone_number' => 'required_without:email',
+                // 'phone_code' => 'required_without:email',
+                'password' => 'required',
+                'type' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                $data['validation_error'] = $validator->getMessageBag();
+                return sendError($validator->errors()->all()[0], $data);
+            }
+
+            // dd($request->all());
+            $credentials = $request->only('email', 'password');
+            if(Auth::attempt($credentials))
+            {
+                // dd($credentials, "asdasd");
+                $user = $request->user();
+
+                // dd($user);
+
+                if ($user->type == $request->type) {
+                    return sendSuccess('Login Done Successfully', $user);
+                }
+            }
+            else {
+                return sendError('invalid email or password', []);
+            }
+
+
+            // $authCntrl = $this->authApiCntrl;
+            // $apiResponse = $authCntrl->login($request)->getData();
+            // dd($apiResponse);
+            // if ($apiResponse->status) {
+            //     return sendSuccess('Logged In successfully', $apiResponse->data);
+            // }
+            // return sendError('Invalid Email or Password', []);
+        }
+    }
+
+
     public function create(Request $request)
     {
         // dd($request->all());
