@@ -36,7 +36,7 @@ class CreateUsersTable extends Migration
 
             $table->enum('type', ['user','salon','admin'])->nullable();
 
-            $table->enum('status', ['pending','accepted','rejected'])->nullable();
+            $table->enum('status', ['pending','accepted','rejected'])->default('pending');
             
             //only for salon
             $table->text('description')->nullable();
