@@ -43,6 +43,7 @@
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Type</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Address</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Created</th>
+                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Discount</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Status</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Action</th>
                     </tr>
@@ -58,6 +59,9 @@
                         <td>{{$salon->type}}</td>
                         <td>{{$salon->address}}</td>
                         <td>{{$salon->created_at}}</td>
+                        <td>
+                          <div class="btn btn-primary discount" data-toggle="modal" data-target="#exampleModal" id="{{$salon->id}}">Discount</div>
+                        </td>
                         @if($salon->status == 'accepted')
                         <td>
                           <span class="btn btn-info success" style="color:aliceblue">{{$salon->status}}</span>
@@ -71,22 +75,16 @@
                           <span class="btn btn-warning waiting" style="color:aliceblue">{{$salon->status}}</span>
                         </td>
                         @endif
-
-                        {{-- <td>
-                          <span class="btn btn-info success d-none" style="color:aliceblue"></span>
-                        </td> --}}
-
-
                         @if($salon->status == 'pending')
                         <td class="action">
                           <div class="d-flex">
-                            <span class="btn btn-info accepted" id="{{$salon->id}}" value="accepted" }}>Accepted</span>                                
-                            <span class="btn btn-danger rejected" id="{{$salon->id}}" value="rejected" data-src={{$salon->id}}>Rejected</span>      
+                            <span class="btn btn-info accepted" id="{{$salon->id}}" value="accepted" }}>accepted</span>                                
+                            <span class="btn btn-danger rejected" id="{{$salon->id}}" value="rejected" data-src={{$salon->id}}>rejected</span>      
                           </div>
                         </td>
-                        @else
+                        @else 
                           <td></td>
-                        @endif
+                         @endif
                       </tr>
                     @endforeach
                    
@@ -102,142 +100,111 @@
           <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-      </section>    
-
-
+      </section>   
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Enter Discount</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Enter Discount:</label>
+                      <input  type="number" min="0" max="99" class="form-control" id="discount-amount">
+                    </div>
+                    
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary submit-discount" data-dismiss="modal" id="submit-discount">Submit</button>
+                </div>
+              </div>
+            </div>
+        </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        
+  
         let public_path = "{{config('app.url').'/public/'}}";
 
 
         $(document).ready(function() {
           
           $('span.accepted,span.rejected').click(function(){
+            
             var status = $(this).attr('value');
             var statusId = $(this).attr('id');
             var statusAccepted;
             var statusRejected;
             console.log(status,statusId);
             $.ajax({
-                        url: '{{ route('salonStatus') }}',
-                        method: 'GET',
-                        type: 'GET',
-                        success:'success',
-                        data: {
-                            status: status,
-                            statusId: statusId
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                          if(response.status ==  'accepted'){
-                            statusAccepted = response.status;
-                            $(this).parents().find(".action").addClass("d-none")
-                            $(this).parents().find(".waiting").addClass("d-none")
-                            $(this).parents().find(".success").text(statusAccepted)
-                            console.log( $(this).parent().parent().parent().find(".action"), "34e343");
-                            console.log(statusAccepted );
+                url: '{{ route('salonStatus') }}',
+                method: 'GET',
+                type: 'GET',
+                success:'success',
+                data:{
+                      status: status,
+                      statusId: statusId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                      if(response.status ==  'accepted'){
+                        statusAccepted = response.status;                
+                        console.log(statusAccepted );
+                      }
+                      if(response.status ==  'rejected'){
+                        statusRejected = response.status;
+                        // $(".action").addClass("d-none");
+                        console.log(statusRejected );
+                      }
+                    }
 
-                          }
-                          if(response.status ==  'rejected'){
-                            statusRejected = response.status;
-
-                            console.log(statusRejected );
-                          }
-                        }
-
-
-                      });
-          });
-
-          // let accepted = document.getElementsByTagName('span').getAttribute('value');
-          let accepted = $('#accepted').html();
-
-          console.log(accepted);
-          // debugger
-          // let accepted = $("span.accepted").attr('id');
-          // let rejected = $("span.rejected").attr('id');
-
-          // if(accepted && rejected){
-          //   alert(accepted,rejected);
-          // debugger;
-          // }
-
-          // let accepted = $("#accepted").val();
-          // let rejected = $("#rejected").val();
-
-                if (null != lat && null != long) {
-                    $.ajax({
-                        url: '{{ route('home') }}',
-                        method: 'GET',
-                        type: 'GET',
-                        success:'success',
-                        data: {
-                            lat: lat,
-                            long: long
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            if(response.status == true){
-
-                                var new_data = new Array();
-                                new_data = response.data;
-                                console.log(new_data);
-
-                                $(new_data).each(function(i,e){
-
-                                    let salon_name = e.salon_name;
-                                    let user_address = e.user_address;
-                                    let offer_discount = e.offer_discount;
-
-                                  let td1 = ``
-
-                                    let div = `
-                                                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
-                                                    <div class="card border-0 bg_grey-s">
-                                                        <div class="position-absolute discount_large_ticket-s ">
-                                                            <img src=${public_path}assets/images/home_page_component/absolute_second.svg 
-                                                                class="img-fluid  " alt="...">
-                                                                <div class="position-absolute discount_text-s">
-                                                                    <h6 class="mb-0  text-white">Discount</h6>
-                                                                    <span class=" text-white fs_9px-s">
-                                                                        ${offer_discount}
-                                                                    </span>
-                                                                </div>
-                                                        </div>
-                                                        <div class="br_20px-s overflow-hidden h_380px-s img-hover-zoom">
-                                                            <img src="${public_path}${brosches_path}"
-                                                                class="card-img-top  img-fluid object_fit_cover-s" alt="...">
-                                                        </div>
-
-
-                                                        <div class="card-body mb-5 p-0 for_card_body_mll">
-
-                                                            <h6 class="for_glitter_ups_csss mt-2 mb-0">${salon_name}</h6>
-                                                            <p class="card-text ">
-                                                                <span><i class="fa fa-map-marker m-0" aria-hidden="true"></i></span>
-                                                                <span class="css_for_1681_vinee">${user_address}</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                `
-                                        $("#nearBySaloon").append(div);
-
-                                })
-
-                                $(".message_d").addClass('d-none');
-                                // console.log(JSON.stringify(response));
-
-
-                                // debugger;
-                            }
-                            
-                        }
-                    })
+                });
+                if($(this).attr("value") == "accepted"){
+                  var value = $(this);
+                  console.log(value,'value print');
+                  value.parents(".action").addClass("d-none");
+                  console.log(value.parents(".action").hasClass("d-block"));
+                  let parent = value.parents(".odd").find(".btn-warning");
+                  parent.removeClass("btn-warning").addClass("btn-info").text("accepted");
                 }
+                if($(this).attr("value") == "rejected"){
+                  var value = $(this);
+                  value.parents(".action").addClass("d-none");
+                  console.log(value.parents(".action").hasClass("d-block"));
+                  let parent = value.parents(".odd").find(".btn-warning");
+                  parent.removeClass("btn-warning").addClass("btn-danger").text("rejected");
+                }
+          });
+          $(".discount").click(function(){
+            discountId = $(this).attr('id');
+            $("#submit-discount").click(function(){
+              var discountAmount = document.getElementById("discount-amount").value;
+              if(discountAmount){
+                $.ajax({
+                  url: '{{ route('discountAdd') }}',
+                  method: 'GET',
+                  type: 'GET',
+                  success:'success',
+                  data:{
+                        discountAmount: discountAmount,
+                        discountId: discountId
+                      },
+                      dataType: 'json',
+                      success: function(response) {
+                   
+                      
+                      }
 
-
+                  });
+              }
+            console.log(discount);
+           });
+         });
         });
     </script>
   @endsection
