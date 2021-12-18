@@ -124,6 +124,11 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <li class="nav-item">
+        <a  href="{{route('adminLogout')}}"class="nav-link btn btn-danger" style="color: aliceblue"  data-slide="true" href="#" role="button">
+          Logout
+        </a>
+      </li>
     </ul>
   </nav>    
 {{-- @endsection --}}
