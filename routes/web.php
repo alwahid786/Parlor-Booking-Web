@@ -115,7 +115,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/show', [AdminController::class, 'show'])->name('show');
         Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
+        Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
+
         Route::get('/discount-added', [AdminController::class, 'discountAdd'])->name('discountAdd');
+        
+        // Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
+        // Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
+        // Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
+
+
+        Route::any('/about-us', [AdminController::class, 'aboutUs'])->name('admin.aboutUs');
+        Route::any('/privacy-policy', [AdminController::class, 'privacyPolicy'])->name('admin.privacyPolicy');
+        Route::any('/terms-conditions', [AdminController::class, 'termsConditions'])->name('admin.termsConditions');
+        
         Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
     });
 

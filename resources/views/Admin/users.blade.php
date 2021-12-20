@@ -1,9 +1,9 @@
 @extends('Admin.layouts.main');
-@section('page-title')
-Salon
-@endsection
+
 @section('body-content')
-    
+@section('page-title')
+Users
+@endsection
 
 {{-- <div class="wrapper">    --}}
 
@@ -30,7 +30,7 @@ Salon
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">All Salon And Users</h3>
+                  <h3 class="card-title">All Users</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -43,15 +43,11 @@ Salon
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Email</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Gender</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Type</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Address</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Created</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Discount</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Status</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($allSalons as $salon)
+                    @foreach ($allUsers as $salon)
 
                       <tr role="row" class="odd">
                         <td>{{$salon->id}}</td>
@@ -59,34 +55,8 @@ Salon
                         <td>{{$salon->email}}</td>
                         <td>{{$salon->gender}}</td>
                         <td>{{$salon->type}}</td>
-                        <td>{{$salon->address}}</td>
                         <td>{{$salon->created_at}}</td>
-                        <td>
-                          <div class="btn btn-primary discount" data-toggle="modal" data-target="#exampleModal" id="{{$salon->id}}">Discount</div>
-                        </td>
-                        @if($salon->status == 'accepted')
-                        <td>
-                          <span class="btn btn-info success" style="color:aliceblue">{{$salon->status}}</span>
-                        </td>
-                        @elseif($salon->status == 'rejected')
-                        <td>
-                          <span class="btn btn-danger fail" style="color:aliceblue">{{$salon->status}}</span>
-                        </td>
-                        @else
-                        <td>
-                          <span class="btn btn-warning waiting" style="color:aliceblue">{{$salon->status}}</span>
-                        </td>
-                        @endif
-                        @if($salon->status == 'pending')
-                        <td class="action">
-                          <div class="d-flex">
-                            <span class="btn btn-info accepted" id="{{$salon->id}}" value="accepted" }}>accepted</span>                                
-                            <span class="btn btn-danger rejected" id="{{$salon->id}}" value="rejected" data-src={{$salon->id}}>rejected</span>      
-                          </div>
-                        </td>
-                        @else 
-                          <td></td>
-                         @endif
+          
                       </tr>
                     @endforeach
                    

@@ -38,35 +38,57 @@ class AdminController extends Controller
     }
 
     public function discountAdd(Request $request){
-        // $validator = Validator::make($request->all(), [
-        //     'discountAmount'  => 'required|min:0|max:100',
-        // ]);
-        
-        
-        // if ($validator->fails()) {
+        $validator = Validator::make($request->all(), [
+            'discountAmount'  => 'required|min:0|max:100',
             
-        //     $data['validation_error'] = $validator->getMessageBag();
-        //     return sendError($validator->errors()->all()[0], $data);
-        // }
-        $serviceId = Service::where('salon_id',$request->discountId)->pluck('id');
-        $servicePrice = Service::where('salon_id',$request->discountId)->pluck('price');
-
-        // dd($serviceId,$servicePrice);
-
-        $discount = new Offer();
-        $discount->uuid = \Str::uuid();
-        $discount->service_id = $serviceId[0];
-        $discount->salon_id = $request->discountId;
-        $discount->discount = $request->discountAmount;
-        $discount->price = $servicePrice;
-        $discount->status = 'active';
-        $discount->name = 'services';
-        $discount->end_at = '11-12-13';
-        $discount->save();
-
+        ]);
         
+        
+        if ($validator->fails()) {
+            
+            $data['validation_error'] = $validator->getMessageBag();
+            return sendError($validator->errors()->all()[0], $data);
+        }
+        $services = Service::where('salon_id',$request->discountId)->get();
+        // $servicePrice = Service::where('salon_id',$request->discountId)->pluck('price');
 
+        // dd($services);
+        foreach($services as $service){
+        
+            // dd($service);
+            $discount = new Offer();
+            $discount->uuid = \Str::uuid();
+            $discount->service_id = $service->id;
+            $discount->salon_id = $service->salon_id;
+            $discount->price = $service->price;
+            $discount->name = $service->name;
+            $discount->discount = $request->discountAmount;
+            $discount->status = 'active';
+            $discount->end_at = '01-11-2022 10:10:10';
+            $discount->save();
+        }
+        
     }
+    public function allUsers(){
+
+        $allUsers = User::where('type','user')->get();
+        return view("Admin.users", compact("allUsers"));
+    }
+
+    public function aboutUs()
+    {
+        return view('Admin.aboutus');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('Admin.privacy_policy');
+    }
+    public function termsConditions()
+    {
+        return view('Admin.terms_conditions');
+    }
+
     public function logout(Request $request)
     {
         \Auth::logout();

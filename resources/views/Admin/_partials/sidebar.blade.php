@@ -26,18 +26,37 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{route('show')}}" class="nav-link ">
               <p>
                 Salons
               </p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{route('allUsers')}}" class="nav-link ">
               <p>
                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('admin.aboutUs')}}" class="nav-link ">
+              <p>
+               About Us
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('admin.privacyPolicy')}}" class="nav-link ">
+              <p>
+               Privacy Policy
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('admin.termsConditions')}}" class="nav-link ">
+              <p>
+               TOC
               </p>
             </a>
           </li>
