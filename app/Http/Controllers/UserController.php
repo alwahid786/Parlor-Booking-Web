@@ -325,13 +325,15 @@ class UserController extends Controller
                         POW(69.1 * (lat - '$request->lat'), 2) + 
                         POW(69.1 * ('$request->long' - `long`) * COS(lat / 57.3),2)) AS distance
                     FROM
-                        users
+                        users 
                     INNER JOIN 
                         brosches ON brosches.user_id = users.id
                     INNER JOIN 
                         media ON media.user_id = users.id
                     LEFT JOIN
                         offers ON offers.salon_id  = users.id
+                    where
+                        users.status = 'accepted'
                     HAVING
                         distance < 5");
 

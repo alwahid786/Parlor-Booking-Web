@@ -35,6 +35,7 @@ Users
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                   <table>
                     <thead>
                     <tr role="row">
                       {{-- <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Name</th> --}}

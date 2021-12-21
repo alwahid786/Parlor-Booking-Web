@@ -22,9 +22,10 @@
         </div>
         <div class="row">
 
-           @if(isset($allSalons))
+           @if(isset($allSalons)) 
+           {{-- @dd($allSalons); --}}
                 @foreach ($allSalons as $key => $salon)
-                @if ($key < 8)
+                @if ($key < 8 && ($salon->status == 'accepted'))
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4  col-12 ">
                         <div class="card border-0 bg_grey-s">
                             <div class="position-absolute discount_large_ticket-s ">

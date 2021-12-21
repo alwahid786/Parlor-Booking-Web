@@ -12,9 +12,6 @@ About us
             margin-left: 15px;
             height: 75px;
             width: 97%;
-
-
-
         }
 
 
@@ -27,8 +24,6 @@ About us
                 width: 97%;
                 font-size: 0px;
                 position: relative;
-
-
             }
 
             .for_img_css_appointment span {

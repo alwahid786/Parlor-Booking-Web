@@ -35,6 +35,7 @@ Salon
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                   <table>
                     <thead>
                     <tr role="row">
                       {{-- <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Name</th> --}}
@@ -115,10 +116,13 @@ Salon
                 <div class="modal-body">
                   <form>
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Enter Discount:</label>
-                      <input  type="number" min="0" max="99" class="form-control" id="discount-amount">
+                      <label for="recipient-name" pattern="[0-100]* class="col-form-label">Enter Discount:</label>
+                      <input  type="number" class="form-control discount-amount" id="discount-amount">
                     </div>
-                    
+                    <div class="form-group">
+                      <label class="col-form-label">Enter Expiry Date</label>
+                      <input  type="date" class="form-control" id="expiray-date">
+                    </div>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -132,10 +136,15 @@ Salon
     <script>
   
         let public_path = "{{config('app.url').'/public/'}}";
+       
+        $('#discount=amount').bind('keyup paste', function(){
+             this.value = this.value.replace(/[^0-100]/g, '');
+          });
 
 
         $(document).ready(function() {
           
+       
           $('span.accepted,span.rejected').click(function(){
             
             var status = $(this).attr('value');
@@ -186,6 +195,8 @@ Salon
             discountId = $(this).attr('id');
             $("#submit-discount").click(function(){
               var discountAmount = document.getElementById("discount-amount").value;
+              var expirayDate = document.getElementById("expiray-date").value;
+              console.log(expirayDate);
               if(discountAmount){
                 $.ajax({
                   url: '{{ route('discountAdd') }}',
@@ -194,7 +205,8 @@ Salon
                   success:'success',
                   data:{
                         discountAmount: discountAmount,
-                        discountId: discountId
+                        discountId: discountId,
+                        expirayDate: expirayDate,
                       },
                       dataType: 'json',
                       success: function(response) {
@@ -204,7 +216,6 @@ Salon
 
                   });
               }
-            console.log(discount);
            });
          });
         });
