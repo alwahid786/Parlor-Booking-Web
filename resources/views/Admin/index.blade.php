@@ -114,10 +114,10 @@ Salon
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form >
                     <div class="form-group">
                       <label for="recipient-name" pattern="[0-100]* class="col-form-label">Enter Discount:</label>
-                      <input  type="number" class="form-control discount-amount" id="discount-amount">
+                      <input  type="number"  class="form-control discount-amount" min="0" max="100" step="1" id="discount-amount" required>
                     </div>
                     <div class="form-group">
                       <label class="col-form-label">Enter Expiry Date</label>
@@ -127,23 +127,43 @@ Salon
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary submit-discount" data-dismiss="modal" id="submit-discount">Submit</button>
+                  <button type="button" class="btn btn-primary submit-discount" onclick="validate()" data-dismiss="modal" id="submit-discount">Submit</button>
                 </div>
               </div>
             </div>
         </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-  
+     function validate() {
+          var x = parseInt(value,10) // its the value from the input box;
+          if(isNaN(x)||x<0||x>100)
+           { 
+            alert("Value must be between 0 and 100");
+            return false;
+            }
+          }
         let public_path = "{{config('app.url').'/public/'}}";
        
-        $('#discount=amount').bind('keyup paste', function(){
-             this.value = this.value.replace(/[^0-100]/g, '');
-          });
-
+     
+       
 
         $(document).ready(function() {
-          
+
+          function validate() {
+          var x = parseInt(value,10) // its the value from the input box;
+          if(isNaN(x)||x<0||x>100)
+           { 
+            alert("Value must be between 0 and 100");
+            return false;
+            }
+          }
+          function validate() {
+            var x = parseInt(value,10) // its the value from the input box;
+            if(isNaN(x)||x<0||x>100)
+            {
+              alert("Value must be between 0 and 100");
+              return false;
+            }
        
           $('span.accepted,span.rejected').click(function(){
             
@@ -194,6 +214,8 @@ Salon
           $(".discount").click(function(){
             discountId = $(this).attr('id');
             $("#submit-discount").click(function(){
+       
+
               var discountAmount = document.getElementById("discount-amount").value;
               var expirayDate = document.getElementById("expiray-date").value;
               console.log(expirayDate);
