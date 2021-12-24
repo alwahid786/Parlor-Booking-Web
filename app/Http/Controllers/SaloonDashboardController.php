@@ -359,13 +359,13 @@ class SaloonDashboardController extends Controller
             // dd($request->all(), 'else part of get');
 
             $this->validate($request, [
-                'name' => 'required',
+                'name'         => 'required',
                 'saloon_email' => 'required|string',
                 'address_copy' => 'required|string',
                 'opening_time' => 'required|date_format:H:i',
                 'closing_time' => 'required|date_format:H:i|after:opening_time',
-                'description' => 'required|string',
-                'days' => 'required',
+                'description'  => 'required|string',
+                'days'         => 'required',
             ]);
 
             // $request->merge([
