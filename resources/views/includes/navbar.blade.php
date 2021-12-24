@@ -105,6 +105,10 @@
 @section('footer-scripts')
 <script type="text/javascript">
 	$('document').ready(function(){
+    $("#user_login-d").on('click', function(){
+        console.log('test');
+        $(`#signin_modal-d`).modal('show');
+    });
 
 		$('.navbar-toggler').click(function(){
 			$('.collapse').toggle();

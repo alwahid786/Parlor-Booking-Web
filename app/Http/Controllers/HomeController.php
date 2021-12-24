@@ -24,6 +24,22 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         // dd($request->all());
+        // dd(Auth::id());
+        $user = Auth::user();
+        // dd($user);
+        if(isset($user) && ($user != null)){
+        if($user->type == 'admin'){
+            return redirect('admin/show');    
+        }elseif($user->type == 'salon'){
+            return redirect()->route('profileSetting', [$user->uuid]);
+
+        }elseif($user->type == 'user'){
+            return redirect()->route('profileSetting', [$user->uuid]);
+
+        }else{
+            return redirect('/');
+        }
+    }
 
         $apiResponse1 = '';
         $apiResponse2 = '';

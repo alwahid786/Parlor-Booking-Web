@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Redis;
 
 class AdminController extends Controller
 {
+    public function adminRedirect(Request $request){
+        if(!\Auth::check()){
+            return redirect()->route('adminLogin');
+        }
+    }
 
     public function show(Request $request)
     {

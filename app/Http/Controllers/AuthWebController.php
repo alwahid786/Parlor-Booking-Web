@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Redis;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,6 +19,7 @@ class AuthWebController extends Controller
     {
         $this->authApiCntrl = $authApiCntrl;
     }
+
 
     public function login(Request $request)
     {
