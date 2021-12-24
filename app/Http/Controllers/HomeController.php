@@ -14,7 +14,7 @@ class HomeController extends Controller
     private $salonApiServiceCntrl;
     private $salonApiAppointmentCntrl;
 
-    public function __construct(UserController $salonApiCntrl, ServiceController $salonApiServiceCntrl, AppointmentController $salonApiAppointmentCntrl )
+    public function __construct(UserController $salonApiCntrl, ServiceController $salonApiServiceCntrl, AppointmentController $salonApiAppointmentCntrl)
     {
         $this->salonApiCntrl = $salonApiCntrl;
         $this->salonApiServiceCntrl = $salonApiServiceCntrl;
@@ -26,26 +26,22 @@ class HomeController extends Controller
         // dd($request->all());
         // dd(Auth::id());
         $user = Auth::user();
-        // dd($user);
-        if(isset($user) && ($user != null)){
-        if($user->type == 'admin'){
-            return redirect('admin/show');    
-        }elseif($user->type == 'salon'){
-            return redirect()->route('profileSetting', [$user->uuid]);
-
-        }elseif($user->type == 'user'){
-            return redirect()->route('profileSetting', [$user->uuid]);
-
-        }else{
-            return redirect('/');
+        if (isset($user) && ($user != null)) {
+            if ($user->type == 'admin') {
+                return redirect('admin/show');
+            } elseif ($user->type == 'salon') {
+                return redirect()->route('profileSetting', [$user->uuid]);
+            } elseif ($user->type == 'user') {
+                return redirect()->route('profileSetting', [$user->uuid]);
+            } else {
+                return redirect('/');
+            }
         }
-    }
 
         $apiResponse1 = '';
         $apiResponse2 = '';
 
-        if(isset($request->lat) && ('' !== $request->lat) || isset($request->long) && ('' !== $request->long))
-        {
+        if (isset($request->lat) && ('' !== $request->lat) || isset($request->long) && ('' !== $request->long)) {
             // dd($request->lat, $request->long);
             $request->merge([
                 'lat' => $request->lat,
@@ -56,8 +52,8 @@ class HomeController extends Controller
             // $apiResponse1 = $salonCntrl->getSalon($request)->getData();
             $apiResponse1 = $salonCntrl->getAllSalon($request);
             // dd($apiResponse1);
-            
-            return sendSuccess('Salon near by list',$apiResponse1);
+
+            return sendSuccess('Salon near by list', $apiResponse1);
             // return view('index', ['salonsNearByMe',$apiResponse1->data, 'book_salon' => 0]);
             //return view('Home.index', ['salonsNearByMe'=>$apiResponse1 , 'book_salon' => 0]);
             // return \Response::json( $apiResponse1 );
@@ -69,15 +65,14 @@ class HomeController extends Controller
         ]);
 
 
-        
+
         $apiResponse2 = $salonCntrl->getSalon($request)->getData();
         // dd($apiResponse1);
         // dd($apiResponse1, $apiResponse2);
 
-        
+
         // if($apiResponse1->status ?? true || $apiResponse2->status)
-        if( $apiResponse2->status)
-        {
+        if ($apiResponse2->status) {
             // $salonsNearByMe = $apiResponse1->data ?? null;
             // if(null == $salonsNearByMe)
             // {
@@ -87,7 +82,7 @@ class HomeController extends Controller
             // dd($allSalons);
 
             // dd($allSalons, $salonsNearByMe);
-            return view('Home.index', ['allSalons'=>$allSalons, 'book_salon' => 0]);
+            return view('Home.index', ['allSalons' => $allSalons, 'book_salon' => 0]);
         }
 
 
@@ -98,12 +93,13 @@ class HomeController extends Controller
 
         // return redirect()->route('weblogin');
 
-    //     return view('Home.index');
+        //     return view('Home.index');
 
     }
 
-    public function getNearbySaloons(Request $request){
-        return view('Home.index', ['salonsNearByMe'=>$request , 'book_salon' => 0]);
+    public function getNearbySaloons(Request $request)
+    {
+        return view('Home.index', ['salonsNearByMe' => $request, 'book_salon' => 0]);
     }
 
 
@@ -142,14 +138,12 @@ class HomeController extends Controller
             // dd($allSalons, $salonsNearByMe);
             return view('Home.get_all_salons', ['allSalons' => $allSalons, 'allSalons' => $salonsNearByMe, 'book_salon' => 0]);
         }
-
     }
 
 
-    public function bookingSalon($uuid , Request $request)
+    public function bookingSalon($uuid, Request $request)
     {
-        if($request->getMethod() == 'GET')
-        {
+        if ($request->getMethod() == 'GET') {
             $request->merge([
                 'user_uuid' => $uuid,
             ]);
@@ -160,7 +154,7 @@ class HomeController extends Controller
                 $salon_available_days = $apiResponse->data;
                 $salon_uuid = $salon_available_days->uuid;
                 $salon_days = $salon_available_days->days;
-                return view('Home.booking', ['salon_uuid'=>$salon_uuid, 'salon_days'=>$salon_days,  'book_salon' => 1]);
+                return view('Home.booking', ['salon_uuid' => $salon_uuid, 'salon_days' => $salon_days,  'book_salon' => 1]);
             }
         }
     }
@@ -201,9 +195,8 @@ class HomeController extends Controller
             $apiResponse = $userCntrl->getService($request)->getData();
             if ($apiResponse->status) {
                 $saloon_service = $apiResponse->data;
-                return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1, 'salon_uuid'=>$uuid]);
-            }
-            else{
+                return view('Home.booking_salon_services', ['saloon_service' => $saloon_service,  'book_salon' => 1, 'salon_uuid' => $uuid]);
+            } else {
                 return redirect()->back()->with('message', 'No Service Found')->with('type', 'error');
             }
         }
@@ -216,13 +209,10 @@ class HomeController extends Controller
         $availableAppointment = $this->salonApiAppointmentCntrl;
         $apiResponse = $availableAppointment->availableAppointments($request)->getData();
         // dd($apiResponse);
-        if($apiResponse->status)
-        {
+        if ($apiResponse->status) {
             return sendSuccess('get available Appointments successfully', $apiResponse->data);
-
         }
-            return sendError('Error', []);
-
+        return sendError('Error', []);
     }
 
     public function bookService(Request $request)
@@ -254,7 +244,4 @@ class HomeController extends Controller
     {
         return view('Home.terms_conditions', ['book_salon' => 1,]);
     }
-
-
-
 }

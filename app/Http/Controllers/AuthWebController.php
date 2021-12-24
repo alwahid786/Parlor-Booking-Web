@@ -32,6 +32,9 @@ class AuthWebController extends Controller
             // $request->merge([
             //     'type' => 'salon'
             // ]);
+            // dd($request->all());
+            // $user = \Auth::user();
+            // dd($user);
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->login($request)->getData();
             if ($apiResponse->status) {
@@ -56,7 +59,7 @@ class AuthWebController extends Controller
                 // 'phone_number' => 'required_without:email',
                 // 'phone_code' => 'required_without:email',
                 'password' => 'required',
-                'type' => 'required',
+                'type' => 'required|admin',
             ]);
 
             if ($validator->fails()) {
