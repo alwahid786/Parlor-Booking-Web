@@ -19,20 +19,15 @@ class AdminController extends Controller
         }
     }
 
-    public function login(){
-
-    }
     
     public function show(Request $request)
     {
-        if (\Auth::check()) {
-            $allSalons = User::where('type', 'salon')->get();
-            // dd($allSalons);
-            return view("Admin.index", compact("allSalons"));
-        } else {
-            return redirect()->route('adminLogin');
-        }
+         if (\Auth::check()) {
+        $allSalons = User::where('type', 'salon')->get();
+        // dd($allSalons);
+        return view("Admin.index", compact("allSalons"));
     }
+}
 
     public function salonStatus(Request $request)
     {
