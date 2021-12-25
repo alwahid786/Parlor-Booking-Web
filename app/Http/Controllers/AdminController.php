@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Redis;
 
 class AdminController extends Controller
 {
+    public function adminRedirect(Request $request)
+    {
+        if (!\Auth::check()) {
+            return redirect()->route('adminLogin');
+        }
+    }
 
     public function login(){
 
@@ -19,10 +25,13 @@ class AdminController extends Controller
     
     public function show(Request $request)
     {
-
-        $allSalons = User::where('type', 'salon')->get();
-        // dd($allSalons);
-        return view("Admin.index", compact("allSalons"));
+        if (\Auth::check()) {
+            $allSalons = User::where('type', 'salon')->get();
+            // dd($allSalons);
+            return view("Admin.index", compact("allSalons"));
+        } else {
+            return redirect()->route('adminLogin');
+        }
     }
 
     public function salonStatus(Request $request)
@@ -111,29 +120,46 @@ class AdminController extends Controller
 
     public function allUsers()
     {
-
-        $allUsers = User::where('type', 'user')->get();
-        return view("Admin.users", compact("allUsers"));
+        if (\Auth::check()) {
+            $allUsers = User::where('type', 'user')->get();
+            return view("Admin.users", compact("allUsers"));
+        } else {
+            return redirect()->route('adminLogin');
+        }
     }
 
     public function aboutUs()
     {
-        return view('Admin.aboutus');
+        if (\Auth::check()) {
+            return view('Admin.aboutus');
+        } else {
+            return redirect()->route('adminLogin');
+        }
     }
 
     public function privacyPolicy()
     {
-        return view('Admin.privacy_policy');
+        if (\Auth::check()) {
+            return view('Admin.privacy_policy');
+        } else {
+            return redirect()->route('adminLogin');
+        }
     }
 
     public function termsConditions()
     {
-        return view('Admin.terms_conditions');
+        if (\Auth::check()) {
+            return view('Admin.terms_conditions');
+        } else {
+            return redirect()->route('adminLogin');
+        }
     }
 
     public function logout(Request $request)
     {
-        \Auth::logout();
-        return redirect()->route('adminLogin');
+        if (\Auth::check()) {
+            \Auth::logout();
+            return redirect()->route('adminLogin');
+        }
     }
 }

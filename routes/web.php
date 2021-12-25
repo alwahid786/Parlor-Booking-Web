@@ -79,6 +79,8 @@ Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name(
 Route::group(['middleware' => 'guest'], function () {
 
     //admin_route
+    
+    Route::any('/admin', [AdminController::class, 'adminRedirect'])->name('adminRedirect');
     Route::any('/admin/signin', [AuthWebController::class, 'adminLogin'])->name('adminLogin');
 
 

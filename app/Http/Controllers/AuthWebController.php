@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Redis;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +20,7 @@ class AuthWebController extends Controller
         $this->authApiCntrl = $authApiCntrl;
     }
 
+
     public function login(Request $request)
     {
 
@@ -30,6 +32,9 @@ class AuthWebController extends Controller
             // $request->merge([
             //     'type' => 'salon'
             // ]);
+            // dd($request->all());
+            // $user = \Auth::user();
+            // dd($user);
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->login($request)->getData();
             if ($apiResponse->status) {
@@ -54,7 +59,7 @@ class AuthWebController extends Controller
                 // 'phone_number' => 'required_without:email',
                 // 'phone_code' => 'required_without:email',
                 'password' => 'required',
-                'type' => 'required',
+                'type' => 'required|admin',
             ]);
 
             if ($validator->fails()) {

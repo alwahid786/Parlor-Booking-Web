@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  navBar-s">
     <div class="container-fluid px-xxl-5 px-xl-5 px-lg-5 mx-xxl-5 mx-xl-5">
-      <a href="#">
+      <a href="{{ URL::to('/')  }}">
       <img src="{{ asset('assets/images/user_nav_images/Logo.svg') }}" class="img-fluid for_nav_bar_icon">
       </a>
       <button class="navbar-toggler absolute_position-s" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,6 +105,10 @@
 @section('footer-scripts')
 <script type="text/javascript">
 	$('document').ready(function(){
+    $("#user_login-d").on('click', function(){
+        console.log('test');
+        $(`#signin_modal-d`).modal('show');
+    });
 
 		$('.navbar-toggler').click(function(){
 			$('.collapse').toggle();
