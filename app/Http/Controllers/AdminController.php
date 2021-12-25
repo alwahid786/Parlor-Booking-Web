@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Redis;
 class AdminController extends Controller
 {
 
+    public function login(){
+
+    }
+    
     public function show(Request $request)
     {
 

@@ -118,7 +118,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
 
         Route::get('/discount-added', [AdminController::class, 'discountAdd'])->name('discountAdd');
-        
+
         // Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
         // Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
         // Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
@@ -127,7 +127,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::any('/about-us', [AdminController::class, 'aboutUs'])->name('admin.aboutUs');
         Route::any('/privacy-policy', [AdminController::class, 'privacyPolicy'])->name('admin.privacyPolicy');
         Route::any('/terms-conditions', [AdminController::class, 'termsConditions'])->name('admin.termsConditions');
-        
+
         Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
     });
 
@@ -171,4 +171,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::any('/accpet-appointment/{uuid}', [SaloonDashboardController::class, 'acceptAppointment'])->name('acceptAppointment');
     Route::any('/cancel-appointment/{uuid}', [SaloonDashboardController::class, 'cancelAppointment'])->name('cancelAppointment');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'guest.admin'], function () {
+    });
+    Route::group(['middleware' => 'admin.auth'], function () {
+    });
 });
