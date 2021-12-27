@@ -186,46 +186,49 @@ class AdminController extends Controller
         // }
     }
 
-    // public function logout(Request $request)
-    // {
-
-    //     $guards = array_keys(config('auth.guards'));
-    //     // dd($guards);
-    //     if (Auth::guard('admin')->logout()) {
-    //         return redirect()->route('admin.login');
-    //     }
-    // }
-
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->route('admin.show');
-    }
-
-
-
     public function logout(Request $request)
     {
-        $this->guard()->logout();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        if ($response = $this->loggedOut($request)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect('/');
-    }
-    protected function loggedOut(Request $request)
-    {
+        // $guards = array_keys(config('auth.guards'));
+        // dd($guards);
+        Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
+
+        // if (Auth::guard('admin')->logout()) {
+        //     return redirect()->route('admin.login');
+        // }
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     return redirect()->route('admin.show');
+    // }
+
+
+
+    // public function logout(Request $request)
+    // {
+    //     $this->guard()->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     if ($response = $this->loggedOut($request)) {
+    //         return $response;
+    //     }
+
+    //     return $request->wantsJson()
+    //         ? new JsonResponse([], 204)
+    //         : redirect('/');
+    // }
+    // protected function loggedOut(Request $request)
+    // {
+    //     return redirect()->route('admin.login');
+    // }
+
+    // protected function guard()
+    // {
+    //     return Auth::guard('admin');
+    // }
 }

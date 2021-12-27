@@ -20,31 +20,7 @@ use App\Http\Controllers\CmsController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');
 
-Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
-
-
-Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
-
-//saloon book
-Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->name('bookingSalon');
-
-//booking details
-Route::any('/booking-salon-service/{uuid?}', [HomeController::class, 'bookingSalonServices'])->name('bookingSalonServices');
-
-
-// get booking time against date
-Route::any('/booking-time', [HomeController::class, 'bookingTime'])->name('bookingTime');
-
-
-Route::post('/book-service', [HomeController::class, 'bookService'])->name('bookService');
-
-
-Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
-
-Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 
 // Route::get('/', [HomeController::class, 'nearByMe'])->name('nearByMe');
 
@@ -62,6 +38,36 @@ Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name(
 
 
 Route::group(['middleware' => 'guest'], function () {
+
+    // Home route 
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');
+    
+    Route::get('/all-salons', [HomeController::class, 'allSalons'])->name('allSalons');
+    
+    
+    Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
+    
+    //saloon book
+    Route::any('/booking-salon/{uuid}', [HomeController::class, 'bookingSalon'])->name('bookingSalon');
+    
+    //booking details
+    Route::any('/booking-salon-service/{uuid?}', [HomeController::class, 'bookingSalonServices'])->name('bookingSalonServices');
+    
+    
+    // get booking time against date
+    Route::any('/booking-time', [HomeController::class, 'bookingTime'])->name('bookingTime');
+    
+    
+    Route::post('/book-service', [HomeController::class, 'bookService'])->name('bookService');
+    
+    
+    Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
+    
+    Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
+
+
+
 
     //admin_route
     Route::any('/signin', [AuthWebController::class, 'login'])->name('weblogin');
@@ -132,13 +138,16 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::group(['middleware' => 'admin.guest'], function () {
+    Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
+    // Route::group(['middleware' => 'guest:admin'], function () {
         
-        Route::any('/', [AdminController::class, 'adminRedirect'])->name('adminRedirect');
+        Route::any('/', [AdminController::class, 'adminRedirect'])->name('admin.redirect');
         Route::any('/login', [AdminController::class, 'login'])->name('admin.login');
         // Route::any('/signin', [AuthWebController::class, 'adminLogin'])->name('admin.login');
     });
-    Route::group(['middleware' => 'admin.auth'], function () {
+    Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
+        // Route::group(['middleware' => 'auth:admin'], function () {
+
         Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
         Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
@@ -149,6 +158,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::any('/privacy-policy', [AdminController::class, 'privacyPolicy'])->name('admin.privacyPolicy');
         Route::any('/terms-conditions', [AdminController::class, 'termsConditions'])->name('admin.termsConditions');
 
-        Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     });
 });
