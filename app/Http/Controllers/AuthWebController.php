@@ -26,15 +26,16 @@ class AuthWebController extends Controller
 
         if ($request->getMethod() == 'GET') {
             return view('Auth.login');
-        }
-        else {
+        } else {
+            $adminCheck = \DB::table('users')->where('email', '=', $request->email)->where('type','=','admin')->get();
+            if (isset($adminCheck) && ($adminCheck == []) && empty($adminCheck)) {
+                // dd($adminCheck,'test');
+                // if ($adminCheck->type == 'admin') {
+                    return sendError('Invalid Email or Password', []);
+                // }
+            }
             // dd($request->all());
-            // $request->merge([
-            //     'type' => 'salon'
-            // ]);
-            // dd($request->all());
-            // $user = \Auth::user();
-            // dd($user);
+
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->login($request)->getData();
             if ($apiResponse->status) {
@@ -42,7 +43,6 @@ class AuthWebController extends Controller
             }
             return sendError('Invalid Email or Password', []);
         }
-
     }
 
     //admin login
@@ -69,8 +69,7 @@ class AuthWebController extends Controller
 
             // dd($request->all());
             $credentials = $request->only('email', 'password');
-            if(Auth::attempt($credentials))
-            {
+            if (Auth::attempt($credentials)) {
                 // dd($credentials, "asdasd");
                 $user = $request->user();
 
@@ -79,8 +78,7 @@ class AuthWebController extends Controller
                 if ($user->type == $request->type) {
                     return sendSuccess('Login Done Successfully', $user);
                 }
-            }
-            else {
+            } else {
                 return sendError('invalid email or password', []);
             }
 
@@ -99,13 +97,11 @@ class AuthWebController extends Controller
     public function create(Request $request)
     {
         // dd($request->all());
-        if($request->getMethod() == 'GET')
-        {
+        if ($request->getMethod() == 'GET') {
             return view('Auth.signup');
-        }
-        else {
+        } else {
             // dd($request->all());
-            $phone_code = "+".$request->phone_code;
+            $phone_code = "+" . $request->phone_code;
             $request->merge([
                 'is_social' => 0,
                 'phone_code' => $phone_code
@@ -114,25 +110,22 @@ class AuthWebController extends Controller
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->signup($request)->getData();
             // dd($apiResponse);
-            if($apiResponse->status)
-            {
+            if ($apiResponse->status) {
                 return sendSuccess('Signup successfully', $apiResponse->data);
             }
         }
-
     }
 
     public function enterCode(Request $request)
     {
         if ($request->getMethod() == 'GET') {
-            if ((isset($request->email) && ('' != $request->email)) || (isset($request->type) && ($request->type))|| (isset($request->user_type) && ($request->user_type)) ) {
+            if ((isset($request->email) && ('' != $request->email)) || (isset($request->type) && ($request->type)) || (isset($request->user_type) && ($request->user_type))) {
 
-            return view('Auth.email_template.enterCode',['email' => $request->email, 'type' => $request->type , 'user_type' => $request->user_type]);
-            }else {
+                return view('Auth.email_template.enterCode', ['email' => $request->email, 'type' => $request->type, 'user_type' => $request->user_type]);
+            } else {
                 return abort(422, 'Email is Required');
             }
-        }
-        else {
+        } else {
 
             // dd($request->all());
             $authCntrl = $this->authApiCntrl;
@@ -141,7 +134,6 @@ class AuthWebController extends Controller
                 return sendSuccess('Access token verified successfully', $apiResponse->data);
             }
             return sendError('Invalid token', []);
-
         }
     }
 
@@ -150,8 +142,7 @@ class AuthWebController extends Controller
         // dd($request->all());
         if ($request->getMethod() == 'GET') {
             return view('Auth.email_template.forgotPassword');
-        }
-        else {
+        } else {
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->forgotPasswordCode($request)->getData();
             if ($apiResponse->status) {
@@ -159,16 +150,14 @@ class AuthWebController extends Controller
             }
             return sendError('Invalid Email ', []);
         }
-
     }
 
     public function resetPassword(Request $request)
     {
         // dd($request->all());
         if ($request->getMethod() == 'GET') {
-            if((isset($request->code) && ('' != $request->code)) && ((isset($request->email)) && ('' != $request->email)) )
-            {
-                return view('Auth.email_template.newPassword', ['code' => $request->code, 'email' => $request->email] );
+            if ((isset($request->code) && ('' != $request->code)) && ((isset($request->email)) && ('' != $request->email))) {
+                return view('Auth.email_template.newPassword', ['code' => $request->code, 'email' => $request->email]);
             }
         } else {
             $request->merge([
@@ -221,13 +210,12 @@ class AuthWebController extends Controller
     protected function _regirsterOrLoggedIn($data)
     {
         $user = User::where('email', $data->email)->first();
-        if(!$user)
-        {
+        if (!$user) {
             $user = new User;
             $user->name = $data->name;
             $user->email = $data->email;
             $user->is_social = 1;
-            $user->social_id =$data->id;
+            $user->social_id = $data->id;
             $user->social_email = $data->email;
             $user->social_type = 'google';
             $user->type = 'user';
@@ -238,6 +226,4 @@ class AuthWebController extends Controller
 
         Auth::login($user);
     }
-
-
 }

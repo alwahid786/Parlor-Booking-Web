@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class AdminRedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -19,15 +19,13 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            // dd(Auth::guard($guard)->check());
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            // dd(Auth::guard($guards)->check(),$guards);  
+            if (Auth::guard($guards)->check()) {
+                // return redirect(RouteServiceProvider::HOME);
+                return redirect()->route('admin.show');
             }
-        }
-
+        
         return $next($request);
     }
 }

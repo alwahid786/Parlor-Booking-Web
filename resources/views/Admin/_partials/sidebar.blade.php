@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('show')}}" class="nav-link ">
+            <a href="{{route('admin.show')}}" class="nav-link ">
               <p>
                 Salons
               </p>

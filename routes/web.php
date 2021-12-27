@@ -20,21 +20,6 @@ use App\Http\Controllers\CmsController;
 |
 */
 
-
-
-
-// Route::get('admin/index', function(){
-//     // return"true";
-//     return view('Admin.index');
-// });
-// Route::get('admin/index', function(){
-//     // return"true";
-//     return view('Admin.index');
-// })->name('adminIndex');
-
-
-
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/getNearbySaloons', [HomeController::class, 'getNearbySaloons'])->name('getNearbySaloons');
 
@@ -79,12 +64,6 @@ Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name(
 Route::group(['middleware' => 'guest'], function () {
 
     //admin_route
-    
-    Route::any('/admin', [AdminController::class, 'adminRedirect'])->name('adminRedirect');
-    Route::any('/admin/signin', [AuthWebController::class, 'adminLogin'])->name('adminLogin');
-
-
-
     Route::any('/signin', [AuthWebController::class, 'login'])->name('weblogin');
 
     Route::any('/singup', [AuthWebController::class, 'create'])->name('signup');
@@ -114,36 +93,13 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::prefix('admin')->group(function () {
-        Route::get('/show', [AdminController::class, 'show'])->name('show');
-        Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
-        Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
-
-        Route::get('/discount-added', [AdminController::class, 'discountAdd'])->name('discountAdd');
-
-        // Route::get('/about-us', [HomeController::class, 'aboutUsUser'])->name('aboutUsUser');
-        // Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('pricatedPolicy');
-        // Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
-
-
-        Route::any('/about-us', [AdminController::class, 'aboutUs'])->name('admin.aboutUs');
-        Route::any('/privacy-policy', [AdminController::class, 'privacyPolicy'])->name('admin.privacyPolicy');
-        Route::any('/terms-conditions', [AdminController::class, 'termsConditions'])->name('admin.termsConditions');
-
-        Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
-    });
-
-
+ 
     Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
     Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
 
     //profile setting
     Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
-
     // Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
-
-
-
     Route::any('/service/{uuid}', [SaloonDashboardController::class, 'service'])->name('service');
     Route::post('/add-service/{uuid}', [SaloonDashboardController::class, 'addService'])->name('addService');
     Route::any('/availability/{uuid}', [SaloonDashboardController::class, 'availability'])->name('availability');
@@ -176,8 +132,23 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::group(['middleware' => 'guest.admin'], function () {
+    Route::group(['middleware' => 'admin.guest'], function () {
+        
+        Route::any('/', [AdminController::class, 'adminRedirect'])->name('adminRedirect');
+        Route::any('/login', [AdminController::class, 'login'])->name('admin.login');
+        // Route::any('/signin', [AuthWebController::class, 'adminLogin'])->name('admin.login');
     });
     Route::group(['middleware' => 'admin.auth'], function () {
+        Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
+        Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
+        Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
+
+        Route::get('/discount-added', [AdminController::class, 'discountAdd'])->name('discountAdd');
+
+        Route::any('/about-us', [AdminController::class, 'aboutUs'])->name('admin.aboutUs');
+        Route::any('/privacy-policy', [AdminController::class, 'privacyPolicy'])->name('admin.privacyPolicy');
+        Route::any('/terms-conditions', [AdminController::class, 'termsConditions'])->name('admin.termsConditions');
+
+        Route::get('/logout', [AdminController::class, 'logout'])->name('adminLogout');
     });
 });

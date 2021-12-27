@@ -3,31 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Offer;
 use Carbon\Carbon;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminController extends Controller
 {
+    // use AuthenticatesUsers;
     public function adminRedirect(Request $request)
     {
-        if (!\Auth::check()) {
-            return redirect()->route('adminLogin');
-        }
+        // if (!\Auth::check()) {
+            // dd('test');
+            return redirect()->route('admin.login');
+        // }
     }
 
-    
+    public function login(Request $request)
+    {
+        if ($request->getMethod() == 'GET') {
+            // dd('res'); 
+            return view('Admin.login');
+        } else {
+
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                $data['validation_error'] = $validator->getMessageBag();
+                return sendError($validator->errors()->all()[0], $data);
+            }
+
+
+
+            $credentials = $request->only('email', 'password');
+            if (Auth::guard('admin')->attempt($credentials, $request->remember)) {
+                // dd($credentials);
+                $user = Admin::where('email', $request->email)->first();
+                // dd($user);
+                Auth::guard('admin')->login($user);
+                return redirect()->route('admin.show');
+            }
+        }
+    }
+  
+
+
     public function show(Request $request)
     {
-         if (\Auth::check()) {
-        $allSalons = User::where('type', 'salon')->get();
-        // dd($allSalons);
-        return view("Admin.index", compact("allSalons"));
+        // if (\Auth::check()) {
+            $allSalons = User::where('type', 'salon')->get();
+            // dd($allSalons);
+            return view("Admin.index", compact("allSalons"));
+        // }
     }
-}
 
     public function salonStatus(Request $request)
     {
@@ -115,46 +151,81 @@ class AdminController extends Controller
 
     public function allUsers()
     {
-        if (\Auth::check()) {
+        // if (\Auth::check()) {
             $allUsers = User::where('type', 'user')->get();
             return view("Admin.users", compact("allUsers"));
-        } else {
-            return redirect()->route('adminLogin');
-        }
+        // } else {
+        //     return redirect()->route('admin.login');
+        // }
     }
 
     public function aboutUs()
     {
-        if (\Auth::check()) {
+        // if (\Auth::check()) {
             return view('Admin.aboutus');
-        } else {
-            return redirect()->route('adminLogin');
-        }
+        // } else {
+        //     return redirect()->route('admin.login');
+        // }
     }
 
     public function privacyPolicy()
     {
-        if (\Auth::check()) {
+        // if (\Auth::check()) {
             return view('Admin.privacy_policy');
-        } else {
-            return redirect()->route('adminLogin');
-        }
+        // } else {
+        //     return redirect()->route('admin.login');
+        // }
     }
 
     public function termsConditions()
     {
-        if (\Auth::check()) {
+        // if (\Auth::check()) {
             return view('Admin.terms_conditions');
-        } else {
-            return redirect()->route('adminLogin');
-        }
+        // } else {
+        //     return redirect()->route('admin.login');
+        // }
     }
+
+    // public function logout(Request $request)
+    // {
+
+    //     $guards = array_keys(config('auth.guards'));
+    //     // dd($guards);
+    //     if (Auth::guard('admin')->logout()) {
+    //         return redirect()->route('admin.login');
+    //     }
+    // }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect()->route('admin.show');
+    }
+
+
 
     public function logout(Request $request)
     {
-        if (\Auth::check()) {
-            \Auth::logout();
-            return redirect()->route('adminLogin');
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
         }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
+    }
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('admin.login');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

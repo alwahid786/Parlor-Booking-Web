@@ -25,18 +25,22 @@ class HomeController extends Controller
     {
         // dd($request->all());
         // dd(Auth::id());
+        
         $user = Auth::user();
         if (isset($user) && ($user != null)) {
-            if ($user->type == 'admin') {
-                return redirect('admin/show');
-            } elseif ($user->type == 'salon') {
+            if (($user->type == 'salon') || ($user->type == 'salon')) {
                 return redirect()->route('profileSetting', [$user->uuid]);
-            } elseif ($user->type == 'user') {
-                return redirect()->route('profileSetting', [$user->uuid]);
-            } else {
-                return redirect('/');
             }
         }
+        //     if ($user->type == 'admin') {
+        //         return redirect('admin/show');
+        //     } else
+                //     } elseif ($user->type == 'user') {
+        //         return redirect()->route('profileSetting', [$user->uuid]);
+        //     } else {
+        //         return redirect('/');
+        //     }
+        // }
 
         $apiResponse1 = '';
         $apiResponse2 = '';
