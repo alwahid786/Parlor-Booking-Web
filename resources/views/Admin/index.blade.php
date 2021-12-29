@@ -127,21 +127,14 @@ Salon
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary submit-discount" onclick="validate()" data-dismiss="modal" id="submit-discount">Submit</button>
+                  <button type="button" class="btn btn-primary submit-discount"  data-dismiss="modal" id="submit-discount">Submit</button>
                 </div>
               </div>
             </div>
         </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-     function validate() {
-          var x = parseInt(value,10) // its the value from the input box;
-          if(isNaN(x)||x<0||x>100)
-           { 
-            alert("Value must be between 0 and 100");
-            return false;
-            }
-          }
+
         let public_path = "{{config('app.url').'/public/'}}";
        
      
@@ -149,21 +142,7 @@ Salon
 
         $(document).ready(function() {
 
-          function validate() {
-          var x = parseInt(value,10) // its the value from the input box;
-          if(isNaN(x)||x<0||x>100)
-           { 
-            alert("Value must be between 0 and 100");
-            return false;
-            }
-          }
-          function validate() {
-            var x = parseInt(value,10) // its the value from the input box;
-            if(isNaN(x)||x<0||x>100)
-            {
-              alert("Value must be between 0 and 100");
-              return false;
-            }
+    
        
           $('span.accepted,span.rejected').click(function(){
             

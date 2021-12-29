@@ -50,6 +50,6 @@
 
     <!-- Last Footer  Start-->
     <div class="for_last_footer_bg">
-        <p>© Copyright Glitterups 2021. All Rights Reserved. By Rometheme</p>
+        <p>© Copyright Glitterups 2021. All Rights Reserved. By Glitterups</p>
 
     </div>
