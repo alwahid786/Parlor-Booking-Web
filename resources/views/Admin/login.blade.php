@@ -10,7 +10,10 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard_signin.css') }}">
-    <title>Sign In</title>
+    {{-- <title>Sign In</title> --}}
+    @section('page-title')
+        Sign In
+    @endsection
     <style>
 
     </style>
