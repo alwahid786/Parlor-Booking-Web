@@ -128,14 +128,14 @@ class AuthController extends Controller
     public function signup(Request $request){
         $validator = Validator::make($request->all(), [
             'is_social'    => 'required|in:1,0',
-
+            
             'name'         => 'required_if:is_social,0|string',
             'email'        => 'required_if:is_social,0|unique:users,email|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'phone_code'   => 'required_if:is_social,0',
             'phone_number' => 'required_if:is_social,0|unique:users,phone_number',
             'password'     => 'required_if:is_social,0',
             'type'         => 'required_if:is_social,0|in:salon,user',
-
+            
             'social_id'    => 'required_if:is_social,1',
             'social_type'  => 'required_if:is_social,1',
             'gender'       => 'in:male,female,other,both',
@@ -144,10 +144,11 @@ class AuthController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
-
+        
         $twilio = new TwilioController;
         $twilioResponse = $twilio->isValidNumber($request->phone_code, $request->phone_number);
-
+        
+        // dd($request->all());
         if(!$twilioResponse){
             return sendError('Phone number is invalid', null);
         }
@@ -587,7 +588,7 @@ class AuthController extends Controller
         return sendSuccess('Verification Token Sent Successfully.', $data);
     }
 
-        public function sendVerificationToken($user, $code, $request)
+    public function sendVerificationToken($user, $code, $request)
     {
         $verificationModel = new SignupVerification();
         if (isset($request->phone_number) && isset($request->phone_code)) {

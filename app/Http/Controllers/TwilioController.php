@@ -16,7 +16,10 @@ class TwilioController extends Controller
 
 	function __construct(){
 
-       	$this->client = new Client(config('app.TWILIO_ACCOUNT_SID'), config('app.TWILIO_AUTH_TOKEN'));
+		// test 
+       	// $this->client = new Client('ACa97f0315b8e8a09191eee4390d8e7cd3','fcf71c367f5757630b445413aa772e29','P5CVKyXZDo9IdQMfN3tVY7tDrdmyG1rl');
+    	//    live 
+		$this->client = new Client('AC7c61cd1266aabea264e291483fe75161','2526a33dd642d54620ba6bee6a9a0dec','P5CVKyXZDo9IdQMfN3tVY7tDrdmyG1rl');
     }
 
     public function sendMessage($number, $code){
@@ -25,7 +28,7 @@ class TwilioController extends Controller
     		$apiResponse = $this->client->messages->create(
 		  		(int)$number, // Text this number
 		  		[
-		    		'from' => (int)'+17147092151', // From a valid Twilio number (babar.kodextech@gmail.com)
+		    		'from' => (int)'+14842902255', // From a Glitterups client
 		    		'body' => $code
 		  		]
 			);
@@ -49,9 +52,10 @@ class TwilioController extends Controller
      * @return void
      */
     public function isValidNumber($phone_code, $phone_number){
+		// dd($phone_code,$phone_number);
     	try {
     		$apiResponse = $this->client->lookups->v1->phoneNumbers($phone_code.$phone_number)->fetch(["countryCode" => $phone_code.$phone_number]);
-
+			// dd($apiResponse);
     	} catch (\Exception $e) {
     		return false;
     	}

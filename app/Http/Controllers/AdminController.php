@@ -59,7 +59,7 @@ class AdminController extends Controller
     public function show(Request $request)
     {
         // if (\Auth::check()) {
-            $allSalons = User::where('type', 'salon')->get();
+            $allSalons = User::where('type', 'salon')->paginate(10);
             // dd($allSalons);
             return view("Admin.index", compact("allSalons"));
         // }
@@ -92,7 +92,7 @@ class AdminController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'discountAmount'  => 'required|min:0|max:100',
+            'discountAmount'  => 'required',
             'expirayDate' => 'required|date'
         ]);
 
@@ -152,7 +152,9 @@ class AdminController extends Controller
     public function allUsers()
     {
         // if (\Auth::check()) {
-            $allUsers = User::where('type', 'user')->get();
+            // $allUsers = User::where('type', 'user')->get();
+            $allUsers = User::where('type', 'user')->paginate(10);
+            // dd($allUsers);
             return view("Admin.users", compact("allUsers"));
         // } else {
         //     return redirect()->route('admin.login');
@@ -197,6 +199,12 @@ class AdminController extends Controller
         // if (Auth::guard('admin')->logout()) {
         //     return redirect()->route('admin.login');
         // }
+    }
+
+    public function deleteUser(Request $request){
+        // dd($request->id);
+        \DB::delete('delete from users where id = ?',[$request->id]);
+        return redirect()->route('allUsers');
     }
 
     // protected function authenticated(Request $request, $user)

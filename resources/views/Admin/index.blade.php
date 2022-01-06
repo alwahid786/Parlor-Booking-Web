@@ -1,4 +1,18 @@
 @extends('Admin.layouts.main');
+<head>
+  <style>
+    .w-5{
+      width: 20px;
+    }
+    .flex-1{
+      /* margin-top: 20px; */
+      display: none;
+    }
+    .text-sm{
+      margin-top: 10px;
+    }
+  </style>
+</head>
 @section('page-title')
 Salon
 @endsection
@@ -35,7 +49,7 @@ Salon
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
-                   <table>
+                   <table class="table-bordered">
                     <thead>
                     <tr role="row">
                       {{-- <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Name</th> --}}
@@ -86,13 +100,50 @@ Salon
                           </div>
                         </td>
                         @else 
-                          <td></td>
+                          <td class="btn btn-secondary text-center w-100 accepted" id="{{$salon->id}}" value="accepted" }} style="font-weight: 500;color:white">
+                             suspended
+                          </td>
                          @endif
                       </tr>
                     @endforeach
                    
                     </tbody>
-                  </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                  </table>
+                </div>
+              </div>
+
+          <div>
+            {{ $allSalons->links() }}
+          </div>
+              <div class="row">
+                {{-- <div class="col-sm-12 col-md-5">
+                  <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button page-item previous disabled" id="example2_previous">
+                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                      </li>
+                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                      </li>
+                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                      </li>
+                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                      </li>
+                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a>
+                      </li>
+                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a>
+                      </li>
+                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a>
+                      </li>
+                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div> --}}
+              </div>
+            </div>
                       <!-- /.card-body -->
           </div>
               </div>
@@ -177,17 +228,25 @@ Salon
                 if($(this).attr("value") == "accepted"){
                   var value = $(this);
                   console.log(value,'value print');
-                  value.parents(".action").addClass("d-none");
-                  console.log(value.parents(".action").hasClass("d-block"));
+                  // value.parents(".action").addClass("d-none");
+                  // value.parents(".action").addClass("btn-secondary").text("suspend").css({"color": "white","text-align": "center","font-weight":"500"});
+                 
+                  // console.log(value.parents(".action").hasClass("d-block"));
                   let parent = value.parents(".odd").find(".btn-warning");
+                  console.log(parent,'test');
+                  // debugger;
                   parent.removeClass("btn-warning").addClass("btn-info").text("accepted");
+
+                  value.parents(".action").addClass("btn-secondary").text("suspended").css({"color": "white","text-align": "center","font-weight":"500","border-radius":"5px"});
+
                 }
                 if($(this).attr("value") == "rejected"){
                   var value = $(this);
-                  value.parents(".action").addClass("d-none");
+                  // value.parents(".action").addClass("d-none");
                   console.log(value.parents(".action").hasClass("d-block"));
                   let parent = value.parents(".odd").find(".btn-warning");
                   parent.removeClass("btn-warning").addClass("btn-danger").text("rejected");
+                  value.parents(".action").addClass("btn-secondary").text("suspended").css({"color": "white","text-align": "center","font-weight":"500","border-radius":"5px"});
                 }
           });
           $(".discount").click(function(){

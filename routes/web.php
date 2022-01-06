@@ -149,6 +149,7 @@ Route::group(['prefix' => 'admin'], function () {
         // Route::group(['middleware' => 'auth:admin'], function () {
 
         Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
+        Route::get('/deleteUser/id', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
         Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
 
