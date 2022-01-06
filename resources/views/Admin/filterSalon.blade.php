@@ -14,7 +14,7 @@
   </style>
 </head>
 @section('page-title')
-Salon
+Salon Status
 @endsection
 @section('body-content')
     
@@ -68,9 +68,9 @@ Salon
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Name</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Email</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Gender</th>
+                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Type</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Address</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Created</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Detail</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Discount</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Status</th>
                       <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Action</th>
@@ -84,11 +84,9 @@ Salon
                         <td>{{$salon->name}}</td>
                         <td>{{$salon->email}}</td>
                         <td>{{$salon->gender}}</td>
+                        <td>{{$salon->type}}</td>
                         <td>{{$salon->address}}</td>
                         <td>{{$salon->created_at}}</td>
-                        <td>
-                          <a href="{{route('salonDetails',['id'=>$salon->id])}}" class="btn btn-info" type="button">Details</a>
-                        </td>
                         <td>
                           <div class="btn btn-primary discount" data-toggle="modal" data-target="#exampleModal" id="{{$salon->id}}">Discount</div>
                         </td>
@@ -141,9 +139,9 @@ Salon
                 </div>
               </div>
 
-          <div>
+          {{-- <div>
             {{ $allSalons->links() }}
-          </div>
+          </div> --}}
               <div class="row">
                 {{-- <div class="col-sm-12 col-md-5">
                   <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>

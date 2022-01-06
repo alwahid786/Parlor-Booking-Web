@@ -43,6 +43,12 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
+<script>
+$("#option_signup_modal-d").click(function () {
+    switchModal('signup_socail_modal-d', 'signup_modal-d');
+});
+</script>
+
 
 <!-- SignUp Option Modal End-->

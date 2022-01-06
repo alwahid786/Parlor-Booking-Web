@@ -89,6 +89,9 @@ class User extends Authenticatable
         return $this->hasOne(Offer::class, 'salon_id','id')->where('status','active');
     }
 
+    function offers(){
+        return $this->hasMany(Offer::class, 'salon_id','id');
+    }
     function media(){
         return $this->hasMany(Media::class, 'user_id','id');
     }

@@ -150,7 +150,10 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
         Route::get('/deleteUser/id', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
-        Route::get('/salon-status', [AdminController::class, 'salonStatus'])->name('salonStatus');
+        Route::get('/deleteSalon/id', [AdminController::class, 'deleteSalon'])->name('admin.deleteSalon');
+        Route::get('/filter-salon/{status?}', [AdminController::class, 'filterSalon'])->name('filterSalon');
+        Route::get('/salon-details/{id?}', [AdminController::class, 'salonDetails'])->name('salonDetails');
+        Route::get('/salon-status/{id?}/{status?}', [AdminController::class, 'salonStatus'])->name('salonStatus');
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
 
         Route::get('/discount-added', [AdminController::class, 'discountAdd'])->name('discountAdd');

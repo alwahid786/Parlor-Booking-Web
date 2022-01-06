@@ -15,7 +15,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminController extends Controller
 {
-    // use AuthenticatesUsers;
+
     public function adminRedirect(Request $request)
     {
         // if (!\Auth::check()) {
@@ -54,8 +54,6 @@ class AdminController extends Controller
         }
     }
   
-
-
     public function show(Request $request)
     {
         // if (\Auth::check()) {
@@ -65,22 +63,23 @@ class AdminController extends Controller
         // }
     }
 
-    public function salonStatus(Request $request)
+    public function salonStatus($id, $status, Request $request)
     {
+        // dd($request->all(),$id, $status);
         $validator = Validator::make($request->all(), [
-            'status'  => 'in:accepted,rejected',
+            'status'  => 'in:accepted,rejected,suspended',
         ]);
 
 
         if ($validator->fails()) {
-
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
 
-        User::where('id', $request->statusId)->update(['status' => $request->status]);
-        $updatedUser = User::where('id', $request->statusId)->first();
-        return $updatedUser;
+        User::where('id', $id)->update(['status' => $status]);
+        return redirect()->route('admin.show');
+        // $updatedUser = User::where('id', $request->statusId)->first();
+        // return $updatedUser;
     }
 
     public function discountAdd(Request $request)
@@ -151,9 +150,8 @@ class AdminController extends Controller
 
     public function allUsers()
     {
-        // if (\Auth::check()) {
-            // $allUsers = User::where('type', 'user')->get();
-            $allUsers = User::where('type', 'user')->paginate(10);
+     
+        $allUsers = User::where('type', 'user')->paginate(10);
             // dd($allUsers);
             return view("Admin.users", compact("allUsers"));
         // } else {
@@ -203,14 +201,27 @@ class AdminController extends Controller
 
     public function deleteUser(Request $request){
         // dd($request->id);
-        \DB::delete('delete from users where id = ?',[$request->id]);
+        // \DB::delete('delete from users where id = ?',[$request->id]);
+        User::where('id',$request->id)->delete();
         return redirect()->route('allUsers');
     }
 
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     return redirect()->route('admin.show');
-    // }
+    public function deleteSalon(Request $request){
+        // \DB::delete('delete from users where id = ?',[$request->id]);
+        User::where('id',$request->id)->delete();
+        return redirect()->route('admin.show');
+    }
+
+    public function filterSalon($status){
+        $allSalons = User::where('status',$status)->get();
+        return view("Admin.filterSalon", compact("allSalons"));
+    }
+
+    public function salonDetails($id){
+       $salonDetail =  User::where('id',$id)->with(['services','offers'])->first();
+    //    dd($salonDetail);
+        return view("Admin.salonDetails", compact("salonDetail"));
+    }
 
 
 

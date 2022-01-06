@@ -103,4 +103,9 @@
       </div>
     </div>
   </div>
+  <script>
+    $("#goto_login_modal-d").click(function () {
+        switchModal('signup_modal-d', 'signin_modal-d');
+    });
+ </script>
 <!-- SignUp Create Account Modal End-->
