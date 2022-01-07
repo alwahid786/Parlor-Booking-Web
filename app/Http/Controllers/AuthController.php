@@ -39,6 +39,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         $check = User::where('email', $request->email)->first();
+        // dd($check);
         // if($check->type != $request->type)
         //     return sendError('Invalid Login',[]);
 
@@ -59,6 +60,21 @@ class AuthController extends Controller
             DB::delete('Delete from signup_verifications where email = ?',[$request->email]);
 
             Log::info($code);
+            $check = User::where('email', $request->email)->orWhere('phone_number', $request->phone_number)->first();
+
+            $twilio = new TwilioController;
+             $twilioResponse = $twilio->isValidNumber($request->phone_code, $request->phone_number);
+            if(!$twilioResponse){
+                return sendError('Phone number is invalid', null);
+             }
+            if($check){
+                if($check->email_verified_at == null || $check->phone_verified_at == null){
+                    // dd('test');
+                    if(!$twilio->sendMessage($request->phone_code.$request->phone_number, 'Enter this code to verify your GlitterUps account ' . $code)) {
+                        return sendError('Phone is invalid', NULL);
+                    }
+                }
+            }
 
             // Mail::send('email_template.verification_code', ['name' => $check->profile->first_name.' '.$check->profile->last_name, 'code' => $code], function ($m) use ($check) {
             //     $m->from(config('mail.from.address'), config('mail.from.name'));
@@ -76,20 +92,22 @@ class AuthController extends Controller
 
             $data['code'] = $code;
             // dd($data);
-            return sendSuccess('User Not Verified. Verification code sent to linked Email.', $data);
+            // return sendSuccess('User Not Verified. Verification code sent to linked Email.', $data);
+            return sendSuccess('User Not Verified. Verification code sent to phone.', $data);
         }
 
         if($check && ($check->phone_verified_at == null || $check->phone_verified_at == '') && isset($request->phone_number) && isset($request->phone_code) && $login_type == 'number'){
+        //   dd($request->phone_number);
             $code = mt_rand(1000, 9999);
 
             DB::delete('Delete from signup_verifications where phone = ?',[$request->phone_code.$request->phone_number]);
 
             Log::info($code);
 
-            // $twilio = new TwilioController;
-            // if(!$twilio->sendMessage($check->phone_code.$check->phone_number, 'Enter this code to verify your Grabions account ' . $code)) {
-            //     return sendError('Phone is invalid', NULL);
-            // }
+            $twilio = new TwilioController;
+            if(!$twilio->sendMessage($check->phone_code.$check->phone_number, 'Enter this code to verify your GlitterUps account ' . $code)) {
+                return sendError('Phone is invalid', NULL);
+            }
 
             // SAVE VERIFICATION TOKEN
             $signupVerification = new SignupVerification;
@@ -101,7 +119,7 @@ class AuthController extends Controller
             $signupVerification->save();
 
             $data['code'] = $code;
-            return sendError('User Not Verified. Verification code sent to linked Email.', $data);
+            return sendError('User Not Verified. Verification code sent .', $data);
         }
         if(Auth::attempt($credentials)){
         // dd($check, "12312");
@@ -144,20 +162,21 @@ class AuthController extends Controller
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
         }
+
+
+
         
         $twilio = new TwilioController;
         $twilioResponse = $twilio->isValidNumber($request->phone_code, $request->phone_number);
-        
-        // dd($request->all());
         if(!$twilioResponse){
             return sendError('Phone number is invalid', null);
         }
 
 
         $code = mt_rand(1000, 9999);
+        // dd("rest");
         $check = new User;
         $msg = '';
-
         if($request->is_social == 0){
 
             $check = User::where('email', $request->email)
@@ -188,6 +207,25 @@ class AuthController extends Controller
                     return sendError('Phone exists already', null);
                 }
             }
+            // dd($check);
+            // if($check->email_verified_at == null || $check->phone_verified_at == null){
+                // if(!$twilio->sendMessage($request->phone, 'Enter this code to verify your Cleaques account ' . $code)) {
+                //    return sendError('Phone is invalid', NULL);
+                // }
+            // }
+
+
+            if(!$twilio->sendMessage($request->phone_code.$request->phone_number, 'Enter this code to verify your GlitterUps account ' . $code)) {
+                return sendError('Phone is invalid', NULL);
+            }
+
+            DB::delete('Delete from password_resets where phone = ?',[$request->phone_code.$request->phone_number]);
+            DB::insert('Insert into password_resets (type, phone, token) values(?, ?, ?)',['phone', $request->phone_code.$request->phone_number, $code]);
+
+            // return sendSuccess('Code sent on phone', $data);
+        
+
+     
         }else{
             $check = User::where('social_email', $request->social_email)->orWhere('social_id', $request->social_id)->first();
             if($check){
@@ -455,10 +493,11 @@ class AuthController extends Controller
     }
 
     public function forgotPasswordCode(Request $request) {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'reference' => 'required'
         ]);
-
+        // dd($request->all());
         if($validator->fails()){
             $data['validation_error'] = $validator->getMessageBag();
             return sendError($validator->errors()->all()[0], $data);
@@ -469,6 +508,7 @@ class AuthController extends Controller
 
         if(!$user){
             $user = getUser()->whereRaw("CONCAT(phone_code, phone_number) = ?", [$request->reference])->first();
+            // dd($user);
             $type = 'phone';
         }
         if(!$user){
@@ -493,7 +533,7 @@ class AuthController extends Controller
 
         }elseif($type == 'phone'){
             $twilio = new TwilioController;
-            if(!$twilio->sendMessage($user->phone_code.$user->phone_number, 'Enter this code to verify your Grabions account ' . $code)) {
+            if(!$twilio->sendMessage($user->phone_code.$user->phone_number, 'Enter this code to verify your GlitterUps account ' . $code)) {
                 return sendError('Phone is invalid', NULL);
             }
 

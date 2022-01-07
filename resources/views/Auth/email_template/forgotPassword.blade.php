@@ -36,18 +36,52 @@
               </div>
 
               <div class="for_personal_information">
-                  <p>Enter your Email...</p>
+                  <p>Enter your phone number...</p>
 
               </div>
 
                 <form action="{{ route('forgotPassword') }}" class="frm_forgot_password-d" method="post">
-                    <div class="for_common_email_pass">
-                        <p>Email Address</p>
+
+                  <div class="d-flex w-75">
+                    <div class="for_common_email_pass col input-group">
+    
+                        <label for="phone_code_label">Phone Code</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend d-flex align-self-end">
+                                <span class="input-group-text rounded-0 border-0 bg-white  border-bottom" id="phone_code">+</span>
+                            </div>
+                            <input type="number" class="form-control rounded-0   border-bottom inp form-control-lg" name="phone_code" maxlength="3" id="phone_code_label" aria-describedby="phone_code">
+                        </div>
+                    </div>
+                  {{-- <div class="for_common_email_pass col input-group">
+                    <label>Phone Code</label>
+    
+                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="phone_code">+</span>
+                        </div>
+                        <input type="tel" class="form-control form-control-lg inp border-bottom" maxlength="3" name="phone_code" placeholder="+ 00" aria-describedby="phone_code" required/>
+    
+                  </div> --}}
+                  <div class="for_common_email_pass col form-group">
+                    <label>Phone</label>
+                      {{-- <div class="input-group mb-3 w-75 "> --}}
+                        <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                        <input type="number" class="form-control form-control-lg inp rounded-0` border-bottom" name="phone_number" maxlength="12" placeholder=" 000 00 00 000"  required/>
+                      {{-- </div> --}}
+                  </div>
+                </div>
+
+
+
+
+                    {{-- <div class="for_common_email_pass">
+                        <p>Phone Number</p>
                             <div class="input-group mb-3 w-75 ">
                             <!-- <input type="text" class="form-control border-bottom" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
-                            <input type="email" name="reference" class="inp w-100 border-bottom" placeholder="abcd@gmail.com"/>
+                            <input type="email" name="reference" class="inp w-100 border-bottom" placeholder="1234567890"/>
                             </div>
-                    </div>
+                    </div> --}}
 
                     <div class=" text-center button_signin_css ">
                         <input type="hidden" name="" id="reset_password-d" value="reset_password">

@@ -13,7 +13,7 @@
         "laravel/passport": "^10.2",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
-        "twilio/sdk": "^6.21"
+        "twilio/sdk": "^6.32"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

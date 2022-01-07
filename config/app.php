@@ -2,6 +2,11 @@
 
 return [
 
+
+    'TWILIO_ACCOUNT_SID' => env('TWILIO_ACCOUNT_SID', 'AC2689f21bc97497b48987a429b29385f3'),
+    'TWILIO_AUTH_TOKEN' => env('TWILIO_AUTH_TOKEN', 'd34c38537c924c821e202a53775c47a9'),
+    'TWILIO_PHONE_NUMB' => env('TWILIO_PHONE_NUMB', '+13605495824'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

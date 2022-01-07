@@ -16,14 +16,22 @@ class TwilioController extends Controller
 
 	function __construct(){
 
+		// $this->client = new Client(config('app.TWILIO_ACCOUNT_SID'), config('app.TWILIO_AUTH_TOKEN'));
+
 		// test 
        	// $this->client = new Client('ACa97f0315b8e8a09191eee4390d8e7cd3','fcf71c367f5757630b445413aa772e29','P5CVKyXZDo9IdQMfN3tVY7tDrdmyG1rl');
     	//    live 
-		$this->client = new Client('AC7c61cd1266aabea264e291483fe75161','2526a33dd642d54620ba6bee6a9a0dec','P5CVKyXZDo9IdQMfN3tVY7tDrdmyG1rl');
-    }
+		// $this->client = new Client('AC7c61cd1266aabea264e291483fe75161',/'2526a33dd642d54620ba6bee6a9a0dec','P5CVKyXZDo9IdQMfN3tVY7tDrdmyG1rl');
+		
+		// live working on local 
+		$this->client = new Client('AC7c61cd1266aabea264e291483fe75161','2526a33dd642d54620ba6bee6a9a0dec');
+   
+		// $this->client = new Client('SKdb2e85799e43d949d91e8fc5c0d933ca', 'f1eqaTbx6dMIQPYhBjiuqoF1NiyJ3TVG', 'AC8c9138a26502ad8f6d366a8a231b2633');
+   
+	}
 
     public function sendMessage($number, $code){
-
+		// dd($number,$code);
     	try {
     		$apiResponse = $this->client->messages->create(
 		  		(int)$number, // Text this number
@@ -32,6 +40,7 @@ class TwilioController extends Controller
 		    		'body' => $code
 		  		]
 			);
+			// dd($apiResponse);
 			return $apiResponse;
 
     	} catch (Exception $e) {

@@ -139,16 +139,24 @@ class AuthWebController extends Controller
 
     public function forgotPassword(Request $request)
     {
-        // dd($request->all());
         if ($request->getMethod() == 'GET') {
             return view('Auth.email_template.forgotPassword');
         } else {
+            $phone= '+'.$request->phone_code.$request->phone_number;
+            // dd($request);
+
+            $request->merge([
+                'reference' => $phone
+            ]);
+            // $request->merge
+
             $authCntrl = $this->authApiCntrl;
             $apiResponse = $authCntrl->forgotPasswordCode($request)->getData();
+            // dd($apiResponse);
             if ($apiResponse->status) {
-                return sendSuccess('Code Send successfully to your email', $apiResponse->data);
+                return sendSuccess('Code Send successfully ', $apiResponse->data);
             }
-            return sendError('Invalid Email ', []);
+            return sendError('Invalid Number ', []);
         }
     }
 
