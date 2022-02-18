@@ -7,7 +7,10 @@ use App\Models\Admin;
 use App\Models\Offer;
 use Carbon\Carbon;
 use App\Models\Service;
+use App\Models\Appointment;
+use App\Models\AppointmentDetail;
 use Illuminate\Http\Request;
+use DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
@@ -218,12 +221,29 @@ class AdminController extends Controller
     }
 
     public function salonDetails($id){
+
        $salonDetail =  User::where('id',$id)->with(['services','offers'])->first();
-    //    dd($salonDetail);
         return view("Admin.salonDetails", compact("salonDetail"));
     }
 
+    public function salonCustomers($id){
 
+    $salonCustomers =  Appointment::where('salon_id',$id)->orderBy('created_at', 'desc')->get();
+// dd($salonCustomers);
+// echo($salonCustomers[0]->appointmentDetails[0]->services->name);
+// foreach( $salonCustomers  as $salonCustomer){
+//        echo($salonCustomer->date)."</br>";
+//        foreach( $salonCustomer->appointmentDetails  as $appointmentDetail){
+//         echo($appointmentDetail->price)."</br>";
+//         echo($appointmentDetail->services->name)."</br>";
+//         // foreach($appointmentDetail->services  as $service){
+//         //     echo($service->name)."</br>";  
+//         // }
+//        }
+// }
+
+    return view("Admin.salonCustomers", compact("salonCustomers"));
+    }
 
     // public function logout(Request $request)
     // {

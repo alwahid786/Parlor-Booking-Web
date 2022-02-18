@@ -2,9 +2,12 @@ $(function(event) {
 
     // accept appointment
     $(".main_container-d").on("click", '.approve-d', function() {
+        
         let uuid = $(this).data("setid");
+        alert(uuid);
         $.ajax({
             url: "https://privatehost.dev/glitterups/accpet-appointment/" + uuid,
+            // url: "/accpet-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
@@ -65,6 +68,7 @@ $(function(event) {
 
         $.ajax({
             url: "https://privatehost.dev/glitterups/cancel-appointment/" + uuid,
+            // url: "/cancel-appointment/" + uuid,
             type: 'POST',
             // dataType: 'json',
             data: { uuid, uuid },
@@ -141,7 +145,7 @@ $(function(event) {
             //     next();
             // }(function() {
             // }));
-
+as
 
             let current_date = (new Date()).toISOString().split('T')[0];
             // console.log(current_date);

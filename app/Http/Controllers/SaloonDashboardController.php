@@ -29,8 +29,11 @@ class SaloonDashboardController extends Controller
 
     public function dashboard($uuid = null, Request $request)
     {
+       
         if ($request->getMethod() == 'GET') {
+           
             if(isset($request->uuid) && ('' !== $request->uuid)) {
+              
                 $request->merge(['user_uuid' => $request->uuid]);
                 $appointments = $this->appointmentApiCntrl;
                 $apiResponse = $appointments->getAppointment($request)->getData();
@@ -51,6 +54,7 @@ class SaloonDashboardController extends Controller
                 }
                 return view('Dashboard.saloon_dashboard', ['id' => $request->uuid, 'appointments'=>'']);
             }
+           
             $request->merge(['user_uuid' => $uuid]);
             $appointments = $this->appointmentApiCntrl;
             $apiResponse = $appointments->getAppointment($request)->getData();
@@ -60,7 +64,7 @@ class SaloonDashboardController extends Controller
 
             $salonNotification = $this->notificationApiCntrl;
             $apiResponse_salon_notification = $salonNotification->getNotifications($request)->getData();
-
+            
             if ($apiResponse->status&& $apiResponse_user->status &&  $apiResponse_salon_notification->status) {
                 $appointments = $apiResponse->data;
                 $user_details = $apiResponse_user->data;
@@ -68,6 +72,7 @@ class SaloonDashboardController extends Controller
 
                 return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => $appointments, 'user_details' => $user_details, 'salon_notifications' => $salon_notifications]);
             }
+         
             return view('Dashboard.saloon_dashboard', ['id' => $uuid, 'appointments' => '']);
         }
     }

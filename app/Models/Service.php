@@ -34,7 +34,9 @@ class Service extends Model
     function appointmentDetails(){
         return $this->hasMany(AppointmentDetail::class, 'service_id', 'id');
     }
-
+    function appointment(){
+        return $this->belongsTo(Appointment::class, 'salon_id', 'id');
+    }
     function offer(){
         return $this->hasOne(Offer::class, 'service_id', 'id')->where('status','active');
     }

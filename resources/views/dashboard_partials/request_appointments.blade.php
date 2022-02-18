@@ -53,6 +53,7 @@
                         <p class="text-end"> {{  date('d/m/Y', strtotime($appointment->date)) }} {{ date('h:i A', strtotime($appointment->start_time)) ?? ''}}
                     </div>
                     <div class="col-2">
+                    
                         @if ($appointment->status == 'on-hold')
                             <i class="fa fa-check-circle-o approve-d" aria-hidden="true" data-setid={{ $appointment->uuid }}></i>
 

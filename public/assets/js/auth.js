@@ -199,6 +199,8 @@ $(function(event) {
                     showPreLoader();
                 },
                 success: function(response) {
+                    console.log(response, "response");
+                    // return false;
                     if (response.status == true) {
                         Swal.fire({
                             title: 'Success',
@@ -229,6 +231,7 @@ $(function(event) {
                                 else
                                 {
                                     console.log('user');
+                                 
 
                                     window.location.href = UserAppointments + '?uuid=' + response.data.user.uuid;
                                 }

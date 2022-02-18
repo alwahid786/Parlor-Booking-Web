@@ -22,10 +22,10 @@
 @endsection
 @section('body-content')
 
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <a href="{{route('salonCustomers',['id'=>$salonDetail->id])}}" class="btn btn-info" type="button">Orders Detail</a>
                 <div class="col-12">
                     <div>
                         <h4 class="text-bold"> Salon Details</h4>

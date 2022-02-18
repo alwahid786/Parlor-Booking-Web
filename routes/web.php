@@ -66,9 +66,6 @@ Route::group(['middleware' => 'guest'], function () {
     
     Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 
-
-
-
     //admin_route
     Route::any('/signin', [AuthWebController::class, 'login'])->name('weblogin');
 
@@ -92,7 +89,6 @@ Route::group(['middleware' => 'guest'], function () {
 
     Route::any('/reset-password', [AuthWebController::class, 'resetPassword'])->name('resetPassword');
 
-
     // search results
     Route::any('/search-saloon', [UserAppointmentController::class, 'search'])->name('search');
 });
@@ -102,7 +98,6 @@ Route::group(['middleware' => 'auth'], function () {
  
     Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
     Route::any('/profile/{uuid}', [SaloonDashboardController::class, 'profile'])->name('profile');
-
     //profile setting
     Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
     // Route::any('/profile-setting/{uuid?}', [SaloonDashboardController::class, 'profileSetting'])->name('profileSetting');
@@ -128,8 +123,6 @@ Route::group(['middleware' => 'auth'], function () {
     //delete brosche images
     Route::any('/delete-broshe-images', [SaloonDashboardController::class, 'deleteBrosche'])->name('deleteBrosche');
 
-
-
     // });
     Route::any('/logout', [AuthWebController::class, 'logout'])->name('logout');
 
@@ -153,6 +146,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/deleteSalon/id', [AdminController::class, 'deleteSalon'])->name('admin.deleteSalon');
         Route::get('/filter-salon/{status?}', [AdminController::class, 'filterSalon'])->name('filterSalon');
         Route::get('/salon-details/{id?}', [AdminController::class, 'salonDetails'])->name('salonDetails');
+        //Customer Details
+        Route::get('/salon-customers/{id?}', [AdminController::class, 'salonCustomers'])->name('salonCustomers');
+        //order Details
+        // Route::get('/order-details/{id?}', [AdminController::class, 'orderDetails'])->name('orderDetails');
         Route::get('/salon-status/{id?}/{status?}', [AdminController::class, 'salonStatus'])->name('salonStatus');
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
 
