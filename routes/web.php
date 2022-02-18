@@ -93,7 +93,6 @@ Route::group(['middleware' => 'guest'], function () {
     Route::any('/search-saloon', [UserAppointmentController::class, 'search'])->name('search');
 });
 
-
 Route::group(['middleware' => 'auth'], function () {
  
     Route::any('/dashboard/{uuid?}', [SaloonDashboardController::class, 'dashboard'])->name('saloonDashboard');
