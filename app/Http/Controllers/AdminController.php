@@ -270,4 +270,17 @@ class AdminController extends Controller
     // {
     //     return Auth::guard('admin');
     // }
+
+    public function showOrders(Request $request){
+        //Yesterday
+        $salonCustomers = Appointment::with('salon','user','appointmentDetails')->whereDate('date', Carbon::yesterday())->orderBy('start_time', 'ASC')->get();
+        // dd($salonCustomers[0]->salon->phone);
+        //Today
+        $salonCustomerss = Appointment::with('salon','user','appointmentDetails')->whereDate('date', Carbon::today())->orderBy('start_time', 'ASC')->get();
+        //Tomorrow
+        $salonCustomersss = Appointment::with('salon','user','appointmentDetails')->whereDate('date', Carbon::tomorrow())->orderBy('start_time', 'ASC')->get();
+        // dd($salonCustomers);
+        return view("Admin.showorders",compact("salonCustomers","salonCustomerss","salonCustomersss"));
+
+    }
 }

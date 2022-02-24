@@ -147,8 +147,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/salon-details/{id?}', [AdminController::class, 'salonDetails'])->name('salonDetails');
         //Customer Details
         Route::get('/salon-customers/{id?}', [AdminController::class, 'salonCustomers'])->name('salonCustomers');
-        //order Details
-        // Route::get('/order-details/{id?}', [AdminController::class, 'orderDetails'])->name('orderDetails');
+        //Show Orders
+        Route::get('/show-orders', [AdminController::class, 'showOrders'])->name('showOrders');
         Route::get('/salon-status/{id?}/{status?}', [AdminController::class, 'salonStatus'])->name('salonStatus');
         Route::get('/all-users', [AdminController::class, 'allUsers'])->name('allUsers');
 

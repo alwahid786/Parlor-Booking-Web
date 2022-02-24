@@ -18,7 +18,6 @@ Salon
 @endsection
 @section('body-content')
     
-
 {{-- <div class="wrapper">    --}}
 
     <!-- Navbar -->
@@ -35,8 +34,6 @@ Salon
     <!-- Content Wrapper. Contains page content -->
     {{-- <div class="content-wrapper"> --}}
   
-  
-  
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
@@ -44,8 +41,9 @@ Salon
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">All Salon And Users</h3>
+                  <h3 class="card-title">All Salon And Users</h3>         
                   <div class="dropdown" style="text-align: right">
+                    <a href="{{route('showOrders')}}" class="btn btn-info ml-4" type="button">Show Orders</a>
                     <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Filter
                     </button>

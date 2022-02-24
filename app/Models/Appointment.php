@@ -44,7 +44,6 @@ class Appointment extends Model
         return $this->hasOne(Review::class,'appointment_id','id');
     }
 
-
     public function getDayAttribute(){
         // return $this->date;
         // return date('D', strtotime($this->date));
